@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/spike.dir/src/spike.cpp.o"
-  "CMakeFiles/spike.dir/src/factorial.cpp.o"
   "spike.pdb"
   "spike"
 )

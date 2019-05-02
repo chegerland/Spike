@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/spike.dir/src/spike.cpp.o CMakeFiles/spike.dir/src/factorial.cpp.o  -o spike 
+/usr/bin/c++     CMakeFiles/spike.dir/src/spike.cpp.o  -o spike 

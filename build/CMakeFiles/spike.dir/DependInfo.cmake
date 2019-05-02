@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cheg/Repos/Master/Spike/src/factorial.cpp" "/home/cheg/Repos/Master/Spike/build/CMakeFiles/spike.dir/src/factorial.cpp.o"
   "/home/cheg/Repos/Master/Spike/src/spike.cpp" "/home/cheg/Repos/Master/Spike/build/CMakeFiles/spike.dir/src/spike.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

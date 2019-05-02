@@ -7,14 +7,15 @@ include_directories(include)
 include_directories(src)
 
 # add sources
-file(GLOB SOURCES "src/factorial.cpp")
+file(GLOB SOURCES "src/*.cpp")
 file(GLOB TESTSOURCES "test/*.cpp")
 
 add_executable(spike src/spike.cpp ${SOURCES})
-add_executable(Test ${TESTSOURCES} ${SOURCES})
 
-# TEST
-include(CTest)
-enable_testing()
-add_test(NAME FirstTest
-         COMMAND Test)
+#add_executable(Test ${TESTSOURCES} ${SOURCES})
+#
+## TEST
+#include(CTest)
+#enable_testing()
+#add_test(NAME FirstTest
+#         COMMAND Test)
