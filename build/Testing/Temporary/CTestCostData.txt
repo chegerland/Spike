@@ -1,3 +1,0 @@
-FirstTest 0 0
----
-FirstTest

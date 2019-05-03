@@ -1,3 +1,0 @@
-/home/cheg/Repos/Master/Spike/build/CMakeFiles/rebuild_cache.dir
-/home/cheg/Repos/Master/Spike/build/CMakeFiles/spike.dir
-/home/cheg/Repos/Master/Spike/build/CMakeFiles/edit_cache.dir
