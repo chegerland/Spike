@@ -1,20 +1,24 @@
 #include "models.h"
 #include <iostream>
+#include <fstream>
+#include <vector>
 
-int main(int argc, char *argv[]) {
-  
-  PIF P;
-  P.t_0 = 0;
-  P.t_end = 17;
-  P.N = 1000;
-  P.mu = 0.3;
-  P.D = 0.1;
 
-  double v[P.N];
+int main(int argc, char *argv[])
+{
 
-  em(v, P);
+  // define new neuron with all parameters
+  IF *P = new LIF();
+  P->t_0 = 4;
+  P->t_end = 17;
+  P->N = 1000;
+  P->mu = 0.8;
+  P->D = 0.01;
 
-  std::cout << v[5] << std::endl;
-  
-  return 0;
+  //char fileName[100] = "../data/test.csv";
+  //curveToFile(P, fileName);
+  curveToStdOut(P);
+
+
+return 0;
 }

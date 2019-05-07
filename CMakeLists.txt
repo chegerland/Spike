@@ -10,7 +10,7 @@ include_directories(src)
 file(GLOB SOURCES "src/*.cpp")
 file(GLOB TESTSOURCES "test/*.cpp")
 
-add_executable(spike src/spike.cpp ${SOURCES})
+add_executable(spike ${SOURCES})
 
 #add_executable(Test ${TESTSOURCES} ${SOURCES})
 #
