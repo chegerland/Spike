@@ -42,8 +42,14 @@ class LIF : public IF {
 
 
 /* voltage curve */
-void em(IF* neuron, double t[], double v[]);
+void voltageCurve(IF* neuron, std::vector<double> &t, std::vector<double> &v);
+void spikeTimes(IF* neuron, std::vector<double> &spikes);
+void spikeTrain(IF* neuron, std::vector<double> &spikes);
 
-void curveToFile(IF *neuron, char fileName[100]);
-void curveToStdOut(IF *neuron);
+void toStdOut(const std::vector<double> &x, const std::vector<double> &y);
+void toFile(char fileName[100], const std::vector<double> &x, const std::vector<double> &y);
+
+double firingRate(double t, const std::vector<double> &spikeTimes, double dt);
+
+
 #endif // ifndef
