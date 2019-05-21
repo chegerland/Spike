@@ -1,80 +1,164 @@
 #include "models.h"
 #include <iostream>
 #include <fstream>
+#include <ctime> 
 #include <vector>
 
+/*
+  produces the firing rate plots of a perfect IF neuron shown in the neusig lecture
+  (Lecture 7)
+*/
+void pifNeusig()
+{
+
+  // define the PIF neuron with parameters shown on slide
+  IF *P = new IF();
+  P->t_0 = 0;
+  P->t_end = 8;
+  P->N = 1000;
+  P->mu = 1;
+  P->D = 0.02;
+
+  // define vector vor spiketimes, time and firing rate
+  std::vector<double> spikes;
+  std::vector<double> t;
+  std::vector<double> rate;
+
+  // define time scale for firing rate
+  int N = 400;
+  double dt = (double)(P->t_end - P->t_0) / N; // time step
+
+  // initial values
+  t.push_back(P->t_0);
+  rate.push_back(0);
+
+  /* fill time and firing rate vector */
+  for (int j = 0; j < N; j++)
+  {
+    t.push_back(t[j] + dt);
+    rate.push_back(0);
+  }
+
+  /* loop over simulation */
+  int Nsims = 10000;
+  //clock_t begin = clock();
+  for (int i = 0; i < Nsims; i++)
+  {
+    // get spike times
+    spikeTimes(P, spikes);
+
+    // get firing rate for every time step, weighted with 1/Nsims
+    for (int j = 0; j < N; j++)
+    {
+      rate[j] += (double) 1.0 / Nsims * firingRate(t[j], spikes, 0.05);
+    };
+
+    // empty the spikes vector for next simulation run
+    spikes.clear();
+  }
+
+  /* 
+  clock_t end = clock();
+  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+  std::cout << "Simulating "
+            << Nsims
+            << " neurons took "
+            << elapsed_secs 
+            << " seconds." << std::endl;
+  */
+  // print out time and rate 
+  toStdOut(t, rate);
+}
 
 int main(int argc, char *argv[])
 {
 
   // define new neuron with all parameters
-  IF *P = new IF();
+  IF *P = new LIFsig();
   P->t_0 = 0;
-  P->t_end = 10;
+  P->t_end = 15;
   P->N = 1000;
-  P->mu = 0.8;
-  P->D = 0.01;
+  P->mu = 1.1;
+  P->D = 0.001;
+  P->eps = 0.05;
+  P->f = 0.215;
 
-  /*
-  // define and fill vectors
-  std::vector<double> t;
-  std::vector<double> v;
-  em(P, t, v);
-
-  // print vectors to file
-  char fileName[100] = "../data/test.csv";
-  toFile(fileName, t, v);
-  */
-
-  size_t Nsims = 10;
-  std::vector<double> spikes;
-
-  
-  std::ofstream file;
-  file.open("../data/spikeTimesTest.csv");
-
-  // define time and rate vectors
-  std::vector<double> t;
-  std::vector<double> rate;
-
-  t.push_back(P->t_0); // initial value
-  rate.push_back(0); // initial value
-  double dt = (double) (P->t_end - P->t_0 ) / P->N; // time step
-
-  // fill in the right time
-  // fill in zeros for the rate
-  for (int j = 0; j < P->N; j++)
+  /* input routine */
+  if (argc == 1)
   {
-    t.push_back(t[j]+dt);
-    rate.push_back(0);
+    std::cout << "No arguments passed!" << std::endl;
+    exit(0);
   }
+  else
+  {
+    std::string argv1 = argv[1];
 
-  std::cout.precision(5);
-  // loop over simulations
-  //for (int i = 0; i < Nsims; i++)
-  //{
-    // generate spike train
-    spikeTimes(P, spikes);
-
-    // calculate firing rate
-    for (int j = 0; j < P->N; j++)
+    // print curve to file
+    if (argv1 == "curveCSV")
     {
-      rate[j] += 1*firingRate(t[j], spikes, dt);
-      std::cout << rate[j] << std::endl;
+      std::vector<double> t;
+      std::vector<double> v;
+      voltageCurve(P, t, v);
+
+      char fileName[100] = "../data/test.csv";
+      toCSV(fileName, t, v);
     }
-    // print spike times to file
-    for (auto i = spikes.begin(); i != spikes.end(); ++i)
+    // print curve to standard output
+    else if (argv1 == "curveStd")
     {
-      file << *i << ' ';
+      std::vector<double> t;
+      std::vector<double> v;
+      voltageCurve(P, t, v);
+
+      toStdOut(t, v);
     }
+    // produce firing rate from the neusig lecture
+    else if (argv1 == "pifNeusig")
+    {
+      pifNeusig();
+    } else {
 
-    file << "\n";
-  //  spikes.clear();
-  //}
+      // define vector vor spiketimes, time and firing rate
+      std::vector<double> spikes;
+      std::vector<double> t;
+      std::vector<double> rate;
 
-  file.close();
+      // define time scale for firing rate
+      int N = 1500;
+      double dt = (double)(P->t_end - P->t_0) / N; // time step
 
-  //toStdOut(t, rate);
+      // initial values
+      t.push_back(P->t_0);
+      rate.push_back(0);
+
+      /* fill time and firing rate vector */
+      for (int j = 0; j < N; j++)
+      {
+        t.push_back(t[j] + dt);
+        rate.push_back(0);
+      }
+
+      /* loop over simulation */
+      int Nsims = 100000;
+      for (int i = 0; i < Nsims; i++)
+      {
+        // get spike times
+        spikeTimes(P, spikes);
+
+        // get firing rate for every time step, weighted with 1/Nsims
+        for (int j = 0; j < N; j++)
+        {
+          rate[j] += (double)1.0 / Nsims * firingRate(t[j], spikes, 0.1);
+        };
+
+        // empty the spikes vector for next simulation run
+        spikes.clear();
+      }
+
+      // print out time and rate
+      toStdOut(t, rate);
+    }
+  } 
 
   return 0;
 }
