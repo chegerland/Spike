@@ -1,4 +1,4 @@
-#include "models.h"
+#include "Models/models.h"
 #include <iostream>
 #include <fstream>
 #include <ctime> 
@@ -72,7 +72,6 @@ void pifNeusig()
 
 int main(int argc, char *argv[])
 {
-
   // define new neuron with all parameters
   IF *P = new LIFsig();
   P->t_0 = 0;

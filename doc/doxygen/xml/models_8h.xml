@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="models_8h" kind="file" language="C++">
+    <compoundname>models.h</compoundname>
+    <includes local="no">math.h</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="models_8cpp" local="yes">/home/cheg/Repos/Master/Spike/src/Models/models.cpp</includedby>
+    <includedby refid="spike_8cpp" local="yes">/home/cheg/Repos/Master/Spike/src/spike.cpp</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>/home/cheg/Repos/Master/Spike/src/Models/models.h</label>
+        <link refid="models_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
+      <node id="9">
+        <label>math.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classIF" prot="public">IF</innerclass>
+    <innerclass refid="classLIF" prot="public">LIF</innerclass>
+    <innerclass refid="classLIFsig" prot="public">LIFsig</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="models_8h_1a6ceca7b00eabfb4f46b4b4e04ffc16db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void voltageCurve</definition>
+        <argsstring>(IF *neuron, std::vector&lt; double &gt; &amp;t, std::vector&lt; double &gt; &amp;v)</argsstring>
+        <name>voltageCurve</name>
+        <param>
+          <type><ref refid="classIF" kindref="compound">IF</ref> *</type>
+          <declname>neuron</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="75" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="12" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="models_8h_1a1602343e8f361a66eae9dd63ece20b55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void spikeTimes</definition>
+        <argsstring>(IF *neuron, std::vector&lt; double &gt; &amp;spikes)</argsstring>
+        <name>spikeTimes</name>
+        <param>
+          <type><ref refid="classIF" kindref="compound">IF</ref> *</type>
+          <declname>neuron</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>spikes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="76" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="48" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="models_8h_1a8f5bfb41f028d115affdf3736149ea67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void spikeTrain</definition>
+        <argsstring>(IF *neuron, std::vector&lt; double &gt; &amp;spikes)</argsstring>
+        <name>spikeTrain</name>
+        <param>
+          <type><ref refid="classIF" kindref="compound">IF</ref> *</type>
+          <declname>neuron</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>spikes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="77" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="86" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="models_8h_1a6581036535d20423b499b6acd2e19189" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double firingRate</definition>
+        <argsstring>(double t, const std::vector&lt; double &gt; &amp;spikeTimes, double dt)</argsstring>
+        <name>firingRate</name>
+        <param>
+          <type>double</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>spikeTimes</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="78" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="125" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="models_8h_1a730ddd053177843ed09e4e299a1acbb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void toStdOut</definition>
+        <argsstring>(const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y)</argsstring>
+        <name>toStdOut</name>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="81" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="149" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="models_8h_1a6abd592361042b502e0e807e00399eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void toCSV</definition>
+        <argsstring>(char fileName[100], const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y)</argsstring>
+        <name>toCSV</name>
+        <param>
+          <type>char</type>
+          <declname>fileName</declname>
+          <array>[100]</array>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="82" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="165" bodyend="188"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>MODELS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODELS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/>Defines<sp/>the<sp/>integrate<sp/>and<sp/>fire<sp/>(IF)<sp/>neuron,<sp/>defaults<sp/>to<sp/>perfect<sp/>IF</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classIF" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIF" kindref="compound">IF</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/><sp/>bla<sp/>bla</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>constructor<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classIF_1aa81bddacf949214f2265214d7174f4c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIF" kindref="compound">IF</ref>()<sp/>{};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t_0,<sp/>t_end;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>mu,<sp/>D;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>parameter<sp/>for<sp/>signal<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>eps;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>f;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classIF_1a9bbd53df68cb9028bf87cf5273253e91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classIF_1a9bbd53df68cb9028bf87cf5273253e91" kindref="member">drift</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>v,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;mu;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>diffusion(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>v,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sqrt(2*this-&gt;D);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classLIF" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLIF" kindref="compound">LIF</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIF" kindref="compound">IF</ref><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>constructor<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLIF" kindref="compound">LIF</ref>()<sp/>{};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classLIF_1aea677a0cf3f943edb7a957479e18d6dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLIF_1aea677a0cf3f943edb7a957479e18d6dc" kindref="member">drift</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>v,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;mu<sp/>-<sp/>v);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classLIFsig" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLIFsig" kindref="compound">LIFsig</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIF" kindref="compound">IF</ref><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>constructor<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLIFsig" kindref="compound">LIFsig</ref>()<sp/>{};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classLIFsig_1a169dcb5d3704157102bbc725445cf0a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLIFsig_1a169dcb5d3704157102bbc725445cf0a5" kindref="member">drift</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>v,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;mu<sp/>-<sp/>v<sp/>+<sp/>this-&gt;eps*cos(2.0*3.14159265*this-&gt;f*t));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>functions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>voltageCurve(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;t,<sp/>std::vector&lt;double&gt;<sp/>&amp;v);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>spikeTimes(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;spikes);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>spikeTrain(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;spikes);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>firingRate(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;spikeTimes,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>output<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toStdOut(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;y);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toCSV(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>fileName[100],<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;y);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>ifndef</highlight></codeline>
+    </programlisting>
+    <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h"/>
+  </compounddef>
+</doxygen>
