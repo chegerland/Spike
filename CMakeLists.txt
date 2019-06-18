@@ -11,19 +11,4 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 add_subdirectory("src")
 add_subdirectory("doc")
-
-
-# include directory
-#
-## add sources
-#file(GLOB SOURCES "src/*.cpp")
-#file(GLOB TESTSOURCES "test/*.cpp")
-#
-
-#add_executable(Test ${TESTSOURCES} ${SOURCES})
-#
-## TEST
-#include(CTest)
-#enable_testing()
-#add_test(NAME FirstTest
-#         COMMAND Test)
+add_subdirectory("test")

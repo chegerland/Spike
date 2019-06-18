@@ -72,13 +72,9 @@ class LIFsig : public IF {
 
 
 /* functions */
-void voltageCurve(IF* neuron, std::vector<double> &t, std::vector<double> &v);
-void spikeTimes(IF* neuron, std::vector<double> &spikes);
-void spikeTrain(IF* neuron, std::vector<double> &spikes);
-double firingRate(double t, const std::vector<double> &spikeTimes, double dt);
-
-/* output */
-void toStdOut(const std::vector<double> &x, const std::vector<double> &y);
-void toCSV(char fileName[100], const std::vector<double> &x, const std::vector<double> &y);
+void voltage_curve(IF* neuron, std::vector<double> &t, std::vector<double> &v);
+void spike_times(IF* neuron, std::vector<double> &spikes);
+void spike_train(IF* neuron, std::vector<double> &spikes);
+double firing_rate(double t, const std::vector<double> &spikeTimes, double dt);
 
 #endif // ifndef

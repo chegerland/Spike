@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="classLIFsig" kind="class" language="C++" prot="public">
     <compoundname>LIFsig</compoundname>
     <basecompoundref refid="classIF" prot="public" virt="non-virtual">IF</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="63" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.h" bodystart="63" bodyend="63"/>
+        <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="63" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classLIFsig_1a169dcb5d3704157102bbc725445cf0a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>double</type>
@@ -35,16 +35,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>change the drift </para>        </detaileddescription>
+<para>change the drift </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="68" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.h" bodystart="68" bodyend="70"/>
+        <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="68" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.h" bodystart="68" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Defines leaky integrate and fire neuron, inherits everything from <ref refid="classIF" kindref="compound">IF</ref> </para>    </detaileddescription>
+<para>Defines leaky integrate and fire neuron, inherits everything from <ref refid="classIF" kindref="compound">IF</ref> </para>
+    </detaileddescription>
     <inheritancegraph>
       <node id="9">
         <label>IF</label>
@@ -69,7 +71,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="60" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.h" bodystart="60" bodyend="71"/>
+    <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="60" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.h" bodystart="60" bodyend="71"/>
     <listofallmembers>
       <member refid="classIF_1a7e0fdbf32975dba0acf8096524885639" prot="public" virt="non-virtual"><scope>LIFsig</scope><name>D</name></member>
       <member refid="classIF_1a45c14ff90b19a93769c2c30741cd482d" prot="public" virt="virtual"><scope>LIFsig</scope><name>diffusion</name></member>

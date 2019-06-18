@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="models_8h" kind="file" language="C++">
     <compoundname>models.h</compoundname>
     <includes local="no">math.h</includes>
     <includes local="no">vector</includes>
-    <includedby refid="models_8cpp" local="yes">/home/cheg/Repos/Master/Spike/src/Models/models.cpp</includedby>
-    <includedby refid="spike_8cpp" local="yes">/home/cheg/Repos/Master/Spike/src/spike.cpp</includedby>
+    <includedby refid="models_8cpp" local="yes">/home/cheg/Repos/Spike/src/Models/models.cpp</includedby>
+    <includedby refid="spike_8cpp" local="yes">/home/cheg/Repos/Spike/src/spike.cpp</includedby>
     <incdepgraph>
-      <node id="8">
-        <label>/home/cheg/Repos/Master/Spike/src/Models/models.h</label>
+      <node id="17">
+        <label>/home/cheg/Repos/Spike/src/Models/models.h</label>
         <link refid="models_8h"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="19">
         <label>vector</label>
       </node>
-      <node id="9">
+      <node id="18">
         <label>math.h</label>
       </node>
     </incdepgraph>
@@ -26,11 +26,11 @@
     <innerclass refid="classLIF" prot="public">LIF</innerclass>
     <innerclass refid="classLIFsig" prot="public">LIFsig</innerclass>
       <sectiondef kind="func">
-      <memberdef kind="function" id="models_8h_1a6ceca7b00eabfb4f46b4b4e04ffc16db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="models_8h_1af60ab66e495a3cb313804f0b6b12bc61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void voltageCurve</definition>
+        <definition>void voltage_curve</definition>
         <argsstring>(IF *neuron, std::vector&lt; double &gt; &amp;t, std::vector&lt; double &gt; &amp;v)</argsstring>
-        <name>voltageCurve</name>
+        <name>voltage_curve</name>
         <param>
           <type><ref refid="classIF" kindref="compound">IF</ref> *</type>
           <declname>neuron</declname>
@@ -49,13 +49,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="75" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="12" bodyend="45"/>
+        <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="75" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="9" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="models_8h_1a1602343e8f361a66eae9dd63ece20b55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="models_8h_1a3092d9cab54b5aa1d210c21654a08e4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void spikeTimes</definition>
+        <definition>void spike_times</definition>
         <argsstring>(IF *neuron, std::vector&lt; double &gt; &amp;spikes)</argsstring>
-        <name>spikeTimes</name>
+        <name>spike_times</name>
         <param>
           <type><ref refid="classIF" kindref="compound">IF</ref> *</type>
           <declname>neuron</declname>
@@ -70,13 +70,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="76" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="48" bodyend="83"/>
+        <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="76" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="43" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="models_8h_1a8f5bfb41f028d115affdf3736149ea67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="models_8h_1a3860035821d034effcc11473753eecdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void spikeTrain</definition>
+        <definition>void spike_train</definition>
         <argsstring>(IF *neuron, std::vector&lt; double &gt; &amp;spikes)</argsstring>
-        <name>spikeTrain</name>
+        <name>spike_train</name>
         <param>
           <type><ref refid="classIF" kindref="compound">IF</ref> *</type>
           <declname>neuron</declname>
@@ -91,13 +91,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="77" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="86" bodyend="122"/>
+        <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="77" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="79" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="models_8h_1a6581036535d20423b499b6acd2e19189" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="models_8h_1a94f47bb92bab06d3c8d34cc28c9f22aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double firingRate</definition>
+        <definition>double firing_rate</definition>
         <argsstring>(double t, const std::vector&lt; double &gt; &amp;spikeTimes, double dt)</argsstring>
-        <name>firingRate</name>
+        <name>firing_rate</name>
         <param>
           <type>double</type>
           <declname>t</declname>
@@ -116,54 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="78" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="125" bodyend="142"/>
-      </memberdef>
-      <memberdef kind="function" id="models_8h_1a730ddd053177843ed09e4e299a1acbb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void toStdOut</definition>
-        <argsstring>(const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y)</argsstring>
-        <name>toStdOut</name>
-        <param>
-          <type>const std::vector&lt; double &gt; &amp;</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; double &gt; &amp;</type>
-          <declname>y</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="81" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="149" bodyend="162"/>
-      </memberdef>
-      <memberdef kind="function" id="models_8h_1a6abd592361042b502e0e807e00399eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void toCSV</definition>
-        <argsstring>(char fileName[100], const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y)</argsstring>
-        <name>toCSV</name>
-        <param>
-          <type>char</type>
-          <declname>fileName</declname>
-          <array>[100]</array>
-        </param>
-        <param>
-          <type>const std::vector&lt; double &gt; &amp;</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; double &gt; &amp;</type>
-          <declname>y</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h" line="82" column="1" bodyfile="/home/cheg/Repos/Master/Spike/src/Models/models.cpp" bodystart="165" bodyend="188"/>
+        <location file="/home/cheg/Repos/Spike/src/Models/models.h" line="78" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="117" bodyend="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -227,17 +180,13 @@
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>functions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>voltageCurve(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;t,<sp/>std::vector&lt;double&gt;<sp/>&amp;v);</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>spikeTimes(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;spikes);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>spikeTrain(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;spikes);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>firingRate(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;spikeTimes,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>voltage_curve(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;t,<sp/>std::vector&lt;double&gt;<sp/>&amp;v);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>spike_times(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;spikes);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>spike_train(<ref refid="classIF" kindref="compound">IF</ref>*<sp/>neuron,<sp/>std::vector&lt;double&gt;<sp/>&amp;spikes);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>firing_rate(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;spikeTimes,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>output<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toStdOut(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;y);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toCSV(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>fileName[100],<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;y);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>ifndef</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>ifndef</highlight></codeline>
     </programlisting>
-    <location file="/home/cheg/Repos/Master/Spike/src/Models/models.h"/>
+    <location file="/home/cheg/Repos/Spike/src/Models/models.h"/>
   </compounddef>
 </doxygen>

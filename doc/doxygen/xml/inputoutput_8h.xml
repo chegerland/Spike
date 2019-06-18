@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="inputoutput_8h" kind="file" language="C++">
+    <compoundname>inputoutput.h</compoundname>
+    <includes local="no">vector</includes>
+    <includedby refid="inputoutput_8cpp" local="yes">/home/cheg/Repos/Spike/src/InputOutput/inputoutput.cpp</includedby>
+    <includedby refid="spike_8cpp" local="yes">/home/cheg/Repos/Spike/src/spike.cpp</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>/home/cheg/Repos/Spike/src/InputOutput/inputoutput.h</label>
+        <link refid="inputoutput_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="inputoutput_8h_1ac333ae2d2a898f714c01de91888d1511" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_to_stdout</definition>
+        <argsstring>(const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y)</argsstring>
+        <name>write_to_stdout</name>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Spike/src/InputOutput/inputoutput.h" line="7" column="1" bodyfile="/home/cheg/Repos/Spike/src/InputOutput/inputoutput.cpp" bodystart="6" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="inputoutput_8h_1a0a4f2c08c7ab0da1a3f455417beea38e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_to_file</definition>
+        <argsstring>(char fileName[100], const std::vector&lt; double &gt; &amp;x, const std::vector&lt; double &gt; &amp;y)</argsstring>
+        <name>write_to_file</name>
+        <param>
+          <type>char</type>
+          <declname>fileName</declname>
+          <array>[100]</array>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/cheg/Repos/Spike/src/InputOutput/inputoutput.h" line="8" column="1" bodyfile="/home/cheg/Repos/Spike/src/InputOutput/inputoutput.cpp" bodystart="23" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>INPUTOUTPUT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INPUTOUTPUT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_to_stdout(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;y);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_to_file(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>fileName[100],<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;double&gt;<sp/>&amp;y);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>ifndef</highlight></codeline>
+    </programlisting>
+    <location file="/home/cheg/Repos/Spike/src/InputOutput/inputoutput.h"/>
+  </compounddef>
+</doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.15">
   <compound refid="classIF" kind="class"><name>IF</name>
     <member refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kind="variable"><name>N</name></member>
     <member refid="classIF_1ab9ff14c2b3690db446567d26cdf21540" kind="variable"><name>t_0</name></member>
@@ -20,28 +20,34 @@
     <member refid="classLIFsig_1a98540875a32d1ba18034b452f11c9dd5" kind="function"><name>LIFsig</name></member>
     <member refid="classLIFsig_1a169dcb5d3704157102bbc725445cf0a5" kind="function"><name>drift</name></member>
   </compound>
+  <compound refid="inputoutput_8cpp" kind="file"><name>inputoutput.cpp</name>
+    <member refid="inputoutput_8cpp_1ac333ae2d2a898f714c01de91888d1511" kind="function"><name>write_to_stdout</name></member>
+    <member refid="inputoutput_8cpp_1a0a4f2c08c7ab0da1a3f455417beea38e" kind="function"><name>write_to_file</name></member>
+  </compound>
+  <compound refid="inputoutput_8h" kind="file"><name>inputoutput.h</name>
+    <member refid="inputoutput_8h_1ac333ae2d2a898f714c01de91888d1511" kind="function"><name>write_to_stdout</name></member>
+    <member refid="inputoutput_8h_1a0a4f2c08c7ab0da1a3f455417beea38e" kind="function"><name>write_to_file</name></member>
+  </compound>
   <compound refid="models_8cpp" kind="file"><name>models.cpp</name>
-    <member refid="models_8cpp_1a6ceca7b00eabfb4f46b4b4e04ffc16db" kind="function"><name>voltageCurve</name></member>
-    <member refid="models_8cpp_1a1602343e8f361a66eae9dd63ece20b55" kind="function"><name>spikeTimes</name></member>
-    <member refid="models_8cpp_1a8f5bfb41f028d115affdf3736149ea67" kind="function"><name>spikeTrain</name></member>
-    <member refid="models_8cpp_1a6581036535d20423b499b6acd2e19189" kind="function"><name>firingRate</name></member>
-    <member refid="models_8cpp_1a730ddd053177843ed09e4e299a1acbb9" kind="function"><name>toStdOut</name></member>
-    <member refid="models_8cpp_1a6abd592361042b502e0e807e00399eb6" kind="function"><name>toCSV</name></member>
+    <member refid="models_8cpp_1af60ab66e495a3cb313804f0b6b12bc61" kind="function"><name>voltage_curve</name></member>
+    <member refid="models_8cpp_1a3092d9cab54b5aa1d210c21654a08e4d" kind="function"><name>spike_times</name></member>
+    <member refid="models_8cpp_1a3860035821d034effcc11473753eecdb" kind="function"><name>spike_train</name></member>
+    <member refid="models_8cpp_1a7e15aea08a28fdc97efe10d21bb10605" kind="function"><name>firing_rate</name></member>
   </compound>
   <compound refid="models_8h" kind="file"><name>models.h</name>
-    <member refid="models_8h_1a6ceca7b00eabfb4f46b4b4e04ffc16db" kind="function"><name>voltageCurve</name></member>
-    <member refid="models_8h_1a1602343e8f361a66eae9dd63ece20b55" kind="function"><name>spikeTimes</name></member>
-    <member refid="models_8h_1a8f5bfb41f028d115affdf3736149ea67" kind="function"><name>spikeTrain</name></member>
-    <member refid="models_8h_1a6581036535d20423b499b6acd2e19189" kind="function"><name>firingRate</name></member>
-    <member refid="models_8h_1a730ddd053177843ed09e4e299a1acbb9" kind="function"><name>toStdOut</name></member>
-    <member refid="models_8h_1a6abd592361042b502e0e807e00399eb6" kind="function"><name>toCSV</name></member>
+    <member refid="models_8h_1af60ab66e495a3cb313804f0b6b12bc61" kind="function"><name>voltage_curve</name></member>
+    <member refid="models_8h_1a3092d9cab54b5aa1d210c21654a08e4d" kind="function"><name>spike_times</name></member>
+    <member refid="models_8h_1a3860035821d034effcc11473753eecdb" kind="function"><name>spike_train</name></member>
+    <member refid="models_8h_1a94f47bb92bab06d3c8d34cc28c9f22aa" kind="function"><name>firing_rate</name></member>
   </compound>
   <compound refid="spike_8cpp" kind="file"><name>spike.cpp</name>
-    <member refid="spike_8cpp_1a65c000c21e1de5db1a92e3af240e42fd" kind="function"><name>pifNeusig</name></member>
+    <member refid="spike_8cpp_1ad645a185371a8f49bf0566bd68a664e3" kind="function"><name>pif_neusig</name></member>
     <member refid="spike_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
   </compound>
-  <compound refid="dir_36df885461d6bd14211edf06510d126c" kind="dir"><name>/home/cheg/Repos/Master/Spike/src/Models</name>
+  <compound refid="dir_23a3fe25c2dc2d34a4dff7ecdccfd5ac" kind="dir"><name>/home/cheg/Repos/Spike/src/InputOutput</name>
   </compound>
-  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/cheg/Repos/Master/Spike/src</name>
+  <compound refid="dir_36df885461d6bd14211edf06510d126c" kind="dir"><name>/home/cheg/Repos/Spike/src/Models</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/cheg/Repos/Spike/src</name>
   </compound>
 </doxygenindex>
