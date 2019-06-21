@@ -75,8 +75,8 @@ int main(int argc, char *argv[])
     // define new neuron with all parameters
     IF *P = new LIFsig();
     P->t_0 = 0;
-    P->t_end = 15;
-    P->N = 1000;
+    P->t_end = 42;
+    P->N = 4000;
     P->mu = 1.1;
     P->D = 0.001;
     P->eps = 0.05;
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
             std::vector<double> rate;
 
             // define time scale for firing rate
-            int N = 1500;
+            int N = 4000;
             double dt = (double)(P->t_end - P->t_0) / N; // time step
 
             // initial values

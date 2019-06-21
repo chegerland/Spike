@@ -1,2 +1,9 @@
-build/
+build/*
+bin/*
 
+*.o
+*.out
+*.log
+*.swp
+*.a
+*.depend
