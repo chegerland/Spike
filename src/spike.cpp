@@ -72,15 +72,25 @@ void pif_neusig()
 
 int main(int argc, char *argv[])
 {
-    // define new neuron with all parameters
+    //// define new neuron with all parameters
+    //IF *P = new LIFsig();
+    //P->t_0 = 0;
+    //P->t_end = 42;
+    //P->N = 4000;
+    //P->mu = 1.1;
+    //P->D = 0.001;
+    //P->eps = 0.05;
+    //P->f = 0.215;
+
+
     IF *P = new LIFsig();
     P->t_0 = 0;
-    P->t_end = 42;
-    P->N = 4000;
-    P->mu = 1.1;
-    P->D = 0.001;
-    P->eps = 0.05;
-    P->f = 0.215;
+    P->t_end = 5;
+    P->N = 5000;
+    P->mu = 0.8;
+    P->D = 0.1;
+    P->eps = 0.1;
+    P->f = 1;
 
     // input routine
     if (argc == 1)
@@ -123,7 +133,7 @@ int main(int argc, char *argv[])
             std::vector<double> rate;
 
             // define time scale for firing rate
-            int N = 4000;
+            int N = 5000;
             double dt = (double)(P->t_end - P->t_0) / N; // time step
 
             // initial values
