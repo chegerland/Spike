@@ -4,30 +4,20 @@
 #include <math.h>
 #include <vector>
 
-/*
+/*!
   Defines the integrate and fire (IF) neuron, defaults to perfect IF
 */
 class IF {
-  /* 
-   bla bla
-  */
   public:
-    /* constructor */
+    // constructor
     IF() {};
 
-    /*! Simulation parameters
-      */
+    // Simulation parameters
     int N;
     double t_0, t_end;
     double mu, D;
-    
-    /* parameter for signal */
-    double eps;
-    double f;
 
-    /*!
-      drift and diffusion functions,  can be overwritten by subclasses 
-      */
+    // drift and diffusion functions,  can be overwritten by subclasses 
     virtual double drift(double v, double t) {
       return this->mu;
     };
@@ -38,8 +28,7 @@ class IF {
 
 /*! 
   Defines leaky integrate and fire neuron, inherits everything from IF
-  */
-
+*/
 class LIF : public IF {
   public:
     /* constructor */
@@ -53,20 +42,32 @@ class LIF : public IF {
     };
 };
 
-
 /*! 
   Defines leaky integrate and fire neuron, inherits everything from IF
-  */
+*/
 class LIFsig : public IF {
   public:
-    /* constructor */
-    LIFsig() {};
+    LIFsig(){};
+    ~LIFsig(){};
+
+    /* parameter for signal */
+    double eps = 0;
+    double alpha = 0;
+    double beta = 0;
+    double phi = 0;
+    double f1 = 0;
+    double f2 = 0;
 
     /*!
       change the drift 
       */
     double drift(double v, double t) {
-      return (this->mu - v + this->eps*cos(2.0*3.14159265*this->f*t));
+        return (this->mu - v + this->eps*(this->alpha*cos(2.0*3.14159265*this->f1*t) + this->beta*cos(2.0*3.14159265*this->f2*t)));
+      //if (t < 0) {
+      //  return (this->mu - v);
+      //} else {
+      //  return (this->mu - v + 0.01*t*this->eps*(this->alpha*cos(2.0*3.14159265*this->f1*t) + this->beta*cos(2.0*3.14159265*this->f2*t)));
+      //};
     };
 };
 
