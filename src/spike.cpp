@@ -2,6 +2,7 @@
 #include <fstream>
 #include <ctime> 
 #include <vector>
+#include <getopt.h>
 
 #include "Models/models.h"
 #include "InputOutput/inputoutput.h"
@@ -72,6 +73,54 @@ void pif_neusig()
 
 int main(int argc, char *argv[])
 {
+
+    // input routine copied from gnu getopt_long example
+    int c;
+    char *input_file = NULL;
+
+    while (1) {
+      static struct option long_options[] = 
+      {
+        {"file", required_argument, 0, 'f'},
+        {"test", no_argument, 0, 't'},
+        {0, 0, 0, 0}
+      };
+
+      int option_index = 0;
+
+      c = getopt_long(argc, argv, "f:t", long_options, &option_index);
+
+      if (c == -1) {
+        break;
+      }
+
+      switch(c) {
+
+        case 0:
+          if (long_options[option_index].flag != 0)
+            break;
+          printf ("option %s", long_options[option_index].name);
+          if (optarg)
+            printf (" with arg %s", optarg);
+          printf ("\n");
+          break;
+
+        case 'f':
+          input_file = optarg;
+          break;
+
+        case 't':
+          std::cout << "Test mode enabled!" << std::endl;
+          break;
+
+        case '?':
+          break;
+      }
+    }
+
+    std::cout << input_file << std::endl;
+
+
     // define new neuron with all parameters
     LIFsig *P = new LIFsig();
     P->t_0 = -10;
@@ -94,82 +143,82 @@ int main(int argc, char *argv[])
     //P->alpha = 1;
     //P->f1 = 0.21;
 
-    // input routine
-    if (argc == 1)
-    {
-        std::cout << "No arguments passed!" << std::endl;
-        exit(0);
-    }
-    else
-    {
-        std::string argv1 = argv[1];
-
-        // print curve to file
-        if (argv1 == "curveCSV")
-        {
-            std::vector<double> t;
-            std::vector<double> v;
-            voltage_curve(P, t, v);
-
-            char fileName[100] = "../data/test.csv";
-            write_to_file(fileName, t, v);
-        }
-        // print curve to standard output
-        else if (argv1 == "curveStd")
-        {
-            std::vector<double> t;
-            std::vector<double> v;
-            voltage_curve(P, t, v);
-
-            write_to_stdout(t, v);
-        }
-        // produce firing rate from the neusig lecture
-        else if (argv1 == "pif_neusig")
-        {
-            pif_neusig();
-        } else {
-
-            // define vector vor spiketimes, time and firing rate
-            std::vector<double> spikes;
-            std::vector<double> t;
-            std::vector<double> rate;
-
-            // define time scale for firing rate
-            int N = P->N;
-            double dt = (double)(P->t_end - P->t_0) / N; // time step
-
-            // initial values
-            t.push_back(P->t_0);
-            rate.push_back(0);
-
-            /* fill time and firing rate vector */
-            for (int j = 0; j < N; j++)
-            {
-                t.push_back(t[j] + dt);
-                rate.push_back(0);
-            }
-
-            /* loop over simulation */
-            int Nsims = 100000;
-            for (int i = 0; i < Nsims; i++)
-            {
-                // get spike times
-                spike_times(P, spikes);
-
-                // get firing rate for every time step, weighted with 1/Nsims
-                for (int j = 0; j < N; j++)
-                {
-                    rate[j] += (double)1.0 / Nsims * firing_rate(t[j], spikes, 0.1);
-                };
-
-                // empty the spikes vector for next simulation run
-                spikes.clear();
-            }
-
-            // print out time and rate
-            write_to_stdout(t, rate);
-        }
-    } 
+//    // input routine
+//    if (argc == 1)
+//    {
+//        std::cout << "No arguments passed!" << std::endl;
+//        exit(0);
+//    }
+//    else
+//    {
+//        std::string argv1 = argv[1];
+//
+//        // print curve to file
+//        if (argv1 == "curveCSV")
+//        {
+//            std::vector<double> t;
+//            std::vector<double> v;
+//            voltage_curve(P, t, v);
+//
+//            char fileName[100] = "../data/test.csv";
+//            write_to_file(fileName, t, v);
+//        }
+//        // print curve to standard output
+//        else if (argv1 == "curveStd")
+//        {
+//            std::vector<double> t;
+//            std::vector<double> v;
+//            voltage_curve(P, t, v);
+//
+//            write_to_stdout(t, v);
+//        }
+//        // produce firing rate from the neusig lecture
+//        else if (argv1 == "pif_neusig")
+//        {
+//            pif_neusig();
+//        } else {
+//            
+//            // define vector vor spiketimes, time and firing rate
+//            std::vector<double> spikes;
+//            std::vector<double> t;
+//            std::vector<double> rate;
+//
+//            // define time scale for firing rate
+//            int N = P->N;
+//            double dt = (double)(P->t_end - P->t_0) / N; // time step
+//
+//            // initial values
+//            t.push_back(P->t_0);
+//            rate.push_back(0);
+//
+//            /* fill time and firing rate vector */
+//            for (int j = 0; j < N; j++)
+//            {
+//                t.push_back(t[j] + dt);
+//                rate.push_back(0);
+//            }
+//
+//            /* loop over simulation */
+//            int Nsims = 100000;
+//            for (int i = 0; i < Nsims; i++)
+//            {
+//                // get spike times
+//                spike_times(P, spikes);
+//
+//                // get firing rate for every time step, weighted with 1/Nsims
+//                for (int j = 0; j < N; j++)
+//                {
+//                    rate[j] += (double)1.0 / Nsims * firing_rate(t[j], spikes, 0.1);
+//                };
+//
+//                // empty the spikes vector for next simulation run
+//                spikes.clear();
+//            }
+//
+//            // print out time and rate
+//            write_to_stdout(t, rate);
+//        }
+//    } 
 
     return 0;
 }
