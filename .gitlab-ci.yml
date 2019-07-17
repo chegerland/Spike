@@ -1,0 +1,6 @@
+image: gcc
+
+test-job: 
+  stage: test
+  script: 
+    - echo "Hello World!"
