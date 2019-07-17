@@ -1,4 +1,4 @@
-image: alpine
+image: frolvlad/alpine-gxx
 
 test-job: 
   stage: test
