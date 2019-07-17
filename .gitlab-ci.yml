@@ -1,4 +1,4 @@
-image: gcc
+image: alpine
 
 test-job: 
   stage: test
