@@ -2,10 +2,17 @@
 #include <fstream>
 #include <ctime> 
 #include <vector>
+#include <string>
 #include <getopt.h>
 
 #include "Models/models.h"
 #include "InputOutput/inputoutput.h"
+
+// strings for input and output file
+std::string input_file;
+std::string output_file;
+
+void check_set_file(char optarg[]);
 
 // Produces firing rate plots of a perfect integrate and fire neuron from lecture 7 of neusig lecture.
 void pif_neusig()
@@ -71,12 +78,12 @@ void pif_neusig()
     write_to_stdout(t, rate);
 }
 
-int main(int argc, char *argv[])
+// commandline options
+// read input file
+void options(int argc, char *argv[])
 {
-
     // input routine copied from gnu getopt_long example
     int c;
-    char *input_file = NULL;
 
     while (1) {
       static struct option long_options[] = 
@@ -106,7 +113,7 @@ int main(int argc, char *argv[])
           break;
 
         case 'f':
-          input_file = optarg;
+          check_set_file(optarg);
           break;
 
         case 't':
@@ -117,20 +124,38 @@ int main(int argc, char *argv[])
           break;
       }
     }
+}
 
+void check_set_file(char optarg[])
+{
+  input_file = optarg;
+  output_file = input_file;
+  replace_extension(output_file, "out");
+}
+
+
+int main(int argc, char *argv[])
+{
+
+    // read options
+    options(argc, argv);
+
+    // print file name
     std::cout << input_file << std::endl;
+    std::cout << output_file << std::endl;
 
+    std::cout << exists_test(input_file) << std::endl;
 
-    // define new neuron with all parameters
-    LIFsig *P = new LIFsig();
-    P->t_0 = -10;
-    P->t_end = 20;
-    P->N = 4000;
-    P->mu = 1.1;
-    P->D = 0.001;
-    P->eps = 0.05;
-    P->alpha = 1;
-    P->f1 = 0.215;
+    //// define new neuron with all parameters
+    //LIFsig *P = new LIFsig();
+    //P->t_0 = -10;
+    //P->t_end = 20;
+    //P->N = 4000;
+    //P->mu = 1.1;
+    //P->D = 0.001;
+    //P->eps = 0.05;
+    //P->alpha = 1;
+    //P->f1 = 0.215;
 
 
     //LIFsig *P = new LIFsig();

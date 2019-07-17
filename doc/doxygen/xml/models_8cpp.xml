@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="models_8cpp" kind="file" language="C++">
     <compoundname>models.cpp</compoundname>
     <includes local="no">math.h</includes>
@@ -8,41 +8,41 @@
     <includes local="no">fstream</includes>
     <includes refid="models_8h" local="yes">models.h</includes>
     <incdepgraph>
-      <node id="14">
-        <label>models.h</label>
-        <link refid="models_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>/home/cheg/Repos/Spike/src/Models/models.cpp</label>
+      <node id="16">
+        <label>/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp</label>
         <link refid="models_8cpp"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="20">
         <label>fstream</label>
       </node>
-      <node id="11">
+      <node id="21">
+        <label>models.h</label>
+        <link refid="models_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
         <label>random</label>
       </node>
-      <node id="15">
+      <node id="22">
         <label>vector</label>
       </node>
-      <node id="10">
+      <node id="17">
         <label>math.h</label>
       </node>
-      <node id="12">
+      <node id="19">
         <label>iostream</label>
       </node>
     </incdepgraph>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Spike/src/Models/models.cpp" line="9" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="9" bodyend="40"/>
+        <location file="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" line="9" column="1" bodyfile="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" bodystart="9" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="models_8cpp_1a3092d9cab54b5aa1d210c21654a08e4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Spike/src/Models/models.cpp" line="43" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="43" bodyend="76"/>
+        <location file="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" line="43" column="1" bodyfile="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" bodystart="43" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="models_8cpp_1a3860035821d034effcc11473753eecdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Spike/src/Models/models.cpp" line="79" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="79" bodyend="113"/>
+        <location file="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" line="79" column="1" bodyfile="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" bodystart="79" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="models_8cpp_1a7e15aea08a28fdc97efe10d21bb10605" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/cheg/Repos/Spike/src/Models/models.cpp" line="117" column="1" bodyfile="/home/cheg/Repos/Spike/src/Models/models.cpp" bodystart="117" bodyend="135"/>
+        <location file="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" line="117" column="1" bodyfile="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp" bodystart="117" bodyend="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -159,7 +159,7 @@
 <codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>v.push_back(0);</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>t.push_back(neuron-&gt;t_0);</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>(double)(neuron-&gt;t_end<sp/>-<sp/>neuron-&gt;t_0)<sp/>/<sp/>neuron-&gt;<ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref>;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>(double)(neuron-&gt;t_end<sp/>-<sp/>neuron-&gt;t_0)<sp/>/<sp/>neuron-&gt;N;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>random<sp/>numbers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>std::random_device<sp/>rd{};</highlight></codeline>
@@ -169,10 +169,10 @@
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>euler<sp/>maruyama<sp/>scheme</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nextStep<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>neuron-&gt;<ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref><sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>neuron-&gt;N<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t.push_back(t[i]<sp/>+<sp/>dt);</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextStep<sp/>=<sp/>v[i]<sp/>+<sp/>neuron-&gt;<ref refid="classIF_1a9bbd53df68cb9028bf87cf5273253e91" kindref="member">drift</ref>(v[i],<sp/>t[i])<sp/>*<sp/>dt<sp/>+<sp/>neuron-&gt;diffusion(v[i],<sp/>t[i])<sp/>*<sp/>dist(generator);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextStep<sp/>=<sp/>v[i]<sp/>+<sp/>neuron-&gt;drift(v[i],<sp/>t[i])<sp/>*<sp/>dt<sp/>+<sp/>neuron-&gt;diffusion(v[i],<sp/>t[i])<sp/>*<sp/>dist(generator);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reset<sp/>rule</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nextStep<sp/>&gt;<sp/>1)</highlight></codeline>
@@ -195,7 +195,7 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>t<sp/>=<sp/>neuron-&gt;t_0;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>(double)(neuron-&gt;t_end<sp/>-<sp/>neuron-&gt;t_0)<sp/>/<sp/>neuron-&gt;<ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref>;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>(double)(neuron-&gt;t_end<sp/>-<sp/>neuron-&gt;t_0)<sp/>/<sp/>neuron-&gt;N;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>random<sp/>numbers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::random_device<sp/>rd{};</highlight></codeline>
@@ -204,10 +204,10 @@
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>euler<sp/>maruyama<sp/>scheme</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nextStep<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>neuron-&gt;<ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref><sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>neuron-&gt;N<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>+=<sp/>dt;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextStep<sp/>=<sp/>v<sp/>+<sp/>neuron-&gt;<ref refid="classIF_1a9bbd53df68cb9028bf87cf5273253e91" kindref="member">drift</ref>(v,<sp/>t)<sp/>*<sp/>dt<sp/>+<sp/>neuron-&gt;diffusion(v,<sp/>t)<sp/>*<sp/>dist(generator);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextStep<sp/>=<sp/>v<sp/>+<sp/>neuron-&gt;drift(v,<sp/>t)<sp/>*<sp/>dt<sp/>+<sp/>neuron-&gt;diffusion(v,<sp/>t)<sp/>*<sp/>dist(generator);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reset<sp/>rule</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(v<sp/>&gt;<sp/>1)</highlight></codeline>
@@ -231,7 +231,7 @@
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>t<sp/>=<sp/>neuron-&gt;t_0;</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>(double)(neuron-&gt;t_end<sp/>-<sp/>neuron-&gt;t_0)<sp/>/<sp/>neuron-&gt;<ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref>;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>(double)(neuron-&gt;t_end<sp/>-<sp/>neuron-&gt;t_0)<sp/>/<sp/>neuron-&gt;N;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>random<sp/>numbers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>std::random_device<sp/>rd{};</highlight></codeline>
@@ -240,10 +240,10 @@
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>euler<sp/>maruyama<sp/>scheme</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nextStep<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>neuron-&gt;<ref refid="classIF_1aa81bddacf949214f2265214d7174f4c2" kindref="member">N</ref><sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>neuron-&gt;N<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>+=<sp/>dt;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextStep<sp/>=<sp/>v<sp/>+<sp/>neuron-&gt;<ref refid="classIF_1a9bbd53df68cb9028bf87cf5273253e91" kindref="member">drift</ref>(v,<sp/>t)<sp/>*<sp/>dt<sp/>+<sp/>neuron-&gt;diffusion(v,<sp/>t)<sp/>*<sp/>dist(generator);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextStep<sp/>=<sp/>v<sp/>+<sp/>neuron-&gt;drift(v,<sp/>t)<sp/>*<sp/>dt<sp/>+<sp/>neuron-&gt;diffusion(v,<sp/>t)<sp/>*<sp/>dist(generator);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reset<sp/>rule</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(v<sp/>&gt;<sp/>1)</highlight></codeline>
@@ -281,6 +281,6 @@
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rate;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="/home/cheg/Repos/Spike/src/Models/models.cpp"/>
+    <location file="/home/cheg/Repos/Master/Spike_doctest/src/Models/models.cpp"/>
   </compounddef>
 </doxygen>

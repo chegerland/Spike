@@ -1,6 +1,6 @@
 build/*
 bin/*
-
+doc/doxygen
 *.o
 *.out
 *.log

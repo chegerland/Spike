@@ -1,5 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <string>
+#include <sys/stat.h>
+
 #include "inputoutput.h"
 
 // Prints the contents of vectors x and y to standard output.
@@ -41,3 +45,21 @@ void write_to_file(char fileName[100], const std::vector<double> &x, const std::
 
     file.close(); // close file
 };
+
+// Replace extension
+void replace_extension(std::string& s, const std::string& newExt) 
+{
+  std::string::size_type i = s.rfind('.', s.length());
+  std::cout << i << std::endl;
+
+  if (i != std::string::npos) {
+    s.replace(i+1, newExt.length(), newExt);
+  }
+};
+
+// check if file exists
+bool exists_test(const std::string& name) 
+{
+  struct stat buffer;   
+  return (stat (name.c_str(), &buffer) == 0); 
+}
