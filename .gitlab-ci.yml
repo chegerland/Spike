@@ -1,16 +1,7 @@
 image: alpine
 
-stages:
-  - build
-  - test
-
 before_script:
   - apk --no-cache add cmake make g++
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - "*.o"
 
 build: 
   stage: build
@@ -24,6 +15,10 @@ build:
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - "*.o"
 
 test:
   stage: test
