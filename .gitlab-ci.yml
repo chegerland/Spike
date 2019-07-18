@@ -3,6 +3,10 @@ image: alpine
 before_script:
   - apk --no-cache add cmake make g++
 
+stages:
+  - build
+  - test
+
 cache:
   paths:
     - "*/*/*/*.o"
