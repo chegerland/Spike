@@ -46,7 +46,7 @@ class LIF : public IF {
 };
 
 // parameters of an input signal
-struct signal_parameters {
+struct Signal_parameters {
     double eps, alpha, beta, phi, f1, f2;
 };
 

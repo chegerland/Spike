@@ -39,12 +39,12 @@ void IF::spike_times(
   };
 };
 
-void simulation(neuron * neur, int N)
+void simulation(Neuron * neuron, int N)
 {
   std::vector<double> spikes;
   for (int i = 0; i < N; i++)
   {
-    neur->spike_times(spikes);
+    neuron->spike_times(spikes);
   }
 
   for (int i = 0; i < spikes.size(); i++)
