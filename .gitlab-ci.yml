@@ -22,7 +22,6 @@ build:
   cache:
     paths:
       - build/
-      - *.o
 
 test:
   stage: test
