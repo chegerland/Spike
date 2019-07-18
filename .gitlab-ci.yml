@@ -10,7 +10,7 @@ before_script:
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - build/
+    - "*.o"
 
 build: 
   stage: build
@@ -24,9 +24,6 @@ build:
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
-  cache:
-    paths:
-      - build/
 
 test:
   stage: test
