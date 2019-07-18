@@ -1,16 +1,16 @@
 image: alpine
 
+before_script:
+  - apk --no-cache add cmake make g++
+
 stages:
   - build
   - test
 
-before_script:
-  - apk --no-cache add cmake make g++
-
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - "*.o"
+    - build/
 
 build: 
   stage: build

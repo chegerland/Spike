@@ -5,7 +5,6 @@
 
 void IF::voltage_curve() const
 {
-
   std::cout << "D = " << this->D << std::endl;
   std::cout << "mu = " << this->mu << std::endl;
 };
@@ -39,16 +38,21 @@ void IF::spike_times(
   };
 };
 
-void simulation(neuron * neur, int N)
+void simulation(Neuron * neuron, int N)
 {
   std::vector<double> spikes;
   for (int i = 0; i < N; i++)
   {
-    neur->spike_times(spikes);
+    neuron->spike_times(spikes);
+
+    for (int i = 0; i < spikes.size(); i++)
+    {
+      std::cout << spikes[i] << std::endl;
+    }
+
+    std::cout << "" << std::endl;
+
+    spikes.clear();
   }
 
-  for (int i = 0; i < spikes.size(); i++)
-  {
-    std::cout << spikes[i] << std::endl;
-  }
 };
