@@ -4,11 +4,11 @@ before_script:
   - apk --no-cache add cmake make g++
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - "*/*/*/*.o"
     - "*/*/*/*/*.o"
     - "*/*/*/*/*/*.o"
+    - "*/*/*/*/*/*/*.o"
 
 build: 
   stage: build
