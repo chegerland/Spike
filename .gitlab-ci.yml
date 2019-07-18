@@ -11,7 +11,7 @@ build:
   stage: build
   script: 
     - mkdir -p build
-    - cp build
+    - cd build
     - cmake ..
     - make install
   artifacts:
