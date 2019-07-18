@@ -7,6 +7,11 @@ stages:
 before_script:
   - apk --no-cache add cmake make g++
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - build/
+
 build: 
   stage: build
   script: 
@@ -20,7 +25,6 @@ build:
       - lib/
     expire_in: 1 hour
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
     paths:
       - build/
 
