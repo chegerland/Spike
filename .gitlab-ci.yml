@@ -9,10 +9,7 @@ stages:
 
 cache:
   paths:
-    - "*/*/*/*.o"
-    - "*/*/*/*/*.o"
-    - "*/*/*/*/*/*.o"
-    - "*/*/*/*/*/*/*.o"
+    - build/
 
 build: 
   stage: build
