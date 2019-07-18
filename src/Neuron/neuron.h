@@ -3,10 +3,10 @@
 
 #include <math.h>
 
-// defines a general neuron
-class neuron {
+// defines a general Neuron
+class Neuron {
   public:
-    neuron(){}; // constructor
+    Neuron(){}; // constructor
 
     // Simulation parameters
     double t_0, t_end, dt;
@@ -16,8 +16,8 @@ class neuron {
         ) =0;
 };
 
-// integrate and fire neuron, defaults to PIF
-class IF : public neuron {
+// integrate and fire Neuron, defaults to PIF
+class IF : public Neuron {
   public:
 
     double mu, D;
@@ -36,7 +36,7 @@ class IF : public neuron {
         );
 };
 
-// Defines leaky integrate and fire neuron
+// Defines leaky integrate and fire Neuron
 class LIF : public IF {
   public:
     
@@ -54,7 +54,7 @@ struct signal_parameters {
 class LIFsig : public IF {
   public:
     
-    struct signal_parameters sig;
+    struct Signal_parameters sig;
 
     double drift(double v, double t) {
         return (this->mu - v + this->sig.eps*(this->sig.alpha*cos(2.0*M_PI*this->sig.f1*t) + this->sig.beta*cos(2.0*M_PI*this->sig.f2*t)));
@@ -63,6 +63,6 @@ class LIFsig : public IF {
 
 
 // runs a simulation N times which calculates the spike times
-void simulation(neuron * neur, int N);
+void simulation(Neuron * neuron, int N);
 
 #endif // ifndef

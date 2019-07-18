@@ -1,5 +1,8 @@
 image: alpine
 
+tags:
+  - gitci2
+
 before_script:
   - apk --no-cache add cmake make g++
 
@@ -8,6 +11,7 @@ stages:
   - test
 
 cache:
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - build/
 
