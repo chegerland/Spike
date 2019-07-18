@@ -3,6 +3,15 @@ image: alpine
 before_script:
   - apk --no-cache add cmake make g++
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - "*.o"
+    - "*/*.o"
+    - "*/*/*.o"
+    - "*/*/*/*.o"
+    - "*/*/*/*/*.o"
+
 build: 
   stage: build
   script: 
@@ -15,14 +24,6 @@ build:
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - "*.o"
-      - "*/*.o"
-      - "*/*/*.o"
-      - "*/*/*/*.o"
-      - "*/*/*/*/*.o"
 
 test:
   stage: test
