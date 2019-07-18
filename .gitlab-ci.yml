@@ -19,6 +19,10 @@ build:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - "*.o"
+      - "*/*.o"
+      - "*/*/*.o"
+      - "*/*/*/*.o"
+      - "*/*/*/*/*.o"
 
 test:
   stage: test
