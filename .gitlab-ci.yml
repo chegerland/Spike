@@ -7,9 +7,6 @@ stages:
 before_script:
   - apk --no-cache add cmake make g++
 
-cache:
-  paths:
-    - build/
 
 build: 
   stage: build
@@ -23,7 +20,10 @@ build:
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
-
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - "*.o"
 test:
   stage: test
   script:
