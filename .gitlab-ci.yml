@@ -4,10 +4,6 @@ stages:
   - build
   - test
 
-cache:
-  paths:
-    - build/
-
 before_script:
   - apk --no-cache add cmake make g++
 
@@ -23,9 +19,11 @@ build:
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
+  cache:
+    paths:
+      - build/
 
 test:
   stage: test
   script:
     - ./bin/test_Spike
-
