@@ -30,6 +30,10 @@ class IF : public Neuron {
       return sqrt(2*this->D);
     };
 
+    virtual double rate_analytic() {
+      return 1/(this->mu);
+    };
+
     void voltage_curve() const;
     void spike_times(
         std::vector<double> &spikes
@@ -42,6 +46,10 @@ class LIF : public IF {
     
     double drift(double v, double t) {
       return (this->mu - v);
+    };
+
+    double rate_analytic() {
+      return 69;
     };
 };
 
