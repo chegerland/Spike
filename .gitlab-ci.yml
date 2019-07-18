@@ -21,7 +21,8 @@ build:
     expire_in: 1 hour
   cache:
     paths:
-      - test/
+      - build/
+      - *.o
 
 test:
   stage: test
