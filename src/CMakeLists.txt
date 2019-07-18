@@ -7,4 +7,4 @@ add_executable(${PROJECT_NAME}
               )
 
 # link libraries
-target_link_libraries(${PROJECT_NAME} PUBLIC neuron)
+target_link_libraries(${PROJECT_NAME} neuron)
