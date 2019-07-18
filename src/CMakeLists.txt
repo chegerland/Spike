@@ -1,6 +1,5 @@
 # add directories
-add_subdirectory("Models")
-add_subdirectory("InputOutput")
+add_subdirectory("Neuron")
 
 # add executable
 add_executable(${PROJECT_NAME} 
@@ -8,5 +7,4 @@ add_executable(${PROJECT_NAME}
               )
 
 # link libraries
-target_link_libraries(${PROJECT_NAME} PUBLIC models)
-target_link_libraries(${PROJECT_NAME} PUBLIC inputoutput)
+target_link_libraries(${PROJECT_NAME} PUBLIC neuron)

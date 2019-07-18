@@ -1,6 +1,27 @@
-image: gcc
+image: alpine
 
-test-job: 
-  stage: test
+stages:
+  - build
+  - test
+
+before_script:
+  - apk --no-cache add cmake make g++
+
+build: 
+  stage: build
   script: 
-    - echo "Hello World!"
+    - mkdir -p build
+    - cp build
+    - cmake ..
+    - make install
+  artifacts:
+    paths:
+      - bin/test_Spike
+      - lib/
+    expire_in: 1 hour
+
+test:
+  stage: test
+  script:
+    - ./bin/test_Spike
+
