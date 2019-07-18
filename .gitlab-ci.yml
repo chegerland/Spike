@@ -6,11 +6,9 @@ before_script:
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - "*.o"
-    - "*/*.o"
-    - "*/*/*.o"
     - "*/*/*/*.o"
     - "*/*/*/*/*.o"
+    - "*/*/*/*/*/*.o"
 
 build: 
   stage: build
