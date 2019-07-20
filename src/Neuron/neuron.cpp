@@ -3,12 +3,19 @@
 
 #include "neuron.h"
 
+/*!
+ * SHOULD Return the voltage curve of a single neuron simulation.
+ */
 void IF::voltage_curve() const
 {
   std::cout << "D = " << this->D << std::endl;
   std::cout << "mu = " << this->mu << std::endl;
 };
 
+/*!
+ * Simulates the neuron and puts the spike times into the vector spikes
+ * @param[in] spikes vector filled with the spike times
+ */
 void IF::spike_times(
     std::vector<double> &spikes)
 {
@@ -38,12 +45,17 @@ void IF::spike_times(
   };
 };
 
-void simulation(Neuron * neuron, int N)
+/*!
+ * Runs the simulation of a neuron N times.
+ * @param[in] neuron the neuron to simulate
+ * @param[in] N number of times the simulation shall be run
+ */
+void Neuron::simulation(int N)
 {
   std::vector<double> spikes;
   for (int i = 0; i < N; i++)
   {
-    neuron->spike_times(spikes);
+    this->spike_times(spikes);
 
     for (int i = 0; i < spikes.size(); i++)
     {
