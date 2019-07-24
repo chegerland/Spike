@@ -9,17 +9,23 @@
  * We however only record the spike times, since it is easier to derive statistics from it.
  */
 class Neuron {
+  protected:
+    double t_0, t_end, dt; // Simulation parameters
+
   public:
     Neuron(){}; // constructor
 
-    // Simulation parameters
-    double t_0, t_end, dt;
+    void set_simulation_params(double a, double b, double c) {
+      this->t_0 = a;
+      this->t_end = b;
+      this->dt = c;
+    };
 
     virtual void spike_times(
         std::vector<double> &spikes
-        ) =0;
+        ) const =0;
 
-    void simulation(int N);
+    void simulation(int N) const;
 };
 
 //! A generic integrate and fire model.
@@ -30,26 +36,31 @@ class Neuron {
  * We can also check the analytic result for the firing rate.
  */
 class IF : public Neuron {
-  public:
-
+  protected:
     double mu, D;
+    
+  public:
+    void set_if_params(double a, double b) {
+      this->mu = a;
+      this->D = b;
+    };
 
-    virtual double drift(double v, double t) {
+    virtual double drift(double v, double t) const {
       return (this->mu);
     };
 
-    double diffusion(double v, double t) {
+    double diffusion(double v, double t) const {
       return sqrt(2*this->D);
     };
 
-    virtual double rate_analytic() {
+    virtual double rate_analytic() const {
       return 1/(this->mu);
     };
 
     void voltage_curve() const;
     void spike_times(
         std::vector<double> &spikes
-        );
+        ) const;
 };
 
 //! Leaky integrate and fire model
@@ -60,11 +71,11 @@ class IF : public Neuron {
 class LIF : public IF {
   public:
     
-    double drift(double v, double t) {
+    double drift(double v, double t) const {
       return (this->mu - v);
     };
 
-    double rate_analytic() {
+    double rate_analytic() const {
       return 69;
     };
 };
@@ -75,10 +86,12 @@ class LIF : public IF {
  * This is a subclass of the generic IF model, see that page for more documentation.
  */
 class LIFsig : public IF {
-  public:
+  private:
     double eps, alpha, beta, phi, f1, f2;
 
-    double drift(double v, double t) {
+  public:
+
+    double drift(double v, double t) const {
         return (this->mu - v + this->eps*(this->alpha*cos(2.0*M_PI*this->f1*t) + this->beta*cos(2.0*M_PI*this->f2*t)));
     };
 };

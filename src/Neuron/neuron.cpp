@@ -16,8 +16,7 @@ void IF::voltage_curve() const
  * Simulates the neuron and puts the spike times into the vector spikes
  * @param[in] spikes vector filled with the spike times
  */
-void IF::spike_times(
-    std::vector<double> &spikes)
+void IF::spike_times(std::vector<double> &spikes) const
 {
   double v = 0;
   double t = this->t_0;
@@ -50,7 +49,7 @@ void IF::spike_times(
  * @param[in] neuron the neuron to simulate
  * @param[in] N number of times the simulation shall be run
  */
-void Neuron::simulation(int N)
+void Neuron::simulation(int N) const
 {
   std::vector<double> spikes;
   for (int i = 0; i < N; i++)
@@ -66,5 +65,4 @@ void Neuron::simulation(int N)
 
     spikes.clear();
   }
-
 };
