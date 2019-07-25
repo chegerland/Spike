@@ -12,11 +12,6 @@ stages:
   - test
   - coverage
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - build/
-
 build: 
   stage: build
   script: 
