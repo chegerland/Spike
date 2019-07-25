@@ -1,11 +1,12 @@
 image: alpine
 
 before_script:
-  - apk --no-cache add cmake make g++
+  - apk --no-cache add cmake make g++ lcov
 
 stages:
   - build
   - test
+  - coverage
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -29,3 +30,9 @@ test:
   stage: test
   script:
     - ./bin/test_Spike
+
+coverage:
+  stage: coverage
+  script:
+    - make Spike_coverage
+    - lcov --list Spike_coverage.info.cleaned
