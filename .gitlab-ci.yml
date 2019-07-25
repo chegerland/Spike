@@ -1,16 +1,12 @@
 image: alpine
 
 before_script:
-  - echo http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories
-  - echo http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
-  - echo http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
   - apk update
-  - apk add --update cmake make g++ lcov python3
+  - apk add --update cmake make g++
 
 stages:
   - build
   - test
-  - coverage
 
 build: 
   stage: build
@@ -19,10 +15,8 @@ build:
     - cd build
     - cmake ..
     - make
-    - make Spike_coverage
   artifacts:
     paths:
-      - build/Spike_coverage.info.cleaned
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
@@ -31,9 +25,3 @@ test:
   stage: test
   script:
     - ./bin/test_Spike
-
-coverage:
-  stage: coverage
-  script:
-    - cd build
-    - lcov --list Spike_coverage.info.cleaned
