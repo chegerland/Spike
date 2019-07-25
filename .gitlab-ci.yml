@@ -21,8 +21,10 @@ build:
     - cd build
     - cmake ..
     - make
+    - make Spike_coverage
   artifacts:
     paths:
+      - build/Spike_coverage.info.cleaned
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
@@ -35,5 +37,5 @@ test:
 coverage:
   stage: coverage
   script:
-    - make Spike_coverage
+    - cd build
     - lcov --list Spike_coverage.info.cleaned
