@@ -1,5 +1,7 @@
 # add directories
 add_subdirectory("Neuron")
+add_subdirectory("IO")
+add_subdirectory("Statistics")
 
 # add executable
 add_executable(${PROJECT_NAME} 
@@ -7,4 +9,8 @@ add_executable(${PROJECT_NAME}
               )
 
 # link libraries
-target_link_libraries(${PROJECT_NAME} neuron)
+target_link_libraries(${PROJECT_NAME} 
+                      neuron
+                      io
+                      statistics
+                     )

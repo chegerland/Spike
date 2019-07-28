@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <random>
 
 #include "neuron.h"
@@ -12,10 +13,7 @@ void IF::voltage_curve() const
   std::cout << "mu = " << this->mu << std::endl;
 };
 
-/*!
- * Simulates the neuron and puts the spike times into the vector spikes
- * @param[in] spikes vector filled with the spike times
- */
+// get spike times of an IF neuron
 void IF::spike_times(std::vector<double> &spikes) const
 {
   double v = 0;
@@ -44,25 +42,30 @@ void IF::spike_times(std::vector<double> &spikes) const
   };
 };
 
-/*!
- * Runs the simulation of a neuron N times.
- * @param[in] neuron the neuron to simulate
- * @param[in] N number of times the simulation shall be run
- */
-void Neuron::simulation(int N) const
+// simulate a neuron N times, put spike times into output file
+void Neuron::simulation(Files *files, int N) const
 {
-  std::vector<double> spikes;
+  std::vector<double> spikes; // vector to store spike times in
+
+  // open filestream
+  std::ofstream file;
+  file.open(files->output_file);
+
+  // run N simulations
   for (int i = 0; i < N; i++)
   {
-    this->spike_times(spikes);
+    this->spike_times(spikes); // get spike times
 
+    // loop over of entry in spikes times
     for (int i = 0; i < spikes.size(); i++)
     {
-      std::cout << spikes[i] << std::endl;
-    }
+      file << spikes[i] << " ";
+    };
 
-    std::cout << "" << std::endl;
-
+    // clear spike times vector and start new line in the file
     spikes.clear();
+    file << "\n";
   }
+
+  file.close(); // close file stream
 };

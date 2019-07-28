@@ -3,7 +3,7 @@
 #include <math.h>
 
 TEST_CASE("Perfect integrate and fire neuron") {
-  IF pif_neuron;
+  PIF pif_neuron;
 
   double mu = 3.4;
   double D = 1;
