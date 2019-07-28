@@ -1,6 +1,7 @@
 #include <getopt.h>
 #include <iostream>
 #include <sys/stat.h>
+#include <stdexcept>
 
 #include "input_output.h"
 
@@ -92,10 +93,10 @@ void check_set_file(Files *files, char optarg[])
   replace_extension(output_file, "out");
 
   if (exists(optarg)) {
-    std::cout << "Input file already exists!" << std::endl;
+    throw std::logic_error("Input file already exists!");
     exit(0);
   } else if (exists(output_file)) {
-    std::cout << "Output file already exists!" << std::endl;
+    throw std::logic_error("Output file already exists!");
     exit(0);
   } else {
   files->input_file = optarg;
