@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../../src/Neuron/neuron.h"
+#include "models.h"
 #include <math.h>
 
 TEST_CASE("Perfect integrate and fire neuron") {
