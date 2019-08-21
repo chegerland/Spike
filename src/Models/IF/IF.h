@@ -57,7 +57,8 @@ class IF : public Neuron {
      * @param[in] spikes Vector to put the spike times into
      */
     void spike_times(
-        std::vector<double> &spikes
+        std::vector<double> &spikes,
+        Simulation *simulation
         ) const;
 };
 

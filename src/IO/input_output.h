@@ -3,10 +3,10 @@
 
 #include <string>
 
-//! A struct for input and output files
-struct Files {
-  std::string input_file;
-  std::string output_file;
+struct Files
+{
+    std::string input_file;
+    std::string output_file;
 };
 
 //! Display usage of the program

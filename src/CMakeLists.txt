@@ -1,7 +1,8 @@
 # add directories
 add_subdirectory("Models")
-add_subdirectory("IO")
+#add_subdirectory("IO")
 add_subdirectory("Statistics")
+add_subdirectory("Simulation")
 
 # add executable
 add_executable(${PROJECT_NAME}
@@ -12,7 +13,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE ../include)
 
 # link libraries
 target_link_libraries(${PROJECT_NAME}
-                      models
-                      io
-                      statistics
-                     )
+  simulation
+  models
+#  io
+  statistics
+)
