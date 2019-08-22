@@ -41,11 +41,12 @@ int main(int argc, char *argv[])
 
   // define Simulation
   Simulation *sim;
-  sim = new Simulation();
-  sim->t_0 = 0;
-  sim->t_end = 8;
-  sim->dt = 1e-3;
-  sim->N = 10;
+  //sim = new Simulation();
+  //sim->t_0 = 0;
+  //sim->t_end = 8;
+  //sim->dt = 1e-3;
+  //sim->N = 10;
+  sim = new Simulation(0, 8, 1e-3, 5);
   sim->output_file = "../data/testOut.out";
 
   // define new neuron
