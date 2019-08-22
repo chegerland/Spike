@@ -8,4 +8,4 @@ add_library(models SHARED
            )
 
 set_target_properties(models PROPERTIES PUBLIC_HEADER include/models.h)
-target_include_directories(models PRIVATE src/models)
+target_include_directories(models PRIVATE src/Models)

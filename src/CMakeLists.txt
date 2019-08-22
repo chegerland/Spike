@@ -1,6 +1,5 @@
 # add directories
 add_subdirectory("Models")
-#add_subdirectory("IO")
 add_subdirectory("Statistics")
 add_subdirectory("Simulation")
 
@@ -15,6 +14,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE ../include)
 target_link_libraries(${PROJECT_NAME}
   simulation
   models
-#  io
   statistics
 )

@@ -3,7 +3,6 @@
 #include <vector>
 #include <getopt.h>
 
-#include "IO/input_output.h"
 #include "Simulation/Simulation.h"
 #include "models.h"
 
@@ -41,22 +40,12 @@ int main(int argc, char *argv[])
 
   // define Simulation
   Simulation *sim;
-  //sim = new Simulation();
-  //sim->t_0 = 0;
-  //sim->t_end = 8;
-  //sim->dt = 1e-3;
-  //sim->N = 10;
   sim = new Simulation(0, 8, 1e-3, 5);
   sim->output_file = "../data/testOut.out";
 
   // define new neuron
   PIF *pif_neuron;
-  pif_neuron = new PIF();
-
-  double mu = 1;
-  double D = 0.02;
-
-  pif_neuron->set_if_params(mu, D);
+  pif_neuron = new PIF(1.0, 0.02);
 
   // run the simulation
   simulation(pif_neuron, sim);

@@ -4,7 +4,6 @@
 
 #include "IF.h"
 
-
 /*!
  * SHOULD Return the voltage curve of a single neuron simulation.
  */

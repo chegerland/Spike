@@ -1,9 +1,9 @@
-#include "statistics.h"
+#include "Statistics.h"
 
 // firing rate with sliding window function
 double firing_rate(double t, const std::vector<double> &spike_times, double dt)
 {
-    // loop over the spike times 
+    // loop over the spike times
     double rate = 0;
     for (int i = 0; i < spike_times.size(); i++)
     {

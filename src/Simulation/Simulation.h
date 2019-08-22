@@ -3,6 +3,12 @@
 
 #include <string>
 
+//! The simulation class
+/*!
+* Sets up a simulation.
+* Defines the input and output files, the time window and its discretization as
+well as the number of times the neuron shall be simulated.
+*/
 class Simulation
 {
 public:
