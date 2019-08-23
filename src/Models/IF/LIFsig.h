@@ -30,9 +30,7 @@ class LIFsig : public IF {
      * @param v Voltage
      * @param t Time
      */
-    double drift(double v, double t) const {
-        return (this->mu - v + this->eps*(this->alpha*cos(2.0*M_PI*this->f1*t) + this->beta*cos(2.0*M_PI*this->f2*t)));
-    };
+    double drift(double v, double t) const;
 };
 
 #endif //LIFSIG_H
