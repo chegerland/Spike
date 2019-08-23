@@ -4,13 +4,17 @@
 
 #include "IF.h"
 
-/*!
- * SHOULD Return the voltage curve of a single neuron simulation.
- */
-void IF::voltage_curve() const
+// set parameters
+void IF::set_if_params(double a, double b)
 {
-  std::cout << "D = " << this->D << std::endl;
-  std::cout << "mu = " << this->mu << std::endl;
+  mu = a;
+  D = b;
+};
+
+// diffusion
+double IF::diffusion(double v, double t) const
+{
+  return sqrt(2*D);
 };
 
 // get spike times of an IF neuron

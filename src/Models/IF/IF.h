@@ -16,51 +16,45 @@
 class IF : public Neuron
 {
 protected:
-  double mu, D;
+
+  /*! Mobility */
+  double mu;
+
+  /*! Diffusion coefficient */
+  double D;
 
 public:
 
   /*!
   * Sets the model parameters for a generic IF model
-  * @param[in] a mu
-  * @param[in] b D
+  * @param a mu
+  * @param b D
   */
-  void set_if_params(double a, double b) {
-    this->mu = a;
-    this->D = b;
-  };
+  void set_if_params(double a, double b);
 
   /*!
   * Returns the drift of a generic IF model.
   * Is implemented by specific IF model
-  * @param[in] v Voltage
-  * @param[in] t Time
+  * @param v Voltage
+  * @param t Time
   */
   virtual double drift(double v, double t) const =0;
 
   /*!
   * Returns the diffusion of the IF models which is the same for all of them.
-  * @param[in] v Voltage
-  * @param[in] t Time
+  * @param v Voltage
+  * @param t Time
   */
-  double diffusion(double v, double t) const {
-    return sqrt(2*this->D);
-  };
+  double diffusion(double v, double t) const;
 
-  /*!
-  * Returns the voltage curve of a generic IF neuron;
-  * NOT IMPLEMENTED YET!
-  */
-  void voltage_curve() const;
+  // void voltage_curve() const;
 
   /*!
   * Returns the times at which the IF neuron has spiked and puts them into a vector.
-  * @param[in] spikes Vector to put the spike times into
+  * @param spikes Vector to put the spike times into
+  * @param simulation simulation class containing information on the time frame etc.
   */
-  void spike_times(
-    std::vector<double> &spikes,
-    Simulation *simulation
-  ) const;
+  void spike_times(std::vector<double> &spikes, Simulation *simulation) const;
 };
 
 #endif // IF_H

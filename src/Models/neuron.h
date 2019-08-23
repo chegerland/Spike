@@ -19,13 +19,10 @@ public:
 
   /*!
   * Simulates the neuron and puts the spike times into the vector spikes
-  * @param[in] spikes vector filled with the spike times
-  * @param[in] simulation simulation object containing t_0, t_end and so on
+  * @param spikes vector filled with the spike times
+  * @param simulation simulation object containing t_0, t_end and so on
   */
-  virtual void spike_times(
-    std::vector<double> &spikes,
-    Simulation *simulation
-  ) const =0;
+  virtual void spike_times(std::vector<double> &spikes, Simulation *simulation) const =0;
 };
 
 #endif // ifndef

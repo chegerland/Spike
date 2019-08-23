@@ -14,26 +14,22 @@ public:
 
   /*!
   * Constructor of a perfect integrate and fire neurons
-  * @param[in] a mu
-  * @param[in] b D
+  * @param a mu
+  * @param b D
   */
   PIF(double a, double b);
 
   /*!
   * Returns drift of a perfect IF neuron.
-  * @param[in] v Voltage
-  * @param[in] t Time
+  * @param v Voltage
+  * @param t Time
   */
-  double drift(double v, double t) const {
-    return (this->mu);
-  };
+  double drift(double v, double t) const;
 
   /*!
   * Returns analytically calculated firing rate of a perfect IF neuron.
   */
-  double rate_analytic() const {
-    return 1/(this->mu);
-  };
+  double rate_analytic() const;
 };
 
 #endif // PIF_H

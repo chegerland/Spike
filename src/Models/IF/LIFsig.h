@@ -10,13 +10,25 @@
  */
 class LIFsig : public IF {
   private:
-    double eps, alpha, beta, phi, f1, f2; // signal parameters
+
+    /*! overall signal strength */
+    double eps;
+    /*! amplitude first signal */
+    double alpha;
+    /*! amplitude second signal */
+    double beta;
+    /*! phase shift */
+    double phi;
+    /*! frequency first signal */
+    double f1;
+    /*! frequency second signal */
+    double f2;
 
   public:
     /*!
      * Returns drift of a leaky IF neuron with two cosine signals.
-     * @param[in] v Voltage
-     * @param[in] t Time
+     * @param v Voltage
+     * @param t Time
      */
     double drift(double v, double t) const {
         return (this->mu - v + this->eps*(this->alpha*cos(2.0*M_PI*this->f1*t) + this->beta*cos(2.0*M_PI*this->f2*t)));

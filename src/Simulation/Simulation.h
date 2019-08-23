@@ -13,27 +13,39 @@ class Simulation
 {
 public:
 
-  double t_0, t_end, dt; // Simulation parameters
+  /*! start time */
+  double t_0;
+  /*! end time */
+  double t_end;
+  /*! time step */
+  double dt;
+  /*! simulation count */
   int N;
+
+  /*! input file */
   std::string input_file;
+  /*! output file */
   std::string output_file;
 
-  // constructors
   Simulation(){};
-  Simulation(double a, double b, double c);
-  Simulation(double a, double b, double c, int d);
-
   ~Simulation(){};
 
   /*!
-  * Sets input and output file of the simulation
+  * Constructor of simulation
+  * @param a t_0
+  * @param b t_end
+  * @param c dt
   */
-  void check_files();
+  Simulation(double a, double b, double c);
 
   /*!
-  * Sets input and output file of the simulation
+  * Constructor of simulation
+  * @param a t_0
+  * @param b t_end
+  * @param c dt
+  * @param d N
   */
-  void set_files();
+  Simulation(double a, double b, double c, int d);
 
 };
 

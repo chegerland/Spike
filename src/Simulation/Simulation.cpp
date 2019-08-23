@@ -1,5 +1,6 @@
 #include "Simulation.h"
 
+// simulation constructor
 // if no N is given, set N to 1
 Simulation::Simulation(double a, double b, double c)
 {
@@ -9,6 +10,7 @@ Simulation::Simulation(double a, double b, double c)
   N = 1;
 };
 
+// simulation constructor
 Simulation::Simulation(double a, double b, double c, int d)
 {
   t_0 = a;

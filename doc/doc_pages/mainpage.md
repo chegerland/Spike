@@ -1,42 +1,42 @@
 # Spike {#mainpage}
 
-Spike is a small numerical toolset that can simulate single neurons and calculate statistics from these simulations.
+Spike is a small numerical toolset that can simulate single neurons and evaluate the resulting spike trains statistically by calculation all sorts of quantities like the firing rate etc.
 
+## Getting Started
+These instructions will help you set up Spike and run your first calculation.
 
-## Installation
-Clone the git repository to obtain the code
+### Dependencies
 
-    git clone git@git.physik.hu-berlin.de:cheg/master/spike.git
+### Installation & Build
+To install Spike, clone the repository by typing
 
-and type the following commands inside the `build` directory to build the code
+    $ git clone https://git.physik.hu-berlin.de/cheg/master/Spike.git
 
-    cmake ..
-    make
+then create a build directory and build the project using cmake
 
+    $ mkdir -p build/ && cd build
+    $ cmake ..
+    $ make Spike
 
-## Getting started
-After a succesfull installation you will find a binary called `Spike` inside the `bin` directory.
-Spike has two modes: 1) simulation mode and 2) (statistical) evaluation mode.
-In the **simulation mode** Spike needs an input file `my_simulation.in` with parameters defining the simulation and produces an according `my_simulation.out` file containing the times when the neuron has spiked.
-In the **evaluation mode** you can give Spike an `.out` file and calculate the firing rate, ISI density and much more.
+### First Calculation
+Run your first calculation, by giving Spike the following input file called `tutorial.json`:
 
-API DOCUMENTATION
-
-## Documentation
-To build the documentation go inside the `doc` directory and run
-
-    doxygen Doxyfile.in
-
-Open `doc/doxygen/html/index.html/` inside a browser to view the documentation.
 
 ## Testing
-After a succesfull installation you will also find a binary called `test_Spike` inside the `bin` directory.
-Run it with 
+We use [Catch2]() to unit test our code.
 
-    ./test_Spike
+To build all tests type
 
-to unit test the code.
+    $ make tests_Spike
+
+and run them with
+
+    $ ./tests_Spike
 
 
-Notes:
-- i think it makes perfect sense for this code, that the neuron model classes only contain public members, because i actually want to read and write from or to them. capsulation would just make this more complicated
+## Documentation
+The documentation is build using [doxygen]().
+Notes are written in `.md` files in the `docs/doc_pages/` directory.
+
+## Authors
+[Christoph H. Egerland](https://git.physik.hu-berlin.de/egerlanc)

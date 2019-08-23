@@ -14,19 +14,17 @@ public:
 
   /*!
   * Constructor of a leaky integrate and fire model
-  * @param[in] a mu
-  * @param[in] b D
+  * @param a mu
+  * @param b D
   */
   LIF(double a, double b);
 
   /*!
   * Returns drift of a leaky IF neuron.
-  * @param[in] v Voltage
-  * @param[in] t Time
+  * @param v Voltage
+  * @param t Time
   */
-  double drift(double v, double t) const {
-    return (this->mu - v);
-  };
+  double drift(double v, double t) const;
 };
 
 #endif //LIF_H
