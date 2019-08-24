@@ -9,6 +9,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
+# boost libs
+find_package(Boost 1.69 REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+
 # directories
 add_subdirectory("src")
 add_subdirectory("lib")

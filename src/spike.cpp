@@ -1,16 +1,15 @@
 #include <iostream>
+#include <iterator>
 #include <fstream>
 #include <vector>
 #include <getopt.h>
 
-// json parser
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-namespace pt = boost::property_tree; // Short alias for this namespace
 
 // spike libraries
 #include "Simulation/Simulation.h"
 #include "models.h"
+#include "InputOutput/inputoutput.h"
+
 
 void simulation(Neuron *neuron, Simulation *sim)
 {
@@ -58,21 +57,7 @@ void test_simulation()
 // main
 int main(int argc, char *argv[])
 {
-  //test_simulation();
-
-  // Create a root
-  pt::ptree root;
-
-  // Load the json file in this ptree
-  pt::read_json("../data/test.json", root);
-
-  // read simulation data
-  double test = root.get<double>("test", 0);
-  std::cout << test << std::endl;
-
-  int N = root.get<int>("Simulation.N", 0);
-  std::cout << N << std::endl;
-  double dt = root.get<double>("Simulation.dt", 0);
-  std::cout << dt << std::endl;
+  get_options(argc, argv); // get options from command line
+  check_options(mode, input_file);
 
 };

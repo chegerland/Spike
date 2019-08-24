@@ -1,6 +1,6 @@
 # make library
 add_library(statistics SHARED
-  Statistics.cpp
+  statistics.cpp
 )
 
 set_target_properties(statistics PROPERTIES PUBLIC_HEADER include/statistics.h)

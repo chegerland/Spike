@@ -1,6 +1,6 @@
 # make library
 add_library(models SHARED
-            neuron.cpp
+            Neuron.cpp
             IF/IF.cpp
             IF/PIF.cpp
             IF/LIF.cpp

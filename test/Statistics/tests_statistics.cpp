@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include <math.h>
 
-#include "../../src/Statistics/Statistics.h"
+#include "../../src/Statistics/statistics.h"
 
 TEST_CASE("Firing rate")
 {

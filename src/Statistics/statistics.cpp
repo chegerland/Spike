@@ -1,4 +1,4 @@
-#include "Statistics.h"
+#include "statistics.h"
 
 // firing rate with sliding window function
 double firing_rate(double t, const std::vector<double> &spike_times, double dt)

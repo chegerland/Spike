@@ -4,7 +4,7 @@
 #include <math.h>
 #include <vector>
 
-#include "../neuron.h"
+#include "../Neuron.h"
 
 //! A generic integrate and fire model.
 /*!
