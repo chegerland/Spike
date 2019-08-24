@@ -2,7 +2,7 @@ image: alpine
 
 before_script:
   - apk update
-  - apk add --update cmake make g++ boost-dev
+  - apk add --update cmake make g++ boost-dev boost-program_options boost-filesystem
 
 stages:
   - build
