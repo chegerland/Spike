@@ -11,6 +11,7 @@ These instructions will help you set up Spike and run your first calculation.
 * [Catch2](https://github.com/catchorg/Catch2): unit testing
 * [doxygen](http://doxygen.nl/): documentation
 * [boost](https://www.boost.org/): json file parser
+* [progress bar](https://github.com/prakhar1989/progress-cpp)
 
 ### Installation & Build
 To install Spike, clone the repository by typing

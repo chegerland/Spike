@@ -3,7 +3,8 @@
 
 #include <vector>
 
-#include "../Simulation/Simulation.h"
+#include "Simulation.h"
+
 
 //! A generic neuron model.
 /*!
@@ -14,8 +15,6 @@ class Neuron
 {
 public:
 
-  Neuron(){};
-  ~Neuron(){};
 
   /*!
   * Simulates the neuron and puts the spike times into the vector spikes
@@ -23,6 +22,14 @@ public:
   * @param simulation simulation object containing t_0, t_end and so on
   */
   virtual void spike_times(std::vector<double> &spikes, Simulation *simulation) const =0;
+
+
+  /*!
+  * Prints all the parameters of the neuron.
+  * Every specific neuron type should have an implementation of this.
+  */
+  virtual void print_parameters() =0;
 };
+
 
 #endif // ifndef

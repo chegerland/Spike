@@ -26,13 +26,6 @@ protected:
 public:
 
   /*!
-  * Sets the model parameters for a generic IF model
-  * @param a mu
-  * @param b D
-  */
-  void set_if_params(double a, double b);
-
-  /*!
   * Returns the drift of a generic IF model.
   * Is implemented by specific IF model
   * @param v Voltage
@@ -55,6 +48,7 @@ public:
   * @param simulation simulation class containing information on the time frame etc.
   */
   void spike_times(std::vector<double> &spikes, Simulation *simulation) const;
+
 };
 
 #endif // IF_H

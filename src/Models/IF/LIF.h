@@ -1,6 +1,8 @@
 #ifndef LIF_H
 #define LIF_H
 
+#include <string>
+
 #include "IF.h"
 
 //! Leaky integrate and fire model
@@ -19,12 +21,24 @@ public:
   */
   LIF(double a, double b);
 
+
+  /*!
+  * Constructor of a leaky integrate and fire model from .json file
+  * @param input_file .json file with parameters
+  */
+  LIF(std::string input_file);
+
   /*!
   * Returns drift of a leaky IF neuron.
   * @param v Voltage
   * @param t Time
   */
   double drift(double v, double t) const;
+
+  /*!
+  * Print parameters of the PIF neuron
+  */
+  void print_parameters();
 };
 
 #endif //LIF_H

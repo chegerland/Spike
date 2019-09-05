@@ -4,13 +4,6 @@
 
 #include "IF.h"
 
-// set parameters
-void IF::set_if_params(double a, double b)
-{
-  mu = a;
-  D = b;
-};
-
 // diffusion
 double IF::diffusion(double v, double t) const
 {

@@ -20,6 +20,12 @@ public:
   PIF(double a, double b);
 
   /*!
+  * Constructor of a perfect integrate and fire neurons from .json file
+  * @param input_file .json file with parameters
+  */
+  PIF(std::string input_file);
+
+  /*!
   * Returns drift of a perfect IF neuron.
   * @param v Voltage
   * @param t Time
@@ -30,6 +36,11 @@ public:
   * Returns analytically calculated firing rate of a perfect IF neuron.
   */
   double rate_analytic() const;
+
+  /*!
+  * Print parameters of the PIF neuron
+  */
+  void print_parameters();
 };
 
 #endif // PIF_H
