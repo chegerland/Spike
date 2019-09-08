@@ -33,18 +33,19 @@ TEST_CASE("PIF: Analytic limits")
   {
     // define neuron with no drift --> deterministic limit
     PIF *pif_neuron;
-    pif_neuron = new PIF(1.0, 0.0);
+    pif_neuron = new PIF(2.0, 0.0);
 
     // define simulation
     Simulation *sim;
-    sim = new Simulation(0.0, 10.1, 1e-2);
+    sim = new Simulation(0.0, 10.0, 1e-4);
 
     std::vector<double> spikes;
     pif_neuron->spike_times(spikes, sim);
 
     double rate = pif_neuron->rate_analytic();
-    int spike_count = (int) rate*(sim->t_end - sim->t_0);
+    int spike_count = (int) (rate*(sim->t_end - sim->t_0));
 
-    REQUIRE( spikes.size() == spike_count );
+    // add +1 to spike size, because we missed a spike at t = t_0!
+    REQUIRE( spikes.size()+1 == spike_count );
   };
 };

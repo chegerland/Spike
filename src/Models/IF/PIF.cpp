@@ -37,7 +37,7 @@ double PIF::drift(double v, double t) const
 // analytic function of the firing rate
 double PIF::rate_analytic() const
 {
-  return 1/mu;
+  return mu;
 };
 
 // print neuron parameters

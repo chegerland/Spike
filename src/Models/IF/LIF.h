@@ -36,6 +36,11 @@ public:
   double drift(double v, double t) const;
 
   /*!
+  * Returns analytically calculated firing rate of a leaky IF neuron.
+  */
+  double rate_analytic() const;
+
+  /*!
   * Print parameters of the PIF neuron
   */
   void print_parameters();

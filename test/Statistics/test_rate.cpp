@@ -5,7 +5,6 @@
 
 TEST_CASE("Rate: Consistency")
 {
-
   SECTION("No Spikes, rate is zero")
   {
     std::vector<double> spike_times= {};

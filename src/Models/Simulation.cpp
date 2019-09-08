@@ -42,6 +42,7 @@ Simulation::Simulation(std::string parameters_file)
   N = root.get<int>("Simulation.N");
 
   // set output file
+  this->parameters_file = parameters_file;
   spike_times_file = parameters_file.substr(0,parameters_file.find_last_of('.'))+".out";
 };
 

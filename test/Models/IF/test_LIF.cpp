@@ -17,7 +17,6 @@ TEST_CASE("LIF: Drift")
   };
 };
 
-
 TEST_CASE("LIF: Diffusion")
 {
   LIF *lif_neuron;
@@ -28,5 +27,28 @@ TEST_CASE("LIF: Diffusion")
     REQUIRE( lif_neuron->diffusion(2,4) == 2.0);
     REQUIRE( lif_neuron->diffusion(3.2,1) == 2.0);
     REQUIRE( lif_neuron->diffusion(3.2,10.4) == 2.0);
+  };
+};
+
+TEST_CASE("LIF: Analytic limits")
+{
+  SECTION("Deterministic limit (D = 0)")
+  {
+    // define lif with no drift
+    LIF *lif_neuron;
+    lif_neuron = new LIF(2.0, 0.0);
+
+    // define Simulation
+    Simulation *sim;
+    sim = new Simulation(0.0, 20.0, 1e-5);
+
+    std::vector<double> spikes;
+    lif_neuron->spike_times(spikes, sim);
+
+    double rate = lif_neuron->rate_analytic();
+    int spike_count = (int) (rate*(sim->t_end - sim->t_0));
+
+    REQUIRE( spikes.size() == spike_count );
+
   };
 };

@@ -34,6 +34,12 @@ double LIF::drift(double v, double t) const
   return (mu - v);
 };
 
+// analytic rate
+double LIF::rate_analytic() const
+{
+  return 1.0/log(mu/(mu - 1.0));
+};
+
 void LIF::print_parameters()
 {
   std::cout << "Neuron (LIF) parameters: \n"
