@@ -1,6 +1,8 @@
 #ifndef LIFSIG_H
 #define LIFSIG_H
 
+#include <string>
+
 #include "IF.h"
 
 //! Leaky integrate and fire model with input signal
@@ -26,11 +28,22 @@ class LIFsig : public IF {
 
   public:
     /*!
+    * Constructs a leaky integrate and fire neuron with input signal from .json file
+    * @param input_file .json file with parameters
+    */
+    LIFsig(std::string input_file);
+
+    /*!
      * Returns drift of a leaky IF neuron with two cosine signals.
      * @param v Voltage
      * @param t Time
      */
     double drift(double v, double t) const;
+
+    /*!
+    * Prints the parameters.
+    */
+    void print_parameters();
 };
 
 #endif //LIFSIG_H
