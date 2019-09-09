@@ -32,7 +32,7 @@ void get_options(int argc, char * argv[], Options *options)
       exit(0);
     };
 
-    // check rate is dt is given
+    // set rate to true if dt is given
     if (vm.count("rate"))
     {
       options->rate = true;

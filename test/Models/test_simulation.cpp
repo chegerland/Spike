@@ -15,7 +15,6 @@ TEST_CASE("Simulation: Constructors")
       REQUIRE(sim->N == 1);
     };
 
-
     SECTION("Full constructor")
     {
       Simulation *sim;
@@ -30,13 +29,13 @@ TEST_CASE("Simulation: Constructors")
     SECTION("Constructor from file")
     {
       Simulation *sim;
-      sim = new Simulation("../data/test.json");
+      sim = new Simulation("../data/test/simulation.json");
 
       REQUIRE(sim->t_0 == 1);
       REQUIRE(sim->t_end == 8);
       REQUIRE(sim->dt == 1e-3);
       REQUIRE(sim->N == 5);
-      REQUIRE(sim->parameters_file == "../data/test.json");
-      REQUIRE(sim->spike_times_file == "../data/test.out");
+      REQUIRE(sim->parameters_file == "../data/test/simulation.json");
+      REQUIRE(sim->spike_times_file == "../data/test/simulation.out");
     };
 }

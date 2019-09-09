@@ -28,23 +28,28 @@ bool exists (const std::string& path)
   return (stat (path.c_str(), &buffer) == 0);
 };
 
+// read in spike train
 std::vector<std::vector<double> > file_to_vector(std::string name)
 {
-    std::vector<std::vector<double> > result;
-    std::ifstream input (name);
-    std::string lineData;
+	// define vector of spike trains
+	std::vector<std::vector<double> > result;
 
-    while(getline(input, lineData))
-    {
-        double d;
-        std::vector<double> row;
-        std::stringstream lineStream(lineData);
+	// define file stream
+	std::ifstream input (name);
+	std::string lineData;
 
-        while (lineStream >> d)
-            row.push_back(d);
+	// get lines from file
+	while(getline(input, lineData))
+	{
+		double d;
+		std::vector<double> row;
+		std::stringstream lineStream(lineData);
 
-        result.push_back(row);
-    }
+		while (lineStream >> d)
+		row.push_back(d);
+		
+		result.push_back(row);
+	}
 
-    return result;
+	return result;
 };

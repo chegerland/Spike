@@ -31,7 +31,7 @@ struct Options {
 void get_options(int argc, char * argv[], Options *options);
 
 /*!
-* Checks the given command line options for consistency
+* Checks the given command line options for consistency.
 * @param options Options struct containing the command line options.
 */
 void check_options(Options *options);
