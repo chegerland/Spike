@@ -24,4 +24,6 @@ build:
 test:
   stage: test
   script:
-    - ./bin/test_Spike
+    - mkdir -p build
+    - cd build
+    - ./../bin/test_Spike
