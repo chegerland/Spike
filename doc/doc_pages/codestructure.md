@@ -1,21 +1,50 @@
-# Code structure
+# Project structure
 
-The code is organized as follows:
-In the `.src` directory are the source files for Spike.
-There you will find folders which contain the libraries and a single `.cpp` file called `spike.cpp`, which contains the main function.
+## Folder structure
 
-The only folder that does not contain a library is called `Spike/`, it contains the actual *app*.
+The project is organized as follows:
 
-**Design note**: Libraries should be written such that they are independent from one another!
+    Spike/
+    ├── bin
+    ├── build
+    ├── data
+    ├── doc
+    ├── include
+    ├── lib
+    ├── src
+    └── test
+
+The directory contains ...
+
+- `bin/`: the executables (binary files)
+- `build/`: build files produced by cmake
+- `data/`: various data files for the tests, tutorials and other applications
+- `doc/`: the documentation
+- `include/`: library headers
+- `src/`: source files for libraries and the *app* spike
+- `test/`: unit tests
 
 ## Libraries
+The project contains several libraries, fulfilling different purposes.
+**Design note**: Libraries should be written such that they are independent from one another!
 
-1) InputOutput
-The InputOutput library contains functions handling the command line options.
+The libraries are
 
-2) Models
-The Models library contains the class definition of a neuron (for more information see ...), the simulation as well as a bunch of neuron models which are organized in further subfolders.
+**InputOutput**
+
+The InputOutput library contains:
+
+* functions handling the command line options
+* functions handling file input and output
+
+**Models**
+
+The Models library contains the class definition of a Neuron, the Simulation as well as a bunch of neuron models which are organized in further subfolders.
 For now there is just one subfolder containing the class of integrate-and-fire neurons.
 
-3) Statistics
-The Statistics library contains functions which analyze the output files of the simulation such as the firing rate, ...
+**Statistics**
+
+The Statistics library contains functions which analyze the output files of the simulation such as the firing rate, isi, ...
+
+## Spike
+The actual executable is called spike, the code for which is found in `src/spike.cpp` and `src/Spike/`.

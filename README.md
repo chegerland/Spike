@@ -3,9 +3,6 @@
 # Spike
 Spike is a small numerical toolset that can simulate single neurons and evaluate the resulting spike trains statistically by calculation all sorts of quantities like the firing rate etc.
 
-Nils war hier.
-
-
 ## Getting Started
 These instructions will help you set up Spike and run your first calculation.
 
