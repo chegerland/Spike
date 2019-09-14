@@ -40,8 +40,6 @@ public:
   */
   double diffusion(double v, double t) const;
 
-  // void voltage_curve() const;
-
   /*!
   * Returns the times at which the IF neuron has spiked and puts them into a vector.
   * @param spikes Vector to put the spike times into

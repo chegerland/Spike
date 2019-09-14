@@ -24,8 +24,12 @@ then create a build directory and build the project using cmake
     $ make Spike
 
 ### First Calculation
-Run your first calculation, by giving Spike the following input file called `tutorial.json`:
+Run your first calculation, by giving Spike the input file called `tutorial.json`:
 
+    $ cd bin
+    $ ./Spike --mode 0 --file ../data/tutorial.json
+
+For more information see the [Tutorial](@ref tutorial).
 
 ## Testing
 We try to follow a [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) style.

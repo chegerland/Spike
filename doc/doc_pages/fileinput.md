@@ -15,24 +15,22 @@ The possible options are:
 
 ## Input File
 Parameters are given to spike in the form of `.json` files.
-Spike then parses the file (we followed this [tutorial](http://techgate.fr/boost-property-tree/) for the implementation).
+Spike then parses the file (we followed these [instructions](http://techgate.fr/boost-property-tree/) for the implementation).
 
 An input file always follows the following format
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.java}
     {
       "Simulation" :
       {
-        "t_0" : 0,
-        "t_end" : 10,
-        "dt" : 1e-3,
-        "N" : 10000
+        //PARAMETERS FOR THE SIMULATION
       },
       "Neuron" :
       {
-        "type" : "LIF",
-        "mu" : 1.0,
-        "D" : 0.2
+        //PARAMETERS FOR THE NEURON
       }
     }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As you can see there are parameters concerning the simulation and parameters concerning the neuron.
+The parameters needed for a specific neuron type are documented in the respective class.
+For a more hands on guide to the input files see the [Tutorial](@ref tutorial).
