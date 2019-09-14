@@ -1,5 +1,6 @@
 build/*
 bin/*
+lib/*
 doc/doxygen
 *.o
 *.out
@@ -7,3 +8,4 @@ doc/doxygen
 *.swp
 *.a
 *.depend
+*.bak

@@ -1,6 +1,29 @@
-image: frolvlad/alpine-gxx
+image: debian:stable
 
-test-job: 
-  stage: test
+before_script:
+   - apt-get update  
+   - apt-get -y install cmake make g++ libboost-all-dev
+  
+stages:
+  - build
+  - test
+
+build: 
+  stage: build
   script: 
-    - echo "Hello World!"
+    - mkdir -p build
+    - cd build
+    - cmake ..
+    - make
+  artifacts:
+    paths:
+      - bin/test_Spike
+      - lib/
+    expire_in: 1 hour
+
+test:
+  stage: test
+  script:
+    - mkdir -p build
+    - cd build
+    - ./../bin/test_Spike
