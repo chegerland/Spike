@@ -2,6 +2,7 @@
 #include <iterator>
 #include <fstream>
 #include <vector>
+#include <chrono>
 
 
 // spike libraries
@@ -43,8 +44,20 @@ int main(int argc, char *argv[])
       sim->print_parameters();
       neuron->print_parameters();
 
+      // measure time
+      auto start = std::chrono::high_resolution_clock::now();
+
       // simulate the neuron
       simulation(neuron, sim);
+
+      // Record end time
+      auto finish = std::chrono::high_resolution_clock::now();
+
+      // print time
+      std::chrono::duration<double> elapsed = finish - start;
+      std::cout << "Elapsed time: " << elapsed.count() << " s\n";
+
+
       break;
     }
     case 1:

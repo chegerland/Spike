@@ -16,7 +16,6 @@ namespace pt = boost::property_tree;
 // simulate the neuron
 void simulation(Neuron *neuron, Simulation *sim)
 {
-    std::vector<double> spikes; // vector to store spike times in
 
     // open filestream
     std::ofstream file;
@@ -25,11 +24,14 @@ void simulation(Neuron *neuron, Simulation *sim)
     // progress bar
     ProgressBar progbar(sim->N, 70);
 
+    #pragma omp parallel for
     // run the simulation
     for (int i = 0; i < sim->N; i++)
     {
+      std::vector<double> spikes; // vector to store spike times in
       neuron->spike_times(spikes, sim); // get spike times
 
+      #pragma omp critical
       // print spike times to files
       for (int i = 0; i < spikes.size(); i++)
       {
@@ -41,8 +43,11 @@ void simulation(Neuron *neuron, Simulation *sim)
       file << "\n";
 
       // Progress
+      #pragma omp critical
+      {
       ++progbar;
       progbar.display();
+      }
     };
 
     // close file
