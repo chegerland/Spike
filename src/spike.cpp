@@ -4,7 +4,6 @@
 #include <vector>
 #include <chrono>
 
-
 // spike libraries
 #include "models.h"
 #include "inputoutput.h"

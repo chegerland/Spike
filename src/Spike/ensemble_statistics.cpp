@@ -27,7 +27,8 @@ void ensemble_firing_rate(Simulation *sim, double dt)
   rate_file << t << " " << 0 << std::endl;
 
   // define accumulator for rate
-  accumulator_set<double, stats<tag::mean, tag::variance> > acc;
+  //accumulator_set<double, stats<tag::mean, tag::variance> > acc;
+  accumulator_set<double, stats<tag::mean> > acc;
 
   // loop over time
   while (t < sim->t_end)
@@ -45,7 +46,8 @@ void ensemble_firing_rate(Simulation *sim, double dt)
     };
 
     // push values to file
-    rate_file << t << " " << mean(acc) << " " << variance(acc) << std::endl;
+    //rate_file << t << " " << mean(acc) << " " << variance(acc) << std::endl;
+    rate_file << t << " " << mean(acc) << std::endl;
   };
 
   // close file
