@@ -47,6 +47,12 @@ public:
   */
   void spike_times(std::vector<double> &spikes, Simulation *simulation) const;
 
+  /*!
+  * Prints the voltage curve, i.e. the function v(t) into an output file specified by the simulation
+  * @param simulation simulation class containing information on the time frame etc.
+  */
+  void voltage_curve(Simulation *simulation) const;
+
 };
 
 #endif // IF_H

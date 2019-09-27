@@ -15,7 +15,6 @@ class Neuron
 {
 public:
 
-
   /*!
   * Simulates the neuron and puts the spike times into the vector spikes
   * @param spikes vector filled with the spike times
@@ -23,13 +22,17 @@ public:
   */
   virtual void spike_times(std::vector<double> &spikes, Simulation *simulation) const =0;
 
-
   /*!
   * Prints all the parameters of the neuron.
   * Every specific neuron type should have an implementation of this.
   */
   virtual void print_parameters() =0;
-};
 
+  /*!
+  * Prints the voltage curve, i.e. the function v(t) into an output file specified by the simulation
+  * @param simulation simulation class containing information on the time frame etc.
+  */
+  virtual void voltage_curve(Simulation *simulation) const =0;
+};
 
 #endif // ifndef
