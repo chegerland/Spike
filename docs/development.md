@@ -4,7 +4,7 @@
 
 The project is organized as follows:
 
-~~~~~~~~~~~~~~~~bash
+```bash
     Spike/
     ├── bin
     ├── build
@@ -14,7 +14,7 @@ The project is organized as follows:
     ├── lib
     ├── src
     └── test
-~~~~~~~~~~~~~~~~
+```
 
 The directory contains ...
 

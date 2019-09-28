@@ -15,19 +15,25 @@ These instructions will help you set up Spike and run your first calculation.
 ### Installation & Build
 To install Spike, clone the repository by typing
 
-    $ git clone https://git.physik.hu-berlin.de/cheg/master/Spike.git
+```bash
+> git clone https://git.physik.hu-berlin.de/cheg/master/Spike.git
+```
 
 then create a build directory and build the project using cmake
 
-    $ mkdir -p build/ && cd build
-    $ cmake ..
-    $ make Spike
+```bash
+> mkdir -p build/ && cd build
+> cmake ..
+> make Spike
+```
 
 ### First Calculation
 Run your first calculation, by giving Spike the input file called `tutorial.json`:
 
-    $ cd bin
-    $ ./Spike --mode 0 --file ../data/tutorial.json
+```bash
+> cd bin
+> ./Spike --mode 0 --file ../data/tutorial.json
+```
 
 For more information see the [Tutorial](tutorial).
 
@@ -35,12 +41,15 @@ For more information see the [Tutorial](tutorial).
 We try to follow a [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) style.
 To build all tests type
 
-    $ make tests_Spike
+```bash
+> make tests_Spike
+```
 
 and run them with
 
-    $ ./tests_Spike
-
+```bash
+> ./tests_Spike
+```
 
 ## Documentation
 Notes are written in `.md` files in the `docs/doc_pages/` directory.

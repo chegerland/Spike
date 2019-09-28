@@ -19,7 +19,7 @@ Spike then parses the file (we followed these [instructions](http://techgate.fr/
 
 An input file always follows the following format
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~json
+```json
     {
       "Simulation" :
       {
@@ -30,7 +30,7 @@ An input file always follows the following format
         //PARAMETERS FOR THE NEURON
       }
     }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 The parameters needed for a specific neuron type are documented in the respective class.
-For a more hands on guide to the input files see the [Tutorial](@ref tutorial).
+For a more hands on guide to the input files see the [Tutorial](tutorial).

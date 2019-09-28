@@ -3,12 +3,10 @@
 We expect you to have Spike readily installed.
 In this small tutorial we will set up our first simulation and even retrieve some statistics from it.
 
-$ \pi = \int e^{\alpha} \mathrm{d\alpha} $
-
 ## Input file
 The input file for our simulation is `data/tutorial.json` and looks like this
 
-~~~~~~~~~~~~~~~~~~~~~~~~json
+```json
     {
       "Simulation" :
       {
@@ -24,16 +22,18 @@ The input file for our simulation is `data/tutorial.json` and looks like this
         "D" : 0.2
       }
     }
-~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 As you can see we will simulate a leaky integrate and fire neuron (LIF) with a drift coefficient of 1 and a diffusion coefficient of 0.2.
 The time frame and time step is specified in the Simulation bracket.
 There you can also see that we will repeat this simulation 10.000 times.
 
 ## Your first simulation
-You can run the simulation by typing
+From the `bin` directory you can run the simulation by typing
 
-    Spike/bin $ ./Spike --mode 0 --file ../data/tutorial.json
+```bash
+> ./Spike --mode 0 --file ../data/tutorial.json
+```
 
 This produces in output file called `tutorial.out` inside the data folder.
 Have a look at it.
@@ -42,7 +42,9 @@ You can see that each row contains the times where the neuron has spiked and the
 ## Statistics
 To obtain statistics from the above simulation type
 
-    Spike/bin $ ./Spike --mode 1 --file ../data/tutorial.json --isi
+```bash
+> ./Spike --mode 1 --file ../data/tutorial.json --isi
+```
 
 This requires, that `tutorial.out` exists!
 Spike now calculates the interspike intervals and outputs a file called `tutorial_isi.out` which contains the long list of interspike intervals.

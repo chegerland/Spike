@@ -6,7 +6,7 @@
 TEST_CASE("LIFsig: Drift")
 {
   LIFsig *lifsig_neuron;
-  lifsig_neuron = new LIFsig("../data/test/lifsig.json");
+  lifsig_neuron = new LIFsig("../data/test_files/lifsig.json");
 
   SECTION("Drift depends on t and v")
   {
@@ -18,7 +18,7 @@ TEST_CASE("LIFsig: Drift")
 TEST_CASE("LIFsig: Diffusion")
 {
   LIFsig *lifsig_neuron;
-  lifsig_neuron = new LIFsig("../data/test/lifsig.json");
+  lifsig_neuron = new LIFsig("../data/test_files/lifsig.json");
 
   SECTION("Diffusion does not depend t, but depends on v")
   {
