@@ -16,7 +16,7 @@ void get_options(int argc, char * argv[], Options *options)
     po::options_description desc("Allowed options");
     desc.add_options()
     ("help,h", "Help screen")
-    ("mode", po::value<int>(&(options->mode)), "Mode \n 0 = Simulation, 1 = Evaluation")
+    ("mode", po::value<int>(&(options->mode)), "Mode \n 0 = Simulation, 1 = Evaluation, 2 = Curves")
     ("file", po::value<std::string>(&(options->parameters)), "Input File")
     ("rate", po::value<double>(&(options->dt)), "Calculates firing rate")
     ("isi", po::bool_switch(&(options->isi)), "Calculates interspike intervals");
@@ -94,6 +94,16 @@ void check_options(Options *options)
 				std::cout << "Spike times file \"" << output_file << "\" does not exist!\n";
 				exit(0);
 			};
+    }
+    else if ( mode == 2 )
+    {
+      std::cout << "Pretty curves mode.\n" << std::endl;
+			// curves mode needs .out
+      if ( getFileExtension(parameters) != ".json" )
+      {
+        std::cerr << "Input file must have extension .json!" << std::endl;
+        exit(0);
+      };
     }
     else
     {

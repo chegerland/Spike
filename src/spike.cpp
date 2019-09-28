@@ -9,10 +9,9 @@
 #include "inputoutput.h"
 #include "statistics.h"
 
-// files
+// auxiliary files needed for spike app
 #include "Spike/simulate.h"
 #include "Spike/ensemble_statistics.h"
-
 
 // main
 int main(int argc, char *argv[])
@@ -29,11 +28,10 @@ int main(int argc, char *argv[])
   Simulation *sim;
   sim = new Simulation(options->parameters);
 
-
   // depending on the mode do
   switch (options->mode)
   {
-    case 0:
+    case 0: // Simulation mode
     {
       // define neuron
       Neuron *neuron;
@@ -56,10 +54,9 @@ int main(int argc, char *argv[])
       std::chrono::duration<double> elapsed = finish - start;
       std::cout << "Elapsed time: " << elapsed.count() << " s\n";
 
-
       break;
     }
-    case 1:
+    case 1: // Evaluation mode
     {
       // push file containing all spike trains into simulation
       std::cout << "Loading spike trains ..." << std::endl;
@@ -77,6 +74,22 @@ int main(int argc, char *argv[])
         std::cout << "Calculating interspike intervals ..." << std::endl;
         ensemble_isi(sim);
       };
+
+      break;
+    }
+    case 2: // Curves mode
+    {
+      // define neuron
+      Neuron *neuron;
+      neuron = NeuronFactory::create(options->parameters);
+
+      // show input parameters to user
+      sim->print_parameters();
+      neuron->print_parameters();
+
+      // print voltage curve
+      neuron->voltage_curve(sim);
+
       break;
     }
     default:
