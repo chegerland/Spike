@@ -1,0 +1,17 @@
+{
+  "Simulation" :
+  {
+    "t_0" : 0,
+    "t_end" : 15,
+    "dt" : 1e-4,
+    "N" : 10000
+  },
+  "Neuron" :
+  {
+    "type" : "PIFadapt",
+    "mu" : 3.0,
+    "D" : 0.1,
+    "Delta": 3,
+    "tau_a": 2
+  }
+}

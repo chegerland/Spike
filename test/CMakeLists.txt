@@ -5,6 +5,7 @@ add_executable(test_${PROJECT_NAME}
   Models/IF/test_PIF.cpp
   Models/IF/test_LIF.cpp
   Models/IF/test_LIFsig.cpp
+  Models/IFadapt/test_PIFadapt.cpp
   InputOutput/test_options.cpp
   InputOutput/test_filetools.cpp
   Statistics/test_rate.cpp

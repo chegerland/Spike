@@ -7,6 +7,8 @@ add_library(models SHARED
   IF/PIF.cpp
   IF/LIF.cpp
   IF/LIFsig.cpp
+  IFadapt/IFadapt.cpp
+  IFadapt/PIFadapt.cpp
 )
 
 set_target_properties(models PROPERTIES PUBLIC_HEADER include/models.h)

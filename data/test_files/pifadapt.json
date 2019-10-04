@@ -1,0 +1,10 @@
+{
+  "Neuron" :
+  {
+    "type" : "PIFadapt",
+    "mu" : 3.0,
+    "D" : 2.0,
+    "Delta": 3,
+    "tau_a": 2
+  }
+}

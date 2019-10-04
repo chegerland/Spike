@@ -6,9 +6,12 @@
 - Tutorials
     - [Your first calculation](tutorial.md)
 
+- API
+    - [Neurons](neurons.md)
+    - [Command line API](commandlineapi.md)
+
 - Development
     - [Project structure](development.md)
-    - [Command line API](commandlineapi.md)
 
 
 - [API](api.md)

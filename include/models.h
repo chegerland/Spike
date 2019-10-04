@@ -8,5 +8,7 @@
 #include "../src/Models/IF/PIF.h"
 #include "../src/Models/IF/LIF.h"
 #include "../src/Models/IF/LIFsig.h"
+#include "../src/Models/IFadapt/IFadapt.h"
+#include "../src/Models/IFadapt/PIFadapt.h"
 
 #endif //MODELS_H
