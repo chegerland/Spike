@@ -28,8 +28,8 @@ void IFadapt::spike_times(std::vector<double> &spikes, Simulation *simulation) c
   {
     // update t, v and a
     t += simulation->dt;
-    v += this->drift(v, t) * simulation->dt - a + this->diffusion(v, t) * dist(generator);
-    a += 1.0/this->tau_a *( -a);
+    v += this->drift(v, t) * simulation->dt - a*simulation->dt + this->diffusion(v, t) * dist(generator);
+    a += 1.0/this->tau_a *( -a)*simulation->dt;
 
     // fire and reset rule
     if (v > 1) {
