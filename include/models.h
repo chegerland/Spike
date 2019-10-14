@@ -10,5 +10,6 @@
 #include "../src/Models/IF/LIFsig.h"
 #include "../src/Models/IFadapt/IFadapt.h"
 #include "../src/Models/IFadapt/PIFadapt.h"
+#include "../src/Models/IFadapt/LIFadapt.h"
 
 #endif //MODELS_H

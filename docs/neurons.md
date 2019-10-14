@@ -56,8 +56,8 @@ The input file for a LIFsig looks like
 Obeys the equation
 $$
 \begin{aligned}
-\dot{v} &= \mu - v + \sqrt{2 D} \xi(t), \\
-\tau_a \dot{a} &= - a + \Delta \sum_{i} \delta(t - t_i)
+\dot{v} &= \mu + \sqrt{2 D} \xi(t), \\
+\tau_a \dot{a} &= - a + \tilde{\Delta} \sum_{i} \delta(t - t_i)
 \end{aligned}
 $$
 where $\mu$ is the drift coefficient, $D$ is the diffusion coefficient and $\xi(t)$ is Gaussian white noise.
@@ -68,6 +68,29 @@ The input file for a PIFadapt looks like
   "Neuron" :
   {
     "type" : "PIFadapt",
+    "mu" : 3.0,
+    "D" : 0.1,
+    "Delta": 3,
+    "tau_a": 2
+  }
+```
+
+# Leaky integrate-and-fire neuron (LIFadapt) with adaption
+Obeys the equation
+$$
+\begin{aligned}
+\dot{v} &= \mu - v + \sqrt{2 D} \xi(t), \\
+\tau_a \dot{a} &= - a + \tilde{\Delta} \sum_{i} \delta(t - t_i)
+\end{aligned}
+$$
+where $\mu$ is the drift coefficient, $D$ is the diffusion coefficient and $\xi(t)$ is Gaussian white noise.
+The adaption variable has a time scale $\tau_a$ and a strength of $\Delta$.
+Every time the neuron spikes, the adaption variable make a jump $a \to a + \Delta$.
+The input file for a LIFadapt looks like
+```.json
+  "Neuron" :
+  {
+    "type" : "LIFadapt",
     "mu" : 3.0,
     "D" : 0.1,
     "Delta": 3,

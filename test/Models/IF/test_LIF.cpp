@@ -6,7 +6,7 @@
 TEST_CASE("LIF: Drift")
 {
   LIF *lif_neuron;
-  lif_neuron = new LIF(3.4, 1.0);
+  lif_neuron = new LIF("../data/test_files/lif.json");
 
   SECTION("Drift does not depend t, but depends on v")
   {
@@ -20,6 +20,7 @@ TEST_CASE("LIF: Drift")
 TEST_CASE("LIF: Diffusion")
 {
   LIF *lif_neuron;
+  lif_neuron = new LIF("../data/test_files/lif.json");
   lif_neuron = new LIF(3.4, 2.0);
 
   SECTION("Diffusion does not depend t, but depends on v")

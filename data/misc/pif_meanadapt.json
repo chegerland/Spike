@@ -2,16 +2,16 @@
   "Simulation" :
   {
     "t_0" : 0,
-    "t_end" : 80,
-    "dt" : 1e-4,
+    "t_end" : 100,
+    "dt" : 1e-3,
     "N" : 1000
   },
   "Neuron" :
   {
     "type" : "PIFadapt",
-    "mu" : 3.0,
+    "mu" : 40.0,
     "D" : 0.0,
-    "Delta": 3,
+    "Delta": 15,
     "tau_a": 2
   }
 }

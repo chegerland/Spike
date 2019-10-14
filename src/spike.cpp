@@ -4,6 +4,11 @@
 #include <vector>
 #include <chrono>
 
+// json parser
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+namespace pt = boost::property_tree;
+
 // spike libraries
 #include "models.h"
 #include "inputoutput.h"
@@ -79,16 +84,53 @@ int main(int argc, char *argv[])
     }
     case 2: // Curves mode
     {
-      // define neuron
-      Neuron *neuron;
-      neuron = NeuronFactory::create(options->parameters);
 
-      // show input parameters to user
-      sim->print_parameters();
-      neuron->print_parameters();
+      // read neutron type
+      pt::ptree root;
+      pt::read_json(options->parameters, root);
+      std::string type = root.get<std::string>("Neuron.type");
 
-      // print voltage curve
-      neuron->voltage_curve(sim);
+      // print limit cycle if it is an adapting neuron
+        if (type == "PIFadapt")
+      {
+        IFadapt *neuron;
+        neuron = new PIFadapt(options->parameters);
+
+        // show input parameters to user
+        sim->print_parameters();
+        neuron->print_parameters();
+
+        // print voltage curve
+        neuron->voltage_curve(sim);
+        neuron->limit_cycle(sim);
+      }
+      else if (type == "LIFadapt")
+      {
+        IFadapt *neuron;
+        neuron = new LIFadapt(options->parameters);
+
+        // show input parameters to user
+        sim->print_parameters();
+        neuron->print_parameters();
+
+        // print voltage curve
+        neuron->voltage_curve(sim);
+        neuron->limit_cycle(sim);
+      }
+      else
+      {
+        // define neuron
+        Neuron *neuron;
+        neuron = NeuronFactory::create(options->parameters);
+
+        // show input parameters to user
+        sim->print_parameters();
+        neuron->print_parameters();
+
+        // print voltage curve
+        neuron->voltage_curve(sim);
+      }
+
 
       break;
     }
