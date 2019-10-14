@@ -35,6 +35,13 @@ public:
   * Print parameters of the PIFadapt neuron
   */
   void print_parameters();
+
+  /*!
+  * Prints the limit cycle for the deterministic case into an output file specified by the simulation
+  * @param simulation simulation class containing information on the time frame etc.
+  */
+  void limit_cycle(Simulation *simulation);
+
 };
 
-#endif // PIF_H
+#endif // PIFadapt_H

@@ -72,6 +72,9 @@ void IFadapt::voltage_curve(Simulation *simulation) const
     if (v > 1) {
       v = 0;
       a += this->Delta;
+
+      // insert an additional point so that phase space curves look nicer
+      curve_file << t << " " << 1 << " " << a  << std::endl;
     };
 
     // push t and v to file
