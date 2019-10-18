@@ -26,6 +26,15 @@ int main(int argc, char *argv[])
   Simulation *simulation;
   simulation = new Simulation(options->parameters);
 
+  //show parameters
+  simulation->print_parameters();
+
+  // spike train
+  //std::vector<double> spikes = simulation->neuron->spike_train(simulation->time);
+  //for (int i = 0; i < spikes.size(); i++)
+  //{
+  //  std::cout << spikes[i] << std::endl;
+  //}
   simulation->simulate();
 
 };

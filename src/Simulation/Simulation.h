@@ -17,7 +17,7 @@ well as the number of times the neuron shall be simulated.
 */
 class Simulation
 {
-private:
+public:
 
   /* a time frame */
   Timeframe *time;

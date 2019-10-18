@@ -22,9 +22,7 @@ Simulation::Simulation(std::string input_file)
   pt::read_json(input_file, root);
 
   // Read time frame parameters
-  time->t_0 = root.get<double>("Simulation.t_0");
-  time->t_end = root.get<double>("Simulation.t_end");
-  time->dt = root.get<double>("Simulation.dt");
+  this->time = new Timeframe(input_file);
 
   // Read simulation count
   N = root.get<int>("Simulation.N");
@@ -55,14 +53,14 @@ void Simulation::simulate() const
   // progress bar
   ProgressBar progbar(this->N, 70);
 
-  //#pragma omp parallel for
+  #pragma omp parallel for
   // run the simulation
   for (int i = 0; i < this->N; i++)
   {
     std::vector<double> spikes; // vector to store spike times in
     spikes = neuron->spike_train(time); // get spike times
 
-    //#pragma omp critical
+    #pragma omp critical
     // print spike times to files
     for (int i = 0; i < spikes.size(); i++)
     {
@@ -74,7 +72,7 @@ void Simulation::simulate() const
     file << "\n";
 
     // Progress
-    //#pragma omp critical
+    #pragma omp critical
     {
       ++progbar;
       progbar.display();
@@ -98,4 +96,6 @@ void Simulation::print_parameters()
   << "dt = "     << time->dt << "\n"
   << "N = "      << N << "\n"
   << std::endl;
+
+  neuron->print_parameters();
 };
