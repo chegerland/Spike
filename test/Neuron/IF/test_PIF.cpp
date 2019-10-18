@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include <math.h>
 
-#include "models.h"
+#include "Spike.h"
 
 TEST_CASE("PIF: Drift")
 {
@@ -36,14 +36,13 @@ TEST_CASE("PIF: Analytic limits")
     pif_neuron = new PIF(2.0, 0.0);
 
     // define simulation
-    Simulation *sim;
-    sim = new Simulation(0.0, 10.0, 1e-4);
+    Timeframe *time;
+    time = new Timeframe(0.0, 10.0, 1e-4);
 
-    std::vector<double> spikes;
-    pif_neuron->spike_times(spikes, sim);
+    std::vector<double> spikes = pif_neuron->spike_train(time);
 
     double rate = pif_neuron->rate_analytic();
-    int spike_count = (int) (rate*(sim->t_end - sim->t_0));
+    int spike_count = (int) (rate*(time->t_end - time->t_0));
 
     // add +1 to spike size, because we missed a spike at t = t_0!
     REQUIRE( spikes.size()+1 == spike_count );

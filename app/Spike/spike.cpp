@@ -10,7 +10,6 @@
 namespace pt = boost::property_tree;
 
 // spike libraries
-#include "Neuron/IF/LIF.h"
 #include "Spike.h"
 
 // main

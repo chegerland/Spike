@@ -25,10 +25,14 @@ include_directories(
   ${Boost_INCLUDE_DIR}
 )
 
+# catch2
+add_library(catch2 INTERFACE)
+target_include_directories(catch2 INTERFACE ${PROJECT_SOURCE_DIR}/include)
+
 # enable testing
 enable_testing()
 
 # directories
-add_subdirectory("lib")
 add_subdirectory("src")
-#add_subdirectory("test")
+add_subdirectory("app")
+add_subdirectory("test")
