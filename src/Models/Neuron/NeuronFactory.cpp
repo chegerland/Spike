@@ -5,11 +5,11 @@
 #include <boost/property_tree/json_parser.hpp>
 namespace pt = boost::property_tree;
 
-#include "IF/PIF.h"
-#include "IF/LIF.h"
-#include "IF/LIFsig.h"
-#include "IFadapt/PIFadapt.h"
-#include "IFadapt/LIFadapt.h"
+#include "../IF/PIF.h"
+#include "../IF/LIF.h"
+#include "../IF/LIFsig.h"
+#include "../IFadapt/PIFadapt.h"
+#include "../IFadapt/LIFadapt.h"
 
 #include "NeuronFactory.h"
 

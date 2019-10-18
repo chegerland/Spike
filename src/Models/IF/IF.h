@@ -4,7 +4,7 @@
 #include <math.h>
 #include <vector>
 
-#include "../Neuron.h"
+#include "../Neuron/Neuron.h"
 
 //! A generic integrate and fire model.
 /*!
@@ -46,6 +46,13 @@ public:
   * @param simulation simulation class containing information on the time frame etc.
   */
   void spike_times(std::vector<double> &spikes, Simulation *simulation) const;
+
+  /*!
+  * Returns the times at which the IF neuron has spiked and puts them into a vector.
+  * @param spikes Vector to put the spike times into
+  * @param simulation simulation class containing information on the time frame etc.
+  */
+  void spike_times(std::vector<double> &spikes, Simulation *simulation, Signal *signal) const;
 
   /*!
   * Prints the voltage curve, i.e. the function v(t) into an output file specified by the simulation
