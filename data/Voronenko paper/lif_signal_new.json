@@ -1,0 +1,26 @@
+{
+    "Simulation" :
+    {
+        "t_0" : 0,
+        "t_end" : 80,
+        "dt" : 1e-3,
+        "N" : 10000
+    },
+    "Neuron" :
+    {
+        "type" : "LIF",
+        "mu" : 1.1,
+        "D" : 0.001
+    },
+    "signal" : true,
+    "Signal" :
+    {
+        "type": "TwoCosine",
+        "eps" : 0.05,
+        "alpha" : 1.0,
+        "beta" : 0.0,
+        "phi" : 0.0,
+        "f1" : 0.215,
+        "f2" : 0.0
+    }
+}

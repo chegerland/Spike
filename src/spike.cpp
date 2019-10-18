@@ -42,22 +42,32 @@ int main(int argc, char *argv[])
       Neuron *neuron;
       neuron = NeuronFactory::create(options->parameters);
 
-      // show input parameters to user
-      sim->print_parameters();
-      neuron->print_parameters();
+      if ( signal_given(options->parameters) )
+      {
+        std::cout << "Simulation with signal" << std::endl;
+        
+        // define signal
+        Signal *signal;
+        signal = SignalFactory::create(options->parameters);
 
-      // measure time
-      auto start = std::chrono::high_resolution_clock::now();
+        // show input parameters to user
+        signal->print_parameters();
+        sim->print_parameters();
+        neuron->print_parameters();
 
-      // simulate the neuron
-      simulation(neuron, sim);
+        // simulate the neuron
+        simulation(neuron, sim, signal);
+      }
+      else
+      {
+        // show input parameters to user
+        sim->print_parameters();
+        neuron->print_parameters();
 
-      // Record end time
-      auto finish = std::chrono::high_resolution_clock::now();
+        // simulate the neuron
+        simulation(neuron, sim);
+      };
 
-      // print time
-      std::chrono::duration<double> elapsed = finish - start;
-      std::cout << "Elapsed time: " << elapsed.count() << " s\n";
 
       break;
     }

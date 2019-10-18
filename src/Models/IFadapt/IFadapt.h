@@ -4,7 +4,7 @@
 #include <math.h>
 #include <vector>
 
-#include "../Neuron.h"
+#include "../Neuron/Neuron.h"
 
 /*!
 * Implements a generic integrate and fire neuron with adaption.

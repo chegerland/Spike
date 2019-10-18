@@ -57,6 +57,50 @@ void simulation(Neuron *neuron, Simulation *sim)
     progbar.done();
 };
 
+// simulate the neuron
+void simulation(Neuron *neuron, Simulation *sim, Signal *signal)
+{
+
+    // open filestream
+    std::ofstream file;
+    file.open(sim->spike_times_file);
+
+    // progress bar
+    ProgressBar progbar(sim->N, 70);
+
+    #pragma omp parallel for
+    // run the simulation
+    for (int i = 0; i < sim->N; i++)
+    {
+      std::vector<double> spikes; // vector to store spike times in
+      neuron->spike_times(spikes, sim, signal); // get spike times
+
+      #pragma omp critical
+      // print spike times to files
+      for (int i = 0; i < spikes.size(); i++)
+      {
+        file << spikes[i] << " ";
+      };
+
+      // clear spike times vector and start a new line in the file
+      spikes.clear();
+      file << "\n";
+
+      // Progress
+      #pragma omp critical
+      {
+      ++progbar;
+      progbar.display();
+      }
+    };
+
+    // close file
+    file.close();
+
+    // close progress bar
+    progbar.done();
+};
+
 // hard coded test simulation
 void test_simulation()
 {

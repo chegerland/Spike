@@ -38,6 +38,33 @@ void IF::spike_times(std::vector<double> &spikes, Simulation *simulation) const
   };
 };
 
+// get spike times of an IF neuron
+void IF::spike_times(std::vector<double> &spikes, Simulation *simulation, Signal *signal) const
+{
+  // initial values
+  double v = 0;
+  double t = simulation->t_0;
+
+  // random numbers
+  std::random_device rd{};
+  std::mt19937 generator{rd()};
+  std::normal_distribution<double> dist(0.0, sqrt(simulation->dt));
+
+  // euler maruyama scheme
+  while (t < simulation->t_end)
+  {
+    // update time and voltage
+    t += simulation->dt;
+    v += this->drift(v, t) * simulation->dt + signal->signal(t) * simulation->dt + this->diffusion(v, t) * dist(generator);
+
+    // fire and reset rule
+    if (v > 1) {
+      v = 0;
+      spikes.push_back(t);
+    };
+  };
+};
+
 // print voltage curve
 void IF::voltage_curve(Simulation *simulation) const
 {

@@ -8,6 +8,7 @@
 
 - API
     - [Neurons](neurons.md)
+    - [Signals](signals.md)
     - [Command line API](commandlineapi.md)
 
 - Development

@@ -3,7 +3,8 @@
 
 #include <vector>
 
-#include "Simulation.h"
+#include "../Simulation/Simulation.h"
+#include "../Signal/Signal.h"
 
 
 //! A generic neuron model.
@@ -21,6 +22,14 @@ public:
   * @param simulation simulation object containing t_0, t_end and so on
   */
   virtual void spike_times(std::vector<double> &spikes, Simulation *simulation) const =0;
+
+  /*!
+  * Simulates a neuron with signal and puts the spike times into the vector spikes.
+  * Per default it calls the routine without a signal.
+  * @param spikes vector filled with the spike times
+  * @param simulation simulation object containing t_0, t_end and so on
+  */
+  virtual void spike_times(std::vector<double> &spikes, Simulation *simulation, Signal *signal) const;
 
   /*!
   * Prints all the parameters of the neuron.
