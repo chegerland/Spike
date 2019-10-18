@@ -10,6 +10,7 @@
 namespace pt = boost::property_tree;
 
 // spike libraries
+#include "Neuron/IF/LIF.h"
 #include "Spike.h"
 
 // main
@@ -17,24 +18,34 @@ int main(int argc, char *argv[])
 {
   // read command line options
   Options *options;
-  options = new Options();
-  get_options(argc, argv, options);
+  options = new Options(argc, argv);
 
-  // check the command line options
-  check_options(options);
-
+  /* Run a simulation
+  // define simulation
   Simulation *simulation;
-  simulation = new Simulation(options->parameters);
+  simulation = new Simulation(options->file);
 
   //show parameters
   simulation->print_parameters();
 
-  // spike train
-  //std::vector<double> spikes = simulation->neuron->spike_train(simulation->time);
-  //for (int i = 0; i < spikes.size(); i++)
-  //{
-  //  std::cout << spikes[i] << std::endl;
-  //}
-  simulation->simulate();
+  // run the simulation
+  simulation->run();
+  */
+
+  /* print a voltage curve */
+  LIF *lif;
+  lif = new LIF(options->file);
+
+  Timeframe *time;
+  time = new Timeframe(0.0, 10.0, 1e-3);
+
+  std::vector<double> voltages = lif->voltage_curve(time);
+
+  for (int i = 0; i < voltages.size(); i++)
+  {
+      std::cout << voltages[i] << std::endl;
+  };
+
+
 
 };

@@ -7,7 +7,7 @@
 class Timeframe
 {
 public:
-  
+
   /*! start time */
   double t_0;
   /*! end time */
@@ -15,7 +15,10 @@ public:
   /*! time step */
   double dt;
 
+  Timeframe(double a, double b, double c);
   Timeframe(std::string input_file);
+
+  void print_parameters();
 };
 
 #endif // TIMEFRAME_H

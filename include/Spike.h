@@ -3,8 +3,8 @@
 
 #include "../src/Simulation/Simulation.h"
 #include "../src/Simulation/Timeframe.h"
-#include "../src/InputOutput/options.h"
-#include "../src/InputOutput/filetools.h"
+#include "../src/Options/options.h"
+#include "../src/Options/filetools.h"
 
 
 #endif // SPIKE_H

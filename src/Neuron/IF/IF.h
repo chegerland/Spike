@@ -58,7 +58,7 @@ public:
   * Prints the voltage curve, i.e. the function v(t) into an output file specified by the simulation
   * @param simulation simulation class containing information on the time frame etc.
   */
-  //void voltage_curve(Simulation *simulation) const;
+  std::vector<double> voltage_curve(Timeframe *time) const;
 
 };
 

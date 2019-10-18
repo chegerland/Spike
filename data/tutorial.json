@@ -11,5 +11,6 @@
     "type" : "LIF",
     "mu" : 1.0,
     "D" : 0.02
-  }
+  },
+  "signal" : false
 }

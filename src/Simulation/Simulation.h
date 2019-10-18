@@ -31,6 +31,9 @@ public:
   /* the signal applied to the neuron */
   Signal *signal;
 
+  /* flag that shows whether signal was given */
+  bool signal_given;
+
   /*! input file containing parameters */
   std::string parameters;
 
@@ -44,6 +47,8 @@ public:
 
 
   void simulate() const;
+  void simulate_signal() const;
+  void run() const;
 
   /*!
   * Print parameters to standard output

@@ -15,19 +15,13 @@ public:
   * Returns the signal at time t, per default the signal is zero at all times.
   * @param t time at which the signal shall be evaluated
   */
-  virtual double signal(double t);
+  virtual double signal(double t) =0;
 
   /*!
   * Prints signal parameters
   */
   virtual void print_parameters() =0;
 };
-
-/*!
-* Checks if signal is given
-* @param input_file .json file
-*/
-bool signal_given(std::string input_file);
 
 
 #endif // SIGNAL_H

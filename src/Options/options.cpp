@@ -7,17 +7,17 @@
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
-// get options from command line
-void get_options(int argc, char * argv[], Options *options)
+Options::Options(int argc, char * argv[])
 {
+  /* Read command line options */
   try
   {
 		// List all options and their description
     po::options_description desc("Allowed options");
     desc.add_options()
     ("help,h", "Help screen")
-    ("mode", po::value<int>(&(options->mode)), "Mode \n 0 = Simulation, 1 = Evaluation, 2 = Curves")
-    ("file", po::value<std::string>(&(options->parameters)), "Input File");
+    ("mode", po::value<int>(&(this->mode)), "Mode \n 0 = Simulation, 1 = Evaluation, 2 = Curves")
+    ("file", po::value<std::string>(&(this->file)), "Input File");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -35,27 +35,28 @@ void get_options(int argc, char * argv[], Options *options)
   {
     std::cerr << "error: " << e.what() << std::endl;
   }
+
+  /* check the given options */
+  this->check();
+
 };
 
-// check the command line options
-void check_options(Options *options)
-{
-		// get command line options from struct
-		int mode = options->mode;
-		std::string parameters = options->parameters;
 
+// check the command line options
+void Options::check()
+{
 		// check if file extension is right
     if ( mode == 0 )
     {
 			// input file should be .json
-      if ( getFileExtension(parameters) != ".json" )
+      if ( getFileExtension(file) != ".json" )
       {
         std::cerr << "Input file must have extension .json!" << std::endl;
         exit(0);
       }
 
 			// check if output file already exists
-			std::string output_file = parameters.substr(0,parameters.find_last_of('.'))+".out";
+			std::string output_file = file.substr(0,file.find_last_of('.'))+".out";
 			if ( exists(output_file) )
 			{
 				char input;
@@ -74,14 +75,14 @@ void check_options(Options *options)
     {
       std::cout << "Evaluation mode.\n" << std::endl;
 			// Evaluation mode needs .out
-      if ( getFileExtension(parameters) != ".json" )
+      if ( getFileExtension(file) != ".json" )
       {
         std::cerr << "Input file must have extension .json!" << std::endl;
         exit(0);
       };
 
 			// check if output file exists
-			std::string output_file = parameters.substr(0,parameters.find_last_of('.'))+".out";
+			std::string output_file = file.substr(0,file.find_last_of('.'))+".out";
 			if ( !exists(output_file) )
 			{
 				std::cout << "Spike times file \"" << output_file << "\" does not exist!\n";
@@ -92,7 +93,7 @@ void check_options(Options *options)
     {
       std::cout << "Pretty curves mode.\n" << std::endl;
 			// curves mode needs .out
-      if ( getFileExtension(parameters) != ".json" )
+      if ( getFileExtension(file) != ".json" )
       {
         std::cerr << "Input file must have extension .json!" << std::endl;
         exit(0);

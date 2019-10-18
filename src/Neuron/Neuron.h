@@ -28,7 +28,7 @@ public:
   * @param spikes vector filled with the spike times
   * @param simulation simulation object containing t_0, t_end and so on
   */
-  virtual std::vector<double> spike_train(Timeframe *times, Signal *signal) const;
+  virtual std::vector<double> spike_train(Timeframe *times, Signal *signal) const =0;
 
   /*!
   * Prints all the parameters of the neuron.

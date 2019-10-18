@@ -1,9 +1,22 @@
+#include <iostream>
+#include <cassert>
+
 // json parser
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 namespace pt = boost::property_tree;
 
 #include "Timeframe.h"
+
+Timeframe::Timeframe(double a, double b, double c)
+{
+  assert(b > a);
+  assert(c < (b - a));
+
+    t_0 = a;
+    t_end = b;
+    dt = c;
+};
 
 Timeframe::Timeframe(std::string input_file)
 {
@@ -17,4 +30,13 @@ Timeframe::Timeframe(std::string input_file)
   t_0 = root.get<double>("Simulation.t_0");
   t_end = root.get<double>("Simulation.t_end");
   dt = root.get<double>("Simulation.dt");
+};
+
+void Timeframe::print_parameters()
+{
+    std::cout << "Time frame: \n"
+    << "t_0 = " << t_0 << "\n"
+    << "t_end = " << t_end << "\n"
+    << "dt = " << dt << "\n"
+    << std::endl;
 };
