@@ -7,19 +7,14 @@
 /*!
 * Defines a struct to store the command line options.
 */
-struct Options {
+struct Options
+{
   /*! Mode (0 = Simulation, 1 = Evaluation, others = unknown) */
   int mode;
 
   /*! path to input file containing parameters */
   std::string parameters;
 
-  /*! firing rate flag and time bin */
-  bool rate = false;
-  double dt;
-
-  /*! isi flag */
-  bool isi = false;
 };
 
 /*!

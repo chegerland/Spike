@@ -17,9 +17,7 @@ void get_options(int argc, char * argv[], Options *options)
     desc.add_options()
     ("help,h", "Help screen")
     ("mode", po::value<int>(&(options->mode)), "Mode \n 0 = Simulation, 1 = Evaluation, 2 = Curves")
-    ("file", po::value<std::string>(&(options->parameters)), "Input File")
-    ("rate", po::value<double>(&(options->dt)), "Calculates firing rate")
-    ("isi", po::bool_switch(&(options->isi)), "Calculates interspike intervals");
+    ("file", po::value<std::string>(&(options->parameters)), "Input File");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -32,11 +30,6 @@ void get_options(int argc, char * argv[], Options *options)
       exit(0);
     };
 
-    // set rate to true if dt is given
-    if (vm.count("rate"))
-    {
-      options->rate = true;
-    };
   }
   catch(std::exception& e)
   {

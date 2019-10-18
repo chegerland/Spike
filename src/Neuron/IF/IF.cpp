@@ -12,23 +12,26 @@ double IF::diffusion(double v, double t) const
 };
 
 // get spike times of an IF neuron
-void IF::spike_times(std::vector<double> &spikes, Simulation *simulation) const
+std::vector<double> IF::spike_train(Timeframe *times) const
 {
   // initial values
   double v = 0;
-  double t = simulation->t_0;
+  double t = times->t_0;
+
+  // declare spike_train
+  std::vector<double> spikes;
 
   // random numbers
   std::random_device rd{};
   std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(simulation->dt));
+  std::normal_distribution<double> dist(0.0, sqrt(times->dt));
 
   // euler maruyama scheme
-  while (t < simulation->t_end)
+  while (t < times->t_end)
   {
     // update time and voltage
-    t += simulation->dt;
-    v += this->drift(v, t) * simulation->dt + this->diffusion(v, t) * dist(generator);
+    t += times->dt;
+    v += this->drift(v, t) * times->dt + this->diffusion(v, t) * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -36,26 +39,31 @@ void IF::spike_times(std::vector<double> &spikes, Simulation *simulation) const
       spikes.push_back(t);
     };
   };
+
+  return spikes;
 };
 
 // get spike times of an IF neuron
-void IF::spike_times(std::vector<double> &spikes, Simulation *simulation, Signal *signal) const
+std::vector<double> IF::spike_train(Timeframe *times, Signal *signal) const
 {
   // initial values
   double v = 0;
-  double t = simulation->t_0;
+  double t = times->t_0;
+
+  // declare spike_train
+  std::vector<double> spikes;
 
   // random numbers
   std::random_device rd{};
   std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(simulation->dt));
+  std::normal_distribution<double> dist(0.0, sqrt(times->dt));
 
   // euler maruyama scheme
-  while (t < simulation->t_end)
+  while (t < times->t_end)
   {
     // update time and voltage
-    t += simulation->dt;
-    v += this->drift(v, t) * simulation->dt + signal->signal(t) * simulation->dt + this->diffusion(v, t) * dist(generator);
+    t += times->dt;
+    v += this->drift(v, t) * times->dt + signal->signal(t) * times->dt + this->diffusion(v, t) * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -63,9 +71,12 @@ void IF::spike_times(std::vector<double> &spikes, Simulation *simulation, Signal
       spikes.push_back(t);
     };
   };
+
+  return spikes;
 };
 
 // print voltage curve
+/*
 void IF::voltage_curve(Simulation *simulation) const
 {
   // declare output file
@@ -102,3 +113,4 @@ void IF::voltage_curve(Simulation *simulation) const
   // close file
   curve_file.close();
 };
+*/

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../Simulation/Simulation.h"
+#include "../Simulation/Timeframe.h"
 #include "../Signal/Signal.h"
 
 
@@ -15,13 +15,12 @@
 class Neuron
 {
 public:
-
   /*!
   * Simulates the neuron and puts the spike times into the vector spikes
   * @param spikes vector filled with the spike times
   * @param simulation simulation object containing t_0, t_end and so on
   */
-  virtual void spike_times(std::vector<double> &spikes, Simulation *simulation) const =0;
+  virtual std::vector<double> spike_train(Timeframe *times) const =0;
 
   /*!
   * Simulates a neuron with signal and puts the spike times into the vector spikes.
@@ -29,7 +28,7 @@ public:
   * @param spikes vector filled with the spike times
   * @param simulation simulation object containing t_0, t_end and so on
   */
-  virtual void spike_times(std::vector<double> &spikes, Simulation *simulation, Signal *signal) const;
+  virtual std::vector<double> spike_train(Timeframe *times, Signal *signal) const;
 
   /*!
   * Prints all the parameters of the neuron.
@@ -37,11 +36,6 @@ public:
   */
   virtual void print_parameters() =0;
 
-  /*!
-  * Prints the voltage curve, i.e. the function v(t) into an output file specified by the simulation
-  * @param simulation simulation class containing information on the time frame etc.
-  */
-  virtual void voltage_curve(Simulation *simulation) const =0;
 };
 
 #endif // ifndef
