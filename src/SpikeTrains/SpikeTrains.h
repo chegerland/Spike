@@ -1,24 +1,43 @@
 #ifndef SPIKETRAINS_H
 #define SPIKETRAINS_H
 
+#include <string>
+#include <vector>
+
+#include "../Simulation/Timeframe.h"
+
+
 //! A class defining spike trains
 class SpikeTrains
 {
 private:
 
   /* the time frame */
-  TimeFrame time;
+  Timeframe *time;
 
   /* the actual spike trains */
-  std::vector< std::vector<double> >;
+  std::vector< std::vector<double> > trains;
 
 public:
 
-  void get_from_simulation(Simulation *sim);
-  void get_from_file(std::string input_file);
+  /* file containing the spike trains*/
+  std::string trains_file;
 
+  SpikeTrains(Timeframe *time, std::vector< std::vector<double> > input);
+  SpikeTrains(std::string input_file);
+
+  /* functions for single spike train */
+  std::vector<double> isi_single(std::vector<double> train);
+  double rate_single(double t, std::vector<double> train, double dt);
+
+  /* functions for ensemble */
   std::vector<double> interspike_intervals();
-  std::vector<double> firing_rate();
+  std::vector<double> firing_rate(double dt);
+
+  std::vector<double> susceptibility(double dt);
+
+  /* print function */
+  void print_spike_trains();
 };
 
 #endif // SPIKETRAINS_H
