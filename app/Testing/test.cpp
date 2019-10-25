@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
   file.close();
   */
 
-  /*
+
   // read command line options
   Options *options;
   options = new Options(argc, argv);
@@ -59,18 +59,24 @@ int main(int argc, char *argv[])
   SpikeTrains *trains;
   trains = new SpikeTrains(options->file);
 
+  // calculate rate
+  Timeframe *time;
+  time = new Timeframe(0, 40, 1e-2);
+  std::vector<double> rate = trains->firing_rate(time, 1e-3);
+
+  // push rate to file
   std::ofstream file;
   std::string name = trains->trains_file.substr(0, trains->trains_file.find_last_of('.'))+".rate";
   file.open(name);
-
-  std::vector<double> rate = trains->firing_rate(0.9);
   for (int i = 0; i < rate.size(); i++)
   {
     file << rate[i] << std::endl;
   };
 
   file.close();
-  */
+
+
+/*
   // read command line options
   Options *options;
   options = new Options(argc, argv);
@@ -82,14 +88,14 @@ int main(int argc, char *argv[])
   std::string name = trains->trains_file.substr(0, trains->trains_file.find_last_of('.'))+".susc";
   file.open(name);
 
-  std::vector<double> sus = trains->susceptibility(0.9);
+  std::vector<std::complex<double>> sus = trains->susceptibility(0.9);
   for (int i = 0; i < sus.size(); i++)
   {
-    file << sus[i] << std::endl;
+    file << real(sus[i]) << " " << imag(sus[i]) << std::endl;
   };
 
   file.close();
-
+*/
 
 
 

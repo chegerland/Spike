@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
   Options *options;
   options = new Options(argc, argv);
 
-  /* Run a simulation
   // define simulation
   Simulation *simulation;
   simulation = new Simulation(options->file);
@@ -29,9 +28,9 @@ int main(int argc, char *argv[])
 
   // run the simulation
   simulation->run();
-  */
 
-  /* print a voltage curve */
+  /*
+  // print a voltage curve
   LIF *lif;
   lif = new LIF(options->file);
 
@@ -44,7 +43,7 @@ int main(int argc, char *argv[])
   {
       std::cout << voltages[i] << std::endl;
   };
-
+  */
 
 
 };

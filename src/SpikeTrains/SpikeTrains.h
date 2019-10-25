@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <complex>
 
 #include "../Simulation/Timeframe.h"
 
@@ -28,13 +29,13 @@ public:
 
   /* functions for single spike train */
   std::vector<double> isi_single(std::vector<double> train);
-  double rate_single(double t, std::vector<double> train, double dt);
+  double rate_single(double t, std::vector<double> train, double bin);
 
   /* functions for ensemble */
   std::vector<double> interspike_intervals();
-  std::vector<double> firing_rate(double dt);
+  std::vector<double> firing_rate(Timeframe *time, double bin);
 
-  std::vector<double> susceptibility(double dt);
+  std::vector<std::complex<double> > susceptibility(double dt);
 
   /* print function */
   void print_spike_trains();

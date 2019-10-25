@@ -42,7 +42,7 @@ Options::Options(int argc, char * argv[])
   }
 
   /* check the given options */
-  this->check();
+  //this->check();
 
 };
 

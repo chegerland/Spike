@@ -32,20 +32,20 @@ std::vector<double> SpikeTrains::isi_single(std::vector<double> train)
 };
 
 
-double SpikeTrains::rate_single(double t, std::vector<double> train, double dt)
+double SpikeTrains::rate_single(double t, std::vector<double> train, double bin)
 {
   // loop over the spike times
   double rate = 0;
   for (int i = 0; i < train.size(); i++)
   {
     // window function
-    if (-dt / 2 <= (t - train[i]) && (t - train[i]) < dt / 2)
+    if (-bin / 2 <= (t - train[i]) && (t - train[i]) < bin / 2)
     {
-      rate += 1 / dt;
+      rate += 1.0 / bin;
     }
     else
     {
-      rate += 0;
+      rate += 0.0;
     };
   };
 
@@ -72,35 +72,35 @@ std::vector<double> SpikeTrains::interspike_intervals()
     return isi_ensemble;
 };
 
-std::vector<double> SpikeTrains::firing_rate(double dt)
+std::vector<double> SpikeTrains::firing_rate(Timeframe *times, double bin)
 {
     std::vector<double> rate_ensemble;
 
-    double t = this->time->t_0;
+    double t = times->t_0;
 
-    while (t < this->time->t_end)
+    while (t < times->t_end)
     {
       // calculate ensemle rate at time t
       double rate_trains = 0;
       for (int i = 0; i < trains.size(); i++)
       {
-        rate_trains += 1.0/trains.size() * rate_single(t, trains[i], dt);
+        rate_trains += 1.0/trains.size() * rate_single(t, trains[i], bin);
       };
 
       rate_ensemble.push_back(rate_trains);
 
       // new time step
-      t += this->time->dt;
+      t += times->dt;
     };
 
     return rate_ensemble;
 };
 
 
-std::vector<double> SpikeTrains::susceptibility(double dt)
+std::vector<std::complex<double> > SpikeTrains::susceptibility(double dt)
 {
   // get firing rate
-  std::vector<double> rate = this->firing_rate(dt);
+  std::vector<double> rate = this->firing_rate(this->time, dt);
   int N = rate.size();
 
   // define arrays needed for fftw
@@ -116,10 +116,11 @@ std::vector<double> SpikeTrains::susceptibility(double dt)
   fftw_plan plan = fftw_plan_dft_r2c_1d(N, in, out, FFTW_ESTIMATE);
   fftw_execute(plan);
 
-  std::vector<double> sus;
+  std::vector<std::complex<double> > sus;
   for (int i = 0; i < N; i++)
   {
-    sus.push_back( pow(out[i][0], 2) + pow(out[i][1], 2));
+    std::complex<double> temp(out[i][0], out[i][1]);
+    sus.push_back(temp);
   };
 
   fftw_destroy_plan(plan);
