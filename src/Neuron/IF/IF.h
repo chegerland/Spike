@@ -45,14 +45,14 @@ public:
   * @param spikes Vector to put the spike times into
   * @param simulation simulation class containing information on the time frame etc.
   */
-  std::vector<double> spike_train(Timeframe *times) const;
+  void spike(std::vector<double> &spike_train, Timeframe *times) const;
 
   /*!
   * Returns the times at which the IF neuron has spiked and puts them into a vector.
   * @param spikes Vector to put the spike times into
   * @param simulation simulation class containing information on the time frame etc.
   */
-  std::vector<double> spike_train(Timeframe *times, Signal *signal) const;
+  void spike(std::vector<double> &spike_train, Timeframe *times, Signal *signal) const;
 
   /*!
   * Prints the voltage curve, i.e. the function v(t) into an output file specified by the simulation

@@ -60,7 +60,7 @@ void Simulation::simulate_signal() const
   for (int i = 0; i < this->N; i++)
   {
     std::vector<double> spikes; // vector to store spike times in
-    spikes = neuron->spike_train(time, signal); // get spike times
+    neuron->spike(spikes, time, signal); // get spike times
 
     #pragma omp critical
     // print spike times to files
@@ -103,7 +103,7 @@ void Simulation::simulate() const
   for (int i = 0; i < this->N; i++)
   {
     std::vector<double> spikes; // vector to store spike times in
-    spikes = neuron->spike_train(time); // get spike times
+    neuron->spike(spikes, time); // get spike times
 
     #pragma omp critical
     // print spike times to files

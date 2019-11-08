@@ -12,14 +12,14 @@ double IF::diffusion(double v, double t) const
 };
 
 // get spike times of an IF neuron
-std::vector<double> IF::spike_train(Timeframe *times) const
+void IF::spike(std::vector<double> &spike_train, Timeframe *times) const
 {
   // initial values
   double v = 0;
   double t = times->t_0;
 
-  // declare spike_train
-  std::vector<double> spikes;
+  // clear spike_train
+  spike_train.clear();
 
   // random numbers
   std::random_device rd{};
@@ -36,22 +36,21 @@ std::vector<double> IF::spike_train(Timeframe *times) const
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      spikes.push_back(t);
+      spike_train.push_back(t);
     };
   };
 
-  return spikes;
 };
 
 // get spike times of an IF neuron
-std::vector<double> IF::spike_train(Timeframe *times, Signal *signal) const
+void IF::spike(std::vector<double> &spike_train, Timeframe *times, Signal *signal) const
 {
   // initial values
   double v = 0;
   double t = times->t_0;
 
-  // declare spike_train
-  std::vector<double> spikes;
+  // clear spike_train
+  spike_train.clear();
 
   // random numbers
   std::random_device rd{};
@@ -68,11 +67,9 @@ std::vector<double> IF::spike_train(Timeframe *times, Signal *signal) const
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      spikes.push_back(t);
+      spike_train.push_back(t);
     };
   };
-
-  return spikes;
 };
 
 // print voltage curve

@@ -39,7 +39,8 @@ TEST_CASE("PIF: Analytic limits")
     Timeframe *time;
     time = new Timeframe(0.0, 10.0, 1e-4);
 
-    std::vector<double> spikes = pif_neuron->spike_train(time);
+    std::vector<double> spikes;
+    pif_neuron->spike(spikes, time);
 
     double rate = pif_neuron->rate_analytic();
     int spike_count = (int) (rate*(time->t_end - time->t_0));
