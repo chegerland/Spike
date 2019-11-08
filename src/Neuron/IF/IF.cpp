@@ -73,8 +73,7 @@ void IF::spike(std::vector<double> &spike_train, Timeframe *times, Signal *signa
 };
 
 // print voltage curve
-
-std::vector<double> IF::voltage_curve(Timeframe *times) const
+void IF::voltage_curve(std::vector<double> &curve, Timeframe *times) const
 {
 
   // initial conditions
@@ -82,8 +81,8 @@ std::vector<double> IF::voltage_curve(Timeframe *times) const
   double t = times->t_0;
 
   // vector for voltage values
-  std::vector<double> voltage;
-  voltage.push_back(v);
+  curve.clear();
+  curve.push_back(v);
 
   // random numbers
   std::random_device rd{};
@@ -103,9 +102,42 @@ std::vector<double> IF::voltage_curve(Timeframe *times) const
     };
 
     // push voltage to vector
-    voltage.push_back(v);
+    curve.push_back(v);
 
   };
+};
 
-  return voltage;
+// print voltage curve
+void IF::voltage_curve(std::vector<double> &curve, Timeframe *times, Signal *signal) const
+{
+
+  // initial conditions
+  double v = 0;
+  double t = times->t_0;
+
+  // vector for voltage values
+  curve.clear();
+  curve.push_back(v);
+
+  // random numbers
+  std::random_device rd{};
+  std::mt19937 generator{rd()};
+  std::normal_distribution<double> dist(0.0, sqrt(times->dt));
+
+  // run simulation (euler maruyama scheme)
+  while (t < times->t_end)
+  {
+    // update t and v
+    t += times->dt;
+    v += this->drift(v, t) * times->dt + signal->signal(t) * times->dt + this->diffusion(v, t) * dist(generator);
+
+    // fire and reset rule
+    if (v > 1) {
+      v = 0;
+    };
+
+    // push voltage to vector
+    curve.push_back(v);
+
+  };
 };

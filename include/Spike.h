@@ -6,6 +6,9 @@
 #include "../src/Neuron/IF/IF.h"
 #include "../src/Neuron/IF/PIF.h"
 #include "../src/Neuron/IF/LIF.h"
+#include "../src/Neuron/IFadapt/IFadapt.h"
+#include "../src/Neuron/IFadapt/PIFadapt.h"
+#include "../src/Neuron/IFadapt/LIFadapt.h"
 
 #include "../src/Options/Options.h"
 
