@@ -43,7 +43,7 @@ public:
   /*!
   * Print parameters of the PIF neuron
   */
-  void print_parameters();
+  void print_parameters() const;
 };
 
 #endif //LIF_H

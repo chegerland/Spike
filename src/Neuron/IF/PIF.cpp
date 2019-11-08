@@ -41,7 +41,7 @@ double PIF::rate_analytic() const
 };
 
 // print neuron parameters
-void PIF::print_parameters()
+void PIF::print_parameters() const
 {
   std::cout << "Neuron (PIF) parameters: \n"
   << "mu = "     << mu << "\n"

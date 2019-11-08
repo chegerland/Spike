@@ -7,6 +7,8 @@ namespace pt = boost::property_tree;
 
 #include "IF/PIF.h"
 #include "IF/LIF.h"
+#include "IFadapt/PIFadapt.h"
+#include "IFadapt/LIFadapt.h"
 
 #include "NeuronFactory.h"
 
@@ -31,6 +33,14 @@ Neuron *NeuronFactory::create(std::string input_file)
   else if (type == "LIF")
   {
     neuron = new LIF(input_file);
+  }
+  else if (type == "PIFadapt")
+  {
+    neuron = new PIFadapt(input_file);
+  }
+  else if (type == "LIFadapt")
+  {
+    neuron = new LIFadapt(input_file);
   }
   else
   {

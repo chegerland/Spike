@@ -40,7 +40,7 @@ double LIF::rate_analytic() const
   return 1.0/log(mu/(mu - 1.0));
 };
 
-void LIF::print_parameters()
+void LIF::print_parameters() const
 {
   std::cout << "Neuron (LIF) parameters: \n"
   << "mu = "     << mu << "\n"

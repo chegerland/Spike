@@ -33,7 +33,7 @@ public:
   * Prints all the parameters of the neuron.
   * Every specific neuron type should have an implementation of this.
   */
-  virtual void print_parameters() =0;
+  virtual void print_parameters() const =0;
 
 };
 
