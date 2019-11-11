@@ -42,7 +42,7 @@ void IF::spike(std::vector<double> &spike_train, Timeframe *times) const
 
 };
 
-// get spike times of an IF neuron
+// get spike times of an IF neuron with signal
 void IF::spike(std::vector<double> &spike_train, Timeframe *times, Signal *signal) const
 {
   // initial values
@@ -103,11 +103,10 @@ void IF::voltage_curve(std::vector<double> &curve, Timeframe *times) const
 
     // push voltage to vector
     curve.push_back(v);
-
   };
 };
 
-// print voltage curve
+// print voltage curve of IF with signal
 void IF::voltage_curve(std::vector<double> &curve, Timeframe *times, Signal *signal) const
 {
 
@@ -138,6 +137,5 @@ void IF::voltage_curve(std::vector<double> &curve, Timeframe *times, Signal *sig
 
     // push voltage to vector
     curve.push_back(v);
-
   };
 };

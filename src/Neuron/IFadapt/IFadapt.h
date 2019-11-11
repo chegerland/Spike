@@ -6,8 +6,13 @@
 
 #include "../Neuron.h"
 
+//! A generic integrate and fire model with adaptation.
 /*!
-* Implements a generic integrate and fire neuron with adaption.
+* Implements a generic integrate and fire (IF) neuron, that is subject to spike-triggered
+* adaptation.
+* This is the superclass similar to those for IF neurons, so every child of this
+* class has to implement its own drift term.
+* Through a simulation we obtain the spike times or voltage curve from this class.
 */
 class IFadapt : public Neuron
 {
@@ -43,34 +48,41 @@ public:
   double diffusion(double v, double t) const;
 
   /*!
-  * Returns the times at which the adapting IF neuron has spiked and puts them into a vector.
-  * @param spikes Vector to put the spike times into
-  * @param simulation simulation class containing information on the time frame etc.
+  * Returns the times at which the IFadapt neuron has spiked and puts them into a vector.
+  * @param spike_train Vector to put the spike times into.
+  * @param times The time frame containing start/end time and the time step.
   */
   void spike(std::vector<double> &spike_train, Timeframe *times) const;
 
   /*!
-  * Returns the times at which the adapting IF neuron has spiked and puts them into a vector.
-  * @param spikes Vector to put the spike times into
-  * @param simulation simulation class containing information on the time frame etc.
+  * Returns the times at which the IFadapt neuron has spiked and puts them into a vector.
+  * @param spike_train Vector to put the spike times into.
+  * @param times The time frame containing start/end time and the time step.
+  * @param signal Signal.
   */
   void spike(std::vector<double> &spike_train, Timeframe *times, Signal *signal) const;
 
   /*!
-  * Prints the voltage curve, i.e. the function v(t) and a(t) into an output file specified by the simulation
-  * @param times Timeframe in which we calculate the voltage curve.
+  * Prints the voltage curve, i.e. the functions v(t) and a(t) into an output file specified by the simulation.
+  * @param curve_v Vector to place the values of the voltages
+  * @param curve_a Vector to place the values of the adaptation current
+  * @param times The time frame containing start/end time and the time step.
   */
   void voltage_curve(std::vector<double> &curve_v, std::vector<double> &curve_a, Timeframe *times) const;
 
   /*!
-  * Prints the voltage curve, i.e. the function v(t) and a(t) into an output file specified by the simulation
-  * @param times Timeframe in which we calculate the voltage curve.
+  * Prints the voltage curve, i.e. the functions v(t) and a(t) into an output file specified by the simulation.
+  * @param curve_v Vector to place the values of the voltages
+  * @param curve_a Vector to place the values of the adaptation current
+  * @param times The time frame containing start/end time and the time step.
+  * @param signal Signal.
   */
   void voltage_curve(std::vector<double> &curve_v, std::vector<double> &curve_a, Timeframe *times, Signal *signal) const;
 
   /*!
-  * Prints the limit cycle for the deterministic case into an output file specified by the simulation
-  * @param simulation simulation class containing information on the time frame etc.
+  * Prints the limit cycle for the deterministic case into vectors.
+  * @param curve_v Vector to place the values of the voltages
+  * @param curve_a Vector to place the values of the adaptation current
   */
   virtual void limit_cycle(std::vector<double> &curve_v, std::vector<double> &curve_a) const =0;
 

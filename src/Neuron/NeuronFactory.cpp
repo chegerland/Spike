@@ -15,6 +15,7 @@ namespace pt = boost::property_tree;
 // creates a neuron depending on type given in .json file
 Neuron *NeuronFactory::create(std::string input_file)
 {
+  // set return pointer to NULL
   Neuron *neuron = NULL;
 
   // Create a root
@@ -26,6 +27,7 @@ Neuron *NeuronFactory::create(std::string input_file)
   // read simulation data into simulation variables
   std::string type = root.get<std::string>("Neuron.type");
 
+  // set the appropriate return type
   if (type == "PIF")
   {
     neuron = new PIF(input_file);
@@ -47,6 +49,6 @@ Neuron *NeuronFactory::create(std::string input_file)
     std::cerr << "Error: Unknown Neuron type (" << type << ")!\n" << std::endl;
     exit(0);
   };
-
+  
   return neuron;
 };

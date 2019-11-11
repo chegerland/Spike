@@ -7,13 +7,13 @@ namespace pt = boost::property_tree;
 
 #include "PIFadapt.h"
 
-// constructor for a pif neuron
-PIFadapt::PIFadapt(double a, double b, double c, double d)
+// constructor for a PIFadapt neuron
+PIFadapt::PIFadapt(double mu, double D, double Delta, double tau_a)
 {
-  mu = a;
-  D = b;
-  Delta = c;
-  tau_a = d;
+  this->mu = mu;
+  this->D = D;
+  this->Delta = Delta;
+  this->tau_a = tau_a;
 };
 
 // pif constructor from .json file
@@ -26,26 +26,26 @@ PIFadapt::PIFadapt(std::string input_file)
   pt::read_json(input_file, root);
 
   // read simulation data into simulation variables
-  mu = root.get<double>("Neuron.mu");
-  D = root.get<double>("Neuron.D");
-  Delta = root.get<double>("Neuron.Delta");
-  tau_a = root.get<double>("Neuron.tau_a");
+  this->mu = root.get<double>("Neuron.mu");
+  this->D = root.get<double>("Neuron.D");
+  this->Delta = root.get<double>("Neuron.Delta");
+  this->tau_a = root.get<double>("Neuron.tau_a");
 };
 
 // drift of a PIF neuron
 double PIFadapt::drift(double v, double t) const
 {
-  return mu;
+  return this->mu;
 };
 
 // print neuron parameters
 void PIFadapt::print_parameters() const
 {
   std::cout << "Neuron (PIFadapt) parameters: \n"
-  << "mu = "     << mu << "\n"
-  << "D = "      << D << "\n"
-  << "Delta = "     << Delta << "\n"
-  << "tau_a = "      << tau_a << "\n"
+  << "mu = "        << this->mu << "\n"
+  << "D = "         << this->D << "\n"
+  << "Delta = "     << this->Delta << "\n"
+  << "tau_a = "     << this->tau_a << "\n"
   << std::endl;
 };
 

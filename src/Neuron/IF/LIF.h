@@ -15,15 +15,15 @@ class LIF : public IF
 public:
 
   /*!
-  * Constructor of a leaky integrate and fire model
-  * @param a mu
-  * @param b D
+  * Constructor of a leaky integrate and fire model.
+  * @param mu mu
+  * @param D D
   */
-  LIF(double a, double b);
+  LIF(double mu, double D);
 
 
   /*!
-  * Constructor of a leaky integrate and fire model from .json file
+  * Constructor of a leaky integrate and fire model from .json file.
   * @param input_file .json file with parameters
   */
   LIF(std::string input_file);
@@ -36,12 +36,12 @@ public:
   double drift(double v, double t) const;
 
   /*!
-  * Returns analytically calculated firing rate of a leaky IF neuron.
+  * Returns analytically calculated firing rate of a leaky IF neuron for zero diffusion.
   */
   double rate_analytic() const;
 
   /*!
-  * Print parameters of the PIF neuron
+  * Print parameters of the LIF neuron.
   */
   void print_parameters() const;
 };

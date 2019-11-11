@@ -8,10 +8,10 @@ namespace pt = boost::property_tree;
 #include "LIF.h"
 
 // lif constructor
-LIF::LIF(double a, double b)
+LIF::LIF(double mu, double D)
 {
-  mu = a;
-  D = b;
+  this->mu = mu;
+  this->D = D;
 }
 
 // lif constructor from .json
@@ -24,20 +24,20 @@ LIF::LIF(std::string input_file)
   pt::read_json(input_file, root);
 
   // read simulation data into simulation variables
-  mu = root.get<double>("Neuron.mu");
-  D = root.get<double>("Neuron.D");
+  this->mu = root.get<double>("Neuron.mu");
+  this->D = root.get<double>("Neuron.D");
 };
 
 // drift of an LIF neuron
 double LIF::drift(double v, double t) const
 {
-  return (mu - v);
+  return (this->mu - v);
 };
 
 // analytic rate
 double LIF::rate_analytic() const
 {
-  return 1.0/log(mu/(mu - 1.0));
+  return 1.0/log(this->mu/(this->mu - 1.0));
 };
 
 void LIF::print_parameters() const

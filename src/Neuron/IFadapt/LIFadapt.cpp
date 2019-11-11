@@ -8,16 +8,16 @@ namespace pt = boost::property_tree;
 
 #include "LIFadapt.h"
 
-// constructor for a lif neuron
-LIFadapt::LIFadapt(double a, double b, double c, double d)
+// constructor for a LIFadapt neuron
+LIFadapt::LIFadapt(double mu, double D, double Delta, double tau_a)
 {
-  mu = a;
-  D = b;
-  Delta = c;
-  tau_a = d;
+  this->mu = mu;
+  this->D = D;
+  this->Delta = Delta;
+  this->tau_a = tau_a;
 };
 
-// lif constructor from .json file
+// LIFadapt constructor from .json file
 LIFadapt::LIFadapt(std::string input_file)
 {
   // Create a root
@@ -27,26 +27,26 @@ LIFadapt::LIFadapt(std::string input_file)
   pt::read_json(input_file, root);
 
   // read simulation data into simulation variables
-  mu = root.get<double>("Neuron.mu");
-  D = root.get<double>("Neuron.D");
-  Delta = root.get<double>("Neuron.Delta");
-  tau_a = root.get<double>("Neuron.tau_a");
+  this->mu = root.get<double>("Neuron.mu");
+  this->D = root.get<double>("Neuron.D");
+  this->Delta = root.get<double>("Neuron.Delta");
+  this->tau_a = root.get<double>("Neuron.tau_a");
 };
 
-// drift of a LIF neuron
+// drift of a LIFadapt neuron
 double LIFadapt::drift(double v, double t) const
 {
-  return (mu - v);
+  return (this->mu - v);
 };
 
 // print neuron parameters
 void LIFadapt::print_parameters() const
 {
   std::cout << "Neuron (LIFadapt) parameters: \n"
-  << "mu = "     << mu << "\n"
-  << "D = "      << D << "\n"
-  << "Delta = "     << Delta << "\n"
-  << "tau_a = "      << tau_a << "\n"
+  << "mu = "        << this->mu << "\n"
+  << "D = "         << this->D << "\n"
+  << "Delta = "     << this->Delta << "\n"
+  << "tau_a = "     << this->tau_a << "\n"
   << std::endl;
 };
 

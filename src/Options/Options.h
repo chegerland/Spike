@@ -5,11 +5,12 @@
 
 //! Class for command line options
 /*!
-* Defines a struct to store the command line options.
+* Defines a class to store the command line options.
 */
 class Options
 {
 public:
+  
   /*! Mode (0 = Simulation, 1 = Evaluation, others = unknown) */
   int mode;
 

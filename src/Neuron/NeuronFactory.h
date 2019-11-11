@@ -12,6 +12,12 @@
 class NeuronFactory
 {
 public:
+
+  /*!
+  * Return the appropriate pointer of type Neuron for a specific neuron type indicated
+  * inside the input_file.
+  * @param input_file .json file containing the type of the neuron.
+  */
   static Neuron *create(std::string input_file);
 
 };

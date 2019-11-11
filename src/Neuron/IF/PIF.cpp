@@ -8,10 +8,10 @@ namespace pt = boost::property_tree;
 #include "PIF.h"
 
 // constructor for a pif neuron
-PIF::PIF(double a, double b)
+PIF::PIF(double mu, double D)
 {
-  mu = a;
-  D = b;
+  this->mu = mu;
+  this->D = D;
 };
 
 // pif constructor from .json file
@@ -31,13 +31,13 @@ PIF::PIF(std::string input_file)
 // drift of a PIF neuron
 double PIF::drift(double v, double t) const
 {
-  return mu;
+  return this->mu;
 };
 
 // analytic function of the firing rate
 double PIF::rate_analytic() const
 {
-  return mu;
+  return this->mu;
 };
 
 // print neuron parameters
