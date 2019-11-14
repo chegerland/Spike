@@ -4,3 +4,11 @@ add_executable(Stumpf
               )
 
 target_include_directories(Stumpf PRIVATE ../include)
+
+# link libraries
+target_link_libraries(Stumpf
+  spike
+  ${Boost_PROGRAM_OPTIONS_LIBRARY}
+  ${Boost_FILESYSTEM_LIBRARY}
+  ${Boost_SYSTEM_LIBRARY}
+)

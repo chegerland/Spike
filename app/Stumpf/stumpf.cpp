@@ -2,38 +2,70 @@
 #include <random>
 #include <iostream>
 
+// json parser
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+namespace pt = boost::property_tree;
+
+#include "ProgressBar.hpp"
+
+#include "Spike.h"
+
 // main
 int main(int argc, char *argv[])
 {
+
+  Options *options;
+  options = new Options(argc, argv);
+
+  // Create a root
+  pt::ptree root;
+
+  // Load the json file in this ptree
+  pt::read_json(options->file, root);
+
   // number of neurons
-  int N = 100000;
+  int N = root.get<int>("N");
 
   // neuron parameters
-  double mu = 1.1;
-  double D = 1e-3;
+  double mu = root.get<double>("mu");
+  double D = root.get<double>("D");
 
   // adaption
-  double Delta = 3;
-  double tau_a = 0.1;
+  double Delta = root.get<double>("Delta");
+  double tau_a = root.get<double>("tau_a");
 
   // signal parameters
-  double eps = 0.05;
-  double alpha = 1.0;
-  double f1 = 0.215;
+  double eps = root.get<double>("eps");
+  double alpha = root.get<double>("alpha");
+  double f1 = root.get<double>("f1");
 
   // parameters
-  double t_0 = 0.0;
-  double t_end = 70.0;
-  double dt = 1e-2;
+  double t_0 = root.get<double>("t_0");
+  double t_end = root.get<double>("t_end");
+  double dt = root.get<double>("dt");
   int Nsteps = (int) (t_end - t_0)/dt;
+
+  std::cout << "Read data." << std::endl;
 
   // rng
   std::random_device rd{};
   std::mt19937 generator{rd()};
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
-  int *trains = new int[N*Nsteps];
+  double *rate = new double[Nsteps];
 
+  std::cout << "Starting simulation." << std::endl;
+
+  // progress bar
+  ProgressBar progbar(N, 70);
+
+  // define output files
+  std::ofstream file;
+  std::string name = options->file.substr(0,options->file.find_last_of('.'))+".out";
+  file.open(name);
+
+  #pragma omp parallel for
   for ( int i = 0; i < N; i++)
   {
     // initial values
@@ -46,7 +78,6 @@ int main(int argc, char *argv[])
     {
       // update time and voltage
       t += dt ;
-      //v += (mu - v) * dt + eps*alpha*cos(2.0 * M_PI * f1 * t) * dt +  sqrt(2.0 * D)* dist(generator);
       v += (mu - v) * dt - a*dt + eps*alpha*cos(2.0 * M_PI * f1 * t) * dt +  sqrt(2.0 * D)* dist(generator);
       a += 1.0/tau_a *( -a)*dt;
 
@@ -55,28 +86,32 @@ int main(int argc, char *argv[])
       {
         v = 0;
         a += Delta;
-        trains[i*Nsteps + j] = 1;
-      }
-      else
-      {
-        trains[i*Nsteps + j] = 0;
+        rate[j] += 1.0/( N *dt );
       };
 
     };
 
+    // Progress
+    #pragma omp critical
+    {
+      ++progbar;
+      progbar.display();
+    }
+
   };
 
-  double rate[Nsteps];
+  progbar.done();
+
+  // write rate to file
+  std::cout << "Writing data to file." << std::endl;
   for (int k = 0; k < Nsteps; k++)
   {
-    for (int l = 0; l < N; l++)
-    {
-      rate[k] += 1.0/( N *dt ) *  (double) trains[l*Nsteps + k];
-    };
-    std::cout << rate[k] << std::endl;
+    file << rate[k] << "\n";
   };
 
-  delete[] trains;
+  file.close();
+
+  delete[] rate;
 
   exit(0);
 };
