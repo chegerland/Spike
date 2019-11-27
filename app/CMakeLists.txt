@@ -1,3 +1,4 @@
+add_subdirectory("MeanRate")
 add_subdirectory("Spike")
 add_subdirectory("Stumpf")
 add_subdirectory("Suscept")
