@@ -34,7 +34,10 @@ int main(int argc, char *argv[])
 
   // adaption
   double Delta = root.get<double>("Delta");
-  double tau_a = root.get<double>("tau_a");
+  double tau_a_0 = root.get<double>("tau_a_0");
+  double tau_a_end = root.get<double>("tau_a_end");
+  double dtau_a = root.get<double>("dtau_a");
+  int tauStep = (int) ((tau_a_end - tau_a_0) / dtau_a);
 
   // parameters
   double t_0 = root.get<double>("t_0");
@@ -42,7 +45,18 @@ int main(int argc, char *argv[])
   double dt = root.get<double>("dt");
   int Nsteps = (int) (t_end - t_0)/dt;
 
-  std::cout << "Read data." << std::endl;
+  std::cout << "Read data:" << std::endl;
+  std::cout << "mu_0 "      << "= " << mu_0      << "\n"
+            << "mu_end "    << "= " << mu_end    << "\n"
+            << "dmu "       << "= " << dmu       << "\n"
+            << "D "         << "= " << D         << "\n"
+            << "Delta "     << "= " << Delta     << "\n"
+            << "tau_a_0 "   << "= " << tau_a_0   << "\n"
+            << "tau_a_end " << "= " << tau_a_end << "\n"
+            << "dtau_a "    << "= " << dtau_a    << "\n"
+            << "t_0 "       << "= " << t_0       << "\n"
+            << "t_end "     << "= " << t_end     << "\n"
+            << "dt "        << "= " << dt        << "\n";
 
   // rng
   std::random_device rd{};
@@ -56,6 +70,7 @@ int main(int argc, char *argv[])
   std::string name = options->file.substr(0,options->file.find_last_of('.'))+".out";
   file.open(name);
 
+  // without adaptation
   for (int i = 0; i < muStep; i++)
   {
     // new mu
@@ -63,20 +78,15 @@ int main(int argc, char *argv[])
 
     // initial values
     double v = 0.0;
-    double v_a = 0.0;
-    double a = 0.0;
     double t = t_0;
     double r0 = 0.0;
-    double r0_a = 0.0;
 
-    // euler maruyama scheme
+    // without adaptation
     for (int j = 0; j < Nsteps; j++)
     {
       // update time and voltage
-      t += dt ;
+      t += dt;
       v += (mu - v) * dt + sqrt(2.0 * D)* dist(generator);
-      v_a += (mu - v_a) * dt - a*dt + sqrt(2.0 * D)* dist(generator);
-      a += 1.0/tau_a * (-a)*dt;
 
       // fire and reset rule
       if (v > 1)
@@ -84,21 +94,44 @@ int main(int argc, char *argv[])
         v = 0;
         r0 += 1.0/(t_end - t_0);
       };
+    };
+    file << mu << " " << r0;
+    std::cout << mu << " " << r0;
 
-      // fire and reset for adaption
-      if (v_a > 1)
-      {
-        v_a = 0;
-        a += Delta;
-        r0_a += 1.0/(t_end - t_0);
-      };
+    for (int k = 0; k < tauStep; k++)
+    {
+        // new tau_a
+        double tau_a = tau_a_0 + k*dtau_a;
 
+        // initial values
+        double v_a = 0.0;
+        double a = 0.0;
+        double t = t_0;
+        double r0 = 0.0;
 
+        // adaptation
+        for (int l = 0; l < Nsteps; l++)
+        {
+            // update time and voltage
+            t += dt ;
+            v_a += (mu - v_a) * dt - a*dt + sqrt(2.0 * D)* dist(generator);
+            a += 1.0/tau_a * (-a)*dt;
+
+            // fire and reset for adaption
+            if (v_a > 1)
+            {
+                v_a = 0;
+                a += Delta;
+                r0 += 1.0/(t_end - t_0);
+            };
+        };
+
+        file << " " << r0;
+        std::cout << " " << r0;
     };
 
-    file << mu << " " << r0 << " " << r0_a << "\n";
-    std::cout << "Mu = " << mu << ", Mean rate: "  << r0 << " (" << r0_a << ")"<< std::endl;
-
+    file << "\n";
+    std::cout << std::endl;
   };
 
   file.close();
