@@ -3,7 +3,6 @@ bin/*
 lib/*
 doc/doxygen
 *.o
-*.out
 *.log
 *.swp
 *.a
