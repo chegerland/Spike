@@ -33,11 +33,11 @@ int main(int argc, char *argv[])
   double D = root.get<double>("D");
 
   // adaption
-  double Delta = root.get<double>("Delta");
-  double tau_a_0 = root.get<double>("tau_a_0");
-  double tau_a_end = root.get<double>("tau_a_end");
-  double dtau_a = root.get<double>("dtau_a");
-  int tauStep = (int) ((tau_a_end - tau_a_0) / dtau_a);
+  double tau_a = root.get<double>("tau_a");
+  double Delta_0 = root.get<double>("Delta_0");
+  double Delta_end = root.get<double>("Delta_end");
+  double dDelta = root.get<double>("dDelta");
+  int DeltaStep = (int) ((Delta_end - Delta_0) / dDelta);
 
   // parameters
   double t_0 = root.get<double>("t_0");
@@ -46,17 +46,6 @@ int main(int argc, char *argv[])
   int Nsteps = (int) (t_end - t_0)/dt;
 
   std::cout << "Read data:" << std::endl;
-  std::cout << "mu_0 "      << "= " << mu_0      << "\n"
-            << "mu_end "    << "= " << mu_end    << "\n"
-            << "dmu "       << "= " << dmu       << "\n"
-            << "D "         << "= " << D         << "\n"
-            << "Delta "     << "= " << Delta     << "\n"
-            << "tau_a_0 "   << "= " << tau_a_0   << "\n"
-            << "tau_a_end " << "= " << tau_a_end << "\n"
-            << "dtau_a "    << "= " << dtau_a    << "\n"
-            << "t_0 "       << "= " << t_0       << "\n"
-            << "t_end "     << "= " << t_end     << "\n"
-            << "dt "        << "= " << dt        << "\n";
 
   // rng
   std::random_device rd{};
@@ -98,10 +87,10 @@ int main(int argc, char *argv[])
     file << mu << " " << r0;
     std::cout << mu << " " << r0;
 
-    for (int k = 0; k < tauStep; k++)
+    for (int k = 0; k < DeltaStep; k++)
     {
         // new tau_a
-        double tau_a = tau_a_0 + k*dtau_a;
+        double Delta = Delta_0 + k*dDelta;
 
         // initial values
         double v_a = 0.0;
