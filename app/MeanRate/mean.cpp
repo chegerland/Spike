@@ -33,11 +33,9 @@ int main(int argc, char *argv[])
   double D = root.get<double>("D");
 
   // adaption
+  int NDelta = 4;
   double tau_a = root.get<double>("tau_a");
-  double Delta_0 = root.get<double>("Delta_0");
-  double Delta_end = root.get<double>("Delta_end");
-  double dDelta = root.get<double>("dDelta");
-  int DeltaStep = (int) ((Delta_end - Delta_0) / dDelta);
+  double Delta_list[NDelta] = {0.1, 1.0, 3.0, 10.0};
 
   // parameters
   double t_0 = root.get<double>("t_0");
@@ -87,10 +85,10 @@ int main(int argc, char *argv[])
     file << mu << " " << r0;
     std::cout << mu << " " << r0;
 
-    for (int k = 0; k < DeltaStep; k++)
+    for (int k = 0; k < NDelta; k++)
     {
         // new tau_a
-        double Delta = Delta_0 + k*dDelta;
+        double Delta = Delta_list[k];
 
         // initial values
         double v_a = 0.0;
