@@ -1,25 +1,14 @@
 #ifndef SPIKE_H
 #define SPIKE_H
 
-#include "../src/Neuron/Neuron.h"
-#include "../src/Neuron/NeuronFactory.h"
-#include "../src/Neuron/IF/IF.h"
-#include "../src/Neuron/IF/PIF.h"
-#include "../src/Neuron/IF/LIF.h"
-#include "../src/Neuron/IFadapt/IFadapt.h"
-#include "../src/Neuron/IFadapt/PIFadapt.h"
-#include "../src/Neuron/IFadapt/LIFadapt.h"
-
+#include "../src/Adaptation/Adaptation.h"
+#include "../src/IF/IF.h"
+#include "../src/IF/PIF.h"
+#include "../src/IF/LIF.h"
 #include "../src/Options/Options.h"
-
 #include "../src/Signal/Signal.h"
 #include "../src/Signal/SignalFactory.h"
 #include "../src/Signal/TwoCosine.h"
-
-#include "../src/Simulation/Simulation.h"
-#include "../src/Simulation/Timeframe.h"
-
-#include "../src/SpikeTrains/SpikeTrains.h"
-
+#include "../src/Timeframe/Timeframe.h"
 
 #endif // SPIKE_H

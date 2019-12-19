@@ -1,7 +1,1 @@
-add_subdirectory("CycloHisto")
 add_subdirectory("MeanRate")
-add_subdirectory("Spike")
-add_subdirectory("Stumpf")
-add_subdirectory("Suscept")
-add_subdirectory("Testing")
-add_subdirectory("Voltage Curve")

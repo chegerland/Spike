@@ -10,9 +10,6 @@
 class Options
 {
 public:
-  
-  /*! Mode (0 = Simulation, 1 = Evaluation, others = unknown) */
-  int mode;
 
   /*! path to input file containing parameters */
   std::string file;
@@ -42,11 +39,5 @@ std::string getFileExtension(std::string filePath);
 * @params path File path
 */
 bool exists (const std::string& path);
-
-/*!
-* Reads in a spike train ensemble from a file.
-* @params name File path
-*/
-std::vector<std::vector<double> > file_to_vector(std::string name);
 
 #endif // OPTIONS_H
