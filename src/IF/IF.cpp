@@ -210,7 +210,7 @@ void IF::firing_rate(double* rate, Timeframe *time) const
 // calculate firing rate of an IF neuron with signal
 void IF::firing_rate(double* rate, Timeframe *time, Signal *signal) const
 {
-  assert( sizeof(rate)/sizeof(double) == time->steps );
+  //assert( sizeof(rate)/sizeof(double) == time->steps );
 
   // initial values
   double v = 0;
@@ -242,7 +242,9 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal) const
 // calculate firing rate of an IF neuron with adaptation
 void IF::firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const
 {
-  assert( sizeof(rate)/sizeof(double) == time->steps );
+  //std::cout << sizeof(&rate)/sizeof(double) << std::endl;
+  //std::cout << time->steps << std::endl;
+  //assert( sizeof(rate)/sizeof(double) == time->steps );
 
   // initial values
   double v = 0;

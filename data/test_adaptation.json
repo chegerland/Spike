@@ -1,0 +1,12 @@
+{
+  "Neuron" :
+  {
+    "mu" : 3.0,
+    "D" : 1.1
+  },
+  "Adaptation":
+  {
+      "tau_a": 0.1,
+      "Delta": 3
+  }
+}
