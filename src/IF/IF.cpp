@@ -38,10 +38,10 @@ int IF::count(Timeframe *time) const
 
   // initial values
   double v = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -49,7 +49,7 @@ int IF::count(Timeframe *time) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -72,10 +72,10 @@ int IF::count(Timeframe *time, Signal *signal) const
 
   // initial values
   double v = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -83,7 +83,7 @@ int IF::count(Timeframe *time, Signal *signal) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -107,10 +107,10 @@ int IF::count(Timeframe *time, Adaptation *adapt) const
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -118,7 +118,7 @@ int IF::count(Timeframe *time, Adaptation *adapt) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -145,10 +145,10 @@ int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -156,7 +156,7 @@ int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -178,14 +178,14 @@ int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
 // calculate firing rate of an IF neuron
 void IF::firing_rate(double* rate, Timeframe *time) const
 {
-  assert( sizeof(rate)/sizeof(double) == time->steps );
+  assert( sizeof(rate)/sizeof(double) == time->get_steps() );
 
   // initial values
   double v = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -193,7 +193,7 @@ void IF::firing_rate(double* rate, Timeframe *time) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -214,10 +214,10 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal) const
 
   // initial values
   double v = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -225,7 +225,7 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -249,10 +249,10 @@ void IF::firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -260,7 +260,7 @@ void IF::firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -279,15 +279,15 @@ void IF::firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const
 // calculate firing rate of an IF neuron with signal and adaptation
 void IF::firing_rate(double* rate, Timeframe *time, Signal *signal, Adaptation *adapt) const
 {
-  assert( sizeof(rate)/sizeof(double) == time->steps );
+  assert( sizeof(rate)/sizeof(double) == time->get_steps() );
 
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -295,7 +295,7 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal, Adaptation *
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->steps; i++)
+  for (int i = 0; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -314,14 +314,14 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal, Adaptation *
 // voltage curve for IF
 void IF::voltage_curve(double* v, Timeframe *time) const
 {
-  assert( sizeof(v)/sizeof(double) == time->steps );
+  assert( sizeof(v)/sizeof(double) == time->get_steps() );
 
   // initial values
   v[0] = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -329,7 +329,7 @@ void IF::voltage_curve(double* v, Timeframe *time) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 1; i < time->steps; i++)
+  for (int i = 1; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -345,16 +345,16 @@ void IF::voltage_curve(double* v, Timeframe *time) const
 // voltage curve for IF with adaptation
 void IF::voltage_curve(double* v, double *a, Timeframe *time, Adaptation *adapt ) const
 {
-  assert( sizeof(v)/sizeof(double) == time->steps );
-  assert( sizeof(a)/sizeof(double) == time->steps );
+  assert( sizeof(v)/sizeof(double) == time->get_steps() );
+  assert( sizeof(a)/sizeof(double) == time->get_steps() );
 
   // initial values
   v[0] = 0;
   a[0] = 0;
-  double t = time->t_0;
+  double t = time->get_t_0();
 
   // for better readibility
-  double dt = time->dt;
+  double dt = time->get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -362,7 +362,7 @@ void IF::voltage_curve(double* v, double *a, Timeframe *time, Adaptation *adapt 
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 1; i < time->steps; i++)
+  for (int i = 1; i < time->get_steps(); i++)
   {
     // update time and voltage
     t += dt;

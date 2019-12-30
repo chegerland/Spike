@@ -5,7 +5,7 @@
 #include <boost/property_tree/json_parser.hpp>
 namespace pt = boost::property_tree;
 
-#include "TwoCosine.h"
+#include "TwoCosineSignal.h"
 
 #include "SignalFactory.h"
 
@@ -22,9 +22,9 @@ Signal *SignalFactory::create(std::string input_file)
   // read simulation data into simulation variables
   std::string type = root.get<std::string>("Signal.type");
 
-  if (type == "TwoCosine")
+  if (type == "TwoCosineSignal")
   {
-    signal = new TwoCosine(input_file);
+    signal = new TwoCosineSignal(input_file);
   }
   else
   {

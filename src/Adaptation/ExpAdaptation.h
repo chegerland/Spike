@@ -5,24 +5,25 @@
 
 #include "Adaptation.h"
 
-// normal exponentially decaying Adaptation
+// exponentially decaying Adaptation
 class ExpAdaptation : public Adaptation
 {
 private:
 
-  // size of kick
-  double Delta;
-
-  // time scale
-  double tau_a;
+  double Delta; // size of kick
+  double tau_a; // time scale
 
 public:
 
+  // constructors
+  ExpAdaptation(double Delta, double tau_a): Delta(Delta), tau_a(tau_a) {};
   ExpAdaptation(std::string input_file);
 
+  // adaptation f(a,t) = da/dt = - 1/tau_a * a
   double adapt(double a, double t);
-  void reset_rule(double a);
 
+  // reset rule for a(t): a -> a + Delta
+  void reset_rule(double a);
 };
 
 #endif // EXPADAPTATION_H

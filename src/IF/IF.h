@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../Signal/Signal.h"
+#include "../Signal/CosineSignal.h"
 #include "../Adaptation/Adaptation.h"
 #include "../Timeframe/Timeframe.h"
 
@@ -13,18 +14,13 @@ class IF
 {
 protected:
 
-  // mobility
-  double mu;
-
-  // diffusion coefficient
-  double D;
-
-  // type of the IF
-  std::string type;
+  double mu;        // mobility
+  double D;         // diffusion coefficient
+  std::string type; // type of the IF
 
 public:
 
-  // constructor
+  // constructors
   IF(double mu, double D): mu(mu), D(D) {};
   IF(std::string input_file);
 
@@ -32,19 +28,19 @@ public:
   virtual double drift(double v, double t) const =0;
   double diffusion(double v, double t) const;
 
-  // simply count spike that occured in timeframe
+  // count spikes that occured in timeframe
   int count(Timeframe *time) const;
   int count(Timeframe *time, Signal *signal) const;
   int count(Timeframe *time, Adaptation *adapt) const;
   int count(Timeframe *time, Signal *signal, Adaptation *adapt) const;
 
-  // put firing rate into array
+  // calculate firing rate
   void firing_rate(double* rate, Timeframe *time) const;
   void firing_rate(double* rate, Timeframe *time, Signal *signal) const;
   void firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const;
   void firing_rate(double* rate, Timeframe *time, Signal *signal, Adaptation *adapt) const;
 
-  // voltage curve, i.e. v(t) or v(t) and a(t)
+  // get voltage curve, i.e. v(t) or v(t) and a(t)
   void voltage_curve(double *v, Timeframe *time) const;
   void voltage_curve(double *v, double *a, Timeframe *time, Adaptation *adapt) const;
 

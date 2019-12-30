@@ -9,8 +9,8 @@
 #include "../src/Options/Options.h"
 #include "../src/Signal/Signal.h"
 #include "../src/Signal/SignalFactory.h"
-#include "../src/Signal/Cosine.h"
-#include "../src/Signal/TwoCosine.h"
+#include "../src/Signal/CosineSignal.h"
+#include "../src/Signal/TwoCosineSignal.h"
 #include "../src/Timeframe/Timeframe.h"
 
 #endif // SPIKE_H

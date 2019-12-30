@@ -1,2 +1,3 @@
+add_subdirectory("CycloHisto")
 add_subdirectory("MeanRate")
-add_subdirectory("Stumpf")
+add_subdirectory("RateOnePeriod")

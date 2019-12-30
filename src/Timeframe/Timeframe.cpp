@@ -8,17 +8,6 @@ namespace pt = boost::property_tree;
 
 #include "Timeframe.h"
 
-Timeframe::Timeframe(double t_0, double t_end, double dt)
-{
-  assert(t_end > t_0);
-  assert(dt < (t_end - t_0));
-
-  this->t_0 = t_0;
-  this->t_end = t_end;
-  this->dt = dt;
-  this->steps = (int) (t_end - t_0) / dt;
-};
-
 Timeframe::Timeframe(std::string input_file)
 {
   // Create a root

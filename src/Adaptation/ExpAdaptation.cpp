@@ -5,7 +5,6 @@ namespace pt = boost::property_tree;
 
 #include "ExpAdaptation.h"
 
-
 ExpAdaptation::ExpAdaptation(std::string input_file)
 {
   // Create a root

@@ -3,41 +3,25 @@
 
 #include <string>
 
-//! Class for command line options
-/*!
-* Defines a class to store the command line options.
-*/
+// Class for command line options
 class Options
 {
 public:
 
-  /*! path to input file containing parameters */
-  std::string file;
+  std::string file; // path to parameter file
 
-  /*!
-  * Reads options from the command line and stores them in an Options struct.
-  * @param argc Number of arguments.
-  * @param argv Character array containing command line options.
-  */
+  // constructor
   Options(int argc, char * argv[]);
 
-  /*!
-  * Checks the given command line options for consistency.
-  */
+  // check input options
   void check();
 
 };
 
-/*!
-* Gets the extension of a given file.
-* @param file_path Path to the file.
-*/
+// get extension of a file
 std::string getFileExtension(std::string filePath);
 
-/*!
-* Checks if file exists.
-* @params path File path
-*/
+// check if file exists
 bool exists (const std::string& path);
 
 #endif // OPTIONS_H
