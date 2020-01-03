@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <vector>
+#include <cassert>
 
 #include "../Signal/Signal.h"
 #include "../Signal/CosineSignal.h"
@@ -21,7 +22,7 @@ protected:
 public:
 
   // constructors
-  IF(double mu, double D): mu(mu), D(D) {};
+  IF(double mu, double D): mu(mu), D(D) {assert(mu > 0); assert(D > 0);};
   IF(std::string input_file);
 
   // drift and diffusion of IF neuron

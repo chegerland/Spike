@@ -15,7 +15,9 @@ ExpAdaptation::ExpAdaptation(std::string input_file)
 
   // read variables
   tau_a = root.get<double>("Adaptation.tau_a");
+  assert(tau_a > 0);
   Delta = root.get<double>("Adaptation.Delta");
+  assert(Delta > 0);
 };
 
 double ExpAdaptation::adapt(double a, double t)

@@ -20,6 +20,12 @@ Timeframe::Timeframe(std::string input_file)
   t_0 = root.get<double>("Simulation.t_0");
   t_end = root.get<double>("Simulation.t_end");
   dt = root.get<double>("Simulation.dt");
+
+  // check parameters
+  assert(t_end > t_0);
+  assert(dt < t_end - t_0);
+
+  // calculate steps
   steps = (int) (t_end - t_0) / dt;
 };
 

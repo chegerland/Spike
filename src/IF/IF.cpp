@@ -2,7 +2,6 @@
 #include <random>
 #include <iostream>
 #include <fstream>
-#include <assert.h>
 
 // json parser
 #include <boost/property_tree/ptree.hpp>
@@ -22,7 +21,9 @@ IF::IF(std::string input_file)
 
   // read parameters
   this->mu = root.get<double>("Neuron.mu");
+  assert(mu > 0);
   this->D = root.get<double>("Neuron.D");
+  assert(D > 0);
 };
 
 // diffusion
@@ -178,8 +179,6 @@ int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
 // calculate firing rate of an IF neuron
 void IF::firing_rate(double* rate, Timeframe *time) const
 {
-  assert( sizeof(rate)/sizeof(double) == time->get_steps() );
-
   // initial values
   double v = 0;
   double t = time->get_t_0();
@@ -210,8 +209,6 @@ void IF::firing_rate(double* rate, Timeframe *time) const
 // calculate firing rate of an IF neuron with signal
 void IF::firing_rate(double* rate, Timeframe *time, Signal *signal) const
 {
-  //assert( sizeof(rate)/sizeof(double) == time->steps );
-
   // initial values
   double v = 0;
   double t = time->get_t_0();
@@ -242,10 +239,6 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal) const
 // calculate firing rate of an IF neuron with adaptation
 void IF::firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const
 {
-  //std::cout << sizeof(&rate)/sizeof(double) << std::endl;
-  //std::cout << time->steps << std::endl;
-  //assert( sizeof(rate)/sizeof(double) == time->steps );
-
   // initial values
   double v = 0;
   double a = 0;
@@ -279,8 +272,6 @@ void IF::firing_rate(double* rate, Timeframe *time, Adaptation *adapt) const
 // calculate firing rate of an IF neuron with signal and adaptation
 void IF::firing_rate(double* rate, Timeframe *time, Signal *signal, Adaptation *adapt) const
 {
-  assert( sizeof(rate)/sizeof(double) == time->get_steps() );
-
   // initial values
   double v = 0;
   double a = 0;
@@ -314,8 +305,6 @@ void IF::firing_rate(double* rate, Timeframe *time, Signal *signal, Adaptation *
 // voltage curve for IF
 void IF::voltage_curve(double* v, Timeframe *time) const
 {
-  assert( sizeof(v)/sizeof(double) == time->get_steps() );
-
   // initial values
   v[0] = 0;
   double t = time->get_t_0();
@@ -345,9 +334,6 @@ void IF::voltage_curve(double* v, Timeframe *time) const
 // voltage curve for IF with adaptation
 void IF::voltage_curve(double* v, double *a, Timeframe *time, Adaptation *adapt ) const
 {
-  assert( sizeof(v)/sizeof(double) == time->get_steps() );
-  assert( sizeof(a)/sizeof(double) == time->get_steps() );
-
   // initial values
   v[0] = 0;
   a[0] = 0;

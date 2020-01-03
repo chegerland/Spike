@@ -2,6 +2,7 @@
 #define TIMEFRAME_H
 
 #include <string>
+#include <cassert>
 
 //! A time frame class
 class Timeframe
@@ -15,7 +16,12 @@ private:
 public:
 
   // constructors
-  Timeframe(double t_0, double t_end, double dt): t_0(t_0), t_end(t_end), dt(dt) {this->steps = (int) (t_end - t_0) / dt;};
+  Timeframe(double t_0, double t_end, double dt): t_0(t_0), t_end(t_end), dt(dt) 
+    {
+        assert(t_end > t_0);
+        assert(dt < t_end - t_0);
+        this->steps = (int) (t_end - t_0) / dt;
+    };
   Timeframe(std::string input_file);
 
   // getter functions
