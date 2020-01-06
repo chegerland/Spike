@@ -26,7 +26,7 @@ Timeframe::Timeframe(std::string input_file)
   assert(dt < t_end - t_0);
 
   // calculate steps
-  steps = (int) (t_end - t_0) / dt;
+  steps = (int) ((t_end - t_0) / dt);
 };
 
 void Timeframe::print_parameters()
