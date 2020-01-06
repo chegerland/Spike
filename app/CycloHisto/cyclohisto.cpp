@@ -9,14 +9,14 @@ int main(int argc, char *argv[])
   Options options(argc, argv);
 
   // define LIF neuron with adaptation
-  LIF lif(options.file);
-  CosineSignal signal(options.file);
+  LIF lif(options.get_file());
+  CosineSignal signal(options.get_file());
 
   // define simulation time frame
   Timeframe time(0.0, 1000.0, 1e-2);
 
   // array to put firing rate into
-  double rate[time.get_steps()] = { 0 };
+  std::vector<double> rate;
 
   // get firing rate
   lif.firing_rate(rate, &time, &signal);

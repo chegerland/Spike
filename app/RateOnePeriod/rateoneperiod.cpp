@@ -9,14 +9,14 @@ int main(int argc, char *argv[])
   Options options(argc, argv);
 
   // define LIF neuron and signal
-  LIF lif(options.file);
-  CosineSignal signal(options.file);
+  LIF lif(options.get_file());
+  CosineSignal signal(options.get_file());
 
   // define simulation time frame
   Timeframe time(0.0, 1000.0, 1e-2);
 
   // array to put firing rate into
-  double rate[time.get_steps()] = { 0 };
+  std::vector<double> rate;
 
   // get firing rate
   int N = 10000;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
   int period = (int) 1.0 / (signal.get_f() * time.get_dt());
 
   // fill array with only one period
-  double rate_one_period[period] = { 0 };
+  std::vector<double> rate_one_period;
   for (int i = 0; i < time.get_steps(); i++)
   {
     rate_one_period[i % period] += (double)(period)/(double) time.get_steps() * rate[i];
