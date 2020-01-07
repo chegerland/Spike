@@ -25,7 +25,7 @@ double ExpAdaptation::adapt(double a, double t)
   return -1.0/tau_a * a;
 };
 
-void ExpAdaptation::reset_rule(double a)
+double ExpAdaptation::reset_rule(double a)
 {
-  a += Delta;
+  return a + Delta;
 };

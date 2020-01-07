@@ -24,7 +24,11 @@ public:
   double adapt(double a, double t);
 
   // reset rule for a(t): a -> a + Delta
-  void reset_rule(double a);
+  double reset_rule(double a);
+
+  // setter methods
+  void set_Delta(double Delta){this->Delta = Delta;};
+  void set_tau_a(double tau_a){this->tau_a = tau_a;};
 };
 
 #endif // EXPADAPTATION_H
