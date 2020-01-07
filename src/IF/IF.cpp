@@ -67,16 +67,16 @@ int IF::count(Timeframe &time) const
 };
 
 // count spikes of an IF neuron with signal
-int IF::count(Timeframe *time, Signal *signal) const
+int IF::count(Timeframe &time, Signal &signal) const
 {
   int count = 0;
 
   // initial values
   double v = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -84,11 +84,11 @@ int IF::count(Timeframe *time, Signal *signal) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
-    v += drift(v, t) * dt + signal->signal(t) * dt + diffusion(v, t) * dist(generator);
+    v += drift(v, t) * dt + signal.signal(t) * dt + diffusion(v, t) * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -101,17 +101,17 @@ int IF::count(Timeframe *time, Signal *signal) const
 };
 
 // count spikes of an IF neuron with adaptation
-int IF::count(Timeframe *time, Adaptation *adapt) const
+int IF::count(Timeframe &time, Adaptation &adapt) const
 {
   int count = 0;
 
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -119,17 +119,17 @@ int IF::count(Timeframe *time, Adaptation *adapt) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
     v += drift(v, t) * dt - a * dt + diffusion(v, t) * dist(generator);
-    a += adapt->adapt(a,t) * dt;
+    a += adapt.adapt(a,t) * dt;
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      adapt->reset_rule(a);
+      a = adapt.reset_rule(a);
       count += 1;
     };
   };
@@ -139,17 +139,17 @@ int IF::count(Timeframe *time, Adaptation *adapt) const
 
 
 // count spikes of an IF neuron with signal and adaptation
-int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
+int IF::count(Timeframe &time, Signal &signal, Adaptation &adapt) const
 {
   int count = 0;
 
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -157,17 +157,17 @@ int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
-    v += drift(v, t) * dt + signal->signal(t) * dt - a * dt + diffusion(v, t) * dist(generator);
-    a += adapt->adapt(a,t) * dt;
+    v += drift(v, t) * dt + signal.signal(t) * dt - a * dt + diffusion(v, t) * dist(generator);
+    a += adapt.adapt(a,t) * dt;
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      adapt->reset_rule(a);
+      a = adapt.reset_rule(a);
       count += 1;
     };
   };
@@ -177,17 +177,17 @@ int IF::count(Timeframe *time, Signal *signal, Adaptation *adapt) const
 
 
 // calculate firing rate of an IF neuron
-void IF::firing_rate(std::vector<double> &rate, Timeframe *time) const
+void IF::firing_rate(std::vector<double> &rate, Timeframe &time) const
 {
   // resize rate vector
-  rate.resize(time->get_steps());
+  rate.resize(time.get_steps());
 
   // initial values
   double v = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -195,7 +195,7 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe *time) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -210,17 +210,17 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe *time) const
 };
 
 // calculate firing rate of an IF neuron with signal
-void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal) const
+void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal) const
 {
   // resize rate vector
-  rate.resize(time->get_steps());
+  rate.resize(time.get_steps());
 
   // initial values
   double v = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -228,11 +228,11 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal)
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
-    v += drift(v, t) * dt + signal->signal(t) * dt + diffusion(v, t) * dist(generator);
+    v += drift(v, t) * dt + signal.signal(t) * dt + diffusion(v, t) * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -243,18 +243,18 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal)
 };
 
 // calculate firing rate of an IF neuron with adaptation
-void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Adaptation *adapt) const
+void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Adaptation &adapt) const
 {
   // resize rate vector
-  rate.resize(time->get_steps());
+  rate.resize(time.get_steps());
 
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -262,35 +262,36 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Adaptation *ada
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
     v += drift(v, t) * dt - a * dt + diffusion(v, t) * dist(generator);
-    a += adapt->adapt(a,t) * dt;
+    a += adapt.adapt(a,t) * dt;
 
     // fire and reset rule
-    if (v > 1) {
+    if (v > 1)
+    {
       v = 0;
-      adapt->reset_rule(a);
+      a = adapt.reset_rule(a);
       rate[i] += 1.0/dt;
     };
   };
 };
 
 // calculate firing rate of an IF neuron with signal and adaptation
-void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal, Adaptation *adapt) const
+void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal, Adaptation &adapt) const
 {
   // resize rate vector
-  rate.resize(time->get_steps());
+  rate.resize(time.get_steps());
 
   // initial values
   double v = 0;
   double a = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -298,34 +299,34 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal,
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 0; i < time->get_steps(); i++)
+  for (int i = 0; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
-    v += drift(v, t) * dt + signal->signal(t) * dt - a * dt + diffusion(v, t) * dist(generator);
-    a += adapt->adapt(a,t) * dt;
+    v += drift(v, t) * dt + signal.signal(t) * dt - a * dt + diffusion(v, t) * dist(generator);
+    a += adapt.adapt(a,t) * dt;
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      adapt->reset_rule(a);
+      a = adapt.reset_rule(a);
       rate[i] += 1.0/dt;
     };
   };
 };
 
 // voltage curve for IF
-void IF::voltage_curve(std::vector<double> &v, Timeframe *time) const
+void IF::voltage_curve(std::vector<double> &v, Timeframe &time) const
 {
   // resize v vector
-  v.resize(time->get_steps());
+  v.resize(time.get_steps());
 
   // initial values
   v[0] = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -333,7 +334,7 @@ void IF::voltage_curve(std::vector<double> &v, Timeframe *time) const
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 1; i < time->get_steps(); i++)
+  for (int i = 1; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
@@ -347,19 +348,19 @@ void IF::voltage_curve(std::vector<double> &v, Timeframe *time) const
 };
 
 // voltage curve for IF with adaptation
-void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a, Timeframe *time, Adaptation *adapt ) const
+void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a, Timeframe &time, Adaptation &adapt) const
 {
   // resize v and a vector
-  v.resize(time->get_steps());
-  a.resize(time->get_steps());
+  v.resize(time.get_steps());
+  a.resize(time.get_steps());
 
   // initial values
   v[0] = 0;
   a[0] = 0;
-  double t = time->get_t_0();
+  double t = time.get_t_0();
 
   // for better readibility
-  double dt = time->get_dt();
+  double dt = time.get_dt();
 
   // random numbers
   std::random_device rd{};
@@ -367,17 +368,17 @@ void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a, Timeframe
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 1; i < time->get_steps(); i++)
+  for (int i = 1; i < time.get_steps(); i++)
   {
     // update time and voltage
     t += dt;
     v[i] = v[i-1] + this->drift(v[i-1], t) * dt + this->diffusion(v[i-1], t) * dist(generator);
-    a[i] = a[i-1] + adapt->adapt(a[i-1], t) * dt;
+    a[i] = a[i-1] + adapt.adapt(a[i-1], t) * dt;
 
     // fire and reset rule
     if (v[i] > 1) {
       v[i] = 0;
-      adapt->reset_rule(a[i]);
+      a[i] = adapt.reset_rule(a[i]);
     };
   };
 };

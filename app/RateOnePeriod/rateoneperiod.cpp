@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
   #pragma omp parallel for
   for (int j = 0; j < N; j++)
   {
-    lif.firing_rate(rate, &time, &signal);
+    lif.firing_rate(rate, time, signal);
   };
 
   // get steps during one period
