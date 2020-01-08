@@ -82,7 +82,7 @@ class LIFadapt:
         d = exp((2 * self.mu - 1)/(4*self.D))*pcfd(j*omega, self.mu/sqrt(self.D))
 
         result = alpha*(a - b)/(c - d)
-        result = result / (1 + self.Delta*self.tau_a/(1 - j* self.tau_a*omega)*result)
+        result = result / ( 1 + result * self.Delta*self.tau_a/(1 - j* self.tau_a*omega))
         return result
 
 
@@ -98,7 +98,8 @@ class LIFadapt:
         a_3 = (self.susceptibility_1(omega_1)/(j*omega_2 - 1) + self.susceptibility_1(omega_2)/(j*omega_1 - 1))*exp((2 * self.mu - 1)/(4*self.D))*pcfd(j*omega_1 + j*omega_2 - 1, self.mu/sqrt(self.D))
 
         result = alpha*(a - b)/(c - d) + beta*(a_2)/(c - d) - beta*(a_3)/(c - d)
-        result = result / (1 + self.Delta*self.tau_a/(1 - j* self.tau_a*(omega_1+omega_2))*result)
+        suscept1 = self.susceptibility_1(omega_1 + omega_2)
+        result = result / (1 + suscept1 * self.Delta*self.tau_a/(1 - j* self.tau_a*(omega_1+omega_2)))
         return result
 
     def firing_rate_signal(self, t, eps, f):
