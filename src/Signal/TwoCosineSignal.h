@@ -18,7 +18,7 @@ private:
 public:
 
   // constructors
-  TwoCosineSignal(double alpha, double beta, double phi, double f1, double f2): alpha(alpha), beta(beta), phi(phi), f1(f1), f2(f2) {};
+  TwoCosineSignal(double alpha, double f1, double beta, double f2, double phi): alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi) {};
   TwoCosineSignal(std::string input_file);
 
   // return signal

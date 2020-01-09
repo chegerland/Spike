@@ -19,10 +19,10 @@ TwoCosineSignal::TwoCosineSignal(std::string input_file)
 
   // read simulation data into simulation variables
   alpha = root.get<double>("Signal.alpha");
-  beta = root.get<double>("Signal.beta");
-  phi = root.get<double>("Signal.phi");
   f1 = root.get<double>("Signal.f1");
+  beta = root.get<double>("Signal.beta");
   f2 = root.get<double>("Signal.f2");
+  phi = root.get<double>("Signal.phi");
 };
 
 double TwoCosineSignal::signal(double t)

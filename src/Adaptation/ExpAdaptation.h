@@ -17,7 +17,7 @@ private:
 public:
 
   // constructors
-  ExpAdaptation(double Delta, double tau_a): Delta(Delta), tau_a(tau_a) {assert(Delta > 0); assert(tau_a > 0);};
+  ExpAdaptation(double Delta, double tau_a): Delta(Delta), tau_a(tau_a) {assert(Delta >= 0); assert(tau_a > 0);};
   ExpAdaptation(std::string input_file);
 
   // adaptation f(a,t) = da/dt = - 1/tau_a * a

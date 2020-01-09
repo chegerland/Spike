@@ -51,6 +51,7 @@ public:
 
   // setter methods
   void set_mu(double mu){this->mu = mu;};
+  void set_D(double D){this->D = D;};
 
   // print the parameters of this neuron
   void print_parameters() const;

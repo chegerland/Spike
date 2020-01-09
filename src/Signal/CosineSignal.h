@@ -22,7 +22,6 @@ public:
   double signal(double t);
 
   // getter functions
-  double get_alpha(){return this->alpha;};
   double get_f(){return this->f;};
 
   // print function
