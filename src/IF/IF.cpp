@@ -179,9 +179,6 @@ int IF::count(Timeframe &time, Signal &signal, Adaptation &adapt) const
 // calculate firing rate of an IF neuron
 void IF::firing_rate(std::vector<double> &rate, Timeframe &time) const
 {
-  // resize rate vector
-  rate.resize(time.get_steps());
-
   // initial values
   double v = 0;
   double t = time.get_t_0();
@@ -212,9 +209,6 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe &time) const
 // calculate firing rate of an IF neuron with signal
 void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal) const
 {
-  // resize rate vector
-  rate.resize(time.get_steps());
-
   // initial values
   double v = 0;
   double t = time.get_t_0();
@@ -245,9 +239,6 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal)
 // calculate firing rate of an IF neuron with adaptation
 void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Adaptation &adapt) const
 {
-  // resize rate vector
-  rate.resize(time.get_steps());
-
   // initial values
   double v = 0;
   double a = 0;
@@ -282,9 +273,6 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Adaptation &ada
 // calculate firing rate of an IF neuron with signal and adaptation
 void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal, Adaptation &adapt) const
 {
-  // resize rate vector
-  rate.resize(time.get_steps());
-
   // initial values
   double v = 0;
   double a = 0;
@@ -318,9 +306,6 @@ void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal,
 // voltage curve for IF
 void IF::voltage_curve(std::vector<double> &v, Timeframe &time) const
 {
-  // resize v vector
-  v.resize(time.get_steps());
-
   // initial values
   v[0] = 0;
   double t = time.get_t_0();
@@ -350,10 +335,6 @@ void IF::voltage_curve(std::vector<double> &v, Timeframe &time) const
 // voltage curve for IF with adaptation
 void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a, Timeframe &time, Adaptation &adapt) const
 {
-  // resize v and a vector
-  v.resize(time.get_steps());
-  a.resize(time.get_steps());
-
   // initial values
   v[0] = 0;
   a[0] = 0;

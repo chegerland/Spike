@@ -14,7 +14,7 @@ def main():
     print("Calculating stationary rate of LIF")
 
     lif = LIF.LIF(1.1, 0.001)
-    lifadapt = LIF.LIFadapt(1.1, 0.001, 0.1, 10)
+    lifadapt = LIF.LIFadapt(1.1, 0.001, 0.126, 23.81)
 
     t = np.arange(0.0, 15.0, 0.1)
     rate = []
