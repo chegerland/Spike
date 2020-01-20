@@ -5,10 +5,8 @@
 
 #include "Signal.h"
 
-class TwoCosineSignal : public Signal
-{
+class TwoCosineSignal : public Signal {
 private:
-
   double alpha; // amplitude first signal
   double beta;  // amplitude second signal
   double phi;   // phase shift
@@ -16,9 +14,8 @@ private:
   double f2;    // frequency second signal
 
 public:
-
   // constructors
-  TwoCosineSignal(double alpha, double f1, double beta, double f2, double phi): alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi) {};
+  TwoCosineSignal(double alpha, double f1, double beta, double f2, double phi);
   TwoCosineSignal(std::string input_file);
 
   // return signal
@@ -26,7 +23,6 @@ public:
 
   // print function
   void print_parameters();
-
 };
 
-#endif //TWOCOSINESIGNAL_H
+#endif // TWOCOSINESIGNAL_H

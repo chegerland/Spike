@@ -1,10 +1,8 @@
-#include "catch.hpp"
 #include "Spike.h"
+#include "catch.hpp"
 
-TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]")
-{
-  SECTION(".ini file constructor")
-  {
+TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
+  SECTION(".ini file constructor") {
     PIF pif("../data/test_files/PIF_test.json");
 
     // check mu
@@ -14,14 +12,13 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]")
     REQUIRE(pif.diffusion(0.0, 0.0) == 2.0);
   };
 
-  SECTION("normal constructor")
-  {
+  SECTION("normal constructor") {
     auto mu = GENERATE(take(3, random(0.0, 1e2)));
     auto D = GENERATE(take(3, random(0.0, 10.0)));
 
     PIF pif(mu, D);
 
     REQUIRE(pif.drift(0.0, 0.0) == mu);
-    REQUIRE(pif.diffusion(0.0, 0.0) == sqrt(2.0*D));
+    REQUIRE(pif.diffusion(0.0, 0.0) == sqrt(2.0 * D));
   };
 };

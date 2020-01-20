@@ -1,17 +1,15 @@
-#include "catch.hpp"
 #include "Spike.h"
+#include "catch.hpp"
+#include <iostream>
 
-TEST_CASE("Options constructors work", "[Options]")
-{
-  SECTION("direct construction")
-  {
-    std::string file = "../README.md";
+TEST_CASE("Options constructors work", "[Options]") {
+  SECTION("direct construction") {
+    std::string file = "../README.json";
     Options opts(file);
-    REQUIRE(opts.get_file() == file);
+    REQUIRE(opts.get_parameter_file() == file);
   };
 
-  SECTION("construction with command line arguments")
-  {
+  SECTION("construction with command line arguments") {
     // simulate command line arguments
     int argc = 3;
     char *argv[argc];
@@ -20,6 +18,8 @@ TEST_CASE("Options constructors work", "[Options]")
     argv[2] = (char *)"../data/NonExistantFile.json";
 
     Options opts(argc, argv);
-    REQUIRE(opts.get_file() == "../data/NonExistantFile.json");
+
+    REQUIRE(opts.get_parameter_file() == "../data/NonExistantFile.json");
+    REQUIRE(opts.get_output_file() == "../data/NonExistantFile.csv");
   };
 };

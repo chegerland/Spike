@@ -4,13 +4,11 @@
 #include "IF.h"
 
 // Perfect integrate and fire model
-class PIF : public IF
-{
+class PIF : public IF {
 public:
-
   // constructors
-  PIF(double mu, double D): IF(mu, D) {type="PIF";};
-  PIF(std::string input_file): IF(input_file) {type="PIF";};
+  PIF(double mu, double D);
+  PIF(std::string input_file);
 
   // drift
   double drift(double v, double t) const;

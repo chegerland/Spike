@@ -4,16 +4,13 @@
 #include <string>
 
 //! A generic signal
-class Signal
-{
+class Signal {
 public:
-
   // Returns the signal at time t
-  virtual double signal(double t) =0;
+  virtual double signal(double t) = 0;
 
   // print signal parameters
-  virtual void print_parameters() =0;
+  virtual void print_parameters() = 0;
 };
-
 
 #endif // SIGNAL_H

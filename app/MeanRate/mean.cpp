@@ -1,46 +1,66 @@
+#include <fstream>
 #include <iostream>
 
+#include "ProgressBar.hpp"
 #include "Spike.h"
 
 // main
-int main(int argc, char *argv[])
-{
-  //Options options(argc, argv);
+int main(int argc, char *argv[]) {
+
+  // get file from command line
+  Options opts(argc, argv);
+  std::string parameters = opts.get_parameter_file();
 
   // define neuron
-  LIF lif(0.5, 0.001);
-  Timeframe time(0.0, 1e4, 1e-2);
+  LIF lif(parameters);
+  Timeframe time(parameters);
 
   // define adaptation
-  ExpAdaptation adapt(3, 0.5);
+  ExpAdaptation adapt(parameters);
   int Delta_steps = 3;
-  double Delta_vals[Delta_steps] = {0.1, 1, 2, 10};
+  double Delta_vals[Delta_steps] = {1e-2, 1e-1, 1};
 
-  // define mu steps
+  // define mu scale
   double mu = 0.5;
-  double mu_end = 3.5;
-  double dmu = 0.01;
-  int muSteps = (int) ((mu_end-mu)/dmu);
+  double mu_end = 5.;
+  double dmu = 0.05;
+  int muSteps = (int)((mu_end - mu) / dmu);
 
   // array to put mean rate into
   double rate[muSteps][Delta_steps];
 
+  // define output file
+  std::ofstream file;
+  file.open(opts.get_output_file());
+
+  ProgressBar progbar(muSteps, 70);
+
   // loop over mu values
-  for(int i = 0; i < muSteps; i++)
-  {
+  for (int i = 0; i < muSteps; i++) {
+
+    // increase mu
     mu += dmu;
     lif.set_mu(mu);
-    std::cout << mu << " " ;
-    std::cout << (double) lif.count(time)/1e4 << " ";
-    for(int j = 0; j < Delta_steps; j++)
-    {
-      adapt.set_Delta(Delta_vals[j]);
-      rate[i][j] = (double) lif.count(time, adapt)/1e4;
-      std::cout << rate[i][j] << " ";
-    }
-    std::cout << std::endl;
-  }
+    file << mu << ",";
 
+    // calculate mean rate without adaptation
+    file << (double)lif.count(time) / time.get_t_end() << ",";
+
+    // calculate mean rate with adaptation
+    for (int j = 0; j < Delta_steps; j++) {
+      adapt.set_Delta(Delta_vals[j]);
+      rate[i][j] = (double)lif.count(time, adapt) / time.get_t_end();
+      file << rate[i][j] << ",";
+    };
+
+    file << "\n";
+    ++progbar;
+    progbar.display();
+  };
+
+  // close file and progress bar
+  progbar.done();
+  file.close();
 
   return 0;
 };
