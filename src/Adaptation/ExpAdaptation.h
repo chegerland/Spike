@@ -23,6 +23,10 @@ public:
   // reset rule for a(t): a -> a + Delta
   double reset_rule(double a);
 
+  // getter methods
+  double get_Delta() { return this->Delta; };
+  double get_tau_a() { return this->tau_a; };
+
   // setter methods
   void set_Delta(double Delta) { this->Delta = Delta; };
   void set_tau_a(double tau_a) { this->tau_a = tau_a; };

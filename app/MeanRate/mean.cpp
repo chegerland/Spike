@@ -51,6 +51,12 @@ int main(int argc, char *argv[]) {
       adapt.set_Delta(Delta_vals[j]);
       rate[i][j] = (double)lif.count(time, adapt) / time.get_t_end();
       file << rate[i][j] << ",";
+
+      if (mu > 1.0) {
+        file << 1.0 / (double)lif.limit_cycle_period(adapt) << ",";
+      } else {
+        file << 0 << ",";
+      };
     };
 
     file << "\n";
