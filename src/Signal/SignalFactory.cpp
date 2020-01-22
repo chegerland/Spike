@@ -5,6 +5,7 @@
 #include <boost/property_tree/ptree.hpp>
 namespace pt = boost::property_tree;
 
+#include "CosineSignal.h"
 #include "TwoCosineSignal.h"
 
 #include "SignalFactory.h"
@@ -23,6 +24,8 @@ Signal *SignalFactory::create(std::string input_file) {
 
   if (type == "TwoCosineSignal") {
     signal = new TwoCosineSignal(input_file);
+  } else if (type == "CosineSignal") {
+    signal = new CosineSignal(input_file);
   } else {
     std::cerr << "Error: Unknown Signal type (" << type << ")!\n" << std::endl;
     exit(0);

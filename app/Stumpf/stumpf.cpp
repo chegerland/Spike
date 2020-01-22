@@ -6,13 +6,18 @@
 
 // main
 int main(int argc, char *argv[]) {
+
+  // get file from command line
+  Options opts(argc, argv);
+  std::string parameters = opts.get_parameter_file();
+
   // define LIF neuron with adaptation and signal
-  LIF lif(1.1, 0.001);
-  CosineSignal signal(0.05, 0.215);
-  ExpAdaptation adapt(0.126, 23.81);
+  LIF neuron(parameters);
+  Signal *signal = SignalFactory::create(parameters);
+  ExpAdaptation adapt(parameters);
 
   // define simulation time frame
-  Timeframe time(0.0, 300.0, 1e-2);
+  Timeframe time(parameters);
 
   // array to put firing rate into
   std::vector<double> rate;
@@ -25,7 +30,7 @@ int main(int argc, char *argv[]) {
 
 #pragma omp parallel for
   for (int j = 0; j < N_sims; j++) {
-    lif.firing_rate(rate, time, signal, adapt);
+    neuron.firing_rate(rate, time, *signal, adapt);
 
 // Progress
 #pragma omp critical
@@ -36,17 +41,16 @@ int main(int argc, char *argv[]) {
   };
 
   // print firing rate to file
-
-  // open filestream
   std::ofstream file;
-  file.open("lif_adapt.txt");
+  file.open(opts.get_output_file());
 
   double t = time.get_t_0();
   for (int i = 0; i < time.get_steps(); i++) {
     t += time.get_dt();
-    file << t << " " << (double)rate[i] / N_sims << "\n";
+    file << t << "," << (double)rate[i] / N_sims << "\n";
   };
 
+  progbar.done();
   file.close();
 
   return 0;
