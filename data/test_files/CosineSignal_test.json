@@ -1,6 +1,7 @@
 {
   "Signal":
   {
+    "type" : "cosine",
     "alpha" : 3.0,
     "f" : 2.35
   }

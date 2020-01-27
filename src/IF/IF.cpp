@@ -27,6 +27,9 @@ IF::IF(std::string input_file) {
   assert(mu >= 0);
   this->D = root.get<double>("Neuron.D");
   assert(D >= 0);
+
+  // read type
+  this->type = root.get<std::string>("Neuron.type");
 };
 
 // diffusion

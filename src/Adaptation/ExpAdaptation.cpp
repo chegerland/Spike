@@ -9,9 +9,14 @@ ExpAdaptation::ExpAdaptation(double Delta, double tau_a)
     : Delta(Delta), tau_a(tau_a) {
   assert(Delta >= 0);
   assert(tau_a > 0);
+  this->type = "exponential";
 };
 
-ExpAdaptation::ExpAdaptation(std::string input_file) {
+ExpAdaptation::ExpAdaptation(std::string input_file) : Adaptation(input_file) {
+
+  // check if type is right
+  assert(this->type == "exponential");
+
   // Create a root
   pt::ptree root;
 

@@ -10,9 +10,14 @@ namespace pt = boost::property_tree;
 
 TwoCosineSignal::TwoCosineSignal(double alpha, double f1, double beta,
                                  double f2, double phi)
-    : alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi){};
+    : alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi) {
+  this->type = "two cosine";
+};
 
-TwoCosineSignal::TwoCosineSignal(std::string input_file) {
+TwoCosineSignal::TwoCosineSignal(std::string input_file) : Signal(input_file) {
+  // check if type is right
+  assert(this->type == "two cosine");
+
   // Create a root
   pt::ptree root;
 

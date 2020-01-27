@@ -8,9 +8,14 @@ namespace pt = boost::property_tree;
 
 #include "CosineSignal.h"
 
-CosineSignal::CosineSignal(double alpha, double f) : alpha(alpha), f(f){};
+CosineSignal::CosineSignal(double alpha, double f) : alpha(alpha), f(f) {
+  this->type = "cosine";
+};
 
-CosineSignal::CosineSignal(std::string input_file) {
+CosineSignal::CosineSignal(std::string input_file) : Signal(input_file) {
+  // check if type is right
+  assert(this->type == "cosine");
+
   // Create a root
   pt::ptree root;
 

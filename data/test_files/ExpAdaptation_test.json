@@ -1,6 +1,7 @@
 {
   "Adaptation":
   {
+    "type" : "exponential",
     "Delta" : 3.0,
     "tau_a" : 2.0
   }

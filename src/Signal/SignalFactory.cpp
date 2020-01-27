@@ -22,9 +22,9 @@ Signal *SignalFactory::create(std::string input_file) {
   // read simulation data into simulation variables
   std::string type = root.get<std::string>("Signal.type");
 
-  if (type == "TwoCosineSignal") {
+  if (type == "two cosine") {
     signal = new TwoCosineSignal(input_file);
-  } else if (type == "CosineSignal") {
+  } else if (type == "cosine") {
     signal = new CosineSignal(input_file);
   } else {
     std::cerr << "Error: Unknown Signal type (" << type << ")!\n" << std::endl;
