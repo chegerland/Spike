@@ -32,6 +32,9 @@ public:
   int count(Timeframe &time, Adaptation &adapt) const;
   int count(Timeframe &time, Signal &signal, Adaptation &adapt) const;
 
+  // spike times
+  void spike_times(std::vector<double> &times, Timeframe &time) const;
+
   // calculate firing rate
   void firing_rate(std::vector<double> &rate, Timeframe &time) const;
   void firing_rate(std::vector<double> &rate, Timeframe &time,

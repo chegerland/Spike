@@ -1,0 +1,14 @@
+{
+  "Neuron":
+  {
+    "type" : "LIF",
+    "mu": 1.1,
+    "D" : 1e-1
+  },
+  "Simulation":
+  {
+    "t_0": 0.0,
+    "t_end": 1e2,
+    "dt" : 1e-2
+  }
+}
