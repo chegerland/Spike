@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
 
   // define neuron
   LIF lif(parameters);
+  ExpAdaptation adapt(parameters);
   Timeframe time(parameters);
 
   std::vector<double> times;
@@ -37,10 +38,11 @@ int main(int argc, char *argv[]) {
       std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
   double stdev = std::sqrt(sq_sum / intervals.size());
 
+  double r0 = times.size() / time.get_t_end();
   double cv = stdev / mean;
   std::cout << "Mean: " << mean << std::endl;
-  std::cout << "Std: " << stdev << std::endl;
   std::cout << "CV: " << cv << std::endl;
+  std::cout << "Rate: " << r0 << std::endl;
 
   return 0;
 };
