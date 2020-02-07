@@ -5,14 +5,7 @@
 
 //! Abstract class for Adaptation
 class Adaptation {
-protected:
-  std::string type; // type of adaptation
-
 public:
-  // constructors
-  Adaptation();
-  Adaptation(std::string input_file);
-
   // returns f(a,t) = da/dt
   virtual double adapt(double a, double t) = 0;
 

@@ -13,9 +13,8 @@
 // A generic integrate and fire model.
 class IF {
 protected:
-  double mu;        // mobility
-  double D;         // diffusion coefficient
-  std::string type; // type of the IF
+  double mu; // mobility
+  double D;  // diffusion coefficient
 
 public:
   // constructors
@@ -52,9 +51,6 @@ public:
   // setter methods
   void set_mu(double mu) { this->mu = mu; };
   void set_D(double D) { this->D = D; };
-
-  // print the parameters of this neuron
-  void print_parameters() const;
 };
 
 #endif // IF_H

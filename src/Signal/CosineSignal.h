@@ -20,9 +20,6 @@ public:
 
   // getter functions
   double get_f() { return this->f; };
-
-  // print function
-  void print_parameters();
 };
 
 #endif // COSINESIGNAL_H

@@ -9,19 +9,19 @@ ExpAdaptation::ExpAdaptation(double Delta, double tau_a)
     : Delta(Delta), tau_a(tau_a) {
   assert(Delta >= 0);
   assert(tau_a > 0);
-  this->type = "exponential";
 };
 
-ExpAdaptation::ExpAdaptation(std::string input_file) : Adaptation(input_file) {
-
-  // check if type is right
-  assert(this->type == "exponential");
+ExpAdaptation::ExpAdaptation(std::string input_file) {
 
   // Create a root
   pt::ptree root;
 
   // Load the json file in this ptree
   pt::read_json(input_file, root);
+
+  // check if type is right
+  std::string type = root.get<std::string>("Adaptation.type");
+  assert(type == "exponential");
 
   // read variables
   tau_a = root.get<double>("Adaptation.tau_a");

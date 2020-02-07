@@ -22,9 +22,6 @@ public:
   double get_t_end() { return this->t_end; };
   double get_dt() { return this->dt; };
   int get_steps() { return this->steps; };
-
-  // print function
-  void print_parameters();
 };
 
 #endif // TIMEFRAME_H

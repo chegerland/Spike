@@ -10,19 +10,16 @@ namespace pt = boost::property_tree;
 
 TwoCosineSignal::TwoCosineSignal(double alpha, double f1, double beta,
                                  double f2, double phi)
-    : alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi) {
-  this->type = "two cosine";
-};
+    : alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi){};
 
-TwoCosineSignal::TwoCosineSignal(std::string input_file) : Signal(input_file) {
-  // check if type is right
-  assert(this->type == "two cosine");
+TwoCosineSignal::TwoCosineSignal(std::string input_file) {
 
-  // Create a root
   pt::ptree root;
-
-  // Load the json file in this ptree
   pt::read_json(input_file, root);
+
+  // check if type is right
+  std::string type = root.get<std::string>("Signal.type");
+  assert(type == "two cosine");
 
   // read simulation data into simulation variables
   alpha = root.get<double>("Signal.alpha");
@@ -35,15 +32,4 @@ TwoCosineSignal::TwoCosineSignal(std::string input_file) : Signal(input_file) {
 double TwoCosineSignal::signal(double t) {
   return alpha * cos(2.0 * M_PI * f1 * t) +
          beta * cos(2.0 * M_PI * f2 * t + phi);
-};
-
-// print parameters
-void TwoCosineSignal::print_parameters() {
-  std::cout << "Signal (TwoCosineSignal) parameters: \n"
-            << "alpha = " << alpha << "\n"
-            << "beta = " << beta << "\n"
-            << "phi = " << phi << "\n"
-            << "f1 = " << f1 << "\n"
-            << "f2 = " << f2 << "\n"
-            << std::endl;
 };

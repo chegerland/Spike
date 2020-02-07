@@ -8,19 +8,16 @@ namespace pt = boost::property_tree;
 
 #include "CosineSignal.h"
 
-CosineSignal::CosineSignal(double alpha, double f) : alpha(alpha), f(f) {
-  this->type = "cosine";
-};
+CosineSignal::CosineSignal(double alpha, double f) : alpha(alpha), f(f){};
 
-CosineSignal::CosineSignal(std::string input_file) : Signal(input_file) {
-  // check if type is right
-  assert(this->type == "cosine");
+CosineSignal::CosineSignal(std::string input_file) {
 
-  // Create a root
   pt::ptree root;
-
-  // Load the json file in this ptree
   pt::read_json(input_file, root);
+
+  // check if type is right
+  std::string type = root.get<std::string>("Signal.type");
+  assert(type == "cosine");
 
   // read simulation data into simulation variables
   alpha = root.get<double>("Signal.alpha");
@@ -29,12 +26,4 @@ CosineSignal::CosineSignal(std::string input_file) : Signal(input_file) {
 
 double CosineSignal::signal(double t) {
   return alpha * cos(2.0 * M_PI * f * t);
-};
-
-// print parameters
-void CosineSignal::print_parameters() {
-  std::cout << "Signal (CosineSignal) parameters: \n"
-            << "alpha = " << alpha << "\n"
-            << "f = " << f << "\n"
-            << std::endl;
 };

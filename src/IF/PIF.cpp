@@ -1,9 +1,19 @@
+// json parser
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
+namespace pt = boost::property_tree;
+
 #include "PIF.h"
 
 // constructors
-PIF::PIF(double mu, double D) : IF(mu, D) { this->type = "PIF"; };
+PIF::PIF(double mu, double D) : IF(mu, D){};
+
 PIF::PIF(std::string input_file) : IF(input_file) {
-  assert(this->type == "PIF");
+  // check if type is right
+  pt::ptree root;
+  pt::read_json(input_file, root);
+  std::string type = root.get<std::string>("Neuron.type");
+  assert(type == "PIF");
 };
 
 // drift of a PIF neuron

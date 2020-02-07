@@ -34,11 +34,3 @@ Timeframe::Timeframe(std::string input_file) {
   // calculate steps
   steps = (int)((t_end - t_0) / dt);
 };
-
-void Timeframe::print_parameters() {
-  std::cout << "Time frame: \n"
-            << "t_0 = " << t_0 << "\n"
-            << "t_end = " << t_end << "\n"
-            << "dt = " << dt << "\n"
-            << std::endl;
-};

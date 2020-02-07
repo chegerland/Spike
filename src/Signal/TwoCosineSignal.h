@@ -20,9 +20,6 @@ public:
 
   // return signal
   double signal(double t);
-
-  // print function
-  void print_parameters();
 };
 
 #endif // TWOCOSINESIGNAL_H

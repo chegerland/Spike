@@ -27,9 +27,6 @@ IF::IF(std::string input_file) {
   assert(mu >= 0);
   this->D = root.get<double>("Neuron.D");
   assert(D >= 0);
-
-  // read type
-  this->type = root.get<std::string>("Neuron.type");
 };
 
 // diffusion
@@ -380,11 +377,4 @@ void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a,
       a[i] = adapt.reset_rule(a[i]);
     };
   };
-};
-
-// print the parameters
-void IF::print_parameters() const {
-  std::cout << "Neuron (" << type << ") parameters: \n"
-            << "mu = " << mu << "\n"
-            << "D = " << D << std::endl;
 };
