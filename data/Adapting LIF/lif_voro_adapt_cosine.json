@@ -1,0 +1,26 @@
+{
+  "Neuron":
+  {
+    "type" : "LIF",
+    "mu": 6.5,
+    "D" : 1e-3
+  },
+  "Signal" :
+  {
+    "type" : "cosine",
+    "alpha" : 0.2,
+    "f" : 1.5
+  },
+  "Adaptation":
+  {
+    "type" : "exponential",
+    "tau_a" : 5,
+    "Delta" : 0.1
+  },
+  "Simulation":
+  {
+    "t_0": 0.0,
+    "t_end": 2e2,
+    "dt" : 1e-2
+  }
+}

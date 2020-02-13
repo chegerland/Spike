@@ -55,7 +55,6 @@ class LIF:
 
 
 class LIFadapt:
-    pass
 
     def __init__(self,
     mu,
@@ -63,14 +62,13 @@ class LIFadapt:
     Delta,
     tau_a
     ):
-        self.mu = mu
         self.D = D
         self.Delta = Delta
         self.tau_a = tau_a
+        self.mu = mu - Delta*tau_a/(1 + Delta*tau_a)*(mu - 0.5)
 
     def stationary_rate(self):
-        integrand = lambda x: exp(x**2)*erfc(x)
-        r0 = 1/(sqrt(pi) * quad(integrand, [(self.mu-1)/sqrt(2*self.D), self.mu/sqrt(2*self.D)]) )
+        r0 = 1./(1 + Delta*tau_a)*(mu - 0.5)
         return r0
 
 
@@ -102,7 +100,15 @@ class LIFadapt:
         result = result / (1 + suscept1 * self.Delta*self.tau_a/(1 - j* self.tau_a*(omega_1+omega_2)))
         return result
 
-    def firing_rate_signal(self, t, eps, f):
+    def firing_rate_signal_linear(self, t, eps, f):
+        omega = 2 * pi * f
+        stat = self.stationary_rate()
+        lr = eps*fabs(self.susceptibility_1(omega))*cos(omega*t - arg(self.susceptibility_1(omega)))
+        result = stat + lr
+        assert im(result) == 0
+        return re(result)
+
+    def firing_rate_signal_nonlinear(self, t, eps, f):
         omega = 2 * pi * f
         stat = self.stationary_rate() + 0.5*eps**2*self.susceptibility_2(omega, -omega)
         lr = eps*fabs(self.susceptibility_1(omega))*cos(omega*t - arg(self.susceptibility_1(omega)))
