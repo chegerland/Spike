@@ -197,6 +197,38 @@ void IF::spike_times(std::vector<double> &times, Timeframe &time) const {
 };
 
 // calculate firing rate of an IF neuron
+void IF::spike_times(std::vector<double> &times, Timeframe &time,
+                     Adaptation &adapt) const {
+  // initial values
+  double v = 0;
+  double a = 0;
+  double t = time.get_t_0();
+
+  // for better readibility
+  double dt = time.get_dt();
+
+  // random numbers
+  std::random_device rd{};
+  std::mt19937 generator{rd()};
+  std::normal_distribution<double> dist(0.0, sqrt(dt));
+
+  // euler maruyama scheme
+  for (int i = 0; i < time.get_steps(); i++) {
+    // update time and voltage
+    t += dt;
+    v += drift(v, t) * dt - a * dt + diffusion(v, t) * dist(generator);
+    a += adapt.adapt(a, t) * dt;
+
+    // fire and reset rule
+    if (v > 1) {
+      v = 0;
+      a = adapt.reset_rule(a);
+      times.push_back(t);
+    };
+  };
+};
+
+// calculate firing rate of an IF neuron
 void IF::firing_rate(std::vector<double> &rate, Timeframe &time) const {
   // initial values
   double v = 0;

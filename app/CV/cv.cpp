@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
   Timeframe time(parameters);
 
   std::vector<double> times;
-  lif.spike_times(times, time);
+  lif.spike_times(times, time, adapt);
 
   std::vector<double> intervals;
 

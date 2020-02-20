@@ -33,6 +33,8 @@ public:
 
   // spike times
   void spike_times(std::vector<double> &times, Timeframe &time) const;
+  void spike_times(std::vector<double> &times, Timeframe &time,
+                   Adaptation &adapt) const;
 
   // calculate firing rate
   void firing_rate(std::vector<double> &rate, Timeframe &time) const;

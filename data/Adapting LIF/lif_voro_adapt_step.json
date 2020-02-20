@@ -2,25 +2,25 @@
   "Neuron":
   {
     "type" : "LIF",
-    "mu": 8.0,
+    "mu": 4.5,
     "D" : 1e-1
   },
   "Signal" :
   {
     "type" : "step",
     "alpha" : 4.5,
-    "t_0" : 10.0
+    "t_0" : 30.0
   },
   "Adaptation":
   {
     "type" : "exponential",
-    "tau_a" : 3,
-    "Delta" : 0.5
+    "tau_a" : 10,
+    "Delta" : 1e-1
   },
   "Simulation":
   {
     "t_0": 0.0,
-    "t_end": 40,
+    "t_end": 50,
     "dt" : 1e-2
   }
 }

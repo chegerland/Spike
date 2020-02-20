@@ -38,15 +38,18 @@ int main(int argc, char *argv[]) {
   // loop over mu values
   for (int i = 0; i < muSteps; i++) {
 
+    // clear
+    times.clear();
+    intervals.clear();
+
     // get spike times
     mu += dmu;
     lif.set_mu(mu);
-    times.clear();
-    lif.spike_times(times, time);
+    lif.spike_times(times, time, adapt);
 
     // calculate isi
-    intervals.clear();
-    for (int i = 0; i < times.size() - 1; i++) {
+    int end = times.size() - 1;
+    for (int i = 0; i < end; i++) {
       intervals.push_back(times[i + 1] - times[i]);
     };
 
@@ -70,6 +73,8 @@ int main(int argc, char *argv[]) {
     ++progbar;
     progbar.display();
   };
+
+  progbar.done();
 
   return 0;
 };
