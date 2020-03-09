@@ -16,10 +16,10 @@ public:
   CosineSignal(std::string input_file);
 
   // return signal
-  double signal(double t);
+  double signal(double t) const;
 
   // getter functions
-  double get_f() { return this->f; };
+  double get_f() const { return this->f; };
 };
 
 #endif // COSINESIGNAL_H

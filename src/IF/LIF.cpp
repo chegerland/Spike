@@ -35,8 +35,6 @@ double LIF::limit_cycle_period(ExpAdaptation &adapt) {
   double epserr = 1e-7;
   int max_iter = 1e3;
 
-  double err = fabs(x_lo - x_hi) / 2.0;
-
   // check sign
   if (signbit(this->func(adapt, x_lo)) == signbit(this->func(adapt, x_hi))) {
     std::cout << "Same sign!" << mu << std::endl;

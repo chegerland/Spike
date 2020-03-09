@@ -18,14 +18,14 @@ public:
   ExpAdaptation(std::string input_file);
 
   // adaptation f(a,t) = da/dt = - 1/tau_a * a
-  double adapt(double a, double t);
+  double adapt(double a, double t) const;
 
   // reset rule for a(t): a -> a + Delta
-  double reset_rule(double a);
+  double reset_rule(double a) const;
 
   // getter methods
-  double get_Delta() { return this->Delta; };
-  double get_tau_a() { return this->tau_a; };
+  double get_Delta() const { return this->Delta; };
+  double get_tau_a() const { return this->tau_a; };
 
   // setter methods
   void set_Delta(double Delta) { this->Delta = Delta; };

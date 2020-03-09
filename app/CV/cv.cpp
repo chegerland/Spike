@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<double> intervals;
 
-  for (int i = 0; i < times.size() - 1; i++) {
+  for (unsigned int i = 0; i < times.size() - 1; i++) {
     intervals.push_back(times[i + 1] - times[i]);
     // std::cout << intervals[i] << std::endl;
   };

@@ -29,7 +29,7 @@ TwoCosineSignal::TwoCosineSignal(std::string input_file) {
   phi = root.get<double>("Signal.phi");
 };
 
-double TwoCosineSignal::signal(double t) {
+double TwoCosineSignal::signal(double t) const {
   return alpha * cos(2.0 * M_PI * f1 * t) +
          beta * cos(2.0 * M_PI * f2 * t + phi);
 };

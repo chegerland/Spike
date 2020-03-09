@@ -13,7 +13,7 @@ namespace pt = boost::property_tree;
 IF::IF(double mu, double D) : mu(mu), D(D) {
   assert(mu >= 0);
   assert(D >= 0);
-};
+}
 
 IF::IF(std::string input_file) {
   // Create a root
@@ -27,15 +27,13 @@ IF::IF(std::string input_file) {
   assert(mu >= 0);
   this->D = root.get<double>("Neuron.D");
   assert(D >= 0);
-};
+}
 
 // diffusion
-double IF::diffusion(double v, double t) const { return sqrt(2 * D); };
+double IF::diffusion(double v, double t) const { return sqrt(2 * D); }
 
-// count spikes of an IF neuron
-int IF::count(Timeframe &time) const {
-  int count = 0;
-
+// get the spike train of an IF neuron
+std::vector<bool> IF::get_spike_train(const Timeframe &time) const {
   // initial values
   double v = 0;
   double t = time.get_t_0();
@@ -48,8 +46,12 @@ int IF::count(Timeframe &time) const {
   std::mt19937 generator{rd()};
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
+  // array for spike train
+  std::vector<bool> spike_train;
+  spike_train.resize(time.get_steps());
+
   // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
+  for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
     v += this->drift(v, t) * dt + this->diffusion(v, t) * dist(generator);
@@ -57,17 +59,16 @@ int IF::count(Timeframe &time) const {
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      count += 1;
+      spike_train[i] = true;
     };
   };
 
-  return count;
+  return spike_train;
 };
 
-// count spikes of an IF neuron with signal
-int IF::count(Timeframe &time, Signal &signal) const {
-  int count = 0;
-
+// get the spike train of an IF neuron
+std::vector<bool> IF::get_spike_train(const Timeframe &time,
+                                      const Signal &signal) const {
   // initial values
   double v = 0;
   double t = time.get_t_0();
@@ -80,27 +81,30 @@ int IF::count(Timeframe &time, Signal &signal) const {
   std::mt19937 generator{rd()};
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
+  // array for spike train
+  std::vector<bool> spike_train;
+  spike_train.resize(time.get_steps());
+
   // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
+  for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
-    v += drift(v, t) * dt + signal.signal(t) * dt +
-         diffusion(v, t) * dist(generator);
+    v += this->drift(v, t) * dt + signal.signal(t) * dt +
+         this->diffusion(v, t) * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      count += 1;
+      spike_train[i] = true;
     };
   };
 
-  return count;
+  return spike_train;
 };
 
-// count spikes of an IF neuron with adaptation
-int IF::count(Timeframe &time, Adaptation &adapt) const {
-  int count = 0;
-
+// get the spike train of an IF neuron
+std::vector<bool> IF::get_spike_train(const Timeframe &time,
+                                      const Adaptation &adapt) const {
   // initial values
   double v = 0;
   double a = 0;
@@ -114,91 +118,32 @@ int IF::count(Timeframe &time, Adaptation &adapt) const {
   std::mt19937 generator{rd()};
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
-  // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
-    // update time and voltage
-    t += dt;
-    v += drift(v, t) * dt - a * dt + diffusion(v, t) * dist(generator);
-    a += adapt.adapt(a, t) * dt;
-
-    // fire and reset rule
-    if (v > 1) {
-      v = 0;
-      a = adapt.reset_rule(a);
-      count += 1;
-    };
-  };
-
-  return count;
-};
-
-// count spikes of an IF neuron with signal and adaptation
-int IF::count(Timeframe &time, Signal &signal, Adaptation &adapt) const {
-  int count = 0;
-
-  // initial values
-  double v = 0;
-  double a = 0;
-  double t = time.get_t_0();
-
-  // for better readibility
-  double dt = time.get_dt();
-
-  // random numbers
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
+  // array for spike train
+  std::vector<bool> spike_train;
+  spike_train.resize(time.get_steps());
 
   // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
-    // update time and voltage
-    t += dt;
-    v += drift(v, t) * dt + signal.signal(t) * dt - a * dt +
-         diffusion(v, t) * dist(generator);
-    a += adapt.adapt(a, t) * dt;
-
-    // fire and reset rule
-    if (v > 1) {
-      v = 0;
-      a = adapt.reset_rule(a);
-      count += 1;
-    };
-  };
-
-  return count;
-};
-
-// calculate firing rate of an IF neuron
-void IF::spike_times(std::vector<double> &times, Timeframe &time) const {
-  // initial values
-  double v = 0;
-  double t = time.get_t_0();
-
-  // for better readibility
-  double dt = time.get_dt();
-
-  // random numbers
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
-  // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
+  for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
     v += this->drift(v, t) * dt + this->diffusion(v, t) * dist(generator);
+    a += adapt.adapt(a, t) * dt;
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      times.push_back(t);
+      a = adapt.reset_rule(a);
+      spike_train[i] = true;
     };
   };
+
+  return spike_train;
 };
 
-// calculate firing rate of an IF neuron
-void IF::spike_times(std::vector<double> &times, Timeframe &time,
-                     Adaptation &adapt) const {
+// get the spike train of an IF neuron
+std::vector<bool> IF::get_spike_train(const Timeframe &time,
+                                      const Signal &signal,
+                                      const Adaptation &adapt) const {
   // initial values
   double v = 0;
   double a = 0;
@@ -212,147 +157,32 @@ void IF::spike_times(std::vector<double> &times, Timeframe &time,
   std::mt19937 generator{rd()};
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
+  // array for spike train
+  std::vector<bool> spike_train;
+  spike_train.resize(time.get_steps());
+
   // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
+  for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
-    v += drift(v, t) * dt - a * dt + diffusion(v, t) * dist(generator);
+    v += this->drift(v, t) * dt + signal.signal(t) * dt +
+         this->diffusion(v, t) * dist(generator);
     a += adapt.adapt(a, t) * dt;
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
       a = adapt.reset_rule(a);
-      times.push_back(t);
+      spike_train[i] = true;
     };
   };
-};
 
-// calculate firing rate of an IF neuron
-void IF::firing_rate(std::vector<double> &rate, Timeframe &time) const {
-  // initial values
-  double v = 0;
-  double t = time.get_t_0();
-
-  // for better readibility
-  double dt = time.get_dt();
-
-  // random numbers
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
-  // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
-    // update time and voltage
-    t += dt;
-    v += this->drift(v, t) * dt + this->diffusion(v, t) * dist(generator);
-
-    // fire and reset rule
-    if (v > 1) {
-      v = 0;
-      rate[i] += 1.0 / dt;
-    };
-  };
-};
-
-// calculate firing rate of an IF neuron with signal
-void IF::firing_rate(std::vector<double> &rate, Timeframe &time,
-                     Signal &signal) const {
-  // initial values
-  double v = 0;
-  double t = time.get_t_0();
-
-  // for better readibility
-  double dt = time.get_dt();
-
-  // random numbers
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
-  // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
-    // update time and voltage
-    t += dt;
-    v += drift(v, t) * dt + signal.signal(t) * dt +
-         diffusion(v, t) * dist(generator);
-
-    // fire and reset rule
-    if (v > 1) {
-      v = 0;
-      rate[i] += 1.0 / dt;
-    };
-  };
-};
-
-// calculate firing rate of an IF neuron with adaptation
-void IF::firing_rate(std::vector<double> &rate, Timeframe &time,
-                     Adaptation &adapt) const {
-  // initial values
-  double v = 0;
-  double a = 0;
-  double t = time.get_t_0();
-
-  // for better readibility
-  double dt = time.get_dt();
-
-  // random numbers
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
-  // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
-    // update time and voltage
-    t += dt;
-    v += drift(v, t) * dt - a * dt + diffusion(v, t) * dist(generator);
-    a += adapt.adapt(a, t) * dt;
-
-    // fire and reset rule
-    if (v > 1) {
-      v = 0;
-      a = adapt.reset_rule(a);
-      rate[i] += 1.0 / dt;
-    };
-  };
-};
-
-// calculate firing rate of an IF neuron with signal and adaptation
-void IF::firing_rate(std::vector<double> &rate, Timeframe &time, Signal &signal,
-                     Adaptation &adapt) const {
-  // initial values
-  double v = 0;
-  double a = 0;
-  double t = time.get_t_0();
-
-  // for better readibility
-  double dt = time.get_dt();
-
-  // random numbers
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
-  // euler maruyama scheme
-  for (int i = 0; i < time.get_steps(); i++) {
-    // update time and voltage
-    t += dt;
-    v += drift(v, t) * dt + signal.signal(t) * dt - a * dt +
-         diffusion(v, t) * dist(generator);
-    a += adapt.adapt(a, t) * dt;
-
-    // fire and reset rule
-    if (v > 1) {
-      v = 0;
-      a = adapt.reset_rule(a);
-      rate[i] += 1.0 / dt;
-    };
-  };
+  return spike_train;
 };
 
 // voltage curve for IF
-void IF::voltage_curve(std::vector<double> &v, Timeframe &time) const {
+void IF::get_voltage_curve(std::vector<double> &v,
+                           const Timeframe &time) const {
   // initial values
   v[0] = 0;
   double t = time.get_t_0();
@@ -366,7 +196,7 @@ void IF::voltage_curve(std::vector<double> &v, Timeframe &time) const {
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 1; i < time.get_steps(); i++) {
+  for (unsigned int i = 1; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
     v[i] = v[i - 1] + this->drift(v[i - 1], t) * dt +
@@ -380,8 +210,9 @@ void IF::voltage_curve(std::vector<double> &v, Timeframe &time) const {
 };
 
 // voltage curve for IF with adaptation
-void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a,
-                       Timeframe &time, Adaptation &adapt) const {
+void IF::get_voltage_curve(std::vector<double> &v, std::vector<double> &a,
+                           const Timeframe &time,
+                           const Adaptation &adapt) const {
   // initial values
   v[0] = 0;
   a[0] = 0;
@@ -396,7 +227,7 @@ void IF::voltage_curve(std::vector<double> &v, std::vector<double> &a,
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // euler maruyama scheme
-  for (int i = 1; i < time.get_steps(); i++) {
+  for (unsigned int i = 1; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
     v[i] = v[i - 1] + this->drift(v[i - 1], t) * dt +

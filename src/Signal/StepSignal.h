@@ -16,7 +16,7 @@ public:
   StepSignal(std::string input_file);
 
   // return signal
-  double signal(double t);
+  double signal(double t) const;
 };
 
 #endif // STEPSIGNAL_H

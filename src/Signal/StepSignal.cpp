@@ -21,7 +21,7 @@ StepSignal::StepSignal(std::string input_file) {
   t_0 = root.get<double>("Signal.t_0");
 };
 
-double StepSignal::signal(double t) {
+double StepSignal::signal(double t) const {
   double result;
 
   if (t < t_0) {

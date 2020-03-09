@@ -31,6 +31,8 @@ ExpAdaptation::ExpAdaptation(std::string input_file) {
   assert(Delta >= 0);
 };
 
-double ExpAdaptation::adapt(double a, double t) { return -1.0 / tau_a * a; };
+double ExpAdaptation::adapt(double a, double t) const {
+  return -1.0 / tau_a * a;
+};
 
-double ExpAdaptation::reset_rule(double a) { return a + Delta; };
+double ExpAdaptation::reset_rule(double a) const { return a + Delta; };

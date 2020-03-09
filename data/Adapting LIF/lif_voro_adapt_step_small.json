@@ -3,24 +3,24 @@
   {
     "type" : "LIF",
     "mu": 2.5,
-    "D" : 2e-2
+    "D" : 1e-1
   },
   "Signal" :
   {
-    "type" : "cosine",
-    "alpha" : 0.1,
-    "f" : 0.01
+    "type" : "step",
+    "alpha" : 0.05,
+    "t_0" : 50.0
   },
   "Adaptation":
   {
     "type" : "exponential",
     "tau_a" : 10,
-    "Delta" : 1e-1
+    "Delta" : 0
   },
   "Simulation":
   {
     "t_0": 0.0,
-    "t_end": 3e2,
+    "t_end": 100,
     "dt" : 1e-2
   }
 }

@@ -30,7 +30,9 @@ int main(int argc, char *argv[]) {
 
 #pragma omp parallel for
   for (int j = 0; j < N_sims; j++) {
-    neuron.firing_rate(rate, time, *signal, adapt);
+    std::vector<bool> spike_train =
+        neuron.get_spike_train(time, *signal, adapt);
+    add_to_firing_rate(spike_train, time, N_sims, rate);
 
 // Progress
 #pragma omp critical
@@ -45,9 +47,9 @@ int main(int argc, char *argv[]) {
   file.open(opts.get_output_file());
 
   double t = time.get_t_0();
-  for (int i = 0; i < time.get_steps(); i++) {
+  for (unsigned int i = 0; i < time.get_steps(); i++) {
     t += time.get_dt();
-    file << t << "," << (double)rate[i] / N_sims << "\n";
+    file << t << "," << (double)rate[i] << "\n";
   };
 
   progbar.done();

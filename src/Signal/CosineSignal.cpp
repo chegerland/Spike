@@ -24,6 +24,6 @@ CosineSignal::CosineSignal(std::string input_file) {
   f = root.get<double>("Signal.f");
 };
 
-double CosineSignal::signal(double t) {
+double CosineSignal::signal(double t) const {
   return alpha * cos(2.0 * M_PI * f * t);
 };

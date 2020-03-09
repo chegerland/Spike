@@ -15,7 +15,7 @@
   {
     "type" : "exponential",
     "tau_a" : 10,
-    "Delta" : 1e-1
+    "Delta" : 5e-1
   },
   "Simulation":
   {

@@ -7,7 +7,7 @@
 class Signal {
 public:
   // Returns the signal at time t
-  virtual double signal(double t) = 0;
+  virtual double signal(double t) const = 0;
 };
 
 #endif // SIGNAL_H

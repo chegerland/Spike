@@ -12,7 +12,7 @@ Timeframe::Timeframe(double t_0, double t_end, double dt)
     : t_0(t_0), t_end(t_end), dt(dt) {
   assert(t_end > t_0);
   assert(dt < t_end - t_0);
-  this->steps = (int)((t_end - t_0) / dt);
+  this->steps = (unsigned int)((t_end - t_0) / dt);
 };
 
 Timeframe::Timeframe(std::string input_file) {

@@ -1,17 +1,16 @@
 #ifndef TWOCOSINESIGNAL_H
 #define TWOCOSINESIGNAL_H
 
-#include <string>
-
 #include "Signal.h"
+#include <string>
 
 class TwoCosineSignal : public Signal {
 private:
   double alpha; // amplitude first signal
-  double beta;  // amplitude second signal
-  double phi;   // phase shift
   double f1;    // frequency first signal
+  double beta;  // amplitude second signal
   double f2;    // frequency second signal
+  double phi;   // phase shift
 
 public:
   // constructors
@@ -19,7 +18,7 @@ public:
   TwoCosineSignal(std::string input_file);
 
   // return signal
-  double signal(double t);
+  double signal(double t) const;
 };
 
 #endif // TWOCOSINESIGNAL_H
