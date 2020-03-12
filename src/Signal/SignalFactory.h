@@ -10,7 +10,7 @@
  */
 class SignalFactory {
 public:
-  static Signal * create(std::string input_file);
+  static Signal * create(const std::string& input_file);
 };
 
 #endif // SIGNALFACTORY_H

@@ -8,11 +8,12 @@ namespace pt = boost::property_tree;
 #include "CosineSignal.h"
 #include "StepSignal.h"
 #include "TwoCosineSignal.h"
+#include "WhiteNoiseSignal.h"
 
 #include "SignalFactory.h"
 
-Signal *SignalFactory::create(std::string input_file) {
-  Signal *signal = NULL;
+Signal *SignalFactory::create(const std::string& input_file) {
+  Signal *signal = nullptr;
 
   // Create a root
   pt::ptree root;
@@ -29,6 +30,8 @@ Signal *SignalFactory::create(std::string input_file) {
     signal = new CosineSignal(input_file);
   } else if (type == "step") {
     signal = new StepSignal(input_file);
+  } else if (type == "white noise") {
+    signal = new WhiteNoiseSignal(input_file);
   } else {
     std::cerr << "Error: Unknown Signal type (" << type << ")!\n" << std::endl;
     exit(0);
