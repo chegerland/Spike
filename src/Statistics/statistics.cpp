@@ -108,7 +108,6 @@ void fourier_trafo_firing_rate(
 
   // check size of vectors
   unsigned int steps = time.get_steps();
-  assert(frequencies.size() == steps);
   assert(firing_rate_fourier.size() == steps / 2 + 1);
   assert(frequencies.size() == steps / 2 + 1);
 

@@ -5,6 +5,8 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <utility>
+#include <iostream>
+
 namespace pt = boost::property_tree;
 
 #include "WhiteNoiseSignal.h"
@@ -25,6 +27,10 @@ WhiteNoiseSignal::WhiteNoiseSignal(const std::string &input_file) : time(input_f
   // read simulation data into simulation variables
   alpha = root.get<double>("Signal.alpha");
   cut_off = root.get<double>("Signal.cut_off");
+
+  generate_white_noise();
+
+  std::cout << "white noise constructed" << std::endl;
 };
 
 void WhiteNoiseSignal::generate_white_noise() {
@@ -35,7 +41,7 @@ void WhiteNoiseSignal::generate_white_noise() {
   std::normal_distribution<double> dist(0.0, 1.0);
 
   // length of the signal
-  const auto steps = time.get_steps();
+  const unsigned int steps = time.get_steps();
   this->signal_values.resize(steps);
 
   // define cut_off index
@@ -46,8 +52,9 @@ void WhiteNoiseSignal::generate_white_noise() {
   frequencies =
       (fftw_complex *)fftw_malloc(sizeof(fftw_complex) * (steps / 2 + 1));
 
+
   // white noise in frequency space has constant amplitude, random phase
-  double rand = dist(generator);
+  double rand;
   for (int i = 1; i < steps / 2; i++) {
     rand = dist(generator);
     frequencies[i][0] = cos(2.0 * M_PI * rand);
@@ -89,7 +96,7 @@ void WhiteNoiseSignal::generate_white_noise() {
 
 double WhiteNoiseSignal::signal(double t) const {
   // check if time is in timeframe
-  assert(t < time.get_t_end() && t > time.get_t_0());
+  assert(t <= time.get_t_end() && t >= time.get_t_0());
 
   // calculate according index
   unsigned int index;

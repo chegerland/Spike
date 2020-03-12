@@ -2,4 +2,5 @@
 #add_subdirectory("CVandMeanRate")
 #add_subdirectory("MeanRate")
 #add_subdirectory("RateOnePeriod")
+add_subdirectory("NoiseScan")
 add_subdirectory("Stumpf")
