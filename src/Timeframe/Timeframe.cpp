@@ -13,6 +13,13 @@ Timeframe::Timeframe(double t_0, double t_end, double dt)
   assert(t_end > t_0);
   assert(dt < t_end - t_0);
   this->steps = (unsigned int)((t_end - t_0) / dt);
+
+  this->t.resize(steps);
+
+  // fill time values
+  for (unsigned int i = 0; i < steps; i++) {
+    t[i] = t_0 + i * dt;
+  };
 };
 
 Timeframe::Timeframe(std::string input_file) {
@@ -33,4 +40,11 @@ Timeframe::Timeframe(std::string input_file) {
 
   // calculate steps
   steps = (int)((t_end - t_0) / dt);
+
+  this->t.resize(steps);
+
+  // fill time values
+  for (unsigned int i = 0; i < steps; i++) {
+    t[i] = t_0 + i * dt;
+  };
 };

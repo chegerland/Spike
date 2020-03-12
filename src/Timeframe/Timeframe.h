@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <string>
+#include <vector>
 
 //! A time frame class
 class Timeframe {
@@ -11,6 +12,7 @@ private:
   double t_end;       // end time
   double dt;          // time step
   unsigned int steps; // number of time steps
+  std::vector<double> t;
 
 public:
   // constructors
@@ -22,6 +24,7 @@ public:
   double get_t_end() const { return this->t_end; };
   double get_dt() const { return this->dt; };
   unsigned int get_steps() const { return this->steps; };
+  double get_time(unsigned int i) const { return this->t[i]; };
 };
 
 #endif // TIMEFRAME_H
