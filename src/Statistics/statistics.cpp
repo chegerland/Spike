@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cmath>
+#include <fftw3.h>
 #include <numeric>
 
 // add single spike train to firing rate
@@ -98,4 +99,46 @@ int spike_count(const std::vector<bool> &spike_train) {
   };
 
   return count;
+};
+
+void fourier_trafo_firing_rate(
+    const std::vector<double> &firing_rate, const Timeframe &time,
+    std::vector<double> &frequencies,
+    std::vector<std::complex<double>> &firing_rate_fourier) {
+
+  // check size of vectors
+  unsigned int steps = time.get_steps();
+  assert(frequencies.size() == steps);
+  assert(firing_rate_fourier.size() == steps / 2 + 1);
+  assert(frequencies.size() == steps / 2 + 1);
+
+  // create right types for fftw
+  double *in;
+  in = (double *)malloc(sizeof(double) * steps);
+
+  for (unsigned int i = 0; i < steps; i++) {
+    in[i] = firing_rate[i];
+  };
+
+  fftw_complex *out;
+  out = (fftw_complex *)fftw_malloc(sizeof(fftw_complex) * (steps / 2 + 1));
+
+  // calculate susceptibility
+  fftw_plan p;
+  p = fftw_plan_dft_r2c_1d(steps, in, out, FFTW_ESTIMATE);
+  fftw_execute(p);
+  fftw_destroy_plan(p);
+
+  // define imaginary unit and scale for output
+  std::complex<double> I(0.0, 1.0);
+  const double scale = time.get_dt();
+
+  // write output in firing_rate_fourier
+  for (unsigned int i = 0; i < steps / 2 + 1; i++) {
+    firing_rate_fourier[i] = scale * (out[i][0] + I * out[i][1]);
+    frequencies[i] = (double)i * 1. / (time.get_t_end() - time.get_t_0());
+  };
+
+  fftw_free(out);
+  delete[] in;
 };

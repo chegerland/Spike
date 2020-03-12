@@ -15,7 +15,7 @@ IF::IF(double mu, double D) : mu(mu), D(D) {
   assert(D >= 0);
 }
 
-IF::IF(std::string input_file) {
+IF::IF(const std::string& input_file) {
   // Create a root
   pt::ptree root;
 
@@ -60,11 +60,11 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time) const {
     if (v > 1) {
       v = 0;
       spike_train[i] = true;
-    };
-  };
+    }
+  }
 
   return spike_train;
-};
+}
 
 // get the spike train of an IF neuron
 std::vector<bool> IF::get_spike_train(const Timeframe &time,
@@ -96,11 +96,11 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
     if (v > 1) {
       v = 0;
       spike_train[i] = true;
-    };
-  };
+    }
+  }
 
   return spike_train;
-};
+}
 
 // get the spike train of an IF neuron
 std::vector<bool> IF::get_spike_train(const Timeframe &time,
@@ -134,11 +134,11 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
       v = 0;
       a = adapt.reset_rule(a);
       spike_train[i] = true;
-    };
-  };
+    }
+  }
 
   return spike_train;
-};
+}
 
 // get the spike train of an IF neuron
 std::vector<bool> IF::get_spike_train(const Timeframe &time,
@@ -174,11 +174,11 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
       v = 0;
       a = adapt.reset_rule(a);
       spike_train[i] = true;
-    };
-  };
+    }
+  }
 
   return spike_train;
-};
+}
 
 // voltage curve for IF
 void IF::get_voltage_curve(std::vector<double> &v,
@@ -205,9 +205,9 @@ void IF::get_voltage_curve(std::vector<double> &v,
     // fire and reset rule
     if (v[i] > 1) {
       v[i] = 0;
-    };
-  };
-};
+    }
+  }
+}
 
 // voltage curve for IF with adaptation
 void IF::get_voltage_curve(std::vector<double> &v, std::vector<double> &a,
@@ -238,6 +238,6 @@ void IF::get_voltage_curve(std::vector<double> &v, std::vector<double> &a,
     if (v[i] > 1) {
       v[i] = 0;
       a[i] = adapt.reset_rule(a[i]);
-    };
-  };
-};
+    }
+  }
+}

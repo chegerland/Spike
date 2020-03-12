@@ -11,7 +11,7 @@ class LIF : public IF {
 public:
   // constructors
   LIF(double mu, double D);
-  LIF(std::string input_file);
+  LIF(const std::string& input_file);
 
   // drift
   double drift(double v, double t) const;

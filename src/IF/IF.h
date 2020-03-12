@@ -2,7 +2,7 @@
 #define IF_H
 
 #include <cassert>
-#include <math.h>
+#include <cmath>
 #include <vector>
 
 #include "../Adaptation/Adaptation.h"
@@ -18,7 +18,7 @@ protected:
 
 public:
   // constructors
-  IF(std::string input_file);
+  explicit IF(const std::string& input_file);
   IF(double mu, double D);
 
   // drift and diffusion of IF neuron

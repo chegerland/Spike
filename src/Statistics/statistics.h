@@ -2,6 +2,7 @@
 #define STATISTICS_H
 
 #include "../Timeframe/Timeframe.h"
+#include <complex>
 #include <vector>
 
 // add spike train to firing rate
@@ -21,5 +22,11 @@ double calculate_cv(const std::vector<double> &spike_times);
 
 // count the spikes
 int spike_count(const std::vector<bool> &spike_train);
+
+// fourier transform firing rate
+void fourier_trafo_firing_rate(
+    const std::vector<double> &firing_rate, const Timeframe &time,
+    std::vector<double> &frequencies,
+    std::vector<std::complex<double>> &firing_rate_fourier);
 
 #endif // STATISTICS_H

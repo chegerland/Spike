@@ -8,7 +8,7 @@ class PIF : public IF {
 public:
   // constructors
   PIF(double mu, double D);
-  PIF(std::string input_file);
+  PIF(const std::string& input_file);
 
   // drift
   double drift(double v, double t) const;

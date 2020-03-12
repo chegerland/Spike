@@ -9,9 +9,9 @@ ExpAdaptation::ExpAdaptation(double Delta, double tau_a)
     : Delta(Delta), tau_a(tau_a) {
   assert(Delta >= 0);
   assert(tau_a > 0);
-};
+}
 
-ExpAdaptation::ExpAdaptation(std::string input_file) {
+ExpAdaptation::ExpAdaptation(const std::string& input_file) {
 
   // Create a root
   pt::ptree root;
@@ -29,10 +29,10 @@ ExpAdaptation::ExpAdaptation(std::string input_file) {
 
   Delta = root.get<double>("Adaptation.Delta");
   assert(Delta >= 0);
-};
+}
 
 double ExpAdaptation::adapt(double a, double t) const {
   return -1.0 / tau_a * a;
-};
+}
 
-double ExpAdaptation::reset_rule(double a) const { return a + Delta; };
+double ExpAdaptation::reset_rule(double a) const { return a + Delta; }

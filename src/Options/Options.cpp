@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <sys/stat.h>
 
 // program options
@@ -8,11 +7,12 @@ namespace po = boost::program_options;
 
 // filesystem
 #include <boost/filesystem.hpp>
+#include <utility>
 namespace filesys = boost::filesystem;
 
 #include "Options.h"
 
-Options::Options(std::string parameter_file) : parameter_file(parameter_file) {
+Options::Options(std::string parameter_file) : parameter_file(std::move(parameter_file)) {
   /* set according output file */
   this->output_file =
       this->parameter_file.substr(0, this->parameter_file.find_last_of('.')) +
@@ -20,7 +20,7 @@ Options::Options(std::string parameter_file) : parameter_file(parameter_file) {
 
   /* check the given options */
   this->check();
-};
+}
 
 Options::Options(int argc, char *argv[]) {
   /* Read command line options */
@@ -38,7 +38,7 @@ Options::Options(int argc, char *argv[]) {
     if (vm.count("help")) {
       std::cout << desc << std::endl;
       exit(0);
-    };
+    }
 
   } catch (std::exception &e) {
     std::cerr << "error: " << e.what() << std::endl;
@@ -51,7 +51,7 @@ Options::Options(int argc, char *argv[]) {
 
   /* check the given options */
   this->check();
-};
+}
 
 // check the command line options
 void Options::check() {
@@ -70,9 +70,9 @@ void Options::check() {
 
     if (input == 'n') {
       exit(0);
-    };
-  };
-};
+    }
+  }
+}
 
 // Get File extension from File path or File Name
 std::string getFileExtension(std::string filePath) {
@@ -85,10 +85,10 @@ std::string getFileExtension(std::string filePath) {
   }
   // In case of no extension return empty string
   return "";
-};
+}
 
 // check if given file exists
 bool exists(const std::string &path) {
-  struct stat buffer;
+  struct stat buffer{};
   return (stat(path.c_str(), &buffer) == 0);
-};
+}

@@ -7,18 +7,18 @@ namespace pt = boost::property_tree;
 #include <iostream>
 
 // constructors
-LIF::LIF(double mu, double D) : IF(mu, D){};
+LIF::LIF(double mu, double D) : IF(mu, D){}
 
-LIF::LIF(std::string input_file) : IF(input_file) {
+LIF::LIF(const std::string& input_file) : IF(input_file) {
   // check if type is right
   pt::ptree root;
   pt::read_json(input_file, root);
   std::string type = root.get<std::string>("Neuron.type");
   assert(type == "LIF");
-};
+}
 
 // drift of an LIF neuron
-double LIF::drift(double v, double t) const { return (this->mu - v); };
+double LIF::drift(double v, double t) const { return (this->mu - v); }
 
 double LIF::func(ExpAdaptation &adapt, double x) {
   return mu * (1.0 - exp(-x)) -
@@ -26,7 +26,7 @@ double LIF::func(ExpAdaptation &adapt, double x) {
              (exp(-x / adapt.get_tau_a()) - exp(-x)) /
              (1.0 - exp(-x / adapt.get_tau_a())) -
          1.0;
-};
+}
 
 // calculate limit cycle period using bisection
 double LIF::limit_cycle_period(ExpAdaptation &adapt) {
@@ -36,7 +36,7 @@ double LIF::limit_cycle_period(ExpAdaptation &adapt) {
   int max_iter = 1e3;
 
   // check sign
-  if (signbit(this->func(adapt, x_lo)) == signbit(this->func(adapt, x_hi))) {
+  if (std::signbit(this->func(adapt, x_lo)) == std::signbit(this->func(adapt, x_hi))) {
     std::cout << "Same sign!" << mu << std::endl;
     exit(0);
   }
@@ -52,15 +52,15 @@ double LIF::limit_cycle_period(ExpAdaptation &adapt) {
       break;
     }
 
-    if (signbit(y) == signbit(this->func(adapt, x_lo))) {
+    if (std::signbit(y) == std::signbit(this->func(adapt, x_lo))) {
       x_lo = x;
     } else {
       x_hi = x;
-    };
+    }
 
     // next iteration
     j += 1;
-  };
+  }
 
   return x;
-};
+}
