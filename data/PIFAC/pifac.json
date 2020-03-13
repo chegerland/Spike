@@ -1,0 +1,27 @@
+{
+  "Neuron":
+  {
+    "type" : "PIF",
+    "mu": 3.0,
+    "D" : 1
+  },
+  "Signal" :
+  {
+    "type" : "white noise",
+    "alpha" : 1.0,
+    "f_low" : 0.0,
+    "f_high" : 100.0
+  },
+  "Adaptation":
+  {
+    "type" : "exponential",
+    "tau_a" : 10,
+    "Delta" : 0.3
+  },
+  "Simulation":
+  {
+    "t_0": 0.0,
+    "t_end": 1000.0,
+    "dt" : 1e-2
+  }
+}

@@ -1,0 +1,75 @@
+\hypertarget{classAdaptation}{}\section{Adaptation Class Reference}
+\label{classAdaptation}\index{Adaptation@{Adaptation}}
+
+
+Implements an abstract base class for adaptation variable.  
+
+
+
+
+{\ttfamily \#include $<$Adaptation.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \hyperlink{classAdaptation_a4c7f62690bb8639a307c0ed840890e30}{adapt} (double a, double t) const =0
+\begin{DoxyCompactList}\small\item\em Returns the \char`\"{}right side\char`\"{} of the equation for the adaptation variable, i.\+e. f(a,t) = da/dt. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classAdaptation_a146da63f54c22a3c08c2c5ce26f11f66}{reset\+\_\+rule} (double a) const =0
+\begin{DoxyCompactList}\small\item\em Reset rule for the adaptation variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements an abstract base class for adaptation variable. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAdaptation_a4c7f62690bb8639a307c0ed840890e30}\label{classAdaptation_a4c7f62690bb8639a307c0ed840890e30}} 
+\index{Adaptation@{Adaptation}!adapt@{adapt}}
+\index{adapt@{adapt}!Adaptation@{Adaptation}}
+\subsubsection{\texorpdfstring{adapt()}{adapt()}}
+{\footnotesize\ttfamily virtual double Adaptation\+::adapt (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the \char`\"{}right side\char`\"{} of the equation for the adaptation variable, i.\+e. f(a,t) = da/dt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \hyperlink{classAdaptation}{Adaptation} variable. \\
+\hline
+{\em t} & Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time derivative da/dt 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classExpAdaptation_aef5119a0f09698f1526938f04654e3f4}{Exp\+Adaptation}.
+
+\mbox{\Hypertarget{classAdaptation_a146da63f54c22a3c08c2c5ce26f11f66}\label{classAdaptation_a146da63f54c22a3c08c2c5ce26f11f66}} 
+\index{Adaptation@{Adaptation}!reset\+\_\+rule@{reset\+\_\+rule}}
+\index{reset\+\_\+rule@{reset\+\_\+rule}!Adaptation@{Adaptation}}
+\subsubsection{\texorpdfstring{reset\+\_\+rule()}{reset\_rule()}}
+{\footnotesize\ttfamily virtual double Adaptation\+::reset\+\_\+rule (\begin{DoxyParamCaption}\item[{double}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Reset rule for the adaptation variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \hyperlink{classAdaptation}{Adaptation} variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The reset adaptation variable 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classExpAdaptation_ac194bba0fd15aea6a68b8964a21fff2d}{Exp\+Adaptation}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Adaptation/Adaptation.\+h\end{DoxyCompactItemize}

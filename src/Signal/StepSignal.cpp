@@ -5,8 +5,10 @@ namespace pt = boost::property_tree;
 
 #include "StepSignal.h"
 
+// constructor from parameters
 StepSignal::StepSignal(double alpha, double t_0) : alpha(alpha), t_0(t_0){};
 
+// constructor from input file
 StepSignal::StepSignal(std::string input_file) {
 
   pt::ptree root;
@@ -21,6 +23,7 @@ StepSignal::StepSignal(std::string input_file) {
   t_0 = root.get<double>("Signal.t_0");
 };
 
+// the signal
 double StepSignal::signal(double t) const {
   double result;
 

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Spike"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\app\;CMake Files\app\NoiseScan\;CMake Files\app\Stumpf\;CMake Files\test\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="spike">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/lib/libspike.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 spike"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="spike/fast">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/lib/libspike.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 spike/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="NoiseScan">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/bin/NoiseScan" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/app/NoiseScan/../include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 NoiseScan"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="NoiseScan/fast">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/bin/NoiseScan" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/app/NoiseScan/../include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 NoiseScan/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/NoiseScan/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Stumpf">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/bin/Stumpf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/app/Stumpf/../include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 Stumpf"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Stumpf/fast">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/bin/Stumpf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/app/Stumpf/../include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 Stumpf/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_Spike">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/bin/test_Spike" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/test/../include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 test_Spike"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_Spike/fast">
+				<Option output="/users/stud/egerlanc/Repos/Master/Spike/bin/test_Spike" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/stud/egerlanc/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/users/stud/egerlanc/Repos/Master/Spike/test/../include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 test_Spike/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/app/NoiseScan/noise.cpp">
+			<Option target="NoiseScan"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/app/Stumpf/stumpf.cpp">
+			<Option target="Stumpf"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Adaptation/ExpAdaptation.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Adaptation/ExpAdaptation.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/IF/IF.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/IF/IF.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/IF/LIF.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/IF/LIF.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/IF/PIF.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/IF/PIF.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Options/Options.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Options/Options.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/CosineSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/CosineSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/SignalFactory.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/SignalFactory.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/StepSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/StepSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/TwoCosineSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/TwoCosineSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/WhiteNoiseSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Signal/WhiteNoiseSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Statistics/statistics.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Statistics/statistics.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Timeframe/Timeframe.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/Timeframe/Timeframe.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/Adaptation/test_ExpAdaptation.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/IF/test_LIF.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/IF/test_PIF.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/Options/test_Options.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/Signal/test_CosineSignal.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/Signal/test_TwoCosineSignal.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/test_main.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/app/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/app/NoiseScan/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\NoiseScan\"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/app/Stumpf/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\Stumpf\"/>
+		</Unit>
+		<Unit filename="/users/stud/egerlanc/Repos/Master/Spike/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

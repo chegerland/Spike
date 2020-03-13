@@ -6,7 +6,7 @@ TEST_CASE("Options constructors work", "[Options]") {
   SECTION("direct construction") {
     std::string file = "../README.json";
     Options opts(file);
-    REQUIRE(opts.get_parameter_file() == file);
+    REQUIRE(opts.get_input_file() == file);
   };
 
   SECTION("construction with command line arguments") {
@@ -19,7 +19,7 @@ TEST_CASE("Options constructors work", "[Options]") {
 
     Options opts(argc, argv);
 
-    REQUIRE(opts.get_parameter_file() == "../data/NonExistantFile.json");
+    REQUIRE(opts.get_input_file() == "../data/NonExistantFile.json");
     REQUIRE(opts.get_output_file() == "../data/NonExistantFile.csv");
   };
 };

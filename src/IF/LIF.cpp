@@ -6,9 +6,10 @@ namespace pt = boost::property_tree;
 #include "LIF.h"
 #include <iostream>
 
-// constructors
+// constructor from parameters
 LIF::LIF(double mu, double D) : IF(mu, D){}
 
+// constructor from input file
 LIF::LIF(const std::string& input_file) : IF(input_file) {
   // check if type is right
   pt::ptree root;
@@ -20,6 +21,7 @@ LIF::LIF(const std::string& input_file) : IF(input_file) {
 // drift of an LIF neuron
 double LIF::drift(double v, double t) const { return (this->mu - v); }
 
+// function to fond roots for
 double LIF::func(ExpAdaptation &adapt, double x) {
   return mu * (1.0 - exp(-x)) -
          adapt.get_Delta() * adapt.get_tau_a() / (adapt.get_tau_a() - 1.0) *
@@ -28,19 +30,24 @@ double LIF::func(ExpAdaptation &adapt, double x) {
          1.0;
 }
 
-// calculate limit cycle period using bisection
+// calculate limit cycle period using bisection algorithm
 double LIF::limit_cycle_period(ExpAdaptation &adapt) {
+
+  // range
   double x_lo = 1e-4;
   double x_hi = 1e4;
+
+  // error and maximum number of iterations
   double epserr = 1e-7;
   int max_iter = 1e3;
 
-  // check sign
+  // check sign of initial range
   if (std::signbit(this->func(adapt, x_lo)) == std::signbit(this->func(adapt, x_hi))) {
     std::cout << "Same sign!" << mu << std::endl;
     exit(0);
   }
 
+  // bisection algorithm
   int j = 0;
   double x = 0;
   double y = 0;

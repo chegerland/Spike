@@ -1,0 +1,100 @@
+\hypertarget{classTwoCosineSignal}{}\section{Two\+Cosine\+Signal Class Reference}
+\label{classTwoCosineSignal}\index{Two\+Cosine\+Signal@{Two\+Cosine\+Signal}}
+
+
+Implements a signal consisting of two cosine, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t)  
+
+
+
+
+{\ttfamily \#include $<$Two\+Cosine\+Signal.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTwoCosineSignal_a0a4302be17fc5c01dacdbee1939ef565}{Two\+Cosine\+Signal} (double alpha, double f1, double beta, double f2, double phi)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classTwoCosineSignal}{Two\+Cosine\+Signal} from parameters. \end{DoxyCompactList}\item 
+\hyperlink{classTwoCosineSignal_a524fe84e94bb65d15343109f75ca5ef8}{Two\+Cosine\+Signal} (std\+::string input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classTwoCosineSignal}{Two\+Cosine\+Signal} from input file. \end{DoxyCompactList}\item 
+double \hyperlink{classTwoCosineSignal_a1129875198d637d80db6f083a207a3ba}{signal} (double t) const
+\begin{DoxyCompactList}\small\item\em Returns signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t) + beta$\ast$cos(2$\ast$pi$\ast$f2$\ast$t + phi) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements a signal consisting of two cosine, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t) 
+
+
+\begin{DoxyItemize}
+\item beta$\ast$cos(2$\ast$pi$\ast$f2$\ast$t + phi) 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTwoCosineSignal_a0a4302be17fc5c01dacdbee1939ef565}\label{classTwoCosineSignal_a0a4302be17fc5c01dacdbee1939ef565}} 
+\index{Two\+Cosine\+Signal@{Two\+Cosine\+Signal}!Two\+Cosine\+Signal@{Two\+Cosine\+Signal}}
+\index{Two\+Cosine\+Signal@{Two\+Cosine\+Signal}!Two\+Cosine\+Signal@{Two\+Cosine\+Signal}}
+\subsubsection{\texorpdfstring{Two\+Cosine\+Signal()}{TwoCosineSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Two\+Cosine\+Signal\+::\+Two\+Cosine\+Signal (\begin{DoxyParamCaption}\item[{double}]{alpha,  }\item[{double}]{f1,  }\item[{double}]{beta,  }\item[{double}]{f2,  }\item[{double}]{phi }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classTwoCosineSignal}{Two\+Cosine\+Signal} from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & Amplitude first signal \\
+\hline
+{\em f1} & Frequency first signal \\
+\hline
+{\em beta} & amplitude second signal \\
+\hline
+{\em f2} & Frequency second signal \\
+\hline
+{\em phi} & Phase shift \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTwoCosineSignal_a524fe84e94bb65d15343109f75ca5ef8}\label{classTwoCosineSignal_a524fe84e94bb65d15343109f75ca5ef8}} 
+\index{Two\+Cosine\+Signal@{Two\+Cosine\+Signal}!Two\+Cosine\+Signal@{Two\+Cosine\+Signal}}
+\index{Two\+Cosine\+Signal@{Two\+Cosine\+Signal}!Two\+Cosine\+Signal@{Two\+Cosine\+Signal}}
+\subsubsection{\texorpdfstring{Two\+Cosine\+Signal()}{TwoCosineSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Two\+Cosine\+Signal\+::\+Two\+Cosine\+Signal (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classTwoCosineSignal}{Two\+Cosine\+Signal} from input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file} & Input file in .json format \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTwoCosineSignal_a1129875198d637d80db6f083a207a3ba}\label{classTwoCosineSignal_a1129875198d637d80db6f083a207a3ba}} 
+\index{Two\+Cosine\+Signal@{Two\+Cosine\+Signal}!signal@{signal}}
+\index{signal@{signal}!Two\+Cosine\+Signal@{Two\+Cosine\+Signal}}
+\subsubsection{\texorpdfstring{signal()}{signal()}}
+{\footnotesize\ttfamily double Two\+Cosine\+Signal\+::signal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t) + beta$\ast$cos(2$\ast$pi$\ast$f2$\ast$t + phi) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classSignal}{Signal}, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t) + beta$\ast$cos(2$\ast$pi$\ast$f2$\ast$t + phi) 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classSignal_a32c22f17b70b215d78171716f844fa60}{Signal}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Two\+Cosine\+Signal.\+h\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Two\+Cosine\+Signal.\+cpp\end{DoxyCompactItemize}

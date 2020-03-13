@@ -1,0 +1,1 @@
+/usr/bin/c++   -O3 -fopenmp -lfftw3 -g -Wall   CMakeFiles/Stumpf.dir/stumpf.cpp.o  -o ../../../bin/Stumpf -Wl,-rpath,/users/stud/egerlanc/Repos/Master/Spike/lib ../../../lib/libspike.so /usr/lib/x86_64-linux-gnu/libboost_program_options.so /usr/lib/x86_64-linux-gnu/libboost_filesystem.so /usr/lib/x86_64-linux-gnu/libboost_system.so 

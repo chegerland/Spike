@@ -8,10 +8,12 @@ namespace pt = boost::property_tree;
 
 #include "TwoCosineSignal.h"
 
+// constructor from parameters
 TwoCosineSignal::TwoCosineSignal(double alpha, double f1, double beta,
                                  double f2, double phi)
     : alpha(alpha), f1(f1), beta(beta), f2(f2), phi(phi){};
 
+// constructor from input file
 TwoCosineSignal::TwoCosineSignal(std::string input_file) {
 
   pt::ptree root;
@@ -29,6 +31,7 @@ TwoCosineSignal::TwoCosineSignal(std::string input_file) {
   phi = root.get<double>("Signal.phi");
 };
 
+// the signal
 double TwoCosineSignal::signal(double t) const {
   return alpha * cos(2.0 * M_PI * f1 * t) +
          beta * cos(2.0 * M_PI * f2 * t + phi);

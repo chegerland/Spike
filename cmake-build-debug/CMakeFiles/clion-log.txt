@@ -1,0 +1,4 @@
+/users/stud/egerlanc/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /users/stud/egerlanc/Repos/Master/Spike
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /users/stud/egerlanc/Repos/Master/Spike/cmake-build-debug

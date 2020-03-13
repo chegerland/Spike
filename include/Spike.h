@@ -14,6 +14,7 @@
 #include "../src/Signal/SignalFactory.h"
 #include "../src/Signal/CosineSignal.h"
 #include "../src/Signal/TwoCosineSignal.h"
+#include "../src/Signal/WhiteNoiseSignal.h"
 
 #include "../src/Statistics/statistics.h"
 

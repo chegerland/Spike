@@ -13,10 +13,8 @@ ExpAdaptation::ExpAdaptation(double Delta, double tau_a)
 
 ExpAdaptation::ExpAdaptation(const std::string& input_file) {
 
-  // Create a root
+  // Load the json file into property tree
   pt::ptree root;
-
-  // Load the json file in this ptree
   pt::read_json(input_file, root);
 
   // check if type is right

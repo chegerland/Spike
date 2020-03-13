@@ -12,7 +12,8 @@ namespace pt = boost::property_tree;
 
 #include "SignalFactory.h"
 
-Signal *SignalFactory::create(const std::string& input_file) {
+// create signal pointer
+Signal *SignalFactory::create(const std::string &input_file) {
   Signal *signal = nullptr;
 
   // Create a root

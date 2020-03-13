@@ -5,9 +5,10 @@ namespace pt = boost::property_tree;
 
 #include "PIF.h"
 
-// constructors
+// constructor from parameters
 PIF::PIF(double mu, double D) : IF(mu, D){}
 
+// constructor from input file
 PIF::PIF(const std::string& input_file) : IF(input_file) {
   // check if type is right
   pt::ptree root;

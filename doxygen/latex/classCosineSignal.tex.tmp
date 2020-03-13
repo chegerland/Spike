@@ -1,0 +1,27 @@
+\hypertarget{classCosineSignal}{}\section{Cosine\+Signal Class Reference}
+\label{classCosineSignal}\index{Cosine\+Signal@{Cosine\+Signal}}
+
+
+Collaboration diagram for Cosine\+Signal\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCosineSignal_a410237bec2f4171534e04f5a04259c98}\label{classCosineSignal_a410237bec2f4171534e04f5a04259c98}} 
+{\bfseries Cosine\+Signal} (double alpha, double f)
+\item 
+\mbox{\Hypertarget{classCosineSignal_a60c5a9cc2d1ed9b8543cdf51f1a3a44a}\label{classCosineSignal_a60c5a9cc2d1ed9b8543cdf51f1a3a44a}} 
+{\bfseries Cosine\+Signal} (std\+::string input\+\_\+file)
+\item 
+\mbox{\Hypertarget{classCosineSignal_a541f39de155f6a92162882ce102480bd}\label{classCosineSignal_a541f39de155f6a92162882ce102480bd}} 
+double {\bfseries signal} (double t) const
+\item 
+\mbox{\Hypertarget{classCosineSignal_ae4d286b605aa34aca31619f121fe0b41}\label{classCosineSignal_ae4d286b605aa34aca31619f121fe0b41}} 
+double {\bfseries get\+\_\+f} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Cosine\+Signal.\+h\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Cosine\+Signal.\+cpp\end{DoxyCompactItemize}
