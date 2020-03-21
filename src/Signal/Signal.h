@@ -3,10 +3,17 @@
 
 #include <string>
 
-//! A generic signal
+/**
+ * @class Signal
+ * @brief An abstract base class for signals.
+ */
 class Signal {
 public:
-  // Returns the signal at time t
+  /**
+   * @brief Returns the signal at time t
+   * @param t Time
+   * @return Signal at time t
+   */
   virtual double signal(double t) const = 0;
 };
 

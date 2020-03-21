@@ -8,8 +8,10 @@ namespace pt = boost::property_tree;
 
 #include "CosineSignal.h"
 
+// constructor from parameters
 CosineSignal::CosineSignal(double alpha, double f) : alpha(alpha), f(f){};
 
+// constructor from input file
 CosineSignal::CosineSignal(std::string input_file) {
 
   pt::ptree root;
@@ -24,6 +26,7 @@ CosineSignal::CosineSignal(std::string input_file) {
   f = root.get<double>("Signal.f");
 };
 
+// the signal
 double CosineSignal::signal(double t) const {
   return alpha * cos(2.0 * M_PI * f * t);
 };

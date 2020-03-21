@@ -1,10 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set c++ standard
+<<<<<<< HEAD
 set(CMAKE_CXX_STANDARD 11)
 
 # general compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+=======
+set(CMAKE_CXX_STANDARD 14)
+
+# set general compiler flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -lfftw3")
+>>>>>>> 17fc4e88a39ac8c59e4d5c4f86a4cebd3b9e25a8
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 # CMake useful directories

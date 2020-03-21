@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -g -Wall   CMakeFiles/Stumpf.dir/stumpf.cpp.o  -o ../../../bin/Stumpf -Wl,-rpath,/home/cheg/Repos/Master/Spike/lib ../../../lib/libspike.so /usr/lib/libboost_program_options.so /usr/lib/libboost_filesystem.so /usr/lib/libboost_system.so 

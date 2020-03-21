@@ -1,0 +1,92 @@
+\hypertarget{classPIF}{}\section{P\+IF Class Reference}
+\label{classPIF}\index{P\+IF@{P\+IF}}
+
+
+Implement a perfect integrate-\/and-\/fire (\hyperlink{classPIF}{P\+IF}) neuron.  
+
+
+
+
+{\ttfamily \#include $<$P\+I\+F.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPIF_ac3aaa22c006e70efc91de66078b2dbd2}{P\+IF} (double \hyperlink{classIF_a9f690c993d7b7cd0095e26607503db72}{mu}, double \hyperlink{classIF_a7e0fdbf32975dba0acf8096524885639}{D})
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classPIF}{P\+IF} from parameters. \end{DoxyCompactList}\item 
+\hyperlink{classPIF_ad1a5859ea76a5ebd90d638ddea2bae90}{P\+IF} (const std\+::string \&input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classPIF}{P\+IF} from input file. \end{DoxyCompactList}\item 
+double \hyperlink{classPIF_a12aaacff008d1366ddb6fc3ca0e3ed51}{drift} (double v, double t) const
+\begin{DoxyCompactList}\small\item\em Returns drift of the \hyperlink{classPIF}{P\+IF} neuron, i.\+e. mu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implement a perfect integrate-\/and-\/fire (\hyperlink{classPIF}{P\+IF}) neuron. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPIF_ac3aaa22c006e70efc91de66078b2dbd2}\label{classPIF_ac3aaa22c006e70efc91de66078b2dbd2}} 
+\index{P\+IF@{P\+IF}!P\+IF@{P\+IF}}
+\index{P\+IF@{P\+IF}!P\+IF@{P\+IF}}
+\subsubsection{\texorpdfstring{P\+I\+F()}{PIF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily P\+I\+F\+::\+P\+IF (\begin{DoxyParamCaption}\item[{double}]{mu,  }\item[{double}]{D }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classPIF}{P\+IF} from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu} & Mean input current \\
+\hline
+{\em D} & Diffusion coefficient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIF_ad1a5859ea76a5ebd90d638ddea2bae90}\label{classPIF_ad1a5859ea76a5ebd90d638ddea2bae90}} 
+\index{P\+IF@{P\+IF}!P\+IF@{P\+IF}}
+\index{P\+IF@{P\+IF}!P\+IF@{P\+IF}}
+\subsubsection{\texorpdfstring{P\+I\+F()}{PIF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily P\+I\+F\+::\+P\+IF (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classPIF}{P\+IF} from input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file} & Input file in .json format. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPIF_a12aaacff008d1366ddb6fc3ca0e3ed51}\label{classPIF_a12aaacff008d1366ddb6fc3ca0e3ed51}} 
+\index{P\+IF@{P\+IF}!drift@{drift}}
+\index{drift@{drift}!P\+IF@{P\+IF}}
+\subsubsection{\texorpdfstring{drift()}{drift()}}
+{\footnotesize\ttfamily double P\+I\+F\+::drift (\begin{DoxyParamCaption}\item[{double}]{v,  }\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns drift of the \hyperlink{classPIF}{P\+IF} neuron, i.\+e. mu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Voltage \\
+\hline
+{\em t} & time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Drift of \hyperlink{classPIF}{P\+IF}, i.\+e. mu 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classIF_aa8a7a38f8fa3aa013df026734d02784c}{IF}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+I\+F/P\+I\+F.\+h\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+I\+F/P\+I\+F.\+cpp\end{DoxyCompactItemize}

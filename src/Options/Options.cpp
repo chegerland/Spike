@@ -12,10 +12,10 @@ namespace filesys = boost::filesystem;
 
 #include "Options.h"
 
-Options::Options(std::string parameter_file) : parameter_file(std::move(parameter_file)) {
+Options::Options(std::string parameter_file) : input_file(std::move(parameter_file)) {
   /* set according output file */
   this->output_file =
-      this->parameter_file.substr(0, this->parameter_file.find_last_of('.')) +
+      this->input_file.substr(0, this->input_file.find_last_of('.')) +
       ".csv";
 
   /* check the given options */
@@ -28,7 +28,7 @@ Options::Options(int argc, char *argv[]) {
     // List all options and their description
     po::options_description desc("Allowed options");
     desc.add_options()("help,h", "Help screen")(
-        "file", po::value<std::string>(&(this->parameter_file)), "Input File");
+        "file", po::value<std::string>(&(this->input_file)), "Input File");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -46,7 +46,7 @@ Options::Options(int argc, char *argv[]) {
 
   /* set according output file */
   this->output_file =
-      this->parameter_file.substr(0, this->parameter_file.find_last_of('.')) +
+      this->input_file.substr(0, this->input_file.find_last_of('.')) +
       ".csv";
 
   /* check the given options */
@@ -56,7 +56,7 @@ Options::Options(int argc, char *argv[]) {
 // check the command line options
 void Options::check() {
   // input file should be .json
-  if (getFileExtension(parameter_file) != ".json") {
+  if (getFileExtension(input_file) != ".json") {
     std::cerr << "Input file must have extension .json!" << std::endl;
     exit(0);
   }

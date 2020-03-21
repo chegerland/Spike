@@ -1,0 +1,277 @@
+\hypertarget{classIF}{}\section{IF Class Reference}
+\label{classIF}\index{IF@{IF}}
+
+
+An abstract base class for integrate-\/and-\/fire neurons.  
+
+
+
+
+{\ttfamily \#include $<$I\+F.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classIF_a2db11718c548d0c8afabdd1dc96c3b7e}{IF} (const std\+::string \&input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classIF}{IF} from input file. \end{DoxyCompactList}\item 
+\hyperlink{classIF_a965019357edab5848988178828ceaa40}{IF} (double \hyperlink{classIF_a9f690c993d7b7cd0095e26607503db72}{mu}, double \hyperlink{classIF_a7e0fdbf32975dba0acf8096524885639}{D})
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classIF}{IF} from parameters. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classIF_aa8a7a38f8fa3aa013df026734d02784c}{drift} (double v, double t) const =0
+\begin{DoxyCompactList}\small\item\em Returns the drift of the \hyperlink{classIF}{IF} neuron. \end{DoxyCompactList}\item 
+double \hyperlink{classIF_a37f5085087483968fe31a69589c3dd66}{diffusion} () const
+\begin{DoxyCompactList}\small\item\em Returns the diffusion of the \hyperlink{classIF}{IF} neuron, i.\+e. in general sqrt(2 $\ast$ D) \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \hyperlink{classIF_a35bb1a822891b3c17fd4b35db839c398}{get\+\_\+spike\+\_\+train} (const \hyperlink{classTimeframe}{Timeframe} \&time) const
+\begin{DoxyCompactList}\small\item\em Returns a spike train. \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \hyperlink{classIF_a36ae9ec5273d532febc1ceef8d9896f0}{get\+\_\+spike\+\_\+train} (const \hyperlink{classTimeframe}{Timeframe} \&time, const \hyperlink{classSignal}{Signal} \&signal) const
+\begin{DoxyCompactList}\small\item\em Returns a spike train, where \hyperlink{classIF}{IF} is subject to a signal. \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \hyperlink{classIF_a310fbd5d2bb172d8ac465d3e7398e5dc}{get\+\_\+spike\+\_\+train} (const \hyperlink{classTimeframe}{Timeframe} \&time, const \hyperlink{classAdaptation}{Adaptation} \&adapt) const
+\begin{DoxyCompactList}\small\item\em Returns a spike train, where we consider \hyperlink{classIF}{IF} with adaptation. \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \hyperlink{classIF_aa8f7c58d753b9105cfd0def09ea90ab9}{get\+\_\+spike\+\_\+train} (const \hyperlink{classTimeframe}{Timeframe} \&time, const \hyperlink{classSignal}{Signal} \&signal, const \hyperlink{classAdaptation}{Adaptation} \&adapt) const
+\begin{DoxyCompactList}\small\item\em Returns a spike train, where we consider \hyperlink{classIF}{IF} with adaptation, that is also subject to a signal. \end{DoxyCompactList}\item 
+void \hyperlink{classIF_a22b6635d047b44a9db2a7dac0ca27e79}{get\+\_\+voltage\+\_\+curve} (std\+::vector$<$ double $>$ \&v, const \hyperlink{classTimeframe}{Timeframe} \&time) const
+\begin{DoxyCompactList}\small\item\em Returns a trajectory, i.\+e. v(t). \end{DoxyCompactList}\item 
+void \hyperlink{classIF_a6121cf38142658738b48bc33874082cd}{get\+\_\+voltage\+\_\+curve} (std\+::vector$<$ double $>$ \&v, std\+::vector$<$ double $>$ \&a, const \hyperlink{classTimeframe}{Timeframe} \&time, const \hyperlink{classAdaptation}{Adaptation} \&adapt) const
+\begin{DoxyCompactList}\small\item\em Returns a trajectory of neuron with adaptation variable, i.\+e. v(t) and a(t). \end{DoxyCompactList}\item 
+void \hyperlink{classIF_a4ca244c0e1095a3014af3cdbf225ded1}{set\+\_\+mu} (double \hyperlink{classIF_a9f690c993d7b7cd0095e26607503db72}{mu})
+\begin{DoxyCompactList}\small\item\em Setter method for mean input current. \end{DoxyCompactList}\item 
+void \hyperlink{classIF_a886eef4d18be5cc81e96ff46c1e0037b}{set\+\_\+D} (double \hyperlink{classIF_a7e0fdbf32975dba0acf8096524885639}{D})
+\begin{DoxyCompactList}\small\item\em Setter method for diffusion coefficient. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIF_a9f690c993d7b7cd0095e26607503db72}\label{classIF_a9f690c993d7b7cd0095e26607503db72}} 
+double \hyperlink{classIF_a9f690c993d7b7cd0095e26607503db72}{mu}
+\begin{DoxyCompactList}\small\item\em mean input current \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIF_a7e0fdbf32975dba0acf8096524885639}\label{classIF_a7e0fdbf32975dba0acf8096524885639}} 
+double \hyperlink{classIF_a7e0fdbf32975dba0acf8096524885639}{D}
+\begin{DoxyCompactList}\small\item\em diffusion coefficient \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract base class for integrate-\/and-\/fire neurons. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIF_a2db11718c548d0c8afabdd1dc96c3b7e}\label{classIF_a2db11718c548d0c8afabdd1dc96c3b7e}} 
+\index{IF@{IF}!IF@{IF}}
+\index{IF@{IF}!IF@{IF}}
+\subsubsection{\texorpdfstring{I\+F()}{IF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily I\+F\+::\+IF (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classIF}{IF} from input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file} & Input file in .json format. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classIF_a965019357edab5848988178828ceaa40}\label{classIF_a965019357edab5848988178828ceaa40}} 
+\index{IF@{IF}!IF@{IF}}
+\index{IF@{IF}!IF@{IF}}
+\subsubsection{\texorpdfstring{I\+F()}{IF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily I\+F\+::\+IF (\begin{DoxyParamCaption}\item[{double}]{mu,  }\item[{double}]{D }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classIF}{IF} from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu} & Mean input current \\
+\hline
+{\em D} & Diffusion coefficient \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classIF_a37f5085087483968fe31a69589c3dd66}\label{classIF_a37f5085087483968fe31a69589c3dd66}} 
+\index{IF@{IF}!diffusion@{diffusion}}
+\index{diffusion@{diffusion}!IF@{IF}}
+\subsubsection{\texorpdfstring{diffusion()}{diffusion()}}
+{\footnotesize\ttfamily double I\+F\+::diffusion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the diffusion of the \hyperlink{classIF}{IF} neuron, i.\+e. in general sqrt(2 $\ast$ D) 
+
+\begin{DoxyReturn}{Returns}
+Diffusion of \hyperlink{classIF}{IF} neuron, i.\+e. sqrt(2$\ast$\+D) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classIF_aa8a7a38f8fa3aa013df026734d02784c}\label{classIF_aa8a7a38f8fa3aa013df026734d02784c}} 
+\index{IF@{IF}!drift@{drift}}
+\index{drift@{drift}!IF@{IF}}
+\subsubsection{\texorpdfstring{drift()}{drift()}}
+{\footnotesize\ttfamily virtual double I\+F\+::drift (\begin{DoxyParamCaption}\item[{double}]{v,  }\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the drift of the \hyperlink{classIF}{IF} neuron. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Voltage \\
+\hline
+{\em t} & Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Drift 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classLIF_a9b298ddf01f78240748137c3328fb1b7}{L\+IF}, and \hyperlink{classPIF_a12aaacff008d1366ddb6fc3ca0e3ed51}{P\+IF}.
+
+\mbox{\Hypertarget{classIF_a35bb1a822891b3c17fd4b35db839c398}\label{classIF_a35bb1a822891b3c17fd4b35db839c398}} 
+\index{IF@{IF}!get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}}
+\index{get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}!IF@{IF}}
+\subsubsection{\texorpdfstring{get\+\_\+spike\+\_\+train()}{get\_spike\_train()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ I\+F\+::get\+\_\+spike\+\_\+train (\begin{DoxyParamCaption}\item[{const \hyperlink{classTimeframe}{Timeframe} \&}]{time }\end{DoxyParamCaption}) const}
+
+
+
+Returns a spike train. 
+
+Returns a spike train, i.\+e. an array with as many steps as the time frame, that contains a zero if the neuron has not spiked and a 1 if it has spiked in the corresponding time bin. We use the Euler-\/\+Maruyama-\/\+Scheme to solve the S\+DE for the \hyperlink{classIF}{IF} neuron an simply put a 1 into the spike train array, whenever the neuron spikes. 
+\begin{DoxyParams}{Parameters}
+{\em time} & \hyperlink{classTimeframe}{Timeframe} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A spike train 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classIF_a36ae9ec5273d532febc1ceef8d9896f0}\label{classIF_a36ae9ec5273d532febc1ceef8d9896f0}} 
+\index{IF@{IF}!get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}}
+\index{get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}!IF@{IF}}
+\subsubsection{\texorpdfstring{get\+\_\+spike\+\_\+train()}{get\_spike\_train()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ I\+F\+::get\+\_\+spike\+\_\+train (\begin{DoxyParamCaption}\item[{const \hyperlink{classTimeframe}{Timeframe} \&}]{time,  }\item[{const \hyperlink{classSignal}{Signal} \&}]{signal }\end{DoxyParamCaption}) const}
+
+
+
+Returns a spike train, where \hyperlink{classIF}{IF} is subject to a signal. 
+
+Produces a spike train, i.\+e. an array with as many steps as the time frame, that contains a zero if the neuron has not spiked and a 1 if it has spiked in the corresponding time bin. We use the Euler-\/\+Maruyama-\/\+Scheme to solve the S\+DE for the \hyperlink{classIF}{IF} neuron an simply put a 1 into the spike train array, whenever the neuron spikes. 
+\begin{DoxyParams}{Parameters}
+{\em time} & \hyperlink{classTimeframe}{Timeframe} \\
+\hline
+{\em signal} & \hyperlink{classSignal}{Signal} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A spike train 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classIF_a310fbd5d2bb172d8ac465d3e7398e5dc}\label{classIF_a310fbd5d2bb172d8ac465d3e7398e5dc}} 
+\index{IF@{IF}!get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}}
+\index{get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}!IF@{IF}}
+\subsubsection{\texorpdfstring{get\+\_\+spike\+\_\+train()}{get\_spike\_train()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ I\+F\+::get\+\_\+spike\+\_\+train (\begin{DoxyParamCaption}\item[{const \hyperlink{classTimeframe}{Timeframe} \&}]{time,  }\item[{const \hyperlink{classAdaptation}{Adaptation} \&}]{adapt }\end{DoxyParamCaption}) const}
+
+
+
+Returns a spike train, where we consider \hyperlink{classIF}{IF} with adaptation. 
+
+Produces a spike train, i.\+e. an array with as many steps as the time frame, that contains a zero if the neuron has not spiked and a 1 if it has spiked in the corresponding time bin. We use the Euler-\/\+Maruyama-\/\+Scheme to solve the S\+DE for the \hyperlink{classIF}{IF} neuron an simply put a 1 into the spike train array, whenever the neuron spikes. 
+\begin{DoxyParams}{Parameters}
+{\em time} & \hyperlink{classTimeframe}{Timeframe} \\
+\hline
+{\em adapt} & \hyperlink{classAdaptation}{Adaptation} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A spike train 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classIF_aa8f7c58d753b9105cfd0def09ea90ab9}\label{classIF_aa8f7c58d753b9105cfd0def09ea90ab9}} 
+\index{IF@{IF}!get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}}
+\index{get\+\_\+spike\+\_\+train@{get\+\_\+spike\+\_\+train}!IF@{IF}}
+\subsubsection{\texorpdfstring{get\+\_\+spike\+\_\+train()}{get\_spike\_train()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ I\+F\+::get\+\_\+spike\+\_\+train (\begin{DoxyParamCaption}\item[{const \hyperlink{classTimeframe}{Timeframe} \&}]{time,  }\item[{const \hyperlink{classSignal}{Signal} \&}]{signal,  }\item[{const \hyperlink{classAdaptation}{Adaptation} \&}]{adapt }\end{DoxyParamCaption}) const}
+
+
+
+Returns a spike train, where we consider \hyperlink{classIF}{IF} with adaptation, that is also subject to a signal. 
+
+Produces a spike train, i.\+e. an array with as many steps as the time frame, that contains a zero if the neuron has not spiked and a 1 if it has spiked in the corresponding time bin. We use the Euler-\/\+Maruyama-\/\+Scheme to solve the S\+DE for the \hyperlink{classIF}{IF} neuron an simply put a 1 into the spike train array, whenever the neuron spikes. 
+\begin{DoxyParams}{Parameters}
+{\em time} & \hyperlink{classTimeframe}{Timeframe} \\
+\hline
+{\em adapt} & \hyperlink{classAdaptation}{Adaptation} \\
+\hline
+{\em signal} & \hyperlink{classSignal}{Signal} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A spike train 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classIF_a22b6635d047b44a9db2a7dac0ca27e79}\label{classIF_a22b6635d047b44a9db2a7dac0ca27e79}} 
+\index{IF@{IF}!get\+\_\+voltage\+\_\+curve@{get\+\_\+voltage\+\_\+curve}}
+\index{get\+\_\+voltage\+\_\+curve@{get\+\_\+voltage\+\_\+curve}!IF@{IF}}
+\subsubsection{\texorpdfstring{get\+\_\+voltage\+\_\+curve()}{get\_voltage\_curve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void I\+F\+::get\+\_\+voltage\+\_\+curve (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{v,  }\item[{const \hyperlink{classTimeframe}{Timeframe} \&}]{time }\end{DoxyParamCaption}) const}
+
+
+
+Returns a trajectory, i.\+e. v(t). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em v} & Array of voltages at times given by time frame \\
+\hline
+ & {\em time} & \hyperlink{classTimeframe}{Timeframe} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classIF_a6121cf38142658738b48bc33874082cd}\label{classIF_a6121cf38142658738b48bc33874082cd}} 
+\index{IF@{IF}!get\+\_\+voltage\+\_\+curve@{get\+\_\+voltage\+\_\+curve}}
+\index{get\+\_\+voltage\+\_\+curve@{get\+\_\+voltage\+\_\+curve}!IF@{IF}}
+\subsubsection{\texorpdfstring{get\+\_\+voltage\+\_\+curve()}{get\_voltage\_curve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void I\+F\+::get\+\_\+voltage\+\_\+curve (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{v,  }\item[{std\+::vector$<$ double $>$ \&}]{a,  }\item[{const \hyperlink{classTimeframe}{Timeframe} \&}]{time,  }\item[{const \hyperlink{classAdaptation}{Adaptation} \&}]{adapt }\end{DoxyParamCaption}) const}
+
+
+
+Returns a trajectory of neuron with adaptation variable, i.\+e. v(t) and a(t). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em v} & Array of voltages at times given by time frame \\
+\hline
+\mbox{\tt out}  & {\em a} & Array of adaptation variable at times given by time frame \\
+\hline
+ & {\em time} & \hyperlink{classTimeframe}{Timeframe} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classIF_a886eef4d18be5cc81e96ff46c1e0037b}\label{classIF_a886eef4d18be5cc81e96ff46c1e0037b}} 
+\index{IF@{IF}!set\+\_\+D@{set\+\_\+D}}
+\index{set\+\_\+D@{set\+\_\+D}!IF@{IF}}
+\subsubsection{\texorpdfstring{set\+\_\+\+D()}{set\_D()}}
+{\footnotesize\ttfamily void I\+F\+::set\+\_\+D (\begin{DoxyParamCaption}\item[{double}]{D }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter method for diffusion coefficient. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em D} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classIF_a4ca244c0e1095a3014af3cdbf225ded1}\label{classIF_a4ca244c0e1095a3014af3cdbf225ded1}} 
+\index{IF@{IF}!set\+\_\+mu@{set\+\_\+mu}}
+\index{set\+\_\+mu@{set\+\_\+mu}!IF@{IF}}
+\subsubsection{\texorpdfstring{set\+\_\+mu()}{set\_mu()}}
+{\footnotesize\ttfamily void I\+F\+::set\+\_\+mu (\begin{DoxyParamCaption}\item[{double}]{mu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter method for mean input current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu} & Mean input current \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+I\+F/I\+F.\+h\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+I\+F/I\+F.\+cpp\end{DoxyCompactItemize}

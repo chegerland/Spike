@@ -9,7 +9,7 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
     REQUIRE(pif.drift(0.0, 0.0) == 1.14);
 
     // check D
-    REQUIRE(pif.diffusion(0.0, 0.0) == 2.0);
+    REQUIRE(pif.diffusion() == 2.0);
   };
 
   SECTION("normal constructor") {
@@ -19,6 +19,6 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
     PIF pif(mu, D);
 
     REQUIRE(pif.drift(0.0, 0.0) == mu);
-    REQUIRE(pif.diffusion(0.0, 0.0) == sqrt(2.0 * D));
+    REQUIRE(pif.diffusion() == sqrt(2.0 * D));
   };
 };

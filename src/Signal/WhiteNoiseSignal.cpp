@@ -11,10 +11,12 @@ namespace pt = boost::property_tree;
 
 #include "WhiteNoiseSignal.h"
 
-WhiteNoiseSignal::WhiteNoiseSignal(double alpha, double cut_off, Timeframe time)
-    : alpha(alpha), cut_off(cut_off), time(std::move(time)) {
+// constructor from parameters
+WhiteNoiseSignal::WhiteNoiseSignal(double alpha, double f_low, double f_high, Timeframe time)
+    : alpha(alpha), f_low(f_low), f_high(f_high), time(std::move(time)) {
+  // generate the white noise
   generate_white_noise();
-};
+}
 
 WhiteNoiseSignal::WhiteNoiseSignal(const std::string &input_file) : time(input_file) {
   pt::ptree root;
@@ -26,12 +28,13 @@ WhiteNoiseSignal::WhiteNoiseSignal(const std::string &input_file) : time(input_f
 
   // read simulation data into simulation variables
   alpha = root.get<double>("Signal.alpha");
-  cut_off = root.get<double>("Signal.cut_off");
+  f_low = root.get<double>("Signal.f_low");
+  f_high = root.get<double>("Signal.f_high");
+  assert(f_high > f_low);
 
+  // generate the white noise
   generate_white_noise();
-
-  std::cout << "white noise constructed" << std::endl;
-};
+}
 
 void WhiteNoiseSignal::generate_white_noise() {
 
@@ -44,8 +47,11 @@ void WhiteNoiseSignal::generate_white_noise() {
   const unsigned int steps = time.get_steps();
   this->signal_values.resize(steps);
 
-  // define cut_off index
-  const int cut = (int)(cut_off * (time.get_t_end() - time.get_t_0()));
+  // define cut_off indeces
+  //const int cut_low = (int)(f_low * (time.get_t_end() - time.get_t_0()));
+  const int cut_low = (int)(f_low * time.get_steps() * time.get_dt());
+  //const int cut_high = (int)(f_high * (time.get_t_end() - time.get_t_0()));
+  const int cut_high = (int)(f_low * time.get_steps() * time.get_dt());
 
   // frequencies space
   fftw_complex *frequencies;
@@ -60,12 +66,17 @@ void WhiteNoiseSignal::generate_white_noise() {
     frequencies[i][0] = cos(2.0 * M_PI * rand);
     frequencies[i][1] = sin(2.0 * M_PI * rand);
 
-    // cut frequencies above cut-off
-    if (i > cut) {
+    // cut frequencies
+    if (i < cut_low) {
       frequencies[i][0] = 0.0;
       frequencies[i][1] = 0.0;
     }
-  };
+
+    if (i > cut_high) {
+      frequencies[i][0] = 0.0;
+      frequencies[i][1] = 0.0;
+    }
+  }
 
   // DC and Nyquist frequency have to be purely real
   frequencies[0][0] = 1.0;
@@ -94,13 +105,23 @@ void WhiteNoiseSignal::generate_white_noise() {
   delete[] signal;
 }
 
+// update white noise signal
+void WhiteNoiseSignal::update() {
+  // clear the signal values
+  this->signal_values.clear();
+
+  // generate white noise again
+  generate_white_noise();
+}
+
+// return signal
 double WhiteNoiseSignal::signal(double t) const {
   // check if time is in time frame
   assert(t <= time.get_t_end() && t >= time.get_t_0());
 
   // calculate according index
   unsigned int index;
-  index = (int) ((t - time.get_t_0()) * time.get_dt());
+  index = (int)((t - time.get_t_0()) / time.get_dt());
 
   return signal_values[index];
 };

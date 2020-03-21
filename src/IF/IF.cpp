@@ -1,4 +1,3 @@
-#include <fstream>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -30,7 +29,7 @@ IF::IF(const std::string& input_file) {
 }
 
 // diffusion
-double IF::diffusion(double v, double t) const { return sqrt(2 * D); }
+double IF::diffusion() const { return sqrt(2 * D); }
 
 // get the spike train of an IF neuron
 std::vector<bool> IF::get_spike_train(const Timeframe &time) const {
@@ -54,7 +53,7 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time) const {
   for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
-    v += this->drift(v, t) * dt + this->diffusion(v, t) * dist(generator);
+    v += this->drift(v, t) * dt + this->diffusion() * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -66,7 +65,7 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time) const {
   return spike_train;
 }
 
-// get the spike train of an IF neuron
+// get the spike train of an IF neuron with signal
 std::vector<bool> IF::get_spike_train(const Timeframe &time,
                                       const Signal &signal) const {
   // initial values
@@ -90,7 +89,7 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
     // update time and voltage
     t += dt;
     v += this->drift(v, t) * dt + signal.signal(t) * dt +
-         this->diffusion(v, t) * dist(generator);
+         this->diffusion() * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -102,7 +101,7 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
   return spike_train;
 }
 
-// get the spike train of an IF neuron
+// get the spike train of an IF neuron with adaptation
 std::vector<bool> IF::get_spike_train(const Timeframe &time,
                                       const Adaptation &adapt) const {
   // initial values
@@ -126,7 +125,7 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
   for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
-    v += this->drift(v, t) * dt + this->diffusion(v, t) * dist(generator);
+    v += this->drift(v, t) * dt - a*dt + this->diffusion() * dist(generator);
     a += adapt.adapt(a, t) * dt;
 
     // fire and reset rule
@@ -140,7 +139,7 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
   return spike_train;
 }
 
-// get the spike train of an IF neuron
+// get the spike train of an IF neuron with adaptation and signal
 std::vector<bool> IF::get_spike_train(const Timeframe &time,
                                       const Signal &signal,
                                       const Adaptation &adapt) const {
@@ -165,8 +164,8 @@ std::vector<bool> IF::get_spike_train(const Timeframe &time,
   for (unsigned int i = 0; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
-    v += this->drift(v, t) * dt + signal.signal(t) * dt +
-         this->diffusion(v, t) * dist(generator);
+    v += this->drift(v, t) * dt + signal.signal(t) * dt - a *dt +
+         this->diffusion() * dist(generator);
     a += adapt.adapt(a, t) * dt;
 
     // fire and reset rule
@@ -200,7 +199,7 @@ void IF::get_voltage_curve(std::vector<double> &v,
     // update time and voltage
     t += dt;
     v[i] = v[i - 1] + this->drift(v[i - 1], t) * dt +
-           this->diffusion(v[i - 1], t) * dist(generator);
+           this->diffusion() * dist(generator);
 
     // fire and reset rule
     if (v[i] > 1) {
@@ -230,8 +229,8 @@ void IF::get_voltage_curve(std::vector<double> &v, std::vector<double> &a,
   for (unsigned int i = 1; i < time.get_steps(); i++) {
     // update time and voltage
     t += dt;
-    v[i] = v[i - 1] + this->drift(v[i - 1], t) * dt +
-           this->diffusion(v[i - 1], t) * dist(generator);
+    v[i] = v[i - 1] + this->drift(v[i - 1], t) * dt - a[i-1] * dt +
+           this->diffusion() * dist(generator);
     a[i] = a[i - 1] + adapt.adapt(a[i - 1], t) * dt;
 
     // fire and reset rule

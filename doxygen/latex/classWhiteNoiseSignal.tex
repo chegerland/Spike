@@ -1,0 +1,99 @@
+\hypertarget{classWhiteNoiseSignal}{}\section{White\+Noise\+Signal Class Reference}
+\label{classWhiteNoiseSignal}\index{White\+Noise\+Signal@{White\+Noise\+Signal}}
+
+
+Implements a band limited white gaussian noise signal.  
+
+
+
+
+{\ttfamily \#include $<$White\+Noise\+Signal.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWhiteNoiseSignal_a40d605203e6eb323068d7065ee10d106}{White\+Noise\+Signal} (double alpha, double f\+\_\+low, double f\+\_\+high, \hyperlink{classTimeframe}{Timeframe} time)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classWhiteNoiseSignal}{White\+Noise\+Signal} from parameters. \end{DoxyCompactList}\item 
+\hyperlink{classWhiteNoiseSignal_a0acc2c322f582e4e416e75bb1e1ecd16}{White\+Noise\+Signal} (const std\+::string \&input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classWhiteNoiseSignal}{White\+Noise\+Signal} from input file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWhiteNoiseSignal_a91805eb88b0dc19034cfaca47f248110}\label{classWhiteNoiseSignal_a91805eb88b0dc19034cfaca47f248110}} 
+void \hyperlink{classWhiteNoiseSignal_a91805eb88b0dc19034cfaca47f248110}{generate\+\_\+white\+\_\+noise} ()
+\begin{DoxyCompactList}\small\item\em Generate the white noise, i.\+e. fill the signal\+\_\+values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWhiteNoiseSignal_a7329f5dcabc68fea9d60fef98c064869}\label{classWhiteNoiseSignal_a7329f5dcabc68fea9d60fef98c064869}} 
+void \hyperlink{classWhiteNoiseSignal_a7329f5dcabc68fea9d60fef98c064869}{update} ()
+\begin{DoxyCompactList}\small\item\em Update the white noise, i.\+e. generate it again. \end{DoxyCompactList}\item 
+double \hyperlink{classWhiteNoiseSignal_a99ec1e0c59f5ded7623ffbcaa5318238}{signal} (double t) const
+\begin{DoxyCompactList}\small\item\em Return signal, i.\+e. white noise at time t. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements a band limited white gaussian noise signal. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWhiteNoiseSignal_a40d605203e6eb323068d7065ee10d106}\label{classWhiteNoiseSignal_a40d605203e6eb323068d7065ee10d106}} 
+\index{White\+Noise\+Signal@{White\+Noise\+Signal}!White\+Noise\+Signal@{White\+Noise\+Signal}}
+\index{White\+Noise\+Signal@{White\+Noise\+Signal}!White\+Noise\+Signal@{White\+Noise\+Signal}}
+\subsubsection{\texorpdfstring{White\+Noise\+Signal()}{WhiteNoiseSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily White\+Noise\+Signal\+::\+White\+Noise\+Signal (\begin{DoxyParamCaption}\item[{double}]{alpha,  }\item[{double}]{f\+\_\+low,  }\item[{double}]{f\+\_\+high,  }\item[{\hyperlink{classTimeframe}{Timeframe}}]{time }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classWhiteNoiseSignal}{White\+Noise\+Signal} from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & Amplitude \\
+\hline
+{\em f\+\_\+low} & Lower cut-\/off frequency \\
+\hline
+{\em f\+\_\+high} & Higher cut-\/off frequency \\
+\hline
+{\em time} & Time frame \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWhiteNoiseSignal_a0acc2c322f582e4e416e75bb1e1ecd16}\label{classWhiteNoiseSignal_a0acc2c322f582e4e416e75bb1e1ecd16}} 
+\index{White\+Noise\+Signal@{White\+Noise\+Signal}!White\+Noise\+Signal@{White\+Noise\+Signal}}
+\index{White\+Noise\+Signal@{White\+Noise\+Signal}!White\+Noise\+Signal@{White\+Noise\+Signal}}
+\subsubsection{\texorpdfstring{White\+Noise\+Signal()}{WhiteNoiseSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily White\+Noise\+Signal\+::\+White\+Noise\+Signal (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classWhiteNoiseSignal}{White\+Noise\+Signal} from input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file} & Input file in .json format \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classWhiteNoiseSignal_a99ec1e0c59f5ded7623ffbcaa5318238}\label{classWhiteNoiseSignal_a99ec1e0c59f5ded7623ffbcaa5318238}} 
+\index{White\+Noise\+Signal@{White\+Noise\+Signal}!signal@{signal}}
+\index{signal@{signal}!White\+Noise\+Signal@{White\+Noise\+Signal}}
+\subsubsection{\texorpdfstring{signal()}{signal()}}
+{\footnotesize\ttfamily double White\+Noise\+Signal\+::signal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return signal, i.\+e. white noise at time t. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classSignal}{Signal}, i.\+e. white noise at time t 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classSignal_a32c22f17b70b215d78171716f844fa60}{Signal}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/White\+Noise\+Signal.\+h\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/White\+Noise\+Signal.\+cpp\end{DoxyCompactItemize}

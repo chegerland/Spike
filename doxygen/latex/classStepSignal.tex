@@ -1,0 +1,89 @@
+\hypertarget{classStepSignal}{}\section{Step\+Signal Class Reference}
+\label{classStepSignal}\index{Step\+Signal@{Step\+Signal}}
+
+
+Implement a step signal, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0)  
+
+
+
+
+{\ttfamily \#include $<$Step\+Signal.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStepSignal_a7f9d574831a2114aa0022472d57b7abc}{Step\+Signal} (double alpha, double t\+\_\+0)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classStepSignal}{Step\+Signal} from parameters. \end{DoxyCompactList}\item 
+\hyperlink{classStepSignal_ac295a21796206a794dbf3c65dad2d75e}{Step\+Signal} (std\+::string input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classStepSignal}{Step\+Signal} from input file. \end{DoxyCompactList}\item 
+double \hyperlink{classStepSignal_a04b7f029bb2b53c9b63003b0d6b4360a}{signal} (double t) const
+\begin{DoxyCompactList}\small\item\em Returns signal, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implement a step signal, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0) 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStepSignal_a7f9d574831a2114aa0022472d57b7abc}\label{classStepSignal_a7f9d574831a2114aa0022472d57b7abc}} 
+\index{Step\+Signal@{Step\+Signal}!Step\+Signal@{Step\+Signal}}
+\index{Step\+Signal@{Step\+Signal}!Step\+Signal@{Step\+Signal}}
+\subsubsection{\texorpdfstring{Step\+Signal()}{StepSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Step\+Signal\+::\+Step\+Signal (\begin{DoxyParamCaption}\item[{double}]{alpha,  }\item[{double}]{t\+\_\+0 }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classStepSignal}{Step\+Signal} from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & Amplitude \\
+\hline
+{\em t\+\_\+0} & Start time \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStepSignal_ac295a21796206a794dbf3c65dad2d75e}\label{classStepSignal_ac295a21796206a794dbf3c65dad2d75e}} 
+\index{Step\+Signal@{Step\+Signal}!Step\+Signal@{Step\+Signal}}
+\index{Step\+Signal@{Step\+Signal}!Step\+Signal@{Step\+Signal}}
+\subsubsection{\texorpdfstring{Step\+Signal()}{StepSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Step\+Signal\+::\+Step\+Signal (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Construct \hyperlink{classStepSignal}{Step\+Signal} from input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file} & Input file in .json format \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStepSignal_a04b7f029bb2b53c9b63003b0d6b4360a}\label{classStepSignal_a04b7f029bb2b53c9b63003b0d6b4360a}} 
+\index{Step\+Signal@{Step\+Signal}!signal@{signal}}
+\index{signal@{signal}!Step\+Signal@{Step\+Signal}}
+\subsubsection{\texorpdfstring{signal()}{signal()}}
+{\footnotesize\ttfamily double Step\+Signal\+::signal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns signal, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classSignal}{Signal}, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0) 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classSignal_a32c22f17b70b215d78171716f844fa60}{Signal}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Step\+Signal.\+h\item 
+/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Step\+Signal.\+cpp\end{DoxyCompactItemize}

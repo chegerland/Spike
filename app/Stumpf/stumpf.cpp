@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 
   // get file from command line
   Options opts(argc, argv);
-  std::string parameters = opts.get_parameter_file();
+  std::string parameters = opts.get_input_file();
 
   // define LIF neuron with adaptation and signal
   LIF neuron(parameters);
