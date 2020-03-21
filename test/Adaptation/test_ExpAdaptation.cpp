@@ -1,5 +1,5 @@
+#include "../../extern/catch/catch.hpp"
 #include "Spike.h"
-#include "catch.hpp"
 
 TEST_CASE("Exponential adaptation constructors work", "[ExpAdaptation]") {
   SECTION(".ini file constructor") {
@@ -25,7 +25,7 @@ TEST_CASE("Exponential adaptation constructors work", "[ExpAdaptation]") {
   };
 };
 
-TEST_CASE("Adaptation is calculated correctly", "[ExpAdaptation]") {
+TEST_CASE("Exponential adaptation is calculated correctly", "[ExpAdaptation]") {
   auto tau_a = GENERATE(take(3, random(0.001, 10.0)));
   ExpAdaptation adapt(2.0, tau_a);
 
@@ -36,7 +36,7 @@ TEST_CASE("Adaptation is calculated correctly", "[ExpAdaptation]") {
   REQUIRE(adapt.adapt(a, 1e3) == -1.0 / tau_a * a);
 };
 
-TEST_CASE("Reset rule is calculated correctly", "[ExpAdaptation]") {
+TEST_CASE("Exponential adaptation reset rule is calculated correctly", "[ExpAdaptation]") {
   auto Delta = GENERATE(take(3, random(0.0, 10.0)));
   ExpAdaptation adapt(Delta, 0.1);
 

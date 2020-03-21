@@ -18,7 +18,7 @@ protected:
 
 public:
   // constructors
-  explicit IF(const std::string& input_file);
+  IF(const std::string& input_file);
   IF(double mu, double D);
 
   // drift and diffusion of IF neuron

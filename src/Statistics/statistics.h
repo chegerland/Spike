@@ -24,7 +24,7 @@ double calculate_cv(const std::vector<double> &spike_times);
 int spike_count(const std::vector<bool> &spike_train);
 
 // fourier transform firing rate
-void fourier_trafo_firing_rate(
+void fourier_transform_firing_rate(
     const std::vector<double> &firing_rate, const Timeframe &time,
     std::vector<double> &frequencies,
     std::vector<std::complex<double>> &firing_rate_fourier);

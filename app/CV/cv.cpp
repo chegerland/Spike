@@ -3,7 +3,7 @@
 #include <iostream>
 #include <numeric>
 
-#include "ProgressBar.hpp"
+#include "../../extern/ProgressBar.hpp"
 #include "Spike.h"
 
 // main

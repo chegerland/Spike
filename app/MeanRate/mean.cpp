@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "ProgressBar.hpp"
+#include "../../extern/ProgressBar.hpp"
 #include "Spike.h"
 
 // main

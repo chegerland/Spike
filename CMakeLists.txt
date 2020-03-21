@@ -1,8 +1,10 @@
-cmake_minimum_required(VERSION 3.7)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+cmake_minimum_required(VERSION 3.10)
 
-# compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Ofast -fopenmp -lfftw3")
+# set c++ standard
+set(CMAKE_CXX_STANDARD 11)
+
+# general compiler flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 # CMake useful directories
@@ -18,6 +20,9 @@ set(VERSION 0.1)
 set(Boost_NO_BOOST_CMAKE ON)
 find_package(Boost COMPONENTS unit_test_framework program_options filesystem system REQUIRED)
 
+# find openmp
+find_package(OpenMP)
+
 # include directories
 include_directories(
   ${PROJECT_SOURCE_DIR}/include
@@ -29,8 +34,6 @@ include_directories(
 add_library(catch2 INTERFACE)
 target_include_directories(catch2 INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
-# enable testing
-enable_testing()
 
 # directories
 add_subdirectory("src")

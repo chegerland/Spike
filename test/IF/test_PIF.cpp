@@ -1,5 +1,5 @@
+#include "../../extern/catch/catch.hpp"
 #include "Spike.h"
-#include "catch.hpp"
 
 TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
   SECTION(".ini file constructor") {

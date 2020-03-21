@@ -1,5 +1,5 @@
+#include "../../extern/catch/catch.hpp"
 #include "Spike.h"
-#include "catch.hpp"
 #include <iostream>
 
 TEST_CASE("Options constructors work", "[Options]") {

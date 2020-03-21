@@ -1,7 +1,7 @@
+#include "../../extern/catch/catch.hpp"
 #include "Spike.h"
-#include "catch.hpp"
 
-TEST_CASE("Cosine Signal contructors and calculation work", "[CosineSignal]") {
+TEST_CASE("Cosine Signal constructors and calculation work", "[CosineSignal]") {
   SECTION("Constructor from .ini file") {
     CosineSignal sig("../data/test_files/CosineSignal_test.json");
 

@@ -95,7 +95,7 @@ void WhiteNoiseSignal::generate_white_noise() {
 }
 
 double WhiteNoiseSignal::signal(double t) const {
-  // check if time is in timeframe
+  // check if time is in time frame
   assert(t <= time.get_t_end() && t >= time.get_t_0());
 
   // calculate according index

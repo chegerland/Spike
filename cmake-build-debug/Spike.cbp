@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Spike"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\app\;CMake Files\app\Stumpf\;CMake Files\test\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/cheg/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/cheg/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/cheg/Repos/Master/Spike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="spike">
+				<Option output="/home/cheg/Repos/Master/Spike/lib/libspike.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cheg/Repos/Master/Spike/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cheg/Repos/Master/Spike/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 spike"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="spike/fast">
+				<Option output="/home/cheg/Repos/Master/Spike/lib/libspike.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cheg/Repos/Master/Spike/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cheg/Repos/Master/Spike/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 spike/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Stumpf">
+				<Option output="/home/cheg/Repos/Master/Spike/bin/Stumpf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cheg/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cheg/Repos/Master/Spike/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/app/Stumpf/../include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 Stumpf"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Stumpf/fast">
+				<Option output="/home/cheg/Repos/Master/Spike/bin/Stumpf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cheg/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cheg/Repos/Master/Spike/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/app/Stumpf/../include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 Stumpf/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/app/Stumpf/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_Spike">
+				<Option output="/home/cheg/Repos/Master/Spike/bin/test_Spike" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cheg/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cheg/Repos/Master/Spike/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/test/../include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 test_Spike"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_Spike/fast">
+				<Option output="/home/cheg/Repos/Master/Spike/bin/test_Spike" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cheg/Repos/Master/Spike/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cheg/Repos/Master/Spike/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/cmake-build-debug/include"/>
+					<Add directory="/home/cheg/Repos/Master/Spike/test/../include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/../../../../include/c++/9.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 test_Spike/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/cheg/Repos/Master/Spike/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/cheg/Repos/Master/Spike/app/Stumpf/stumpf.cpp">
+			<Option target="Stumpf"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Adaptation/ExpAdaptation.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Adaptation/ExpAdaptation.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/IF/IF.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/IF/IF.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/IF/LIF.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/IF/LIF.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/IF/PIF.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/IF/PIF.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Options/Options.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Options/Options.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/CosineSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/CosineSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/SignalFactory.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/SignalFactory.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/StepSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/StepSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/TwoCosineSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/TwoCosineSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/WhiteNoiseSignal.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Signal/WhiteNoiseSignal.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Statistics/statistics.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Statistics/statistics.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Timeframe/Timeframe.cpp">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/Timeframe/Timeframe.h">
+			<Option target="spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/Adaptation/test_ExpAdaptation.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/IF/test_LIF.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/IF/test_PIF.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/Options/test_Options.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/Signal/test_CosineSignal.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/Signal/test_StepSignal.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/Signal/test_TwoCosineSignal.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/test_main.cpp">
+			<Option target="test_Spike"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/app/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/app/Stumpf/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\Stumpf\"/>
+		</Unit>
+		<Unit filename="/home/cheg/Repos/Master/Spike/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

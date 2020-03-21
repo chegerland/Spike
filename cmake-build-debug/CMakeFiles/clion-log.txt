@@ -1,0 +1,40 @@
+/home/cheg/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/cheg/Repos/Master/Spike
+CMake Warning at /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1144 (message):
+  New Boost version may have incorrect or missing dependencies and imported
+  targets
+Call Stack (most recent call first):
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1266 (_Boost_COMPONENT_DEPENDENCIES)
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1904 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:21 (find_package)
+
+
+CMake Warning at /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1144 (message):
+  New Boost version may have incorrect or missing dependencies and imported
+  targets
+Call Stack (most recent call first):
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1266 (_Boost_COMPONENT_DEPENDENCIES)
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1904 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:21 (find_package)
+
+
+CMake Warning at /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1144 (message):
+  New Boost version may have incorrect or missing dependencies and imported
+  targets
+Call Stack (most recent call first):
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1266 (_Boost_COMPONENT_DEPENDENCIES)
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1904 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:21 (find_package)
+
+
+CMake Warning at /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1144 (message):
+  New Boost version may have incorrect or missing dependencies and imported
+  targets
+Call Stack (most recent call first):
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1266 (_Boost_COMPONENT_DEPENDENCIES)
+  /home/cheg/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/FindBoost.cmake:1904 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:21 (find_package)
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/cheg/Repos/Master/Spike/cmake-build-debug
