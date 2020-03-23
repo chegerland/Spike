@@ -20,7 +20,7 @@ public:
    * @brief Construct PIF from input file
    * @param input_file Input file in .json format.
    */
-  PIF(const std::string& input_file);
+  explicit PIF(const std::string& input_file);
 
   /**
    * @brief Returns drift of the PIF neuron, i.e. mu
@@ -28,7 +28,7 @@ public:
    * @param t time
    * @return Drift of PIF, i.e. mu
    */
-  double drift(double v, double t) const;
+  double drift(double v) const override;
 };
 
 #endif // PIF_H

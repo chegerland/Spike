@@ -6,10 +6,15 @@ namespace pt = boost::property_tree;
 #include "StepSignal.h"
 
 // constructor from parameters
-StepSignal::StepSignal(double alpha, double t_0) : alpha(alpha), t_0(t_0){};
+StepSignal::StepSignal(double alpha, double t_0, const TimeFrame &time_frame)
+    : Signal(time_frame), alpha(alpha), t_0(t_0) {
+  calculate_signal();
+}
 
 // constructor from input file
-StepSignal::StepSignal(std::string input_file) {
+StepSignal::StepSignal(const std::string &input_file,
+                       const TimeFrame &time_frame)
+    : Signal(time_frame) {
 
   pt::ptree root;
   pt::read_json(input_file, root);
@@ -21,9 +26,21 @@ StepSignal::StepSignal(std::string input_file) {
   // read simulation data into simulation variables
   alpha = root.get<double>("Signal.alpha");
   t_0 = root.get<double>("Signal.t_0");
-};
 
-// the signal
+  calculate_signal();
+}
+
+void StepSignal::calculate_signal() {
+  for (int i = 0; i < time_frame.get_steps(); i++) {
+    if (time_frame.get_time(i) < t_0) {
+      signal_values[i] = 0;
+    } else {
+      signal_values[i] = alpha;
+    }
+  }
+}
+
+// the get_value
 double StepSignal::signal(double t) const {
   double result;
 
@@ -31,7 +48,7 @@ double StepSignal::signal(double t) const {
     result = 0;
   } else {
     result = alpha;
-  };
+  }
 
   return result;
 }

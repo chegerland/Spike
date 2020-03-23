@@ -12,8 +12,8 @@ namespace pt = boost::property_tree;
 
 #include "SignalFactory.h"
 
-// create signal pointer
-Signal *SignalFactory::create(const std::string &input_file) {
+// create get_value pointer
+Signal * SignalFactory::create(const std::string &input_file, const TimeFrame &time_frame) {
   Signal *signal = nullptr;
 
   // Create a root
@@ -26,17 +26,17 @@ Signal *SignalFactory::create(const std::string &input_file) {
   std::string type = root.get<std::string>("Signal.type");
 
   if (type == "two cosine") {
-    signal = new TwoCosineSignal(input_file);
+    signal = new TwoCosineSignal(input_file, time_frame);
   } else if (type == "cosine") {
-    signal = new CosineSignal(input_file);
+    signal = new CosineSignal(input_file, time_frame);
   } else if (type == "step") {
-    signal = new StepSignal(input_file);
+    signal = new StepSignal(input_file, time_frame);
   } else if (type == "white noise") {
-    signal = new WhiteNoiseSignal(input_file);
+    signal = new WhiteNoiseSignal(input_file, time_frame);
   } else {
     std::cerr << "Error: Unknown Signal type (" << type << ")!\n" << std::endl;
     exit(0);
-  };
+  }
 
   return signal;
-};
+}

@@ -1,25 +1,22 @@
 #ifndef WHITENOISESIGNAL_H
 #define WHITENOISESIGNAL_H
 
-#include "../Timeframe/Timeframe.h"
+#include "../TimeFrame/TimeFrame.h"
 #include "Signal.h"
 #include <string>
 #include <vector>
 
 /**
  * @class WhiteNoiseSignal
- * @brief Implements a band limited white gaussian noise signal
+ * @brief Implements a band limited white gaussian noise get_value
  */
 class WhiteNoiseSignal : public Signal {
 private:
-  double alpha;                         ///< amplitude
-  double f_low;                         ///< lower cut-off frequency
-  double f_high;                        ///< higher cut-off frequency
-  Timeframe time;                       ///< Timeframe
-  std::vector<double> signal_values;    ///< vector containing signal values
+  double alpha;                      ///< amplitude
+  double f_low;                      ///< lower cut-off frequency
+  double f_high;                     ///< higher cut-off frequency
 
 public:
-
   /**
    * @brief Construct WhiteNoiseSignal from parameters
    * @param alpha Amplitude
@@ -27,26 +24,22 @@ public:
    * @param f_high Higher cut-off frequency
    * @param time Time frame
    */
-  WhiteNoiseSignal(double alpha, double f_low, double f_high, Timeframe time);
+  WhiteNoiseSignal(double alpha, double f_low, double f_high,
+                   const TimeFrame &time_frame);
 
   /**
    * @brief Construct WhiteNoiseSignal from input file
    * @param input_file Input file in .json format
    */
-  WhiteNoiseSignal(const std::string &input_file);
+  WhiteNoiseSignal(const std::string &input_file, const TimeFrame& time_frame);
 
   /**
    * @brief Generate the white noise, i.e. fill the signal_values
    */
-  void generate_white_noise();
+  void calculate_signal();
 
   /**
-   * @brief Update the white noise, i.e. generate it again
-   */
-  void update();
-
-  /**
-   * @brief Return signal, i.e. white noise at time t
+   * @brief Return get_value, i.e. white noise at time t
    * @param t Time
    * @return Signal, i.e. white noise at time t
    */

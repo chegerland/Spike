@@ -6,7 +6,7 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
     PIF pif("../data/test_files/PIF_test.json");
 
     // check mu
-    REQUIRE(pif.drift(0.0, 0.0) == 1.14);
+    REQUIRE(pif.drift(0.0) == 1.14);
 
     // check D
     REQUIRE(pif.diffusion() == 2.0);
@@ -18,7 +18,7 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
 
     PIF pif(mu, D);
 
-    REQUIRE(pif.drift(0.0, 0.0) == mu);
+    REQUIRE(pif.drift(0.0) == mu);
     REQUIRE(pif.diffusion() == sqrt(2.0 * D));
   };
 };

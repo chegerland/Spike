@@ -1,6 +1,6 @@
 # TimeFrame
 ```cpp
-class Timeframe
+class TimeFrame
 {
 private:
   double t_0;    // start time
@@ -11,8 +11,8 @@ private:
 public:
 
   // constructors
-  Timeframe(std::string input_file);
-  Timeframe(double t_0, double t_end, double dt);
+  TimeFrame(std::string input_file);
+  TimeFrame(double t_0, double t_end, double dt);
 
   // getter functions
   double get_t_0();

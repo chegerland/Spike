@@ -4,10 +4,10 @@ class Signal
 {
 public:
 
-  // Returns the signal at time t
-  virtual double signal(double t) =0;
+  // Returns the get_value at time t
+  virtual double get_value(double t) =0;
 
-  // print signal parameters
+  // print get_value parameters
   virtual void print_parameters() =0;
 };
 ```
@@ -27,8 +27,8 @@ public:
   CosineSignal(double alpha, double f);
   CosineSignal(std::string input_file);
 
-  // return signal
-  double signal(double t);
+  // return get_value
+  double get_value(double t);
 
   // getter functions
   double get_alpha(){return this->alpha;};
@@ -46,11 +46,11 @@ class TwoCosineSignal : public Signal
 {
 private:
 
-  double alpha; // amplitude first signal
-  double beta;  // amplitude second signal
+  double alpha; // amplitude first get_value
+  double beta;  // amplitude second get_value
   double phi;   // phase shift
-  double f1;    // frequency first signal
-  double f2;    // frequency second signal
+  double f1;    // frequency first get_value
+  double f2;    // frequency second get_value
 
 public:
 
@@ -58,8 +58,8 @@ public:
   TwoCosineSignal(double alpha, double beta, double phi, double f1, double f2);
   TwoCosineSignal(std::string input_file);
 
-  // return signal
-  double signal(double t);
+  // return get_value
+  double get_value(double t);
 
   // print function
   void print_parameters();

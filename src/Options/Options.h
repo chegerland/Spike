@@ -18,7 +18,7 @@ public:
    * @brief Construct Options from input file
    * @param input_file Input file in .json format
    */
-  Options(std::string input_file);
+  explicit Options(std::string input_file);
 
   /**
    * @brief Construct Options from command line arguments.

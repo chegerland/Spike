@@ -3,6 +3,8 @@ cmake-build-debug/*
 bin/*
 lib/*
 doc/doxygen
+doxygen/html/*
+doxygen/latex/*
 *.o
 *.log
 *.swp

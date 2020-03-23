@@ -7,7 +7,7 @@
 
 /**
  * @class StepSignal
- * @brief Implement a step signal, i.e. alpha*Theta(t - t_0)
+ * @brief Implement a step get_value, i.e. alpha*Theta(t - t_0)
  */
 class StepSignal : public Signal {
 private:
@@ -20,17 +20,24 @@ public:
    * @brief Construct StepSignal from parameters
    * @param alpha Amplitude
    * @param t_0 Start time
+   * @param time_frame TimeFrame
    */
-  StepSignal(double alpha, double t_0);
+  StepSignal(double alpha, double t_0, const TimeFrame &time_frame);
 
   /**
    * @brief Construct StepSignal from input file
    * @param input_file Input file in .json format
+   * @param time_frame TimeFrame
    */
-  StepSignal(std::string input_file);
+  StepSignal(const std::string& input_file, const TimeFrame &time_frame);
 
   /**
-   * @brief Returns signal, i.e. alpha*Theta(t - t_0)
+   * @brief Calculates the step get_value.
+   */
+  void calculate_signal();
+
+  /**
+   * @brief Returns get_value, i.e. alpha*Theta(t - t_0)
    * @param t Time
    * @return Signal, i.e. alpha*Theta(t - t_0)
    */

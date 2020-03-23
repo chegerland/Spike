@@ -3,18 +3,22 @@
 
 #include <string>
 
+#include "../src/TimeFrame/TimeFrame.h"
+
 /**
  * @class Signal
  * @brief An abstract base class for signals.
  */
 class Signal {
+protected:
+  TimeFrame time_frame;   ///< time frame for get_value
+  double *signal_values;  ///< array containing the get_value values
+
 public:
-  /**
-   * @brief Returns the signal at time t
-   * @param t Time
-   * @return Signal at time t
-   */
-  virtual double signal(double t) const = 0;
+  explicit Signal(const TimeFrame& time_frame);
+  virtual ~Signal();
+
+  double get_value(unsigned int i) const;
 };
 
 #endif // SIGNAL_H

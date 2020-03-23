@@ -5,7 +5,7 @@
 - API
     - [IF](api/if)
     - [Adaptation](api/adaptation)
-    - [Signal](api/signal)
+    - [Signal](api/get_value)
     - [TimeFrame](api/timeframe)
     - [Options](api/options)
 

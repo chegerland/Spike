@@ -1,5 +1,5 @@
-#ifndef IF_H
-#define IF_H
+#ifndef IFAC_H
+#define IFAC_H
 
 #include <cassert>
 #include <cmath>
@@ -11,30 +11,33 @@
 #include "../TimeFrame/TimeFrame.h"
 
 /**
- * @class IF
- * @brief An abstract base class for integrate-and-fire neurons.
+ * @class IFAC
+ * @brief An abstract base class for integrate-and-fire neurons with an
+ * adaptation current.
  */
-class IF {
+class IFAC {
 protected:
-  double mu; ///< mean input current
-  double D;  ///< diffusion coefficient
+  double mu;    ///< mean input current
+  double D;     ///< diffusion coefficient
+  double tau_a; ///< adaptation time constant
+  double Delta; ///< kick size of the adaptation
 
 public:
   /**
-   * @brief Construct IF from input file.
+   * @brief Construct IFAC from input file.
    * @param input_file Input file in .json format.
    */
-  explicit IF(const std::string& input_file);
+  explicit IFAC(const std::string &input_file);
 
   /**
-   * @brief Construct IF from parameters
+   * @brief Construct IFAC from parameters
    * @param mu Mean input current
    * @param D Diffusion coefficient
    */
-  IF(double mu, double D);
+  IFAC(double mu, double D, double tau_a, double Delta);
 
   /**
-   * @brief Returns the drift of the IF neuron.
+   * @brief Returns the drift of the IFAC neuron.
    * @param v Voltage
    * @param t Time
    * @return Drift
@@ -42,8 +45,8 @@ public:
   virtual double drift(double v) const = 0;
 
   /**
-   * @brief Returns the diffusion of the IF neuron, i.e. in general sqrt(2 * D)
-   * @return Diffusion of IF neuron, i.e. sqrt(2*D)
+   * @brief Returns the diffusion of the IFAC neuron, i.e. in general sqrt(2 * D)
+   * @return Diffusion of IFAC neuron, i.e. sqrt(2*D)
    */
   double diffusion() const;
 
@@ -51,8 +54,8 @@ public:
    * Returns a spike train, i.e. an array with as many steps as the time frame,
    * that contains a zero if the neuron has not spiked and a 1 if it has spiked
    * in the corresponding time bin.
-   * We use the Euler-Maruyama-Scheme to solve the SDE for the IF neuron an simply
-   * put a 1 into the spike train array, whenever the neuron spikes.
+   * We use the Euler-Maruyama-Scheme to solve the SDE for the IFAC neuron an
+   * simply put a 1 into the spike train array, whenever the neuron spikes.
    * @brief Returns a spike train.
    * @param time TimeFrame
    */
@@ -62,24 +65,22 @@ public:
    * Produces a spike train, i.e. an array with as many steps as the time frame,
    * that contains a zero if the neuron has not spiked and a 1 if it has spiked
    * in the corresponding time bin.
-   * We use the Euler-Maruyama-Scheme to solve the SDE for the IF neuron an simply
-   * put a 1 into the spike train array, whenever the neuron spikes.
-   * @brief Returns a spike train, where IF is subject to a get_value.
+   * We use the Euler-Maruyama-Scheme to solve the SDE for the IFAC neuron an
+   * simply put a 1 into the spike train array, whenever the neuron spikes.
+   * @brief Returns a spike train, where IFAC is subject to a get_value.
    * @param time TimeFrame
    * @param signal Signal
    * @return A spike train
    */
-  void get_spike_train(const TimeFrame &time,
-                                    const Signal &signal, SpikeTrain &spike_train) const;
-
+  void get_spike_train(const TimeFrame &time, const Signal &signal,
+                       SpikeTrain &spike_train) const;
 
   /**
    * @brief Returns a trajectory, i.e. v(t).
    * @param [out] v Array of voltages at times given by time frame
    * @param time TimeFrame
    */
-  void get_voltage_curve(const TimeFrame &time, double *v) const;
-
+  void get_voltage_curve(const TimeFrame &time, double *v, double *a) const;
 
   /**
    * @brief Setter method for mean input current.
@@ -94,4 +95,4 @@ public:
   void set_D(double D_new) { this->D = D_new; };
 };
 
-#endif // IF_H
+#endif // IFAC_H

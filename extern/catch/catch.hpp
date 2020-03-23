@@ -307,7 +307,7 @@ namespace Catch {
 #if defined(CATCH_INTERNAL_CONFIG_WINDOWS_SEH) && !defined(CATCH_CONFIG_NO_WINDOWS_SEH) && !defined(CATCH_CONFIG_WINDOWS_SEH) && !defined(CATCH_INTERNAL_CONFIG_NO_WINDOWS_SEH)
 #   define CATCH_CONFIG_WINDOWS_SEH
 #endif
-// This is set by default, because we assume that unix compilers are posix-signal-compatible by default.
+// This is set by default, because we assume that unix compilers are posix-get_value-compatible by default.
 #if defined(CATCH_INTERNAL_CONFIG_POSIX_SIGNALS) && !defined(CATCH_INTERNAL_CONFIG_NO_POSIX_SIGNALS) && !defined(CATCH_CONFIG_NO_POSIX_SIGNALS) && !defined(CATCH_CONFIG_POSIX_SIGNALS)
 #   define CATCH_CONFIG_POSIX_SIGNALS
 #endif
@@ -3641,7 +3641,7 @@ namespace Generators {
         return values<std::tuple<Ts...>>( tuples );
     }
 
-    // Tag type to signal that a generator sequence should convert arguments to a specific type
+    // Tag type to get_value that a generator sequence should convert arguments to a specific type
     template <typename T>
     struct as {};
 
@@ -8753,7 +8753,7 @@ namespace Catch {
         { SIGILL,  "SIGILL - Illegal instruction signal" },
         { SIGFPE,  "SIGFPE - Floating point error signal" },
         { SIGSEGV, "SIGSEGV - Segmentation violation signal" },
-        { SIGTERM, "SIGTERM - Termination request signal" },
+        { SIGTERM, "SIGTERM - Termination request get_value" },
         { SIGABRT, "SIGABRT - Abort (abnormal termination) signal" }
     };
 

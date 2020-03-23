@@ -7,11 +7,8 @@
   },
   "Signal":
   {
-    "type" : "two cosine",
+    "type" : "step",
     "alpha" : 3.0,
-    "f1" : 2.35,
-    "beta" : 4.0,
-    "f2" : 2.15,
-    "phi" : 1.0
+    "t_0" : 5.0
   }
 }

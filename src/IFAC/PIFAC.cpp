@@ -3,20 +3,20 @@
 #include <boost/property_tree/ptree.hpp>
 namespace pt = boost::property_tree;
 
-#include "LIF.h"
-#include <iostream>
+#include "PIFAC.h"
 
 // constructor from parameters
-LIF::LIF(double mu, double D) : IF(mu, D) {}
+PIFAC::PIFAC(double mu, double D, double tau_a, double Delta)
+    : IFAC(mu, D, tau_a, Delta) {}
 
 // constructor from input file
-LIF::LIF(const std::string &input_file) : IF(input_file) {
+PIFAC::PIFAC(const std::string &input_file) : IFAC(input_file) {
   // check if type is right
   pt::ptree root;
   pt::read_json(input_file, root);
   std::string type = root.get<std::string>("Neuron.type");
-  assert(type == "LIF");
+  assert(type == "PIFAC");
 }
 
-// drift of an LIF neuron
-double LIF::drift(double v) const { return (this->mu - v); }
+// drift of a PIFAC neuron
+double PIFAC::drift(double v) const { return this->mu; }

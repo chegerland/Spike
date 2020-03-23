@@ -6,7 +6,7 @@ TEST_CASE("LIF Constructors, Drift and Diffusion work", "[LIF]") {
     LIF lif("../data/test_files/LIF_test.json");
 
     // check mu
-    REQUIRE(lif.drift(0.0, 0.0) == 1.14);
+    REQUIRE(lif.drift(0.0) == 1.14);
 
     // check D
     REQUIRE(lif.diffusion() == 2.0);
@@ -18,7 +18,7 @@ TEST_CASE("LIF Constructors, Drift and Diffusion work", "[LIF]") {
 
     LIF lif(mu, D);
 
-    REQUIRE(lif.drift(0.0, 0.0) == mu);
+    REQUIRE(lif.drift(0.0) == mu);
     REQUIRE(lif.diffusion() == sqrt(2.0 * D));
   };
 };

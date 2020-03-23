@@ -20,20 +20,20 @@ public:
   double diffusion(double v, double t) const;
 
   // count spikes that occured in timeframe
-  int count(Timeframe *time) const;
-  int count(Timeframe *time, Signal *signal) const;
-  int count(Timeframe *time, Adaptation *adapt) const;
-  int count(Timeframe *time, Signal *signal, Adaptation *adapt) const;
+  int count(TimeFrame *time) const;
+  int count(TimeFrame *time, Signal *get_value) const;
+  int count(TimeFrame *time, Adaptation *adapt) const;
+  int count(TimeFrame *time, Signal *get_value, Adaptation *adapt) const;
 
   // calculate firing rate
-  void firing_rate(std::vector<double> &rate, Timeframe *time) const;
-  void firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal) const;
-  void firing_rate(std::vector<double> &rate, Timeframe *time, Adaptation *adapt) const;
-  void firing_rate(std::vector<double> &rate, Timeframe *time, Signal *signal, Adaptation *adapt) const;
+  void firing_rate(std::vector<double> &rate, TimeFrame *time) const;
+  void firing_rate(std::vector<double> &rate, TimeFrame *time, Signal *get_value) const;
+  void firing_rate(std::vector<double> &rate, TimeFrame *time, Adaptation *adapt) const;
+  void firing_rate(std::vector<double> &rate, TimeFrame *time, Signal *get_value, Adaptation *adapt) const;
 
   // get voltage curve, i.e. v(t) or v(t) and a(t)
-  void voltage_curve(std::vector<double> &v, Timeframe *time) const;
-  void voltage_curve(std::vector<double> &v, std::vector<double> &a, Timeframe *time, Adaptation *adapt) const;
+  void voltage_curve(std::vector<double> &v, TimeFrame *time) const;
+  void voltage_curve(std::vector<double> &v, std::vector<double> &a, TimeFrame *time, Adaptation *adapt) const;
 
   // print the parameters of this neuron
   void print_parameters() const;
