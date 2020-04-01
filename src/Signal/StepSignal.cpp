@@ -52,3 +52,10 @@ double StepSignal::signal(double t) const {
 
   return result;
 }
+
+void StepSignal::print_info(std::ofstream &file) {
+  file << "# Signal parameters: " << "\n"
+       << "# type = " << "step" << "\n"
+       << "# alpha = " << alpha << "\n"
+       << "# t_0 = " << t_0 << "\n";
+}

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['adapt',['adapt',['../classAdaptation.html#a4c7f62690bb8639a307c0ed840890e30',1,'Adaptation::adapt()'],['../classExpAdaptation.html#aef5119a0f09698f1526938f04654e3f4',1,'ExpAdaptation::adapt()']]],
-  ['adaptation',['Adaptation',['../classAdaptation.html',1,'']]]
+  ['add_5fspike_5ftrain_0',['add_spike_train',['../classFiringRate.html#a8eea33955d3dee79f3bf887d299e3d13',1,'FiringRate']]]
 ];

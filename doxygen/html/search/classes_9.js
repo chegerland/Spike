@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['whitenoisesignal',['WhiteNoiseSignal',['../classWhiteNoiseSignal.html',1,'']]]
+  ['whitenoisesignal_75',['WhiteNoiseSignal',['../classWhiteNoiseSignal.html',1,'']]]
 ];

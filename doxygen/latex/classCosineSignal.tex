@@ -1,40 +1,47 @@
-\hypertarget{classCosineSignal}{}\section{Cosine\+Signal Class Reference}
-\label{classCosineSignal}\index{Cosine\+Signal@{Cosine\+Signal}}
+\hypertarget{classCosineSignal}{}\doxysection{Cosine\+Signal Class Reference}
+\label{classCosineSignal}\index{CosineSignal@{CosineSignal}}
 
 
-Implements a cosine signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t)  
+Implements a cosine get\+\_\+value, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t)  
 
 
 
 
 {\ttfamily \#include $<$Cosine\+Signal.\+h$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classCosineSignal_a410237bec2f4171534e04f5a04259c98}{Cosine\+Signal} (double alpha, double f)
-\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classCosineSignal}{Cosine\+Signal} from parameters. \end{DoxyCompactList}\item 
-\hyperlink{classCosineSignal_a60c5a9cc2d1ed9b8543cdf51f1a3a44a}{Cosine\+Signal} (std\+::string input\+\_\+file)
-\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classCosineSignal}{Cosine\+Signal} from input file. \end{DoxyCompactList}\item 
-double \hyperlink{classCosineSignal_a541f39de155f6a92162882ce102480bd}{signal} (double t) const
-\begin{DoxyCompactList}\small\item\em Returns signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) \end{DoxyCompactList}\item 
-double \hyperlink{classCosineSignal_ae4d286b605aa34aca31619f121fe0b41}{get\+\_\+f} () const
-\begin{DoxyCompactList}\small\item\em Getter function for the frequency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{classCosineSignal_ab4df140ccdbbf7eb1138647eb53a5100}{Cosine\+Signal}} (double alpha, double f, const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&\mbox{\hyperlink{classSignal_a47f018d11758cab322d1187b9392c1f9}{time\+\_\+frame}})
+\begin{DoxyCompactList}\small\item\em Construct \mbox{\hyperlink{classCosineSignal}{Cosine\+Signal}} from parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCosineSignal_ad69d9fa507d81bbb3db79bc1d3e4fc34}{Cosine\+Signal}} (const std\+::string \&input\+\_\+file, const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&\mbox{\hyperlink{classSignal_a47f018d11758cab322d1187b9392c1f9}{time\+\_\+frame}})
+\begin{DoxyCompactList}\small\item\em Construct \mbox{\hyperlink{classCosineSignal}{Cosine\+Signal}} from input file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCosineSignal_a117f1ddb1b7cbdacbf179891ff440229}\label{classCosineSignal_a117f1ddb1b7cbdacbf179891ff440229}} 
+void \mbox{\hyperlink{classCosineSignal_a117f1ddb1b7cbdacbf179891ff440229}{calculate\+\_\+signal}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the cosine get\+\_\+value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCosineSignal_a541f39de155f6a92162882ce102480bd}{signal}} (double t) const
+\begin{DoxyCompactList}\small\item\em Returns get\+\_\+value, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCosineSignal_ae4d286b605aa34aca31619f121fe0b41}{get\+\_\+f}} () const
+\begin{DoxyCompactList}\small\item\em Getter function for the frequency. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCosineSignal_aa67c5fac7f32cac4f2f21748dcfb7a32}\label{classCosineSignal_aa67c5fac7f32cac4f2f21748dcfb7a32}} 
+void {\bfseries print\+\_\+info} (std\+::ofstream \&file) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
-\subsection{Detailed Description}
-Implements a cosine signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) 
+\doxysubsection{Detailed Description}
+Implements a cosine get\+\_\+value, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) 
 
-\subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classCosineSignal_a410237bec2f4171534e04f5a04259c98}\label{classCosineSignal_a410237bec2f4171534e04f5a04259c98}} 
-\index{Cosine\+Signal@{Cosine\+Signal}!Cosine\+Signal@{Cosine\+Signal}}
-\index{Cosine\+Signal@{Cosine\+Signal}!Cosine\+Signal@{Cosine\+Signal}}
-\subsubsection{\texorpdfstring{Cosine\+Signal()}{CosineSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Cosine\+Signal\+::\+Cosine\+Signal (\begin{DoxyParamCaption}\item[{double}]{alpha,  }\item[{double}]{f }\end{DoxyParamCaption})}
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCosineSignal_ab4df140ccdbbf7eb1138647eb53a5100}\label{classCosineSignal_ab4df140ccdbbf7eb1138647eb53a5100}} 
+\index{CosineSignal@{CosineSignal}!CosineSignal@{CosineSignal}}
+\index{CosineSignal@{CosineSignal}!CosineSignal@{CosineSignal}}
+\doxysubsubsection{\texorpdfstring{CosineSignal()}{CosineSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Cosine\+Signal\+::\+Cosine\+Signal (\begin{DoxyParamCaption}\item[{double}]{alpha,  }\item[{double}]{f,  }\item[{const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&}]{time\+\_\+frame }\end{DoxyParamCaption})}
 
 
 
-Construct \hyperlink{classCosineSignal}{Cosine\+Signal} from parameters. 
+Construct \mbox{\hyperlink{classCosineSignal}{Cosine\+Signal}} from parameters. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -42,29 +49,33 @@ Construct \hyperlink{classCosineSignal}{Cosine\+Signal} from parameters.
 \hline
 {\em f} & Frequency \\
 \hline
+{\em time\+\_\+frame} & \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classCosineSignal_a60c5a9cc2d1ed9b8543cdf51f1a3a44a}\label{classCosineSignal_a60c5a9cc2d1ed9b8543cdf51f1a3a44a}} 
-\index{Cosine\+Signal@{Cosine\+Signal}!Cosine\+Signal@{Cosine\+Signal}}
-\index{Cosine\+Signal@{Cosine\+Signal}!Cosine\+Signal@{Cosine\+Signal}}
-\subsubsection{\texorpdfstring{Cosine\+Signal()}{CosineSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Cosine\+Signal\+::\+Cosine\+Signal (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classCosineSignal_ad69d9fa507d81bbb3db79bc1d3e4fc34}\label{classCosineSignal_ad69d9fa507d81bbb3db79bc1d3e4fc34}} 
+\index{CosineSignal@{CosineSignal}!CosineSignal@{CosineSignal}}
+\index{CosineSignal@{CosineSignal}!CosineSignal@{CosineSignal}}
+\doxysubsubsection{\texorpdfstring{CosineSignal()}{CosineSignal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Cosine\+Signal\+::\+Cosine\+Signal (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file,  }\item[{const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&}]{time\+\_\+frame }\end{DoxyParamCaption})}
 
 
 
-Construct \hyperlink{classCosineSignal}{Cosine\+Signal} from input file. 
+Construct \mbox{\hyperlink{classCosineSignal}{Cosine\+Signal}} from input file. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em input\+\_\+file} & Input file in .json format \\
 \hline
+{\em time\+\_\+frame} & \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \\
+\hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classCosineSignal_ae4d286b605aa34aca31619f121fe0b41}\label{classCosineSignal_ae4d286b605aa34aca31619f121fe0b41}} 
-\index{Cosine\+Signal@{Cosine\+Signal}!get\+\_\+f@{get\+\_\+f}}
-\index{get\+\_\+f@{get\+\_\+f}!Cosine\+Signal@{Cosine\+Signal}}
-\subsubsection{\texorpdfstring{get\+\_\+f()}{get\_f()}}
+\index{CosineSignal@{CosineSignal}!get\_f@{get\_f}}
+\index{get\_f@{get\_f}!CosineSignal@{CosineSignal}}
+\doxysubsubsection{\texorpdfstring{get\_f()}{get\_f()}}
 {\footnotesize\ttfamily double Cosine\+Signal\+::get\+\_\+f (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -72,17 +83,17 @@ Construct \hyperlink{classCosineSignal}{Cosine\+Signal} from input file.
 Getter function for the frequency. 
 
 \begin{DoxyReturn}{Returns}
-The frequency of the signal f 
+The frequency of the get\+\_\+value f 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCosineSignal_a541f39de155f6a92162882ce102480bd}\label{classCosineSignal_a541f39de155f6a92162882ce102480bd}} 
-\index{Cosine\+Signal@{Cosine\+Signal}!signal@{signal}}
-\index{signal@{signal}!Cosine\+Signal@{Cosine\+Signal}}
-\subsubsection{\texorpdfstring{signal()}{signal()}}
-{\footnotesize\ttfamily double Cosine\+Signal\+::signal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\index{CosineSignal@{CosineSignal}!signal@{signal}}
+\index{signal@{signal}!CosineSignal@{CosineSignal}}
+\doxysubsubsection{\texorpdfstring{signal()}{signal()}}
+{\footnotesize\ttfamily double Cosine\+Signal\+::signal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const}
 
 
 
-Returns signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) 
+Returns get\+\_\+value, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) 
 
 
 \begin{DoxyParams}{Parameters}
@@ -90,15 +101,11 @@ Returns signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t)
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\hyperlink{classSignal}{Signal}, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) 
+\mbox{\hyperlink{classSignal}{Signal}}, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) 
 \end{DoxyReturn}
-
-
-Implements \hyperlink{classSignal_a32c22f17b70b215d78171716f844fa60}{Signal}.
-
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Cosine\+Signal.\+h\item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Cosine\+Signal.\+cpp\end{DoxyCompactItemize}
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Signal/Cosine\+Signal.\+h\item 
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Signal/Cosine\+Signal.\+cpp\end{DoxyCompactItemize}

@@ -42,6 +42,8 @@ public:
    * @return Signal, i.e. alpha*Theta(t - t_0)
    */
   double signal(double t) const;
+
+  void print_info(std::ofstream& file) override;
 };
 
 #endif // STEPSIGNAL_H

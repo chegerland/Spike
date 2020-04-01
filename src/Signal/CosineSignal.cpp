@@ -43,3 +43,10 @@ void CosineSignal::calculate_signal() {
 double CosineSignal::signal(double t) const {
   return alpha * cos(2.0 * M_PI * f * t);
 }
+
+void CosineSignal::print_info(std::ofstream &file) {
+  file << "# Signal parameters: " << "\n"
+       << "# type = " << "cosine" << "\n"
+       << "# alpha = " << alpha << "\n"
+       << "# f = " << f << "\n";
+}

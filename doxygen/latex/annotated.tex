@@ -1,16 +1,26 @@
-\section{Class List}
+\doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
-\item\contentsline{section}{\hyperlink{classAdaptation}{Adaptation} \\*Implements an abstract base class for adaptation variable }{\pageref{classAdaptation}}{}
-\item\contentsline{section}{\hyperlink{classCosineSignal}{Cosine\+Signal} \\*Implements a cosine signal, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) }{\pageref{classCosineSignal}}{}
-\item\contentsline{section}{\hyperlink{classExpAdaptation}{Exp\+Adaptation} \\*Implements the exponential adaptation, i.\+e. where adaptation variable follows the equation tau\+\_\+a da/dt = -\/a, with the reset rule a -\/$>$ a + Delta }{\pageref{classExpAdaptation}}{}
-\item\contentsline{section}{\hyperlink{classIF}{IF} \\*An abstract base class for integrate-\/and-\/fire neurons }{\pageref{classIF}}{}
-\item\contentsline{section}{\hyperlink{classLIF}{L\+IF} \\*Implements a leaky integrate-\/and-\/fire (\hyperlink{classLIF}{L\+IF}) neuron }{\pageref{classLIF}}{}
-\item\contentsline{section}{\hyperlink{classOptions}{Options} \\*Implements a class that handles command line options }{\pageref{classOptions}}{}
-\item\contentsline{section}{\hyperlink{classPIF}{P\+IF} \\*Implement a perfect integrate-\/and-\/fire (\hyperlink{classPIF}{P\+IF}) neuron }{\pageref{classPIF}}{}
-\item\contentsline{section}{\hyperlink{classSignal}{Signal} \\*An abstract base class for signals }{\pageref{classSignal}}{}
-\item\contentsline{section}{\hyperlink{classSignalFactory}{Signal\+Factory} \\*Implements the factory design pattern for \hyperlink{classSignal}{Signal} }{\pageref{classSignalFactory}}{}
-\item\contentsline{section}{\hyperlink{classStepSignal}{Step\+Signal} \\*Implement a step signal, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0) }{\pageref{classStepSignal}}{}
-\item\contentsline{section}{\hyperlink{classTimeframe}{Timeframe} \\*A time frame class }{\pageref{classTimeframe}}{}
-\item\contentsline{section}{\hyperlink{classTwoCosineSignal}{Two\+Cosine\+Signal} \\*Implements a signal consisting of two cosine, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t) }{\pageref{classTwoCosineSignal}}{}
-\item\contentsline{section}{\hyperlink{classWhiteNoiseSignal}{White\+Noise\+Signal} \\*Implements a band limited white gaussian noise signal }{\pageref{classWhiteNoiseSignal}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classCosineSignal}{Cosine\+Signal}} \\*Implements a cosine get\+\_\+value, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f$\ast$t) }{\pageref{classCosineSignal}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classFiringRate}{Firing\+Rate}} \\*Abstract base class for firing rates. This is an abstract class that calculates the firing rate from given spike trains. One can add a spike train to a firing rate with the method add\+\_\+spike\+\_\+train, which will do the following\+: (i) it will increase the N\+\_\+neurons counter, which counts how many spike trains have been added overall and (ii) it will increase the number of spikes in the spikes histogram, which counts the spikes at a given time (these are of course determined by the time frame). One can calculate the firing rate by calling firing\+\_\+rate.\+calculate(). This of course depends on how one actually calculates the firing rate from given spike trains, which is implemented in the subclasses }{\pageref{classFiringRate}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classFiringRateBox}{Firing\+Rate\+Box}} \\*Implements a box firing rate. The box firing rate is calculated by counting the number of neuron that have spiked in a certain time interval (here given by the time step dt of the time frame) and dividing that number by N$\ast$dt, where N is the number of neurons overall }{\pageref{classFiringRateBox}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classFiringRateExp}{Firing\+Rate\+Exp}} \\*Implements an exponential firing rate. The exponential firing rate is calculated by convolving the spike train with a gaussian window function. See \cite{dayan05} }{\pageref{classFiringRateExp}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classFiringRateFactory}{Firing\+Rate\+Factory}} }{\pageref{classFiringRateFactory}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classFiringRateSimulation}{Firing\+Rate\+Simulation}} }{\pageref{classFiringRateSimulation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classIF}{IF}} \\*An abstract base class for integrate-\/and-\/fire neurons }{\pageref{classIF}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classIFAC}{I\+F\+AC}} \\*An abstract base class for integrate-\/and-\/fire neurons with an adaptation current }{\pageref{classIFAC}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLIF}{L\+IF}} \\*Implements a leaky integrate-\/and-\/fire (\mbox{\hyperlink{classLIF}{L\+IF}}) neuron }{\pageref{classLIF}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLIFAC}{L\+I\+F\+AC}} \\*Implements a leaky integrate-\/and-\/fire (\mbox{\hyperlink{classLIFAC}{L\+I\+F\+AC}}) neuron }{\pageref{classLIFAC}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classNeuron}{Neuron}} }{\pageref{classNeuron}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classNeuronFactory}{Neuron\+Factory}} }{\pageref{classNeuronFactory}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classOptions}{Options}} \\*Implements a class that handles command line options }{\pageref{classOptions}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPIF}{P\+IF}} \\*Implement a perfect integrate-\/and-\/fire (\mbox{\hyperlink{classPIF}{P\+IF}}) neuron }{\pageref{classPIF}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPIFAC}{P\+I\+F\+AC}} \\*Implement a perfect integrate-\/and-\/fire (\mbox{\hyperlink{classPIFAC}{P\+I\+F\+AC}}) neuron }{\pageref{classPIFAC}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSignal}{Signal}} \\*An abstract base class for signals }{\pageref{classSignal}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSignalFactory}{Signal\+Factory}} \\*Implements the factory design pattern for \mbox{\hyperlink{classSignal}{Signal}} }{\pageref{classSignalFactory}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSimulation}{Simulation}} }{\pageref{classSimulation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSpikeTrain}{Spike\+Train}} }{\pageref{classSpikeTrain}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classStepSignal}{Step\+Signal}} \\*Implement a step get\+\_\+value, i.\+e. alpha$\ast$\+Theta(t -\/ t\+\_\+0) }{\pageref{classStepSignal}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \\*A time frame class }{\pageref{classTimeFrame}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classTwoCosineSignal}{Two\+Cosine\+Signal}} \\*Implements a get\+\_\+value consisting of two cosine, i.\+e. alpha$\ast$cos(2$\ast$pi$\ast$f1$\ast$t) }{\pageref{classTwoCosineSignal}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classWhiteNoiseSignal}{White\+Noise\+Signal}} \\*Implements a band limited white gaussian noise get\+\_\+value }{\pageref{classWhiteNoiseSignal}}{}
 \end{DoxyCompactList}

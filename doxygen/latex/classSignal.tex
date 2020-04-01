@@ -1,4 +1,4 @@
-\hypertarget{classSignal}{}\section{Signal Class Reference}
+\hypertarget{classSignal}{}\doxysection{Signal Class Reference}
 \label{classSignal}\index{Signal@{Signal}}
 
 
@@ -9,41 +9,33 @@ An abstract base class for signals.
 
 {\ttfamily \#include $<$Signal.\+h$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual double \hyperlink{classSignal_a32c22f17b70b215d78171716f844fa60}{signal} (double t) const =0
-\begin{DoxyCompactList}\small\item\em Returns the signal at time t. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classSignal_a66ba81bb6944492a7beba3b7069f6860}\label{classSignal_a66ba81bb6944492a7beba3b7069f6860}} 
+{\bfseries Signal} (const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&\mbox{\hyperlink{classSignal_a47f018d11758cab322d1187b9392c1f9}{time\+\_\+frame}})
+\item 
+\mbox{\Hypertarget{classSignal_ac3e9b35d16b3fdd4e98169b55c75ff72}\label{classSignal_ac3e9b35d16b3fdd4e98169b55c75ff72}} 
+double {\bfseries get\+\_\+value} (unsigned int i) const
+\item 
+\mbox{\Hypertarget{classSignal_acdb746d0bfb2af0a54cf076f39fe0a46}\label{classSignal_acdb746d0bfb2af0a54cf076f39fe0a46}} 
+virtual void {\bfseries print\+\_\+info} (std\+::ofstream \&file)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSignal_a47f018d11758cab322d1187b9392c1f9}\label{classSignal_a47f018d11758cab322d1187b9392c1f9}} 
+\mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \mbox{\hyperlink{classSignal_a47f018d11758cab322d1187b9392c1f9}{time\+\_\+frame}}
+\begin{DoxyCompactList}\small\item\em time frame for get\+\_\+value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSignal_a4c5bbc9cf67b4d98dc917fcda5e8a569}\label{classSignal_a4c5bbc9cf67b4d98dc917fcda5e8a569}} 
+double $\ast$ \mbox{\hyperlink{classSignal_a4c5bbc9cf67b4d98dc917fcda5e8a569}{signal\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em array containing the get\+\_\+value values \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 An abstract base class for signals. 
 
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{classSignal_a32c22f17b70b215d78171716f844fa60}\label{classSignal_a32c22f17b70b215d78171716f844fa60}} 
-\index{Signal@{Signal}!signal@{signal}}
-\index{signal@{signal}!Signal@{Signal}}
-\subsubsection{\texorpdfstring{signal()}{signal()}}
-{\footnotesize\ttfamily virtual double Signal\+::signal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Returns the signal at time t. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em t} & Time \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\hyperlink{classSignal}{Signal} at time t 
-\end{DoxyReturn}
-
-
-Implemented in \hyperlink{classWhiteNoiseSignal_a99ec1e0c59f5ded7623ffbcaa5318238}{White\+Noise\+Signal}, \hyperlink{classTwoCosineSignal_a1129875198d637d80db6f083a207a3ba}{Two\+Cosine\+Signal}, \hyperlink{classStepSignal_a04b7f029bb2b53c9b63003b0d6b4360a}{Step\+Signal}, and \hyperlink{classCosineSignal_a541f39de155f6a92162882ce102480bd}{Cosine\+Signal}.
-
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Signal.\+h\end{DoxyCompactItemize}
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Signal/Signal.\+h\item 
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Signal/Signal.\+cpp\end{DoxyCompactItemize}

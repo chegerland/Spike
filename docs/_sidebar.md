@@ -2,6 +2,8 @@
 
 - Getting started
 
+- [API](api)
+
 - API
     - [IF](api/if)
     - [Adaptation](api/adaptation)

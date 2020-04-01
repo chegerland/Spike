@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['d',['D',['../classIF.html#a7e0fdbf32975dba0acf8096524885639',1,'IF']]],
-  ['diffusion',['diffusion',['../classIF.html#a37f5085087483968fe31a69589c3dd66',1,'IF']]],
-  ['drift',['drift',['../classIF.html#aa8a7a38f8fa3aa013df026734d02784c',1,'IF::drift()'],['../classLIF.html#a9b298ddf01f78240748137c3328fb1b7',1,'LIF::drift()'],['../classPIF.html#a12aaacff008d1366ddb6fc3ca0e3ed51',1,'PIF::drift()']]]
+  ['calculate_2',['calculate',['../classFiringRate.html#a77db23d6ed7e1eee4b5116a88b09be3a',1,'FiringRate::calculate()'],['../classFiringRateBox.html#a71165c477dbe3663d37420e7fe23bd22',1,'FiringRateBox::calculate()'],['../classFiringRateExp.html#afb913f924cd539ec7ba7e73e85d674fe',1,'FiringRateExp::calculate()']]],
+  ['calculate_5fsignal_3',['calculate_signal',['../classCosineSignal.html#a117f1ddb1b7cbdacbf179891ff440229',1,'CosineSignal::calculate_signal()'],['../classStepSignal.html#a8530665f83564c427c361b5900af82a7',1,'StepSignal::calculate_signal()'],['../classTwoCosineSignal.html#a80ca0aa45fde00e67b0cb86912f10e98',1,'TwoCosineSignal::calculate_signal()'],['../classWhiteNoiseSignal.html#a054ec5c3b3da0da98be405ea9323d175',1,'WhiteNoiseSignal::calculate_signal()']]],
+  ['check_4',['check',['../classOptions.html#ab8ca4093f5561de9be0405380044c2ea',1,'Options']]],
+  ['clear_5',['clear',['../classFiringRate.html#ab5691e0625054ea68ea17edb204403c2',1,'FiringRate']]],
+  ['cosinesignal_6',['CosineSignal',['../classCosineSignal.html',1,'CosineSignal'],['../classCosineSignal.html#ab4df140ccdbbf7eb1138647eb53a5100',1,'CosineSignal::CosineSignal(double alpha, double f, const TimeFrame &amp;time_frame)'],['../classCosineSignal.html#ad69d9fa507d81bbb3db79bc1d3e4fc34',1,'CosineSignal::CosineSignal(const std::string &amp;input_file, const TimeFrame &amp;time_frame)']]],
+  ['create_7',['create',['../classSignalFactory.html#a089e3fed19ed7d7d6e36dd71e495ad29',1,'SignalFactory']]]
 ];

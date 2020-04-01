@@ -1,4 +1,4 @@
-\hypertarget{classOptions}{}\section{Options Class Reference}
+\hypertarget{classOptions}{}\doxysection{Options Class Reference}
 \label{classOptions}\index{Options@{Options}}
 
 
@@ -9,34 +9,34 @@ Implements a class that handles command line options.
 
 {\ttfamily \#include $<$Options.\+h$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classOptions_aa1e7b11260c48cbc4d4c52266c74abf2}{Options} (std\+::string input\+\_\+file)
-\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classOptions}{Options} from input file. \end{DoxyCompactList}\item 
-\hyperlink{classOptions_ab3a4819d972a234777923d85122bcf37}{Options} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classOptions}{Options} from command line arguments. \end{DoxyCompactList}\item 
-void \hyperlink{classOptions_ab8ca4093f5561de9be0405380044c2ea}{check} ()
+\mbox{\hyperlink{classOptions_aa1e7b11260c48cbc4d4c52266c74abf2}{Options}} (std\+::string input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \mbox{\hyperlink{classOptions}{Options}} from input file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classOptions_ab3a4819d972a234777923d85122bcf37}{Options}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Construct \mbox{\hyperlink{classOptions}{Options}} from command line arguments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOptions_ab8ca4093f5561de9be0405380044c2ea}{check}} ()
 \begin{DoxyCompactList}\small\item\em Checks the given input file. \end{DoxyCompactList}\item 
-std\+::string \hyperlink{classOptions_aaef1783bad5316e5b4639b032e027425}{get\+\_\+input\+\_\+file} ()
+std\+::string \mbox{\hyperlink{classOptions_a76a7d420bed6ba601f1a222e8b81c9f9}{get\+\_\+input\+\_\+file}} () const
 \begin{DoxyCompactList}\small\item\em Getter method for input file. \end{DoxyCompactList}\item 
-std\+::string \hyperlink{classOptions_a302c26d01b3b3a87aa3482ec15afa85f}{get\+\_\+output\+\_\+file} ()
+std\+::string \mbox{\hyperlink{classOptions_a568c9513fefaf32d3834137506aacbcb}{get\+\_\+output\+\_\+file}} () const
 \begin{DoxyCompactList}\small\item\em Getter method for output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Implements a class that handles command line options. 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classOptions_aa1e7b11260c48cbc4d4c52266c74abf2}\label{classOptions_aa1e7b11260c48cbc4d4c52266c74abf2}} 
 \index{Options@{Options}!Options@{Options}}
 \index{Options@{Options}!Options@{Options}}
-\subsubsection{\texorpdfstring{Options()}{Options()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Options\+::\+Options (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{Options()}{Options()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Options\+::\+Options (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
-Construct \hyperlink{classOptions}{Options} from input file. 
+Construct \mbox{\hyperlink{classOptions}{Options}} from input file. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -46,12 +46,12 @@ Construct \hyperlink{classOptions}{Options} from input file.
 \mbox{\Hypertarget{classOptions_ab3a4819d972a234777923d85122bcf37}\label{classOptions_ab3a4819d972a234777923d85122bcf37}} 
 \index{Options@{Options}!Options@{Options}}
 \index{Options@{Options}!Options@{Options}}
-\subsubsection{\texorpdfstring{Options()}{Options()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{Options()}{Options()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Options\+::\+Options (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
-Construct \hyperlink{classOptions}{Options} from command line arguments. 
+Construct \mbox{\hyperlink{classOptions}{Options}} from command line arguments. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -62,22 +62,22 @@ Construct \hyperlink{classOptions}{Options} from command line arguments.
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classOptions_ab8ca4093f5561de9be0405380044c2ea}\label{classOptions_ab8ca4093f5561de9be0405380044c2ea}} 
 \index{Options@{Options}!check@{check}}
 \index{check@{check}!Options@{Options}}
-\subsubsection{\texorpdfstring{check()}{check()}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
 {\footnotesize\ttfamily void Options\+::check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Checks the given input file. 
 
-Checks whether input file has right format (J\+S\+ON) and whether output file already exists. \mbox{\Hypertarget{classOptions_aaef1783bad5316e5b4639b032e027425}\label{classOptions_aaef1783bad5316e5b4639b032e027425}} 
-\index{Options@{Options}!get\+\_\+input\+\_\+file@{get\+\_\+input\+\_\+file}}
-\index{get\+\_\+input\+\_\+file@{get\+\_\+input\+\_\+file}!Options@{Options}}
-\subsubsection{\texorpdfstring{get\+\_\+input\+\_\+file()}{get\_input\_file()}}
-{\footnotesize\ttfamily std\+::string Options\+::get\+\_\+input\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+Checks whether input file has right format (J\+S\+ON) and whether output file already exists. \mbox{\Hypertarget{classOptions_a76a7d420bed6ba601f1a222e8b81c9f9}\label{classOptions_a76a7d420bed6ba601f1a222e8b81c9f9}} 
+\index{Options@{Options}!get\_input\_file@{get\_input\_file}}
+\index{get\_input\_file@{get\_input\_file}!Options@{Options}}
+\doxysubsubsection{\texorpdfstring{get\_input\_file()}{get\_input\_file()}}
+{\footnotesize\ttfamily std\+::string Options\+::get\+\_\+input\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -86,11 +86,11 @@ Getter method for input file.
 \begin{DoxyReturn}{Returns}
 Input file 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classOptions_a302c26d01b3b3a87aa3482ec15afa85f}\label{classOptions_a302c26d01b3b3a87aa3482ec15afa85f}} 
-\index{Options@{Options}!get\+\_\+output\+\_\+file@{get\+\_\+output\+\_\+file}}
-\index{get\+\_\+output\+\_\+file@{get\+\_\+output\+\_\+file}!Options@{Options}}
-\subsubsection{\texorpdfstring{get\+\_\+output\+\_\+file()}{get\_output\_file()}}
-{\footnotesize\ttfamily std\+::string Options\+::get\+\_\+output\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classOptions_a568c9513fefaf32d3834137506aacbcb}\label{classOptions_a568c9513fefaf32d3834137506aacbcb}} 
+\index{Options@{Options}!get\_output\_file@{get\_output\_file}}
+\index{get\_output\_file@{get\_output\_file}!Options@{Options}}
+\doxysubsubsection{\texorpdfstring{get\_output\_file()}{get\_output\_file()}}
+{\footnotesize\ttfamily std\+::string Options\+::get\+\_\+output\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -103,5 +103,5 @@ Output file
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Options/Options.\+h\item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Options/Options.\+cpp\end{DoxyCompactItemize}
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Options/Options.\+h\item 
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Options/Options.\+cpp\end{DoxyCompactItemize}

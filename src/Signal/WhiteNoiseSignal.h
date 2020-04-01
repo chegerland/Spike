@@ -44,6 +44,10 @@ public:
    * @return Signal, i.e. white noise at time t
    */
   double signal(double t) const;
+
+  double *get_values() {return this->signal_values;};
+
+  void print_info(std::ofstream& file) override;
 };
 
 #endif // WHITENOISESIGNAL_H

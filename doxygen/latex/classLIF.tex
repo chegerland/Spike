@@ -1,43 +1,39 @@
-\hypertarget{classLIF}{}\section{L\+IF Class Reference}
-\label{classLIF}\index{L\+IF@{L\+IF}}
+\hypertarget{classLIF}{}\doxysection{L\+IF Class Reference}
+\label{classLIF}\index{LIF@{LIF}}
 
 
-Implements a leaky integrate-\/and-\/fire (\hyperlink{classLIF}{L\+IF}) neuron.  
+Implements a leaky integrate-\/and-\/fire (\mbox{\hyperlink{classLIF}{L\+IF}}) neuron.  
 
 
 
 
 {\ttfamily \#include $<$L\+I\+F.\+h$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classLIF_a368895a753990fa32eb317fde0e9eac5}{L\+IF} (double \hyperlink{classIF_a9f690c993d7b7cd0095e26607503db72}{mu}, double \hyperlink{classIF_a7e0fdbf32975dba0acf8096524885639}{D})
-\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classLIF}{L\+IF} from parameters. \end{DoxyCompactList}\item 
-\hyperlink{classLIF_a1fcddc7f8aa88974ef0143af4469b547}{L\+IF} (const std\+::string \&input\+\_\+file)
-\begin{DoxyCompactList}\small\item\em Construct \hyperlink{classLIF}{L\+IF} from input file. \end{DoxyCompactList}\item 
-double \hyperlink{classLIF_a9b298ddf01f78240748137c3328fb1b7}{drift} (double v, double t) const
-\begin{DoxyCompactList}\small\item\em Returns the drift of the \hyperlink{classLIF}{L\+IF} neuron, i.\+e. mu -\/ v. \end{DoxyCompactList}\item 
-double \hyperlink{classLIF_a70bf790c09810c219134fc22dcacbb18}{func} (\hyperlink{classExpAdaptation}{Exp\+Adaptation} \&adapt, double x)
-\begin{DoxyCompactList}\small\item\em Returns the function for finding the deterministic limit cycle period of an \hyperlink{classLIF}{L\+IF} with exponential adaptation. \end{DoxyCompactList}\item 
-double \hyperlink{classLIF_aabdcc6b846e7ec6effa76592badeb6cc}{limit\+\_\+cycle\+\_\+period} (\hyperlink{classExpAdaptation}{Exp\+Adaptation} \&adapt)
-\begin{DoxyCompactList}\small\item\em Finds the limit cycle period of an \hyperlink{classLIF}{L\+IF} with exponential adaptation. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
+\mbox{\hyperlink{classLIF_a368895a753990fa32eb317fde0e9eac5}{L\+IF}} (double \mbox{\hyperlink{classIF_a9f690c993d7b7cd0095e26607503db72}{mu}}, double \mbox{\hyperlink{classIF_a7e0fdbf32975dba0acf8096524885639}{D}})
+\begin{DoxyCompactList}\small\item\em Construct \mbox{\hyperlink{classLIF}{L\+IF}} from parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLIF_a1fcddc7f8aa88974ef0143af4469b547}{L\+IF}} (const std\+::string \&input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Construct \mbox{\hyperlink{classLIF}{L\+IF}} from input file. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLIF_a766c537126f272f3efafc168f7564ad1}{drift}} (double v) const override
+\begin{DoxyCompactList}\small\item\em Returns the drift of the \mbox{\hyperlink{classLIF}{L\+IF}} neuron, i.\+e. mu -\/ v. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
-\subsection{Detailed Description}
-Implements a leaky integrate-\/and-\/fire (\hyperlink{classLIF}{L\+IF}) neuron. 
+\doxysubsection{Detailed Description}
+Implements a leaky integrate-\/and-\/fire (\mbox{\hyperlink{classLIF}{L\+IF}}) neuron. 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classLIF_a368895a753990fa32eb317fde0e9eac5}\label{classLIF_a368895a753990fa32eb317fde0e9eac5}} 
-\index{L\+IF@{L\+IF}!L\+IF@{L\+IF}}
-\index{L\+IF@{L\+IF}!L\+IF@{L\+IF}}
-\subsubsection{\texorpdfstring{L\+I\+F()}{LIF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\index{LIF@{LIF}!LIF@{LIF}}
+\index{LIF@{LIF}!LIF@{LIF}}
+\doxysubsubsection{\texorpdfstring{LIF()}{LIF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily L\+I\+F\+::\+L\+IF (\begin{DoxyParamCaption}\item[{double}]{mu,  }\item[{double}]{D }\end{DoxyParamCaption})}
 
 
 
-Construct \hyperlink{classLIF}{L\+IF} from parameters. 
+Construct \mbox{\hyperlink{classLIF}{L\+IF}} from parameters. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -47,14 +43,14 @@ Construct \hyperlink{classLIF}{L\+IF} from parameters.
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classLIF_a1fcddc7f8aa88974ef0143af4469b547}\label{classLIF_a1fcddc7f8aa88974ef0143af4469b547}} 
-\index{L\+IF@{L\+IF}!L\+IF@{L\+IF}}
-\index{L\+IF@{L\+IF}!L\+IF@{L\+IF}}
-\subsubsection{\texorpdfstring{L\+I\+F()}{LIF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily L\+I\+F\+::\+L\+IF (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})}
+\index{LIF@{LIF}!LIF@{LIF}}
+\index{LIF@{LIF}!LIF@{LIF}}
+\doxysubsubsection{\texorpdfstring{LIF()}{LIF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily L\+I\+F\+::\+L\+IF (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
-Construct \hyperlink{classLIF}{L\+IF} from input file. 
+Construct \mbox{\hyperlink{classLIF}{L\+IF}} from input file. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -63,16 +59,16 @@ Construct \hyperlink{classLIF}{L\+IF} from input file.
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{classLIF_a9b298ddf01f78240748137c3328fb1b7}\label{classLIF_a9b298ddf01f78240748137c3328fb1b7}} 
-\index{L\+IF@{L\+IF}!drift@{drift}}
-\index{drift@{drift}!L\+IF@{L\+IF}}
-\subsubsection{\texorpdfstring{drift()}{drift()}}
-{\footnotesize\ttfamily double L\+I\+F\+::drift (\begin{DoxyParamCaption}\item[{double}]{v,  }\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLIF_a766c537126f272f3efafc168f7564ad1}\label{classLIF_a766c537126f272f3efafc168f7564ad1}} 
+\index{LIF@{LIF}!drift@{drift}}
+\index{drift@{drift}!LIF@{LIF}}
+\doxysubsubsection{\texorpdfstring{drift()}{drift()}}
+{\footnotesize\ttfamily double L\+I\+F\+::drift (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Returns the drift of the \hyperlink{classLIF}{L\+IF} neuron, i.\+e. mu -\/ v. 
+Returns the drift of the \mbox{\hyperlink{classLIF}{L\+IF}} neuron, i.\+e. mu -\/ v. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -82,53 +78,15 @@ Returns the drift of the \hyperlink{classLIF}{L\+IF} neuron, i.\+e. mu -\/ v.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Drift of \hyperlink{classLIF}{L\+IF}, i.\+e. mu -\/ v 
+Drift of \mbox{\hyperlink{classLIF}{L\+IF}}, i.\+e. mu -\/ v 
 \end{DoxyReturn}
 
 
-Implements \hyperlink{classIF_aa8a7a38f8fa3aa013df026734d02784c}{IF}.
+Implements \mbox{\hyperlink{classIF_a97d6b474e5aa8b21c9495b44c85407d9}{IF}}.
 
-\mbox{\Hypertarget{classLIF_a70bf790c09810c219134fc22dcacbb18}\label{classLIF_a70bf790c09810c219134fc22dcacbb18}} 
-\index{L\+IF@{L\+IF}!func@{func}}
-\index{func@{func}!L\+IF@{L\+IF}}
-\subsubsection{\texorpdfstring{func()}{func()}}
-{\footnotesize\ttfamily double L\+I\+F\+::func (\begin{DoxyParamCaption}\item[{\hyperlink{classExpAdaptation}{Exp\+Adaptation} \&}]{adapt,  }\item[{double}]{x }\end{DoxyParamCaption})}
-
-
-
-Returns the function for finding the deterministic limit cycle period of an \hyperlink{classLIF}{L\+IF} with exponential adaptation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em adapt} & Exponential \hyperlink{classAdaptation}{Adaptation} \\
-\hline
-{\em x} & Limit cycle period \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\end{DoxyReturn}
-\mbox{\Hypertarget{classLIF_aabdcc6b846e7ec6effa76592badeb6cc}\label{classLIF_aabdcc6b846e7ec6effa76592badeb6cc}} 
-\index{L\+IF@{L\+IF}!limit\+\_\+cycle\+\_\+period@{limit\+\_\+cycle\+\_\+period}}
-\index{limit\+\_\+cycle\+\_\+period@{limit\+\_\+cycle\+\_\+period}!L\+IF@{L\+IF}}
-\subsubsection{\texorpdfstring{limit\+\_\+cycle\+\_\+period()}{limit\_cycle\_period()}}
-{\footnotesize\ttfamily double L\+I\+F\+::limit\+\_\+cycle\+\_\+period (\begin{DoxyParamCaption}\item[{\hyperlink{classExpAdaptation}{Exp\+Adaptation} \&}]{adapt }\end{DoxyParamCaption})}
-
-
-
-Finds the limit cycle period of an \hyperlink{classLIF}{L\+IF} with exponential adaptation. 
-
-Finds the period by solving a bisection algorithm to find the root of the function func. This root is then the deterministic limit cycle period. 
-\begin{DoxyParams}{Parameters}
-{\em adapt} & Exponential adaptation \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Deterministic limit cycle period of the \hyperlink{classLIF}{L\+IF} with exponential adaptation. 
-\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+I\+F/L\+I\+F.\+h\item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+I\+F/L\+I\+F.\+cpp\end{DoxyCompactItemize}
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Neuron/\+I\+F/L\+I\+F.\+h\item 
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Neuron/\+I\+F/L\+I\+F.\+cpp\end{DoxyCompactItemize}

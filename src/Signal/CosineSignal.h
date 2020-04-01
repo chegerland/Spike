@@ -47,6 +47,8 @@ public:
    * @return The frequency of the get_value f
    */
   double get_f() const { return this->f; };
+
+  void print_info(std::ofstream& file) override;
 };
 
 #endif // COSINESIGNAL_H

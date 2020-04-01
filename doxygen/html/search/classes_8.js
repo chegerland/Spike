@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['timeframe',['Timeframe',['../classTimeframe.html',1,'']]],
-  ['twocosinesignal',['TwoCosineSignal',['../classTwoCosineSignal.html',1,'']]]
+  ['timeframe_73',['TimeFrame',['../classTimeFrame.html',1,'']]],
+  ['twocosinesignal_74',['TwoCosineSignal',['../classTwoCosineSignal.html',1,'']]]
 ];

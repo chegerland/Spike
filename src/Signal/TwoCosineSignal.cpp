@@ -50,3 +50,14 @@ double TwoCosineSignal::signal(double t) const {
   return alpha * cos(2.0 * M_PI * f1 * t) +
          beta * cos(2.0 * M_PI * f2 * t + phi);
 }
+
+
+void TwoCosineSignal::print_info(std::ofstream &file) {
+  file << "# Signal parameters: " << "\n"
+       << "# type = " << "two cosine" << "\n"
+       << "# alpha = " << alpha << "\n"
+       << "# f1 = " << f1 << "\n"
+       << "# beta = " << beta << "\n"
+       << "# f2 = " << f2 << "\n"
+       << "# phi = " << phi << "\n";
+}

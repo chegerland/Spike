@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update',['update',['../classWhiteNoiseSignal.html#a7329f5dcabc68fea9d60fef98c064869',1,'WhiteNoiseSignal']]]
+  ['values_50',['values',['../classFiringRate.html#ad270ec833090d6dd3f2f231c5788fb02',1,'FiringRate']]]
 ];

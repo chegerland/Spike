@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['twocosinesignal',['TwoCosineSignal',['../classTwoCosineSignal.html#a0a4302be17fc5c01dacdbee1939ef565',1,'TwoCosineSignal::TwoCosineSignal(double alpha, double f1, double beta, double f2, double phi)'],['../classTwoCosineSignal.html#a524fe84e94bb65d15343109f75ca5ef8',1,'TwoCosineSignal::TwoCosineSignal(std::string input_file)']]]
+  ['_7efiringrate_109',['~FiringRate',['../classFiringRate.html#a1d4aa6b0c5a4a5dddfb321766e31a98a',1,'FiringRate']]]
 ];

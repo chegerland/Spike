@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pif',['PIF',['../classPIF.html',1,'PIF'],['../classPIF.html#ac3aaa22c006e70efc91de66078b2dbd2',1,'PIF::PIF(double mu, double D)'],['../classPIF.html#ad1a5859ea76a5ebd90d638ddea2bae90',1,'PIF::PIF(const std::string &amp;input_file)']]]
+  ['options_34',['Options',['../classOptions.html',1,'Options'],['../classOptions.html#aa1e7b11260c48cbc4d4c52266c74abf2',1,'Options::Options(std::string input_file)'],['../classOptions.html#ab3a4819d972a234777923d85122bcf37',1,'Options::Options(int argc, char *argv[])']]]
 ];

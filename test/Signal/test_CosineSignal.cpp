@@ -25,3 +25,16 @@ TEST_CASE("Cosine Signal constructors and calculation work", "[CosineSignal]") {
             alpha * cos(2.0 * M_PI * f * time_frame.get_time(3)));
   }
 }
+
+TEST_CASE("Cosine signal value array is computed correctly") {
+  const TimeFrame time_frame(0.0, 10.0, 0.1);
+  double alpha = 1.3;
+  double f = 2.5;
+
+  CosineSignal sig(alpha, f, time_frame);
+
+  for (unsigned int i = 0; i < time_frame.get_steps(); i++) {
+    REQUIRE(sig.get_value(i) ==
+            alpha * cos(2.0 * M_PI * f * time_frame.get_time(i)));
+  }
+}

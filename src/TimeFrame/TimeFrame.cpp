@@ -56,3 +56,11 @@ void TimeFrame::calculate_times() {
     t[i] = t_0 + i * dt;
   }
 }
+
+
+void TimeFrame::print_info(std::ofstream &file) {
+  file << "# TimeFrame: " << "\n"
+       << "# t_0 = " << t_0 << "\n"
+       << "# t_end = " << t_end << "\n"
+       << "# dt = " << dt << "\n";
+}

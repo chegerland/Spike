@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['set_5fd',['set_D',['../classIF.html#a886eef4d18be5cc81e96ff46c1e0037b',1,'IF']]],
-  ['set_5fdelta',['set_Delta',['../classExpAdaptation.html#aec93194aa8a695cbb26c47c40469a153',1,'ExpAdaptation']]],
-  ['set_5fmu',['set_mu',['../classIF.html#a4ca244c0e1095a3014af3cdbf225ded1',1,'IF']]],
-  ['set_5ftau_5fa',['set_tau_a',['../classExpAdaptation.html#a9093324d5aff70f75b82f302f698d468',1,'ExpAdaptation']]],
-  ['signal',['Signal',['../classSignal.html',1,'Signal'],['../classCosineSignal.html#a541f39de155f6a92162882ce102480bd',1,'CosineSignal::signal()'],['../classSignal.html#a32c22f17b70b215d78171716f844fa60',1,'Signal::signal()'],['../classStepSignal.html#a04b7f029bb2b53c9b63003b0d6b4360a',1,'StepSignal::signal()'],['../classTwoCosineSignal.html#a1129875198d637d80db6f083a207a3ba',1,'TwoCosineSignal::signal()'],['../classWhiteNoiseSignal.html#a99ec1e0c59f5ded7623ffbcaa5318238',1,'WhiteNoiseSignal::signal()']]],
-  ['signalfactory',['SignalFactory',['../classSignalFactory.html',1,'']]],
-  ['stepsignal',['StepSignal',['../classStepSignal.html',1,'StepSignal'],['../classStepSignal.html#a7f9d574831a2114aa0022472d57b7abc',1,'StepSignal::StepSignal(double alpha, double t_0)'],['../classStepSignal.html#ac295a21796206a794dbf3c65dad2d75e',1,'StepSignal::StepSignal(std::string input_file)']]]
+  ['set_5fd_37',['set_D',['../classIF.html#a33e485c7b8b6028872c4daf49b18238c',1,'IF::set_D()'],['../classIFAC.html#af0b9ce68ad82904064dada5f9aad80dd',1,'IFAC::set_D()']]],
+  ['set_5fmu_38',['set_mu',['../classIF.html#a6801b689c8e56d71e6327d66fbaed2a7',1,'IF::set_mu()'],['../classIFAC.html#ae0f31b08edffcdcc991d91771f4e3c24',1,'IFAC::set_mu()']]],
+  ['signal_39',['Signal',['../classSignal.html',1,'Signal'],['../classCosineSignal.html#a541f39de155f6a92162882ce102480bd',1,'CosineSignal::signal()'],['../classStepSignal.html#a04b7f029bb2b53c9b63003b0d6b4360a',1,'StepSignal::signal()'],['../classTwoCosineSignal.html#a1129875198d637d80db6f083a207a3ba',1,'TwoCosineSignal::signal()'],['../classWhiteNoiseSignal.html#a99ec1e0c59f5ded7623ffbcaa5318238',1,'WhiteNoiseSignal::signal()']]],
+  ['signal_5fvalues_40',['signal_values',['../classSignal.html#a4c5bbc9cf67b4d98dc917fcda5e8a569',1,'Signal']]],
+  ['signalfactory_41',['SignalFactory',['../classSignalFactory.html',1,'']]],
+  ['simulation_42',['Simulation',['../classSimulation.html',1,'']]],
+  ['spike_5fhistogram_43',['spike_histogram',['../classFiringRate.html#aca350475eed8a7d06a8b68dc1b436e95',1,'FiringRate']]],
+  ['spiketrain_44',['SpikeTrain',['../classSpikeTrain.html',1,'']]],
+  ['stepsignal_45',['StepSignal',['../classStepSignal.html',1,'StepSignal'],['../classStepSignal.html#ae38da6dae4c1cb5d6df9ac1ccf173859',1,'StepSignal::StepSignal(double alpha, double t_0, const TimeFrame &amp;time_frame)'],['../classStepSignal.html#a1903f8153f0fbe302a5995604d04a627',1,'StepSignal::StepSignal(const std::string &amp;input_file, const TimeFrame &amp;time_frame)']]]
 ];

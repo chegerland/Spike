@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['lif',['LIF',['../classLIF.html',1,'']]]
+  ['neuron_63',['Neuron',['../classNeuron.html',1,'']]],
+  ['neuronfactory_64',['NeuronFactory',['../classNeuronFactory.html',1,'']]]
 ];

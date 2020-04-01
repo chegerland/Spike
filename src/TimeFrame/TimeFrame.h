@@ -34,6 +34,8 @@ public:
   double get_dt() const { return this->dt; };
   unsigned int get_steps() const { return this->steps; };
   double get_time(unsigned int i) const { return this->t[i]; };
+
+  void print_info(std::ofstream& file);
 };
 
 #endif // TIMEFRAME_H

@@ -38,13 +38,13 @@ public:
    * @brief Getter method for input file
    * @return Input file
    */
-  std::string get_input_file() { return this->input_file; };
+  std::string get_input_file() const { return this->input_file; };
 
   /**
    * @brief Getter method for output file.
    * @return Output file
    */
-  std::string get_output_file() { return this->output_file; };
+  std::string get_output_file() const { return this->output_file; };
 };
 
 /**

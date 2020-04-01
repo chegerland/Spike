@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset_5frule',['reset_rule',['../classAdaptation.html#a146da63f54c22a3c08c2c5ce26f11f66',1,'Adaptation::reset_rule()'],['../classExpAdaptation.html#ac194bba0fd15aea6a68b8964a21fff2d',1,'ExpAdaptation::reset_rule()']]]
+  ['twocosinesignal_107',['TwoCosineSignal',['../classTwoCosineSignal.html#ac47a3e349961b454fad0ea1bb63c2072',1,'TwoCosineSignal::TwoCosineSignal(double alpha, double f1, double beta, double f2, double phi, const TimeFrame &amp;time_frame)'],['../classTwoCosineSignal.html#a08b380384e62839d5d78b4e5a82ab867',1,'TwoCosineSignal::TwoCosineSignal(const std::string &amp;input_file, const TimeFrame &amp;time_frame)']]]
 ];

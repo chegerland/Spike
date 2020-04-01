@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['options',['Options',['../classOptions.html',1,'Options'],['../classOptions.html#aa1e7b11260c48cbc4d4c52266c74abf2',1,'Options::Options(std::string input_file)'],['../classOptions.html#ab3a4819d972a234777923d85122bcf37',1,'Options::Options(int argc, char *argv[])']]]
+  ['n_5fneurons_31',['N_Neurons',['../classFiringRate.html#af40b4c9d25bdb83b9bce4c32c4956850',1,'FiringRate']]],
+  ['neuron_32',['Neuron',['../classNeuron.html',1,'']]],
+  ['neuronfactory_33',['NeuronFactory',['../classNeuronFactory.html',1,'']]]
 ];

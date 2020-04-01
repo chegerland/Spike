@@ -1,42 +1,42 @@
-\hypertarget{classSignalFactory}{}\section{Signal\+Factory Class Reference}
-\label{classSignalFactory}\index{Signal\+Factory@{Signal\+Factory}}
+\hypertarget{classSignalFactory}{}\doxysection{Signal\+Factory Class Reference}
+\label{classSignalFactory}\index{SignalFactory@{SignalFactory}}
 
 
-Implements the factory design pattern for \hyperlink{classSignal}{Signal}.  
+Implements the factory design pattern for \mbox{\hyperlink{classSignal}{Signal}}.  
 
 
 
 
 {\ttfamily \#include $<$Signal\+Factory.\+h$>$}
 
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classSignal}{Signal} $\ast$ \hyperlink{classSignalFactory_ae06369d1d5aa9e672b1395ddfa75ed07}{create} (const std\+::string \&input\+\_\+file)
+static \mbox{\hyperlink{classSignal}{Signal}} $\ast$ \mbox{\hyperlink{classSignalFactory_a089e3fed19ed7d7d6e36dd71e495ad29}{create}} (const std\+::string \&input\+\_\+file, const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&time\+\_\+frame)
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Implements the factory design pattern for \hyperlink{classSignal}{Signal}. 
+\doxysubsection{Detailed Description}
+Implements the factory design pattern for \mbox{\hyperlink{classSignal}{Signal}}. 
 
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{classSignalFactory_ae06369d1d5aa9e672b1395ddfa75ed07}\label{classSignalFactory_ae06369d1d5aa9e672b1395ddfa75ed07}} 
-\index{Signal\+Factory@{Signal\+Factory}!create@{create}}
-\index{create@{create}!Signal\+Factory@{Signal\+Factory}}
-\subsubsection{\texorpdfstring{create()}{create()}}
-{\footnotesize\ttfamily \hyperlink{classSignal}{Signal} $\ast$ Signal\+Factory\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSignalFactory_a089e3fed19ed7d7d6e36dd71e495ad29}\label{classSignalFactory_a089e3fed19ed7d7d6e36dd71e495ad29}} 
+\index{SignalFactory@{SignalFactory}!create@{create}}
+\index{create@{create}!SignalFactory@{SignalFactory}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSignal}{Signal}} $\ast$ Signal\+Factory\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file,  }\item[{const \mbox{\hyperlink{classTimeFrame}{Time\+Frame}} \&}]{time\+\_\+frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Returns a pointer to a signal, depending on the type read from input file 
+Returns a pointer to a get\+\_\+value, depending on the type read from input file 
 \begin{DoxyParams}{Parameters}
 {\em input\+\_\+file} & Input file in .json format \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to signal 
+Pointer to get\+\_\+value 
 \end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Signal\+Factory.\+h\item 
-/users/stud/egerlanc/\+Repos/\+Master/\+Spike/src/\+Signal/Signal\+Factory.\+cpp\end{DoxyCompactItemize}
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Signal/Signal\+Factory.\+h\item 
+/home/cheg/\+Repos/\+Master/\+Spike/src/\+Signal/Signal\+Factory.\+cpp\end{DoxyCompactItemize}

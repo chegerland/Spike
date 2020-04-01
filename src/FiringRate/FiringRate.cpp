@@ -27,6 +27,7 @@ void FiringRate::add_spike_train(const SpikeTrain &spike_train) {
   // increase neuron counter
   N_Neurons++;
 
+  // if there is a spike at position i, increase spike histogram at position i
   for (int i = 0; i < spike_train.get_length(); i++) {
     if (spike_train.get_spike(i)) {
       spike_histogram[i] += 1;
@@ -35,6 +36,10 @@ void FiringRate::add_spike_train(const SpikeTrain &spike_train) {
 }
 
 void FiringRate::clear() {
+  // set neuron counter to zero
+  N_Neurons = 0;
+
+  // clear the arrays
   for (int i = 0; i < time_frame.get_steps(); i++) {
     spike_histogram[i] = 0;
     values[i] = 0.0;

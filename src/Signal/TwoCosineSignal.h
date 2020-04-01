@@ -49,6 +49,9 @@ public:
    * @return Signal, i.e. alpha*cos(2*pi*f1*t) + beta*cos(2*pi*f2*t + phi)
    */
   double signal(double t) const;
+
+
+  void print_info(std::ofstream& file) override;
 };
 
 #endif // TWOCOSINESIGNAL_H

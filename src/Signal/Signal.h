@@ -19,6 +19,8 @@ public:
   virtual ~Signal();
 
   double get_value(unsigned int i) const;
+
+  virtual void print_info(std::ofstream& file) =0;
 };
 
 #endif // SIGNAL_H

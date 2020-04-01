@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['adaptation',['Adaptation',['../classAdaptation.html',1,'']]]
+  ['cosinesignal_53',['CosineSignal',['../classCosineSignal.html',1,'']]]
 ];

@@ -2,8 +2,10 @@
 #include <random>
 
 // json parser
+#include <Spike.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <iostream>
 
 namespace pt = boost::property_tree;
 
@@ -12,11 +14,12 @@ namespace pt = boost::property_tree;
 // constructor from parameters
 WhiteNoiseSignal::WhiteNoiseSignal(double alpha, double f_low, double f_high,
                                    const TimeFrame &time_frame)
-    : Signal(time_frame), alpha(alpha), f_low(f_low), f_high(f_high){
+    : Signal(time_frame), alpha(alpha), f_low(f_low), f_high(f_high) {
   calculate_signal();
 }
 
-WhiteNoiseSignal::WhiteNoiseSignal(const std::string &input_file, const TimeFrame& time_frame)
+WhiteNoiseSignal::WhiteNoiseSignal(const std::string &input_file,
+                                   const TimeFrame &time_frame)
     : Signal(time_frame) {
   pt::ptree root;
   pt::read_json(input_file, root);
@@ -42,17 +45,16 @@ void WhiteNoiseSignal::calculate_signal() {
   std::mt19937 generator{rd()};
   std::normal_distribution<double> dist(0.0, 1.0);
 
-  const int steps = (int) time_frame.get_steps();
+  const int steps = (int)time_frame.get_steps();
   const double dt = time_frame.get_dt();
 
   // define cut_off indices
   const int cut_low = (int)(f_low * steps * dt);
-  const int cut_high = (int)(f_low * steps * dt);
+  const int cut_high = (int)(f_high * steps * dt);
 
   // frequencies space
   fftw_complex *frequencies;
-  frequencies =
-      (fftw_complex *)fftw_malloc(sizeof(fftw_complex) * (steps / 2 + 1));
+  frequencies = new fftw_complex[steps / 2 + 1];
 
   // white noise in frequency space has constant amplitude, random phase
   double rand;
@@ -62,12 +64,7 @@ void WhiteNoiseSignal::calculate_signal() {
     frequencies[i][1] = sin(2.0 * M_PI * rand);
 
     // cut frequencies
-    if (i < cut_low) {
-      frequencies[i][0] = 0.0;
-      frequencies[i][1] = 0.0;
-    }
-
-    if (i > cut_high) {
+    if (i < cut_low || i > cut_high) {
       frequencies[i][0] = 0.0;
       frequencies[i][1] = 0.0;
     }
@@ -76,28 +73,35 @@ void WhiteNoiseSignal::calculate_signal() {
   // DC and Nyquist frequency have to be purely real
   frequencies[0][0] = 1.0;
   frequencies[0][1] = 0.0;
-  frequencies[steps / 2 + 1][0] = 1.0;
-  frequencies[steps / 2 + 1][1] = 0.0;
-
-  // allocate memory for the get_value
-  double *signal;
-  signal = (double *)malloc(steps * sizeof(double));
+  frequencies[steps / 2][0] = 1.0;
+  frequencies[steps / 2][1] = 0.0;
 
   // calculate get_value by fourier transforming from frequencies
   fftw_plan p;
-  p = fftw_plan_dft_c2r_1d(steps, frequencies, signal, FFTW_ESTIMATE);
+#pragma omp critical
+  p = fftw_plan_dft_c2r_1d(steps, frequencies, this->signal_values,
+                           FFTW_ESTIMATE);
+
   fftw_execute(p);
+
+#pragma omp critical
   fftw_destroy_plan(p);
-  fftw_free(frequencies);
+
+  delete[] frequencies;
 
   // normalize the get_value and copy into the vector
   const double scale = 1. / ((double)steps * dt);
   for (int i = 0; i < steps; i++) {
-    this->signal_values[i] = scale * signal[i];
+    signal_values[i] = scale * signal_values[i];
   }
 
-  // free memory
-  delete[] signal;
+  // normalize signal with its own standard deviation and multiply by alpha, so
+  // that we have new standard variation equal to 1
+  double standard_dev = standard_deviation(signal_values, steps);
+
+  for (int i = 0; i < steps; i++) {
+    signal_values[i] = this->alpha / (standard_dev)*signal_values[i];
+  }
 }
 
 // return get_value
@@ -110,4 +114,12 @@ double WhiteNoiseSignal::signal(double t) const {
   index = (int)((t - time_frame.get_t_0()) / time_frame.get_dt());
 
   return signal_values[index];
+}
+
+void WhiteNoiseSignal::print_info(std::ofstream &file) {
+  file << "# Signal parameters: " << "\n"
+       << "# type = " << "white noise" << "\n"
+       << "# alpha = " << alpha << "\n"
+       << "# f_low = " << f_low << "\n"
+       << "# f_high = " << f_high << "\n";
 }
