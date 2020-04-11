@@ -2,49 +2,56 @@
 
 # Spike
 Spike is a small numerical toolset that can simulate single neurons and evaluate the resulting spike trains statistically by calculation all sorts of quantities like the firing rate etc.
-
-## Getting Started
-These instructions will help you set up Spike and run your first calculation.
+It is build as a library with which you can write your own scripts, it comes, however, with some useful executables ready to use.
 
 ### Dependencies
 * [Catch2](https://github.com/catchorg/Catch2): unit testing
-* [doxygen](http://doxygen.nl/): documentation
-* [boost](https://www.boost.org/): json file parser
+* [doxygen](http://doxygen.nl/): API documentation
+* [boost](https://www.boost.org/): json file parser, program options and logging
 * [progress bar](https://github.com/prakhar1989/progress-cpp)
 
 ### Installation & Build
 To install Spike, clone the repository by typing
 
-    $ git clone https://git.physik.hu-berlin.de/cheg/master/Spike.git
+```
+git clone https://git.physik.hu-berlin.de/cheg/master/Spike.git
+```
 
 then create a build directory and build the project using cmake
 
-    $ mkdir -p build/ && cd build
-    $ cmake ..
-    $ make Spike
+```
+mkdir -p build/ && cd build
+cmake .. &&  make
+```
 
 ### First Calculation
-Run your first calculation, by giving Spike the input file called `tutorial.json`:
-
-    $ cd bin
-    $ ./Spike --mode 0 --file ../data/tutorial.json
-
-For more information see the [Tutorial](@ref tutorial).
+One of the out-of-the-box executables is `firing_rate`.
+Given a `.json` input file, this program calculates the firing rate of the neuron.
+An example file looks like this:
+```json
+```
 
 ## Testing
 We try to follow a [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) style.
 To build all tests type
 
-    $ make tests_Spike
+```
+make tests_Spike
+```
 
 and run them with
 
-    $ ./tests_Spike
-
+```
+./tests_Spike
+```
 
 ## Documentation
-Notes are written in `.md` files in the `docs/doc_pages/` directory.
-Classes and functions are documented in the according `.h` files.
+Notes are written in `.md` files in the `docs/` directory.
+Classes and functions are documented in the according `.h` files and an API documentation can be generated from them using (inside the `docs/doxygen` directory)
+```
+doxygen Doxyfile
+```
+
 Details on the implementation are written in `.cpp` files.
 
 
