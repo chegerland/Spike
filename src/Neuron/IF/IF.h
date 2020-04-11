@@ -15,6 +15,7 @@
 #include "../../SpikeTrain/SpikeTrain.h"
 #include "../../TimeFrame/TimeFrame.h"
 #include "../Neuron.h"
+#include <random>
 
 /**
  * @class IF
@@ -24,8 +25,11 @@
  */
 class IF : public Neuron {
 protected:
-  double mu; ///< mean input current
-  double D;  ///< diffusion coefficient
+  double mu;                             ///< mean input current
+  double D;                              ///< diffusion coefficient
+  std::random_device rd;                 ///< random device (seeding)
+  std::mt19937 generator;                ///< random number generator
+  std::normal_distribution<double> dist; ///< normal distribution
 
 public:
   /**
@@ -65,8 +69,7 @@ public:
    * @param time Time frame
    * @param spike_train Spike train
    */
-  void get_spike_train(const TimeFrame &time,
-                       SpikeTrain &spike_train) const override;
+  void get_spike_train(const TimeFrame &time, SpikeTrain &spike_train) override;
 
   /**
    * @brief Fills the spike train.
@@ -81,14 +84,14 @@ public:
    * @param spike_train Spike train
    */
   void get_spike_train(const TimeFrame &time, const Signal &signal,
-                       SpikeTrain &spike_train) const override;
+                       SpikeTrain &spike_train) override;
 
   /**
    * @brief Returns a trajectory, i.e. v(t).
    * @param [in] time TimeFrame
    * @param [out] v Array of voltages at times given by time frame
    */
-  void get_voltage_curve(const TimeFrame &time, double *v) const;
+  void get_voltage_curve(const TimeFrame &time, double *v);
 
   /**
    * @brief Setter method for mean input current.

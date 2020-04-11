@@ -39,8 +39,7 @@ public:
   double drift(double v) const override;
 
   void get_kernel(const TimeFrame &time, const Signal &signal,
-                         const double norm, const int offset,
-                         double *kernel) const;
+                  const double norm, double *kernel) const;
 };
 
 #endif // LIFAC_H

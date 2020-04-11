@@ -1,4 +1,4 @@
-add_subdirectory("SusceptibilityScan")
-add_subdirectory("SusceptibilityScanNew")
-add_subdirectory("FiringRate")
+add_subdirectory("firing_rate")
+add_subdirectory("suscept")
 add_subdirectory("WienerKernel")
+

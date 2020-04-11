@@ -7,17 +7,11 @@ FiringRate::FiringRate(const TimeFrame& time_frame): time_frame(time_frame) {
   N_Neurons = 0;
 
   // allocate memory for arrays
-  spike_histogram = new int [time_frame.get_steps()];
-  values = new double [time_frame.get_steps()];
+  spike_histogram.resize(time_frame.get_steps());
+  values.resize(time_frame.get_steps());
 
   // clear the arrays
   clear();
-}
-
-FiringRate::~FiringRate() {
-  // free memory
-  delete [] spike_histogram;
-  delete [] values;
 }
 
 void FiringRate::add_spike_train(const SpikeTrain &spike_train) {
@@ -28,7 +22,7 @@ void FiringRate::add_spike_train(const SpikeTrain &spike_train) {
   N_Neurons++;
 
   // if there is a spike at position i, increase spike histogram at position i
-  for (int i = 0; i < spike_train.get_length(); i++) {
+  for (size_t i = 0; i < spike_train.get_length(); i++) {
     if (spike_train.get_spike(i)) {
       spike_histogram[i] += 1;
     }
@@ -40,7 +34,7 @@ void FiringRate::clear() {
   N_Neurons = 0;
 
   // clear the arrays
-  for (int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
     spike_histogram[i] = 0;
     values[i] = 0.0;
   }

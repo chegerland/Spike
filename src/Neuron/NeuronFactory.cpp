@@ -11,10 +11,7 @@ namespace pt = boost::property_tree;
 #include "IFAC/PIFAC.h"
 #include "NeuronFactory.h"
 
-Neuron *NeuronFactory::create(const std::string &input_file) {
-  // pointer to neuron
-  Neuron *neuron = nullptr;
-
+std::unique_ptr<Neuron> NeuronFactory::create(const std::string &input_file) {
   // read json
   pt::ptree root;
   pt::read_json(input_file, root);
@@ -24,18 +21,15 @@ Neuron *NeuronFactory::create(const std::string &input_file) {
 
   // create appropriate neuron
   if (type == "PIF") {
-    neuron = new PIF(input_file);
+    return std::make_unique<PIF>(input_file);
   } else if (type == "LIF") {
-    neuron = new LIF(input_file);
+    return std::make_unique<LIF>(input_file);
   } else if (type == "PIFAC") {
-    neuron = new PIFAC(input_file);
+    return std::make_unique<PIFAC>(input_file);
   } else if (type == "LIFAC") {
-    neuron = new LIFAC(input_file);
+    return std::make_unique<LIFAC>(input_file);
   } else {
     std::cerr << "Error: Unknown Neuron type (" << type << ")!\n" << std::endl;
     exit(0);
   }
-
-  // return neuron pointer
-  return neuron;
 }

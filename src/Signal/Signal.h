@@ -12,11 +12,11 @@
 class Signal {
 protected:
   TimeFrame time_frame;   ///< time frame for get_value
-  double *signal_values;  ///< array containing the get_value values
+  std::vector<double> signal_values;  ///< array containing the get_value values
 
 public:
   explicit Signal(const TimeFrame& time_frame);
-  virtual ~Signal();
+  virtual ~Signal(){};
 
   double get_value(unsigned int i) const;
 

@@ -31,7 +31,7 @@ StepSignal::StepSignal(const std::string &input_file,
 }
 
 void StepSignal::calculate_signal() {
-  for (int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
     if (time_frame.get_time(i) < t_0) {
       signal_values[i] = 0;
     } else {

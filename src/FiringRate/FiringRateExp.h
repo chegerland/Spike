@@ -34,9 +34,16 @@ public:
 
   /**
    * @brief Calculates the exponential firing rate.
-   * Computes the convolution of a gaussian window function with the spike train.
+   * Computes the convolution of a gaussian window function with the spike
+   * train.
    */
   void calculate() override;
+
+  /**
+   * @brief Prints the firing rate parameters to a given file.
+   * @param file File stream.
+   */
+  void print_info(std::ofstream &file) override;
 };
 
 #endif // FIRINGRATEEXP_H

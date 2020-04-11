@@ -18,41 +18,12 @@
     <body>
         <div id="app"></div>
         <script>
-            var num = 0;
-            mermaid.initialize({
-                startOnLoad: false,
-                gantt:{
-                    titleTopMargin:25,
-                    barHeight:20,
-                    barGap:4,
-                    topPadding:50,
-                    leftPadding:75,
-                    gridLineStartPadding:35,
-                    fontSize:15,
-                    fontFamily:'"Open-Sans", "sans-serif"',
-                    numberSectionStyles:4,
-                    axisFormat:'%d-%m-%Y',
-                }
-            });
-
             window.$docsify = {
                 name: 'Spike',
                 repo: 'https://git.physik.hu-berlin.de/cheg/Master/Spike',
                 loadSidebar: true,
                 subMaxLevel: 2,
                 search: 'auto', // default
-                markdown: {
-                    renderer: {
-                        code: function(code, lang) {
-                            if (lang === "mermaid") {
-                                return (
-                                    '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
-                                );
-                            }
-                            return this.origin.code.apply(this, arguments);
-                        }
-                    }
-                },
                 tabs: {
                     persist    : true,      // default
                     sync       : true,      // default

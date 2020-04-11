@@ -1,12 +1,12 @@
 # add executable
-add_executable(WienerKernel
+add_executable(Wiener
         ${CMAKE_CURRENT_SOURCE_DIR}/wiener.cpp
         )
 
-target_include_directories(WienerKernel PRIVATE ../include)
+target_include_directories(Wiener PRIVATE ../include)
 
 # link libraries
-target_link_libraries(WienerKernel
+target_link_libraries(Wiener
         spike
         ${Boost_PROGRAM_OPTIONS_LIBRARY}
         ${Boost_FILESYSTEM_LIBRARY}

@@ -15,17 +15,12 @@
 #include "../src/Neuron/Neuron.h"
 #include "../src/Neuron/NeuronFactory.h"
 
-#include "../src/Options/Options.h"
-
 #include "../src/Signal/CosineSignal.h"
 #include "../src/Signal/Signal.h"
 #include "../src/Signal/SignalFactory.h"
 #include "../src/Signal/StepSignal.h"
 #include "../src/Signal/TwoCosineSignal.h"
 #include "../src/Signal/WhiteNoiseSignal.h"
-
-#include "../src/Simulation/FiringRateSimulation.h"
-#include "../src/Simulation/Simulation.h"
 
 #include "../src/Statistics/statistics.h"
 

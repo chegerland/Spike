@@ -39,7 +39,7 @@ TwoCosineSignal::TwoCosineSignal(const std::string &input_file,
 }
 
 void TwoCosineSignal::calculate_signal() {
-  for (int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
     signal_values[i] = alpha * cos(2.0 * M_PI * f1 * time_frame.get_time(i)) +
                        beta * cos(2.0 * M_PI * f2 * time_frame.get_time(i));
   }

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <random>
 
 // json parser
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +9,8 @@ namespace pt = boost::property_tree;
 
 // constructor from parameters
 IFAC::IFAC(double mu, double D, double tau_a, double Delta)
-    : mu(mu), D(D), tau_a(tau_a), Delta(Delta) {
+    : mu(mu), D(D), tau_a(tau_a), Delta(Delta), generator(rd()),
+      dist(0.0, 1.0) {
   assert(mu >= 0);
   assert(D >= 0);
   assert(tau_a > 0);
@@ -18,7 +18,7 @@ IFAC::IFAC(double mu, double D, double tau_a, double Delta)
 }
 
 // constructor from input file
-IFAC::IFAC(const std::string &input_file) {
+IFAC::IFAC(const std::string &input_file) : generator(rd()), dist(0.0, 1.0) {
   // read json
   pt::ptree root;
   pt::read_json(input_file, root);
@@ -39,7 +39,7 @@ double IFAC::diffusion() const { return sqrt(2 * D); }
 
 // get the spike train of an IFAC neuron
 void IFAC::get_spike_train(const TimeFrame &time,
-                           SpikeTrain &spike_train) const {
+                           SpikeTrain &spike_train) {
   // initial values
   double v = 0;
   double a = 0;
@@ -47,14 +47,10 @@ void IFAC::get_spike_train(const TimeFrame &time,
   // for better readibility
   double dt = time.get_dt();
 
-  // initialize rng
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
   // perform euler maruyama scheme
-  for (unsigned int i = 0; i < time.get_steps(); i++) {
-    v += (this->drift(v) - a) * dt + this->diffusion() * dist(generator);
+  for (size_t i = 0; i < time.get_steps(); i++) {
+    v += (this->drift(v) - a) * dt +
+         this->diffusion() * dist(generator) * sqrt(dt);
     a += -1. / tau_a * a * dt;
 
     // fire and reset rule
@@ -68,7 +64,7 @@ void IFAC::get_spike_train(const TimeFrame &time,
 
 // get the spike train of an IFAC neuron with signal
 void IFAC::get_spike_train(const TimeFrame &time, const Signal &signal,
-                           SpikeTrain &spike_train) const {
+                           SpikeTrain &spike_train) {
   // initial values
   double v = 0;
   double a = 0;
@@ -76,15 +72,10 @@ void IFAC::get_spike_train(const TimeFrame &time, const Signal &signal,
   // for better readibility
   double dt = time.get_dt();
 
-  // initialize rng
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
   // perform euler maruyama scheme
-  for (unsigned int i = 0; i < time.get_steps(); i++) {
+  for (size_t i = 0; i < time.get_steps(); i++) {
     v += (this->drift(v) - a + signal.get_value(i)) * dt +
-         this->diffusion() * dist(generator);
+         this->diffusion() * dist(generator) * sqrt(dt);
     a += -1. / tau_a * a * dt;
 
     // fire and reset rule
@@ -98,7 +89,7 @@ void IFAC::get_spike_train(const TimeFrame &time, const Signal &signal,
 
 // get voltage curve, i.e. v(t) and a(t)
 void IFAC::get_voltage_curve(const TimeFrame &time, double *v,
-                             double *a) const {
+                             double *a) {
   // initial values
   v[0] = 0;
   a[0] = 0;
@@ -106,15 +97,10 @@ void IFAC::get_voltage_curve(const TimeFrame &time, double *v,
   // for better readibility
   double dt = time.get_dt();
 
-  // initialize rng
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
   // perform euler maruyama scheme
-  for (unsigned int i = 1; i < time.get_steps(); i++) {
+  for (size_t i = 1; i < time.get_steps(); i++) {
     v[i] = v[i - 1] + (this->drift(v[i - 1]) - a[i - 1]) * dt +
-           this->diffusion() * dist(generator);
+           this->diffusion() * dist(generator) * sqrt(dt);
     a[i] = a[i - 1] - 1. / tau_a * a[i - 1] * dt;
 
     // fire and reset rule
@@ -126,8 +112,9 @@ void IFAC::get_voltage_curve(const TimeFrame &time, double *v,
 }
 
 // print neuron parameters
-void IFAC::print_info(std::ofstream& file) {
-  file << "# Neuron parameters: " << "\n"
+void IFAC::print_info(std::ofstream &file) {
+  file << "# Neuron parameters: "
+       << "\n"
        << "# mu = " << mu << "\n"
        << "# D = " << D << "\n"
        << "# tau_a = " << tau_a << "\n"

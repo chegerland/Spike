@@ -5,6 +5,7 @@
 #include "Signal.h"
 #include <string>
 #include <vector>
+#include <random>
 
 /**
  * @class WhiteNoiseSignal
@@ -12,9 +13,13 @@
  */
 class WhiteNoiseSignal : public Signal {
 private:
-  double alpha;                      ///< amplitude
-  double f_low;                      ///< lower cut-off frequency
-  double f_high;                     ///< higher cut-off frequency
+  double alpha;  ///< amplitude
+  double f_low;  ///< lower cut-off frequency
+  double f_high; ///< higher cut-off frequency
+
+  std::random_device rd;
+  std::mt19937 generator;
+  std::normal_distribution<double> dist;
 
 public:
   /**
@@ -31,7 +36,7 @@ public:
    * @brief Construct WhiteNoiseSignal from input file
    * @param input_file Input file in .json format
    */
-  WhiteNoiseSignal(const std::string &input_file, const TimeFrame& time_frame);
+  WhiteNoiseSignal(const std::string &input_file, const TimeFrame &time_frame);
 
   /**
    * @brief Generate the white noise, i.e. fill the signal_values
@@ -45,9 +50,9 @@ public:
    */
   double signal(double t) const;
 
-  double *get_values() {return this->signal_values;};
+  std::vector<double> &get_values() { return this->signal_values; };
 
-  void print_info(std::ofstream& file) override;
+  void print_info(std::ofstream &file) override;
 };
 
 #endif // WHITENOISESIGNAL_H

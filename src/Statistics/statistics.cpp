@@ -12,7 +12,7 @@ std::vector<double> get_spike_times(const SpikeTrain &spike_train,
 
   std::vector<double> spike_times;
 
-  for (unsigned int i = 0; i < spike_train.get_length(); i++) {
+  for (size_t i = 0; i < spike_train.get_length(); i++) {
     if (spike_train.get_spike(i)) {
       spike_times.push_back(time.get_time(i));
     }
@@ -27,7 +27,7 @@ double calculate_cv(const std::vector<double> &spike_times) {
   std::vector<double> intervals;
   intervals.resize(spike_times.size());
 
-  for (unsigned int i = 0; i < spike_times.size() - 1; i++) {
+  for (size_t i = 0; i < spike_times.size() - 1; i++) {
     intervals.push_back(spike_times[i + 1] - spike_times[i]);
   }
 
@@ -48,160 +48,218 @@ double calculate_cv(const std::vector<double> &spike_times) {
   return cv;
 }
 
-double mean(const double *values, const int N) {
+double mean(const std::vector<double> &values, const size_t length) {
   double mean = 0.0;
-  for (int i = 0; i < N; i++) {
+  for (size_t i = 0; i < length; i++) {
     mean += values[i];
   }
-  return (double) mean/N;
+  return (double)mean / length;
 }
 
-double standard_deviation(const double *array, const int length) {
+double standard_deviation(const std::vector<double> &array,
+                          const size_t length) {
   double mean_val = mean(array, length);
   double std = 0.0;
 
-  for (int i = 0; i < length; i++) {
+  for (size_t i = 0; i < length; i++) {
     std += (array[i] - mean_val) * (array[i] - mean_val);
   }
 
-  return sqrt((double) std/length);
-}
-
-void shorten_array(const double *array_long, const TimeFrame &time_frame_long,
-                   const TimeFrame &time_frame_short, double *array_short) {
-  assert(time_frame_long.get_t_end() == time_frame_short.get_t_end());
-  assert(time_frame_long.get_dt() == time_frame_short.get_dt());
-
-  const int cut_index = time_frame_long.get_steps() - time_frame_short.get_steps();
-
-  for(int i = 0; i < time_frame_short.get_steps(); i++) {
-    array_short[i] = array_long[cut_index + i];
-  }
+  return sqrt((double)std / length);
 }
 
 // calculate cross spectrum
-void cross_spectrum(double *input_signal, double *output_signal,
-                    const TimeFrame& time_frame, fftw_complex *spectrum) {
+void cross_spectrum(std::vector<double> &input_signal,
+                    std::vector<double> &output_signal,
+                    const TimeFrame &time_frame,
+                    std::complex<double> *spectrum) {
 
-  int length = (int)time_frame.get_steps();
-
-  // time step
+  // time step and array length
   double dt = time_frame.get_dt();
+  size_t length = time_frame.get_steps();
 
-  // fourier transform first signal
-  // length of the fourier transform is N/2 + 1 because we perform real DFT
+  // vector for input signal fourier (isf)
+  std::vector<std::complex<double>> isf;
+  isf.resize(length / 2 + 1);
+
+  // vector for output signal fourier (osf)
+  std::vector<std::complex<double>> osf;
+  osf.resize(length / 2 + 1);
+
+  // fourier transform input signal
   fftw_plan p;
-  fftw_complex *input_signal_fourier;
-  input_signal_fourier = new fftw_complex [length/2 + 1];
-
-  p = fftw_plan_dft_r2c_1d(length, input_signal, input_signal_fourier,
+#pragma omp critical
+  p = fftw_plan_dft_r2c_1d(length, input_signal.data(),
+                           reinterpret_cast<fftw_complex *>(isf.data()),
                            FFTW_ESTIMATE);
   fftw_execute(p);
+#pragma omp critical
   fftw_destroy_plan(p);
 
-  // fourier transform second signal
+  // fourier transform output signal
   fftw_plan p2;
-  fftw_complex *output_signal_fourier;
-  output_signal_fourier = new fftw_complex [length];
-  p2 = fftw_plan_dft_r2c_1d(length, output_signal, output_signal_fourier,
+#pragma omp critical
+  p2 = fftw_plan_dft_r2c_1d(length, output_signal.data(),
+                            reinterpret_cast<fftw_complex *>(osf.data()),
                             FFTW_ESTIMATE);
   fftw_execute(p2);
+#pragma omp critical
   fftw_destroy_plan(p2);
 
   // fill cross spectrum, S_xy = x(omega) * y^*(omega)
   // normalize appropriately
   double scale = dt * dt / (time_frame.get_t_end() - time_frame.get_t_0());
-  for (int i = 0; i < length/2 + 1; i++) {
-    spectrum[i][0] =
-        scale * (input_signal_fourier[i][0] * output_signal_fourier[i][0] +
-                 input_signal_fourier[i][1] * output_signal_fourier[i][1]);
-    spectrum[i][1] =
-        scale * (input_signal_fourier[i][0] * output_signal_fourier[i][1] -
-                 input_signal_fourier[i][1] * output_signal_fourier[i][0]);
+  for (size_t i = 0; i < length / 2 + 1; i++) {
+    spectrum[i] = scale * (isf[i] * std::conj(osf[i]));
   }
-
-  // free memory
-  delete [] input_signal_fourier;
-  delete [] output_signal_fourier;
 }
 
 // calculate power spectrum
-void power_spectrum(double *signal, const TimeFrame& time_frame,
-                    double *spectrum) {
-  // length of the signals is N/2 + 1 because we perform real DFT
-  int length = (int)time_frame.get_steps();
+void power_spectrum(std::vector<double> &signal, const TimeFrame &time_frame,
+                    std::vector<double> &spectrum) {
 
-  // time step
+  // time step and array length
   double dt = time_frame.get_dt();
+  size_t length = time_frame.get_steps();
 
-  // fourier transform first signal
+  // vector for fourier transform of signal
+  std::vector<std::complex<double>> signal_fourier;
+  signal_fourier.resize(length / 2 + 1);
+
+  // fourier transform signal
   fftw_plan p;
-  fftw_complex *signal_fourier;
-  signal_fourier = new fftw_complex [length/2 + 1];
-  p = fftw_plan_dft_r2c_1d(length, signal, signal_fourier, FFTW_ESTIMATE);
+#pragma omp critical
+  p = fftw_plan_dft_r2c_1d(
+      length, signal.data(),
+      reinterpret_cast<fftw_complex *>(signal_fourier.data()), FFTW_ESTIMATE);
   fftw_execute(p);
+#pragma omp critical
   fftw_destroy_plan(p);
 
   // calculate power spectrum and normalize appropriately!
   double scale = dt * dt / (time_frame.get_t_end() - time_frame.get_t_0());
-  for (int i = 0; i < length/2 + 1; i++) {
-    spectrum[i] = scale * (signal_fourier[i][0] * signal_fourier[i][0] +
-                           signal_fourier[i][1] * signal_fourier[i][1]);
+  for (size_t i = 0; i < length / 2 + 1; i++) {
+    spectrum[i] = scale * std::abs(signal_fourier[i]);
   }
-
-  // free memory
-  delete [] signal_fourier;
 }
 
 // calculate susceptibility
-void susceptibility(double *input_signal, double *output_signal,
-                    const TimeFrame& time_frame, fftw_complex *suscept) {
+void susceptibility(std::vector<double> &input_signal,
+                    std::vector<double> &output_signal,
+                    const TimeFrame &time_frame,
+                    std::vector<std::complex<double>> &suscept) {
 
-  // length of the signals is N, fourier transform will be N/2 + 1 because we perform real DFT
-  int length = (int)time_frame.get_steps();
+  // length of the signals is N, fourier transform will be N/2 + 1 because we
+  // perform real DFT
+  size_t length = time_frame.get_steps();
 
-  // fourier transform first signal
+  // vector for input signal fourier (isf)
+  std::vector<std::complex<double>> isf;
+  isf.resize(length / 2 + 1);
+
+  // vector for output signal fourier (osf)
+  std::vector<std::complex<double>> osf;
+  osf.resize(length / 2 + 1);
+
+  // fourier transform input signal
   fftw_plan p;
-  fftw_complex *input_signal_fourier;
-  input_signal_fourier = new fftw_complex [length/2 + 1];
 #pragma omp critical
-  p = fftw_plan_dft_r2c_1d(length, input_signal, input_signal_fourier,
+  p = fftw_plan_dft_r2c_1d(length, input_signal.data(),
+                           reinterpret_cast<fftw_complex *>(isf.data()),
                            FFTW_ESTIMATE);
-
   fftw_execute(p);
-
 #pragma omp critical
   fftw_destroy_plan(p);
 
-  // fourier transform second signal
+  // fourier transform output signal
   fftw_plan p2;
-  fftw_complex *output_signal_fourier;
-  output_signal_fourier = new fftw_complex [length/2 + 1];
 #pragma omp critical
-  p2 = fftw_plan_dft_r2c_1d(length, output_signal, output_signal_fourier,
+  p2 = fftw_plan_dft_r2c_1d(length, output_signal.data(),
+                            reinterpret_cast<fftw_complex *>(osf.data()),
                             FFTW_ESTIMATE);
-
   fftw_execute(p2);
-
 #pragma omp critical
   fftw_destroy_plan(p2);
 
   // fill susceptibility and normalize appropriately
   double scale;
-  for (int i = 0; i < length/2 + 1; i++) {
-    scale = 1. /
-            (input_signal_fourier[i][0] * input_signal_fourier[i][0] +
-             input_signal_fourier[i][1] * input_signal_fourier[i][1]);
-    suscept[i][0] =
-        scale * (input_signal_fourier[i][0] * output_signal_fourier[i][0] +
-                 input_signal_fourier[i][1] * output_signal_fourier[i][1]);
-    suscept[i][1] =
-        scale * (input_signal_fourier[i][0] * output_signal_fourier[i][1] -
-                 input_signal_fourier[i][1] * output_signal_fourier[i][0]);
+  for (size_t i = 0; i < length / 2 + 1; i++) {
+    scale = 1. / pow(std::abs(isf[i]), 2);
+    suscept[i] = scale * (osf[i] * std::conj(isf[i]));
   }
-
-  // free memory
-  delete [] input_signal_fourier;
-  delete [] output_signal_fourier;
 }
 
+void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
+                                   std::vector<double> &output_signal,
+                                   const TimeFrame &time_frame,
+                                   std::vector<std::complex<double>> &suscept) {
+
+  // length of the signals is N, fourier transform will be N/2 + 1 because we
+  // perform real DFT
+  size_t length = time_frame.get_steps();
+
+  // vector for input signal fourier (isf)
+  std::vector<std::complex<double>> isf;
+  isf.resize(length / 2 + 1);
+
+  // vector for output signal fourier (osf)
+  std::vector<std::complex<double>> osf;
+  osf.resize(length / 2 + 1);
+
+  // fourier transform input signal
+  fftw_plan p;
+#pragma omp critical
+  p = fftw_plan_dft_r2c_1d(length, input_signal.data(),
+                           reinterpret_cast<fftw_complex *>(isf.data()),
+                           FFTW_ESTIMATE);
+  fftw_execute(p);
+#pragma omp critical
+  fftw_destroy_plan(p);
+
+  // fourier transform output signal
+  fftw_plan p2;
+#pragma omp critical
+  p2 = fftw_plan_dft_r2c_1d(length, output_signal.data(),
+                            reinterpret_cast<fftw_complex *>(osf.data()),
+                            FFTW_ESTIMATE);
+  fftw_execute(p2);
+#pragma omp critical
+  fftw_destroy_plan(p2);
+
+  // since the maximum frequency is at length/2 we choose to fill a square
+  // matrix where each frequency only goes up to length/4.
+  // fill susceptibility and normalize appropriately
+  double scale;
+  for (size_t i = 0; i < length / 4; i++) {
+
+    // straight
+    scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 4));
+    suscept[i] = scale * (osf[2 * i] * std::conj(isf[i]) * std::conj(isf[i]));
+
+    // off-diagonal
+    // scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 4));
+    // suscept[i] =
+    //    scale * (osf[i + i + 1] * std::conj(isf[i]) * std::conj(isf[i + 1]));
+
+    // with first order
+    // std::complex<double> suscept_lin = 1. / pow(std::abs(isf[2*i]), 2) *
+    // (osf[2*i] * std::conj(isf[2*i])); scale = 1. / (2. * time_frame.get_dt()
+    // * pow(std::abs(isf[i]), 4)); suscept[i] =
+    //   scale * std::conj(isf[i]) * std::conj(isf[i]) * (osf[2*i] -
+    //   suscept_lin * isf[2*i]);
+  }
+}
+
+void add_spike_train_to_kernel(const SpikeTrain &spike_train,
+                               const Signal &signal,
+                               const TimeFrame &time_frame, double norm,
+                               double *kernel) {
+
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
+    if (spike_train.get_spike(i)) {
+      for (size_t j = 0; j < i; j++) {
+        kernel[j] += norm * signal.get_value(i - j);
+      }
+    }
+  }
+}

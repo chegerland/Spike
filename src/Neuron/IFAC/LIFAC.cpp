@@ -4,11 +4,12 @@
 namespace pt = boost::property_tree;
 
 #include "LIFAC.h"
-#include <random>
 #include <iostream>
+#include <random>
 
 // constructor from parameters
-LIFAC::LIFAC(double mu, double D, double tau_a, double Delta) : IFAC(mu, D, tau_a, Delta) {}
+LIFAC::LIFAC(double mu, double D, double tau_a, double Delta)
+    : IFAC(mu, D, tau_a, Delta) {}
 
 // constructor from input file
 LIFAC::LIFAC(const std::string &input_file) : IFAC(input_file) {
@@ -26,7 +27,7 @@ double LIFAC::drift(double v) const { return (this->mu - v); }
 
 // get the spike train of an IFAC neuron with signal
 void LIFAC::get_kernel(const TimeFrame &time, const Signal &signal,
-                           const double norm, const int offset, double *kernel) const {
+                       const double norm, double *kernel) const {
   // initial values
   double v = 0;
   double a = 0;
@@ -40,7 +41,7 @@ void LIFAC::get_kernel(const TimeFrame &time, const Signal &signal,
   std::normal_distribution<double> dist(0.0, sqrt(dt));
 
   // perform euler maruyama scheme
-  for (int i = 0; i < (int) time.get_steps(); i++) {
+  for (int i = 0; i < (int)time.get_steps(); i++) {
     v += (this->drift(v) - a + signal.get_value(i)) * dt +
          this->diffusion() * dist(generator);
     a += -1. / tau_a * a * dt;
@@ -49,7 +50,7 @@ void LIFAC::get_kernel(const TimeFrame &time, const Signal &signal,
     if (v > 1) {
       v = 0;
       a += Delta;
-      for (int j = 0; j < i - offset; j++) {
+      for (int j = 0; j < i; j++) {
         kernel[j] += norm * signal.get_value(i - j);
       }
     }

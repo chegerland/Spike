@@ -1,4 +1,7 @@
 {
+  "Simulation" : {
+    "N_neurons" : 1e4
+  },
   "TimeFrame" : {
     "t_0" : 0.0,
     "t_end" : 1000.0,
@@ -11,10 +14,8 @@
     "f_high" : 50.0
   },
   "Neuron" : {
-    "type" : "LIFAC",
-    "mu" : 3.5,
-    "D" : 1e-1,
-    "tau_a" : 10.0,
-    "Delta" : 1e-1
+    "type" : "LIF",
+    "mu" : 1.1,
+    "D" : 1e-3
   }
 }

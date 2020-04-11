@@ -13,8 +13,8 @@ TimeFrame::TimeFrame(double t_0, double t_end, double dt)
   assert(dt < t_end - t_0);
   this->steps = (unsigned int)((t_end - t_0) / dt + 1);
 
-  // allocate memory for the times array
-  t = new double[steps];
+  // resize times vector
+  t.resize(steps);
 
   calculate_times();
 }
@@ -38,28 +38,20 @@ TimeFrame::TimeFrame(const std::string &input_file) {
   // calculate steps
   steps = (unsigned int)((t_end - t_0) / dt + 1);
 
-  t = new double[steps];
-  calculate_times();
-}
-
-TimeFrame::~TimeFrame() { delete[] t; }
-
-TimeFrame::TimeFrame(const TimeFrame &frame)
-    : t_0(frame.t_0), t_end(frame.t_end), dt(frame.dt), steps(frame.steps) {
-  t = new double [steps];
+  t.resize(steps);
   calculate_times();
 }
 
 void TimeFrame::calculate_times() {
-  // fill time values
-  for (unsigned int i = 0; i < steps; i++) {
+  // fill time vector
+  for (size_t i = 0; i < steps; i++) {
     t[i] = t_0 + i * dt;
   }
 }
 
-
 void TimeFrame::print_info(std::ofstream &file) {
-  file << "# TimeFrame: " << "\n"
+  file << "# TimeFrame: "
+       << "\n"
        << "# t_0 = " << t_0 << "\n"
        << "# t_end = " << t_end << "\n"
        << "# dt = " << dt << "\n";

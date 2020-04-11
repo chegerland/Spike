@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 // json parser
 #include <boost/property_tree/json_parser.hpp>
@@ -9,24 +10,24 @@ namespace pt = boost::property_tree;
 #include "FiringRateExp.h"
 #include "FiringRateFactory.h"
 
-FiringRate * FiringRateFactory::create(const std::string &input_file, const TimeFrame &time_frame) {
-  FiringRate *firing_rate = nullptr;
+std::unique_ptr<FiringRate>
+FiringRateFactory::create(const std::string &input_file,
+                          const TimeFrame &time_frame) {
 
   // read json
   pt::ptree root;
   pt::read_json(input_file, root);
 
   // read simulation data into simulation variables
-  std::string type = root.get<std::string>("FiringRate.type");
+  std::string type = root.get<std::string>("firing_rate.type");
 
   if (type == "box") {
-    firing_rate = new FiringRateBox(input_file, time_frame);
+    return std::make_unique<FiringRateBox>(input_file, time_frame);
   } else if (type == "exponential") {
-    firing_rate = new FiringRateExp(input_file, time_frame);
+    return std::make_unique<FiringRateExp>(input_file, time_frame);
   } else {
-    std::cerr << "Error: Unknown FiringRate type (" << type << ")!\n" << std::endl;
+    std::cerr << "Error: Unknown firing_rate type (" << type << ")!\n"
+              << std::endl;
     exit(0);
   }
-
-  return firing_rate;
 }

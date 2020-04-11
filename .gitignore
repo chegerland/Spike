@@ -1,10 +1,10 @@
 build/*
-cmake-build-debug/*
 bin/*
+cmake-build-debug/*
+docs/doxygen/html/*
+docs/doxygen/latex/*
 lib/*
-doc/doxygen
-doxygen/html/*
-doxygen/latex/*
+.idea/*
 *.o
 *.log
 *.swp

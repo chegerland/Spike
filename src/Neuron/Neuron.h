@@ -19,14 +19,13 @@
  */
 class Neuron {
 public:
-
   /**
    * @brief Fills the spike train for a given time frame.
    * @param time_frame Time frame
    * @param spike_train Spike train
    */
   virtual void get_spike_train(const TimeFrame &time_frame,
-                               SpikeTrain &spike_train) const = 0;
+                               SpikeTrain &spike_train) = 0;
 
   /**
    * @brief Fills the spike train for a given time frame and signal
@@ -35,7 +34,7 @@ public:
    * @param spike_train Spike train
    */
   virtual void get_spike_train(const TimeFrame &time, const Signal &signal,
-                               SpikeTrain &spike_train) const = 0;
+                               SpikeTrain &spike_train) = 0;
 
   /**
    * @brief Virtual destructor.

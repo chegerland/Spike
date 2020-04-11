@@ -34,7 +34,7 @@ CosineSignal::CosineSignal(const std::string &input_file,
 }
 
 void CosineSignal::calculate_signal() {
-  for (int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
     signal_values[i] = alpha * cos(2.0 * M_PI * f * time_frame.get_time(i));
   }
 }

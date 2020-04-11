@@ -1,5 +1,4 @@
 #include <iostream>
-#include <random>
 #include <vector>
 
 // json parser
@@ -9,12 +8,12 @@ namespace pt = boost::property_tree;
 
 #include "IF.h"
 
-IF::IF(double mu, double D) : mu(mu), D(D) {
+IF::IF(double mu, double D) : mu(mu), D(D), generator(rd()), dist(0.0, 1.0) {
   assert(mu >= 0);
   assert(D >= 0);
 }
 
-IF::IF(const std::string &input_file) {
+IF::IF(const std::string &input_file) : generator(rd()), dist(0.0, 1.0) {
   // read json
   pt::ptree root;
   pt::read_json(input_file, root);
@@ -28,20 +27,15 @@ IF::IF(const std::string &input_file) {
 
 double IF::diffusion() const { return sqrt(2 * D); }
 
-void IF::get_spike_train(const TimeFrame &time, SpikeTrain &spike_train) const {
+void IF::get_spike_train(const TimeFrame &time, SpikeTrain &spike_train) {
   // initial value for voltage
   double v = 0;
 
   double dt = time.get_dt();
 
-  // initialize rng
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
   // perform euler maruyama scheme
-  for (unsigned int i = 0; i < time.get_steps(); i++) {
-    v += this->drift(v) * dt + this->diffusion() * dist(generator);
+  for (size_t i = 0; i < time.get_steps(); i++) {
+    v += this->drift(v) * dt + this->diffusion() * dist(generator) * sqrt(dt);
 
     // fire and reset rule
     if (v > 1) {
@@ -52,21 +46,16 @@ void IF::get_spike_train(const TimeFrame &time, SpikeTrain &spike_train) const {
 }
 
 void IF::get_spike_train(const TimeFrame &time, const Signal &signal,
-                         SpikeTrain &spike_train) const {
+                         SpikeTrain &spike_train) {
   // initial value for voltage
   double v = 0;
 
   double dt = time.get_dt();
 
-  // initialize rng
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
   // perform euler maruyama scheme
-  for (unsigned int i = 0; i < time.get_steps(); i++) {
+  for (size_t i = 0; i < time.get_steps(); i++) {
     v += (this->drift(v) + signal.get_value(i)) * dt +
-         this->diffusion() * dist(generator);
+         this->diffusion() * dist(generator) * sqrt(dt);
 
     // fire and reset rule
     if (v > 1) {
@@ -76,21 +65,16 @@ void IF::get_spike_train(const TimeFrame &time, const Signal &signal,
   }
 }
 
-void IF::get_voltage_curve(const TimeFrame &time, double *v) const {
+void IF::get_voltage_curve(const TimeFrame &time, double *v) {
   // initial value for voltage
   v[0] = 0;
 
   double dt = time.get_dt();
 
-  // initialize rng
-  std::random_device rd{};
-  std::mt19937 generator{rd()};
-  std::normal_distribution<double> dist(0.0, sqrt(dt));
-
   // perform euler maruyama scheme
-  for (unsigned int i = 1; i < time.get_steps(); i++) {
+  for (size_t i = 1; i < time.get_steps(); i++) {
     v[i] = v[i - 1] + this->drift(v[i - 1]) * dt +
-           this->diffusion() * dist(generator);
+           this->diffusion() * dist(generator) * sqrt(dt);
 
     // fire and reset rule
     if (v[i] > 1) {
@@ -99,9 +83,10 @@ void IF::get_voltage_curve(const TimeFrame &time, double *v) const {
   }
 }
 
-void IF::print_info(std::ofstream& file) {
+void IF::print_info(std::ofstream &file) {
   // print neuron parameters to file
-  file << "# Neuron parameters: " << "\n"
+  file << "# Neuron parameters: "
+       << "\n"
        << "# mu = " << mu << "\n"
        << "# D = " << D << "\n";
 }

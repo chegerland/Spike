@@ -6,6 +6,7 @@
 #ifndef NEURONFACTORY_H
 #define NEURONFACTORY_H
 
+#include <memory>
 #include "Neuron.h"
 
 /**
@@ -23,7 +24,7 @@ public:
    * @param input_file Input file in .json format
    * @return Pointer to neuron
    */
-  static Neuron *create(const std::string &input_file);
+  static std::unique_ptr<Neuron> create(const std::string &input_file);
 };
 
 #endif // NEURONFACTORY_H

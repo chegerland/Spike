@@ -25,10 +25,11 @@
  */
 class FiringRate {
 protected:
-  unsigned int N_Neurons; ///< number of neurons added to firing rate
-  TimeFrame time_frame;   ///< time frame
-  int *spike_histogram;   ///< histogram of spikes added to firing rate
-  double *values;         ///< actual values of the firing rate
+  size_t N_Neurons;     ///< number of neurons added to firing rate
+  TimeFrame time_frame; ///< time frame
+  std::vector<int>
+      spike_histogram;        ///< histogram of spikes added to firing rate
+  std::vector<double> values; ///< actual values of the firing rate
 
 public:
   /**
@@ -38,10 +39,9 @@ public:
   explicit FiringRate(const TimeFrame &time_frame);
 
   /**
-   * @brief Frees memory allocated for the spike histogram and the firing rate
-   * values.
+   * @brief Virtual destructor
    */
-  virtual ~FiringRate();
+  virtual ~FiringRate(){};
 
   /**
    * @brief Adds a single spike train to the firing rate.
@@ -62,10 +62,24 @@ public:
   virtual void calculate() = 0;
 
   /**
-   * @brief Getter function for the values array.
-   * @return Pointer to firing rate values array
+   * @brief Getter function for the values vector.
+   * @return Reference to vector containing firing rate values
    */
-  double *get_values() const { return this->values; };
+  std::vector<double> &get_values() { return this->values; };
+
+  /**
+   * @brief Getter function for a single firing rate value.
+   * @param i Index
+   * @return Firing rate value at index i
+   */
+  double get_value(size_t i) { return this->values[i]; };
+
+  /**
+   * @brief Prints the firing rate parameters to a given file.
+   * @param file File stream.
+   */
+  virtual void print_info(std::ofstream &file) = 0;
+
 };
 
 #endif // FIRINGRATE_H

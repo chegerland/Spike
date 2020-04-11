@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set c++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # set general compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -lfftw3")
@@ -18,10 +18,18 @@ set(VERSION 0.1)
 
 # find boost package
 set(Boost_NO_BOOST_CMAKE ON)
-find_package(Boost COMPONENTS unit_test_framework program_options filesystem system REQUIRED)
+ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
+find_package(Boost COMPONENTS unit_test_framework program_options filesystem system thread log REQUIRED)
 
 # find openmp
 find_package(OpenMP)
+
+# include armadillo
+find_package(LAPACK REQUIRED)
+find_package(BLAS REQUIRED)
+include_directories("${PROJECT_SOURCE_DIR}/extern/armadillo-9.860.1/include")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DARMA_DONT_USE_WRAPPER")
+
 
 # include directories
 include_directories(

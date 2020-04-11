@@ -14,11 +14,11 @@ FiringRateExp::FiringRateExp(const std::string &input_file,
   // check if type is right
   pt::ptree root;
   pt::read_json(input_file, root);
-  std::string type = root.get<std::string>("FiringRate.type");
+  std::string type = root.get<std::string>("firing_rate.type");
   assert(type == "exponential");
 
   // read resolution
-  res = root.get<double>("FiringRate.res");
+  res = root.get<double>("firing_rate.res");
   assert(res > 0);
 }
 
@@ -31,10 +31,10 @@ void FiringRateExp::calculate() {
   // 1/(sqrt(2*pi*res^2) * exp( (t_i - t_j)^2 / (2 * res^2) )
   // and multiply by the number of spikes at t_j
   double t_0, tau;
-  for (int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
     t_0 = time_frame.get_time(i);
 
-    for (int j = 0; j < time_frame.get_steps(); j++) {
+    for (size_t j = 0; j < time_frame.get_steps(); j++) {
       if (spike_histogram[j] != 0) {
         tau = time_frame.get_time(j);
         values[i] += ((double)spike_histogram[j]) /
@@ -43,4 +43,10 @@ void FiringRateExp::calculate() {
       }
     }
   }
+}
+
+void FiringRateExp::print_info(std::ofstream &file) {
+  file << "# Firing rate parameters:\n"
+       << "# type = " << "exponential\n"
+       << "# res = " << res << "\n";
 }

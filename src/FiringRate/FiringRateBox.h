@@ -38,6 +38,12 @@ public:
    * at position i divided by N*dt.
    */
   void calculate() override;
+
+  /**
+   * @brief Prints the firing rate parameters to a given file.
+   * @param file File stream.
+   */
+  void print_info(std::ofstream &file) override;
 };
 
 #endif // FIRINGRATEBOX_H
