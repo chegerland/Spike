@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 14)
 
 # set general compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -lfftw3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -lpthread -fopenmp -lfftw3")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 # CMake useful directories
@@ -23,6 +23,7 @@ find_package(Boost COMPONENTS unit_test_framework program_options filesystem sys
 
 # find openmp
 find_package(OpenMP)
+find_package(MPI)
 
 # include armadillo
 find_package(LAPACK REQUIRED)

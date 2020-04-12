@@ -19,7 +19,7 @@ FiringRateFactory::create(const std::string &input_file,
   pt::read_json(input_file, root);
 
   // read simulation data into simulation variables
-  std::string type = root.get<std::string>("firing_rate.type");
+  std::string type = root.get<std::string>("FiringRate.type");
 
   if (type == "box") {
     return std::make_unique<FiringRateBox>(input_file, time_frame);

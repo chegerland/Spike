@@ -2,6 +2,7 @@
 file(GLOB_RECURSE spike_sources ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
 add_library(spike SHARED ${spike_sources})
 target_link_libraries(spike
+        OpenMP::OpenMP_CXX
         ${Boost_PROGRAM_OPTIONS_LIBRARY}
         ${Boost_FILESYSTEM_LIBRARY}
         ${Boost_SYSTEM_LIBRARY}

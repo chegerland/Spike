@@ -1,14 +1,12 @@
 # add executable
-add_executable(FiringRate
+add_executable(firing_rate
         ${CMAKE_CURRENT_SOURCE_DIR}/firing_rate.cpp
         )
 
-target_include_directories(FiringRate PRIVATE ../include)
+target_include_directories(firing_rate PRIVATE ../include)
 
 # link libraries
-target_link_libraries(FiringRate
+target_link_libraries(firing_rate
+        OpenMP::OpenMP_CXX
         spike
-        ${Boost_PROGRAM_OPTIONS_LIBRARY}
-        ${Boost_FILESYSTEM_LIBRARY}
-        ${Boost_SYSTEM_LIBRARY}
         )

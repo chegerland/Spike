@@ -12,10 +12,9 @@
     "dt": 1e-2
   },
   "Signal": {
-    "type": "white noise",
-    "alpha": 0.007,
-    "f_low": 0,
-    "f_high": 50.0
+    "type": "cosine",
+    "alpha": 0.05,
+    "f": 0.215
   },
   "Neuron": {
     "type": "LIF",
