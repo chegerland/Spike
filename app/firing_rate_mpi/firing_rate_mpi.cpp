@@ -94,7 +94,6 @@ int main(int argc, char *argv[]) {
   opts = read_cmd(argc, argv);
   std::string input_file = opts.input_file;
 
-
   if (world_rank == 0)
     master(opts.input_file, opts.output_file);
   else
