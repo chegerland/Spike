@@ -1,6 +1,6 @@
 {
   "Simulation": {
-    "N_neurons": 1e4,
+    "N_neurons": 1e6,
     "signal" : true
   },
   "FiringRate" : {
@@ -13,7 +13,7 @@
   },
   "Signal": {
     "type": "white noise",
-    "alpha": 0.005,
+    "alpha": 0.001,
     "f_low": 0.0,
     "f_high" : 50.0
   },

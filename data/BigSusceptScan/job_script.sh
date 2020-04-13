@@ -8,7 +8,9 @@
 #SBATCH --mem-per-cpu=1G   # memory per CPU core
 #SBATCH -J "LIF Suscept Scan"   # job name
 #SBATCH --mail-user=egerlanc@physik.hu-berlin.de   # email address
+#SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e6_alpha_1e-4.json
+mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e7_alpha_1e-3.json &&
+mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e7_alpha_1e-4.json

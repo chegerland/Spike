@@ -130,10 +130,8 @@ void master(const std::string &input_file, const std::string &output_file) {
 
   BOOST_LOG_TRIVIAL(info) << "Sending " << trials << " trials to "
                           << world_size - 1 << " processes.";
-  // send number of trials to each process and if signal is given
-  for (int i = 0; i < world_size - 1; i++) {
-    MPI_Send(&trials, 1, MPI_INT, i + 1, 0, MPI_COMM_WORLD);
-  }
+  // send number of trials to each process
+  MPI_Bcast(&trials, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
   // construct time frame and neuron
   TimeFrame time_frame(input_file);
@@ -207,14 +205,14 @@ void master(const std::string &input_file, const std::string &output_file) {
   for (int i = 0; i < world_size - 1; i++) {
 
     // receive arrays
-    MPI_Recv(tmp_suscept_lin_real.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE, 0,
+    MPI_Recv(tmp_suscept_lin_real.data(), length, MPI_DOUBLE, i, 1,
              MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_lin_imag.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE, 0,
+    MPI_Recv(tmp_suscept_lin_imag.data(), length, MPI_DOUBLE, i, 2,
              MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_nonlin_real.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE,
-             0, MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_nonlin_imag.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE,
-             0, MPI_COMM_WORLD, &status);
+    MPI_Recv(tmp_suscept_nonlin_real.data(), length, MPI_DOUBLE, i,
+             3, MPI_COMM_WORLD, &status);
+    MPI_Recv(tmp_suscept_nonlin_imag.data(), length, MPI_DOUBLE, i,
+             4, MPI_COMM_WORLD, &status);
 
     // add array to overall firing rate
     for (int j = 0; j < length; j++) {
@@ -331,10 +329,10 @@ void minion(const std::string &input_file) {
   }
 
   // send data to master
-  MPI_Send(suscept_lin_real.data(), length, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
-  MPI_Send(suscept_lin_imag.data(), length, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
-  MPI_Send(suscept_nonlin_real.data(), length, MPI_DOUBLE, 0, 0,
+  MPI_Send(suscept_lin_real.data(), length, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
+  MPI_Send(suscept_lin_imag.data(), length, MPI_DOUBLE, 0, 2, MPI_COMM_WORLD);
+  MPI_Send(suscept_nonlin_real.data(), length, MPI_DOUBLE, 0, 3,
            MPI_COMM_WORLD);
-  MPI_Send(suscept_nonlin_imag.data(), length, MPI_DOUBLE, 0, 0,
+  MPI_Send(suscept_nonlin_imag.data(), length, MPI_DOUBLE, 0, 4,
            MPI_COMM_WORLD);
 }
