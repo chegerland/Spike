@@ -17,7 +17,7 @@ FiringRateBox::FiringRateBox(const std::string &input_file,
 }
 
 FiringRateBox::FiringRateBox(const TimeFrame &time_frame)
-    : FiringRate(time_frame){};
+    : FiringRate(time_frame){}
 
 void FiringRateBox::calculate() {
   // divide appropriate spike histogram entry by N*dt
