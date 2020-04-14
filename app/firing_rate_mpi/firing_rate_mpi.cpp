@@ -132,8 +132,8 @@ void master(const std::string &input_file, const std::string &output_file) {
                           << " processes.";
   // send number of trials to each process and if signal is given
   for (int i = 0; i < world_size - 1; i++) {
-    MPI_Send(&trials, 1, MPI_INT, i + 1, 0, MPI_COMM_WORLD);
-    MPI_Send(&signal_given_int, 1, MPI_INT, i + 1, 0, MPI_COMM_WORLD);
+    MPI_Send(&trials, 1, MPI_INT, i + 1, 1, MPI_COMM_WORLD);
+    MPI_Send(&signal_given_int, 1, MPI_INT, i + 1, 2, MPI_COMM_WORLD);
   }
 
   // construct time frame, neuron and firing rate
@@ -152,13 +152,13 @@ void master(const std::string &input_file, const std::string &output_file) {
   BOOST_LOG_TRIVIAL(info) << "Calculating " << trials << " trials.";
   // calculate the firing rate
   if (!signal_given) {
-    for (size_t i = 0; i < trials; i++) {
+    for (int i = 0; i < trials; i++) {
       SpikeTrain spike_train(time_frame.get_steps());
       neuron->get_spike_train(time_frame, spike_train);
       firing_rate->add_spike_train(spike_train);
     }
   } else {
-    for (size_t i = 0; i < trials; i++) {
+    for (int i = 0; i < trials; i++) {
       SpikeTrain spike_train(time_frame.get_steps());
       neuron->get_spike_train(time_frame, *signal, spike_train);
       firing_rate->add_spike_train(spike_train);
@@ -185,7 +185,7 @@ void master(const std::string &input_file, const std::string &output_file) {
   std::vector<double> tmp_array;
   tmp_array.resize(time_frame.get_steps());
   MPI_Status status;
-  for (int i = 0; i < world_size - 1; i++) {
+  for (int i = 1; i < world_size; i++) {
 
     // receive array
     MPI_Recv(tmp_array.data(), time_frame.get_steps(), MPI_DOUBLE,
@@ -237,8 +237,8 @@ void minion(const std::string &input_file) {
   // receive number of trials and if signal is given from master
   int trials, signal_given_int;
   MPI_Status status;
-  MPI_Recv(&trials, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
-  MPI_Recv(&signal_given_int, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+  MPI_Recv(&trials, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);
+  MPI_Recv(&signal_given_int, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);
 
   bool signal_given = (bool)signal_given_int;
 
@@ -257,13 +257,13 @@ void minion(const std::string &input_file) {
 
   // calculate the firing rate
   if (!signal_given) {
-    for (size_t i = 0; i < trials; i++) {
+    for (int i = 0; i < trials; i++) {
       SpikeTrain spike_train(time_frame.get_steps());
       neuron->get_spike_train(time_frame, spike_train);
       firing_rate->add_spike_train(spike_train);
     }
   } else {
-    for (size_t i = 0; i < trials; i++) {
+    for (int i = 0; i < trials; i++) {
       SpikeTrain spike_train(time_frame.get_steps());
       neuron->get_spike_train(time_frame, *signal, spike_train);
       firing_rate->add_spike_train(spike_train);
