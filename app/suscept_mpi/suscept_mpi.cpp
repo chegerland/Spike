@@ -131,7 +131,10 @@ void master(const std::string &input_file, const std::string &output_file) {
   BOOST_LOG_TRIVIAL(info) << "Sending " << trials << " trials to "
                           << world_size - 1 << " processes.";
   // send number of trials to each process
-  MPI_Bcast(&trials, 1, MPI_INT, 0, MPI_COMM_WORLD);
+  // MPI_Bcast(&trials, 1, MPI_INT, 0, MPI_COMM_WORLD);
+  for (int i = 1; i < world_size; i++) {
+    MPI_Send(&trials, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+  }
 
   // construct time frame and neuron
   TimeFrame time_frame(input_file);
@@ -178,10 +181,10 @@ void master(const std::string &input_file, const std::string &output_file) {
     }
   }
 
-  int length = time_frame.get_steps() / 4;
+  int length = (int)time_frame.get_steps() / 4;
 
   // normalize susceptibility
-  for (size_t j = 0; j < length; j++) {
+  for (int j = 0; j < length; j++) {
     suscept_lin[j] = 1. / ((double)N_neurons) * suscept_lin[j];
     suscept_nonlin[j] = 1. / ((double)N_neurons) * suscept_nonlin[j];
   }
@@ -202,16 +205,16 @@ void master(const std::string &input_file, const std::string &output_file) {
   std::complex<double> I(0., 1.);
 
   MPI_Status status;
-  for (int i = 0; i < world_size - 1; i++) {
+  for (int i = 1; i < world_size; i++) {
 
     // receive arrays
-    MPI_Recv(tmp_suscept_lin_real.data(), length, MPI_DOUBLE, i, 1,
+    MPI_Recv(tmp_suscept_lin_real.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE, 1,
              MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_lin_imag.data(), length, MPI_DOUBLE, i, 2,
+    MPI_Recv(tmp_suscept_lin_imag.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE, 2,
              MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_nonlin_real.data(), length, MPI_DOUBLE, i,
+    MPI_Recv(tmp_suscept_nonlin_real.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE,
              3, MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_nonlin_imag.data(), length, MPI_DOUBLE, i,
+    MPI_Recv(tmp_suscept_nonlin_imag.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE,
              4, MPI_COMM_WORLD, &status);
 
     // add array to overall firing rate
@@ -222,7 +225,12 @@ void master(const std::string &input_file, const std::string &output_file) {
           1. / ((double)N_neurons) *
           (tmp_suscept_nonlin_real[j] + I * tmp_suscept_nonlin_imag[j]);
     }
+    //BOOST_LOG_TRIVIAL(info) << "Received values from subprocess " << i << " of "
+    //                        << world_size - 1  << ".";
   }
+
+  BOOST_LOG_TRIVIAL(info) << "All values received.";
+  BOOST_LOG_TRIVIAL(info) << "Writing results to file " << output_file << ".";
 
   // construct another white noise to get info about its parameters (quite
   // inelegant isn't it?)
@@ -275,7 +283,7 @@ void minion(const std::string &input_file) {
   std::vector<std::complex<double>> suscept_nonlin;
   suscept_nonlin.resize(time_frame.get_steps() / 4 + 1);
 
-  for (size_t i = 0; i < trials; i++) {
+  for (int i = 0; i < trials; i++) {
 
     // array for susceptibility of single neuron
     std::vector<std::complex<double>> suscept_temp_lin;
@@ -309,7 +317,7 @@ void minion(const std::string &input_file) {
     }
   }
 
-  int length = time_frame.get_steps() / 4;
+  int length = (int)time_frame.get_steps() / 4;
 
   // vectors for everything
   std::vector<double> suscept_lin_real;

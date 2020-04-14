@@ -10,7 +10,7 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
 
     // check D
     REQUIRE(pif.diffusion() == 2.0);
-  };
+  }
 
   SECTION("normal constructor") {
     auto mu = GENERATE(take(3, random(0.0, 1e2)));
@@ -20,5 +20,5 @@ TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
 
     REQUIRE(pif.drift(0.0) == mu);
     REQUIRE(pif.diffusion() == sqrt(2.0 * D));
-  };
-};
+  }
+}
