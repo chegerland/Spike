@@ -139,7 +139,7 @@ void power_spectrum(std::vector<double> &signal, const TimeFrame &time_frame,
   // calculate power spectrum and normalize appropriately!
   double scale = dt * dt / (time_frame.get_t_end() - time_frame.get_t_0());
   for (size_t i = 0; i < length / 2 + 1; i++) {
-    spectrum[i] = scale * std::abs(signal_fourier[i]);
+    spectrum[i] = scale * pow(std::abs(signal_fourier[i]),2);
   }
 }
 

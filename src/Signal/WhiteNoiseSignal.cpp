@@ -55,7 +55,7 @@ void WhiteNoiseSignal::calculate_signal() {
   double rand;
   for (size_t i = 1; i < steps / 2; i++) {
     rand = dist(generator);
-    frequencies[i] = {cos(2.0 * M_PI * rand), sin(2.0 * M_PI * rand)};
+    frequencies[i] = {sqrt(alpha)*cos(2.0 * M_PI * rand), sqrt(alpha)*sin(2.0 * M_PI * rand)};
 
     // cut frequencies
     if (i < cut_low || i > cut_high) {
@@ -87,12 +87,13 @@ void WhiteNoiseSignal::calculate_signal() {
 
   // normalize signal with its own standard deviation and multiply by alpha, so
   // that we have new standard variation equal to 1
-  double standard_dev = standard_deviation(signal_values, steps);
+  //double standard_dev = standard_deviation(signal_values, steps);
   double mean_val = mean(signal_values, steps);
 
   for (size_t i = 0; i < steps; i++) {
     signal_values[i] =
-        this->alpha / (standard_dev) * (signal_values[i] - mean_val);
+        //this->alpha / (standard_dev) * (signal_values[i] - mean_val);
+     signal_values[i] - mean_val;
   }
 }
 

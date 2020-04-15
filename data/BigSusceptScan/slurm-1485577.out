@@ -1,0 +1,18 @@
+[2020-04-14 23:12:15.158459] [0x000014a520c447c0] [info]    SPIKE SUSCEPTIBILITY SIMULATION
+[2020-04-14 23:12:15.158494] [0x000014a520c447c0] [info]    Reading parameters from input file lif_scan_N_1e6_alpha_1e-1.json.
+[2020-04-14 23:12:15.159339] [0x000014a520c447c0] [info]    Sending 25000 trials to 39 processes.
+[2020-04-14 23:12:15.519573] [0x000014a520c447c0] [info]    Calculating linear and nonlinear susceptibility.
+[2020-04-14 23:24:53.474575] [0x000014a520c447c0] [info]    Finished calculation.
+[2020-04-14 23:24:53.474601] [0x000014a520c447c0] [info]    Receiving values from subprocesses.
+[2020-04-14 23:25:17.419066] [0x000014a520c447c0] [info]    All values received.
+[2020-04-14 23:25:17.419085] [0x000014a520c447c0] [info]    Writing results to file lif_scan_N_1e6_alpha_1e-1_suscept.csv.
+[2020-04-14 23:25:17.462416] [0x000014a520c447c0] [info]    Simulation finished.
+[2020-04-14 23:25:19.197046] [0x000014aad29137c0] [info]    SPIKE SUSCEPTIBILITY SIMULATION
+[2020-04-14 23:25:19.197085] [0x000014aad29137c0] [info]    Reading parameters from input file lif_scan_N_1e7_alpha_1e-1.json.
+[2020-04-14 23:25:19.198087] [0x000014aad29137c0] [info]    Sending 250000 trials to 39 processes.
+[2020-04-14 23:25:19.568151] [0x000014aad29137c0] [info]    Calculating linear and nonlinear susceptibility.
+[2020-04-15 01:31:53.021806] [0x000014aad29137c0] [info]    Finished calculation.
+[2020-04-15 01:31:53.021833] [0x000014aad29137c0] [info]    Receiving values from subprocesses.
+[2020-04-15 01:35:26.545637] [0x000014aad29137c0] [info]    All values received.
+[2020-04-15 01:35:26.545657] [0x000014aad29137c0] [info]    Writing results to file lif_scan_N_1e7_alpha_1e-1_suscept.csv.
+[2020-04-15 01:35:26.588404] [0x000014aad29137c0] [info]    Simulation finished.
