@@ -52,10 +52,9 @@ void WhiteNoiseSignal::calculate_signal() {
   frequencies.resize(steps / 2 + 1);
 
   // white noise in frequency space has constant amplitude, random phase
-  double rand;
   for (size_t i = 1; i < steps / 2; i++) {
-    rand = dist(generator);
-    frequencies[i] = {sqrt(alpha)*cos(2.0 * M_PI * rand), sqrt(alpha)*sin(2.0 * M_PI * rand)};
+    double rand = dist(generator);
+    frequencies[i] = {cos(2.0 * M_PI * rand), sin(2.0 * M_PI * rand)};
 
     // cut frequencies
     if (i < cut_low || i > cut_high) {
@@ -87,13 +86,15 @@ void WhiteNoiseSignal::calculate_signal() {
 
   // normalize signal with its own standard deviation and multiply by alpha, so
   // that we have new standard variation equal to 1
-  //double standard_dev = standard_deviation(signal_values, steps);
+  // double standard_dev = standard_deviation(signal_values, steps);
   double mean_val = mean(signal_values, steps);
 
   for (size_t i = 0; i < steps; i++) {
     signal_values[i] =
-        //this->alpha / (standard_dev) * (signal_values[i] - mean_val);
-     signal_values[i] - mean_val;
+        // this->alpha / (standard_dev) * (signal_values[i] - mean_val);
+        //sqrt(alpha * (time_frame.get_t_end() - time_frame.get_t_0())) *
+        sqrt(alpha) *
+        (signal_values[i] - mean_val);
   }
 }
 
@@ -103,8 +104,7 @@ double WhiteNoiseSignal::signal(double t) const {
   assert(t <= time_frame.get_t_end() && t >= time_frame.get_t_0());
 
   // calculate according index
-  size_t index;
-  index = (size_t)((t - time_frame.get_t_0()) / time_frame.get_dt());
+  auto index = (size_t)((t - time_frame.get_t_0()) / time_frame.get_dt());
 
   return signal_values[index];
 }

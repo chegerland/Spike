@@ -139,7 +139,7 @@ void power_spectrum(std::vector<double> &signal, const TimeFrame &time_frame,
   // calculate power spectrum and normalize appropriately!
   double scale = dt * dt / (time_frame.get_t_end() - time_frame.get_t_0());
   for (size_t i = 0; i < length / 2 + 1; i++) {
-    spectrum[i] = scale * pow(std::abs(signal_fourier[i]),2);
+    spectrum[i] = scale * pow(std::abs(signal_fourier[i]), 2);
   }
 }
 
@@ -233,7 +233,8 @@ void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
   for (size_t i = 0; i < length / 4; i++) {
 
     // straight
-    scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 4));
+    scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 2) *
+                  pow(std::abs(isf[i]), 2));
     suscept[i] = scale * (osf[2 * i] * std::conj(isf[i]) * std::conj(isf[i]));
 
     // off-diagonal
