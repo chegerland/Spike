@@ -3,9 +3,9 @@
 
 #include "../TimeFrame/TimeFrame.h"
 #include "Signal.h"
+#include <random>
 #include <string>
 #include <vector>
-#include <random>
 
 /**
  * @class WhiteNoiseSignal
@@ -51,6 +51,9 @@ public:
   double signal(double t) const;
 
   std::vector<double> &get_values() { return this->signal_values; };
+
+  double get_alpha() const { return alpha; };
+  double get_variance() const {return 2.*(f_high-f_low)*alpha;};
 
   void print_info(std::ofstream &file) override;
 };

@@ -189,6 +189,51 @@ void susceptibility(std::vector<double> &input_signal,
   }
 }
 
+void susceptibility(WhiteNoiseSignal &signal,
+                    std::vector<double> &output_signal,
+                    const TimeFrame &time_frame,
+                    std::vector<std::complex<double>> &suscept) {
+
+  // length of the signals is N, fourier transform will be N/2 + 1 because we
+  // perform real DFT
+  size_t length = time_frame.get_steps();
+
+  // vector for input signal fourier (isf)
+  std::vector<std::complex<double>> isf;
+  isf.resize(length / 2 + 1);
+
+  // vector for output signal fourier (osf)
+  std::vector<std::complex<double>> osf;
+  osf.resize(length / 2 + 1);
+
+  // fourier transform input signal
+  fftw_plan p;
+#pragma omp critical
+  p = fftw_plan_dft_r2c_1d(length, signal.get_values().data(),
+                           reinterpret_cast<fftw_complex *>(isf.data()),
+                           FFTW_ESTIMATE);
+  fftw_execute(p);
+#pragma omp critical
+  fftw_destroy_plan(p);
+
+  // fourier transform output signal
+  fftw_plan p2;
+#pragma omp critical
+  p2 = fftw_plan_dft_r2c_1d(length, output_signal.data(),
+                            reinterpret_cast<fftw_complex *>(osf.data()),
+                            FFTW_ESTIMATE);
+  fftw_execute(p2);
+#pragma omp critical
+  fftw_destroy_plan(p2);
+
+  // fill susceptibility and normalize appropriately
+  double dt = time_frame.get_dt();
+  for (size_t i = 0; i < length / 2 + 1; i++) {
+    double scale = 1. / signal.get_alpha();
+    suscept[i] = scale * (dt * osf[i] * dt * std::conj(isf[i]));
+  }
+}
+
 void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
                                    std::vector<double> &output_signal,
                                    const TimeFrame &time_frame,
@@ -229,25 +274,61 @@ void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
   // since the maximum frequency is at length/2 we choose to fill a square
   // matrix where each frequency only goes up to length/4.
   // fill susceptibility and normalize appropriately
-  double scale;
   for (size_t i = 0; i < length / 4; i++) {
-
-    // straight
-    scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 2) *
-                  pow(std::abs(isf[i]), 2));
+    double scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 4));
     suscept[i] = scale * (osf[2 * i] * std::conj(isf[i]) * std::conj(isf[i]));
+  }
+}
 
-    // off-diagonal
-    // scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 4));
-    // suscept[i] =
-    //    scale * (osf[i + i + 1] * std::conj(isf[i]) * std::conj(isf[i + 1]));
+void susceptibility_nonlinear_diag(WhiteNoiseSignal &signal,
+                                   std::vector<double> &output_signal,
+                                   const TimeFrame &time_frame,
+                                   std::vector<std::complex<double>> &suscept) {
 
-    // with first order
-    // std::complex<double> suscept_lin = 1. / pow(std::abs(isf[2*i]), 2) *
-    // (osf[2*i] * std::conj(isf[2*i])); scale = 1. / (2. * time_frame.get_dt()
-    // * pow(std::abs(isf[i]), 4)); suscept[i] =
-    //   scale * std::conj(isf[i]) * std::conj(isf[i]) * (osf[2*i] -
-    //   suscept_lin * isf[2*i]);
+  // length of the signals is N, fourier transform will be N/2 + 1 because we
+  // perform real DFT
+  size_t length = time_frame.get_steps();
+
+  // vector for input signal fourier (isf)
+  std::vector<std::complex<double>> isf;
+  isf.resize(length / 2 + 1);
+
+  // vector for output signal fourier (osf)
+  std::vector<std::complex<double>> osf;
+  osf.resize(length / 2 + 1);
+
+  // fourier transform input signal
+  fftw_plan p;
+#pragma omp critical
+  p = fftw_plan_dft_r2c_1d(length, signal.get_values().data(),
+                           reinterpret_cast<fftw_complex *>(isf.data()),
+                           FFTW_ESTIMATE);
+  fftw_execute(p);
+#pragma omp critical
+  fftw_destroy_plan(p);
+
+  // fourier transform output signal
+  fftw_plan p2;
+#pragma omp critical
+  p2 = fftw_plan_dft_r2c_1d(length, output_signal.data(),
+                            reinterpret_cast<fftw_complex *>(osf.data()),
+                            FFTW_ESTIMATE);
+  fftw_execute(p2);
+#pragma omp critical
+  fftw_destroy_plan(p2);
+
+  // since the maximum frequency is at length/2 we choose to fill a square
+  // matrix where each frequency only goes up to length/4.
+  // fill susceptibility and normalize appropriately
+  double dt = time_frame.get_dt();
+  double variance =
+      signal.get_variance() / (time_frame.get_t_end() - time_frame.get_t_0());
+  for (size_t i = 0; i < length / 4; i++) {
+    // double scale = 1. / (2. * pow(dt * std::abs(isf[i]), 4));
+    //double scale = 1. / (2. * signal.get_alpha() * signal.get_alpha());
+    double scale = 1./ ( 2. * pow(variance, 2));
+    suscept[i] = scale * (dt * osf[2 * i] * dt * std::conj(isf[i]) * dt *
+                          std::conj(isf[i]));
   }
 }
 

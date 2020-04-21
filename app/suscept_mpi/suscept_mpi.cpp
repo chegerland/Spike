@@ -169,38 +169,33 @@ void master(const std::string &input_file, const std::string &output_file) {
     firing_rate.calculate();
 
     // calculate susceptibility for this spike train
-    susceptibility(signal.get_values(), firing_rate.get_values(), time_frame,
+    //susceptibility(signal.get_values(), firing_rate.get_values(), time_frame,
+    //               suscept_temp_lin);
+    //susceptibility_nonlinear_diag(signal.get_values(), firing_rate.get_values(),
+    //                              time_frame, suscept_temp_nonlin);
+    susceptibility(signal, firing_rate.get_values(), time_frame,
                    suscept_temp_lin);
-    susceptibility_nonlinear_diag(signal.get_values(), firing_rate.get_values(),
+    susceptibility_nonlinear_diag(signal, firing_rate.get_values(),
                                   time_frame, suscept_temp_nonlin);
 
     // add susceptibility of the spike train to overall susceptibility
     for (size_t j = 0; j < time_frame.get_steps() / 4; j++) {
-      suscept_lin[j] += suscept_temp_lin[j];
-      suscept_nonlin[j] += suscept_temp_nonlin[j];
+      suscept_lin[j] += 1./((double) N_neurons) * suscept_temp_lin[j];
+      suscept_nonlin[j] += 1./((double) N_neurons) * suscept_temp_nonlin[j];
     }
   }
 
   int length = (int)time_frame.get_steps() / 4;
 
-  // normalize susceptibility
-  for (int j = 0; j < length; j++) {
-    suscept_lin[j] = 1. / ((double)N_neurons) * suscept_lin[j];
-    suscept_nonlin[j] = 1. / ((double)N_neurons) * suscept_nonlin[j];
-  }
-
   BOOST_LOG_TRIVIAL(info) << "Finished calculation.";
 
   BOOST_LOG_TRIVIAL(info) << "Receiving values from subprocesses.";
+
   // receive arrays back from subprocesses
-  std::vector<double> tmp_suscept_lin_real;
-  std::vector<double> tmp_suscept_lin_imag;
-  std::vector<double> tmp_suscept_nonlin_real;
-  std::vector<double> tmp_suscept_nonlin_imag;
-  tmp_suscept_lin_real.resize(length);
-  tmp_suscept_lin_imag.resize(length);
-  tmp_suscept_nonlin_real.resize(length);
-  tmp_suscept_nonlin_imag.resize(length);
+  std::vector<std::complex<double>> tmp_suscept_lin;
+  tmp_suscept_lin.resize(length);
+  std::vector<std::complex<double>> tmp_suscept_nonlin;
+  tmp_suscept_nonlin.resize(length);
 
   std::complex<double> I(0., 1.);
 
@@ -208,24 +203,18 @@ void master(const std::string &input_file, const std::string &output_file) {
   for (int i = 1; i < world_size; i++) {
 
     // receive arrays
-    MPI_Recv(tmp_suscept_lin_real.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE, 1,
-             MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_lin_imag.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE, 2,
-             MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_nonlin_real.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE,
-             3, MPI_COMM_WORLD, &status);
-    MPI_Recv(tmp_suscept_nonlin_imag.data(), length, MPI_DOUBLE, MPI_ANY_SOURCE,
-             4, MPI_COMM_WORLD, &status);
+    MPI_Recv(tmp_suscept_lin.data(), length, MPI_CXX_DOUBLE_COMPLEX,
+             MPI_ANY_SOURCE, 1, MPI_COMM_WORLD, &status);
+    MPI_Recv(tmp_suscept_nonlin.data(), length, MPI_CXX_DOUBLE_COMPLEX,
+             MPI_ANY_SOURCE, 2, MPI_COMM_WORLD, &status);
 
     // add array to overall firing rate
     for (int j = 0; j < length; j++) {
-      suscept_lin[j] += 1. / ((double)N_neurons) *
-                        (tmp_suscept_lin_real[j] + I * tmp_suscept_lin_imag[j]);
-      suscept_nonlin[j] +=
-          1. / ((double)N_neurons) *
-          (tmp_suscept_nonlin_real[j] + I * tmp_suscept_nonlin_imag[j]);
+      suscept_lin[j] += 1. / ((double)N_neurons) * tmp_suscept_lin[j];
+      suscept_nonlin[j] += 1. / ((double)N_neurons) * tmp_suscept_nonlin[j];
     }
-    //BOOST_LOG_TRIVIAL(info) << "Received values from subprocess " << i << " of "
+    // BOOST_LOG_TRIVIAL(info) << "Received values from subprocess " << i << "
+    // of "
     //                        << world_size - 1  << ".";
   }
 
@@ -305,10 +294,15 @@ void minion(const std::string &input_file) {
     firing_rate.calculate();
 
     // calculate susceptibility for this spike train
-    susceptibility(signal.get_values(), firing_rate.get_values(), time_frame,
+    //susceptibility(signal.get_values(), firing_rate.get_values(), time_frame,
+    //               suscept_temp_lin);
+    //susceptibility_nonlinear_diag(signal.get_values(), firing_rate.get_values(),
+    //                              time_frame, suscept_temp_nonlin);
+    susceptibility(signal, firing_rate.get_values(), time_frame,
                    suscept_temp_lin);
-    susceptibility_nonlinear_diag(signal.get_values(), firing_rate.get_values(),
+    susceptibility_nonlinear_diag(signal, firing_rate.get_values(),
                                   time_frame, suscept_temp_nonlin);
+
 
     // add susceptibility of the spike train to overall susceptibility
     for (size_t j = 0; j < time_frame.get_steps() / 4; j++) {
@@ -319,28 +313,9 @@ void minion(const std::string &input_file) {
 
   int length = (int)time_frame.get_steps() / 4;
 
-  // vectors for everything
-  std::vector<double> suscept_lin_real;
-  std::vector<double> suscept_lin_imag;
-  std::vector<double> suscept_nonlin_real;
-  std::vector<double> suscept_nonlin_imag;
-  suscept_lin_real.resize(length);
-  suscept_lin_imag.resize(length);
-  suscept_nonlin_real.resize(length);
-  suscept_nonlin_imag.resize(length);
-
-  for (size_t j = 0; j < time_frame.get_steps() / 4; j++) {
-    suscept_lin_real[j] += suscept_lin[j].real();
-    suscept_lin_imag[j] += suscept_lin[j].imag();
-    suscept_nonlin_real[j] += suscept_nonlin[j].real();
-    suscept_nonlin_imag[j] += suscept_nonlin[j].imag();
-  }
-
   // send data to master
-  MPI_Send(suscept_lin_real.data(), length, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
-  MPI_Send(suscept_lin_imag.data(), length, MPI_DOUBLE, 0, 2, MPI_COMM_WORLD);
-  MPI_Send(suscept_nonlin_real.data(), length, MPI_DOUBLE, 0, 3,
+  MPI_Send(suscept_lin.data(), length, MPI_CXX_DOUBLE_COMPLEX, 0, 1,
            MPI_COMM_WORLD);
-  MPI_Send(suscept_nonlin_imag.data(), length, MPI_DOUBLE, 0, 4,
+  MPI_Send(suscept_nonlin.data(), length, MPI_CXX_DOUBLE_COMPLEX, 0, 2,
            MPI_COMM_WORLD);
 }

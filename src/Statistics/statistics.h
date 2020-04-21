@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "../Signal/Signal.h"
+#include "../Signal/WhiteNoiseSignal.h"
 #include "../SpikeTrain/SpikeTrain.h"
 #include "../TimeFrame/TimeFrame.h"
 
@@ -33,10 +34,20 @@ void susceptibility(std::vector<double> &input_signal,
                     const TimeFrame &time_frame,
                     std::vector<std::complex<double>> &suscept);
 
-void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
+void susceptibility(WhiteNoiseSignal &signal,
                     std::vector<double> &output_signal,
                     const TimeFrame &time_frame,
                     std::vector<std::complex<double>> &suscept);
+
+void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
+                                   std::vector<double> &output_signal,
+                                   const TimeFrame &time_frame,
+                                   std::vector<std::complex<double>> &suscept);
+
+void susceptibility_nonlinear_diag(WhiteNoiseSignal &signal,
+                                   std::vector<double> &output_signal,
+                                   const TimeFrame &time_frame,
+                                   std::vector<std::complex<double>> &suscept);
 
 void add_spike_train_to_kernel(const SpikeTrain &spike_train,
                                const Signal &signal,
