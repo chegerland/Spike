@@ -182,10 +182,10 @@ void susceptibility(std::vector<double> &input_signal,
   fftw_destroy_plan(p2);
 
   // fill susceptibility and normalize appropriately
-  double scale;
+  double dt = time_frame.get_dt();
   for (size_t i = 0; i < length / 2 + 1; i++) {
-    scale = 1. / pow(std::abs(isf[i]), 2);
-    suscept[i] = scale * (osf[i] * std::conj(isf[i]));
+    double scale = 1. / pow(std::abs( dt * isf[i]), 2);
+    suscept[i] = scale * (dt * osf[i] * dt * std::conj(isf[i]));
   }
 }
 
@@ -229,7 +229,8 @@ void susceptibility(WhiteNoiseSignal &signal,
   // fill susceptibility and normalize appropriately
   double dt = time_frame.get_dt();
   for (size_t i = 0; i < length / 2 + 1; i++) {
-    double scale = 1. / signal.get_alpha();
+    double scale = 1./(pow(std::abs( dt * isf[i]),2));
+    //double scale = 1. / signal.get_alpha();
     suscept[i] = scale * (dt * osf[i] * dt * std::conj(isf[i]));
   }
 }
@@ -321,12 +322,11 @@ void susceptibility_nonlinear_diag(WhiteNoiseSignal &signal,
   // matrix where each frequency only goes up to length/4.
   // fill susceptibility and normalize appropriately
   double dt = time_frame.get_dt();
-  double variance =
-      signal.get_variance() / (time_frame.get_t_end() - time_frame.get_t_0());
+  //double variance = signal.get_variance() / (time_frame.get_t_end() - time_frame.get_t_0());
   for (size_t i = 0; i < length / 4; i++) {
-    // double scale = 1. / (2. * pow(dt * std::abs(isf[i]), 4));
+    double scale = 1. / (2. * pow(std::abs( dt * isf[i]), 4));
     //double scale = 1. / (2. * signal.get_alpha() * signal.get_alpha());
-    double scale = 1./ ( 2. * pow(variance, 2));
+    //double scale = 1./ ( 2. * pow(variance, 2));
     suscept[i] = scale * (dt * osf[2 * i] * dt * std::conj(isf[i]) * dt *
                           std::conj(isf[i]));
   }

@@ -92,8 +92,8 @@ void WhiteNoiseSignal::calculate_signal() {
   for (size_t i = 0; i < steps; i++) {
     signal_values[i] =
         // this->alpha / (standard_dev) * (signal_values[i] - mean_val);
-        //sqrt(alpha * (time_frame.get_t_end() - time_frame.get_t_0())) *
-        sqrt(alpha) *
+        sqrt(alpha * (time_frame.get_t_end() - time_frame.get_t_0())) *
+        //sqrt(alpha) *
         (signal_values[i] - mean_val);
   }
 }

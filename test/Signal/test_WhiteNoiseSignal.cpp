@@ -49,7 +49,6 @@ TEST_CASE("White Noise power spectrum") {
 
   // height of the spectrum should be alpha (in the non-cut-off regime)
   for (size_t i = 1; i < spectrum.size() - 1; i++) {
-    REQUIRE(spectrum[i] * (time_frame.get_t_end() - time_frame.get_t_0()) ==
-            Approx(alpha));
+    REQUIRE(spectrum[i] == Approx(alpha));
   }
 }

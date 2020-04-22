@@ -11,9 +11,7 @@
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e4_alpha_3e-2.json &&
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e4_alpha_3e-3.json &&
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e4_alpha_3e-4.json &&
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-2.json &&
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-3.json &&
-mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-4.json
+mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-4.json &&
+mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-5.json &&
+mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-6.json &&
+mpirun ./../../bin/suscept_mpi --file lif_scan_N_1e5_alpha_3e-7.json
