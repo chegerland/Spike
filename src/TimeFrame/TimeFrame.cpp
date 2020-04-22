@@ -49,7 +49,7 @@ void TimeFrame::calculate_times() {
   }
 }
 
-void TimeFrame::print_info(std::ofstream &file) {
+void TimeFrame::print_info(std::ofstream &file) const {
   file << "# TimeFrame: "
        << "\n"
        << "# t_0 = " << t_0 << "\n"

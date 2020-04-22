@@ -9,7 +9,7 @@
   },
   "Signal": {
     "type": "white noise",
-    "alpha": 0.003,
+    "alpha": 3e-3,
     "f_low": 0.0,
     "f_high" : 50.0
   },

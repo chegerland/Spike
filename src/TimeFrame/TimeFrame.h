@@ -80,7 +80,7 @@ public:
    * @brief Prints info to file
    * @param file File stream
    */
-  void print_info(std::ofstream &file);
+  void print_info(std::ofstream &file) const;
 };
 
 #endif // TIMEFRAME_H
