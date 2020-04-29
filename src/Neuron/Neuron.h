@@ -24,8 +24,8 @@ public:
    * @param time_frame Time frame
    * @param spike_train Spike train
    */
-  virtual void get_spike_train(const TimeFrame &time_frame,
-                               SpikeTrain &spike_train) = 0;
+  virtual void
+  get_spike_train(const std::shared_ptr<SpikeTrain> &spike_train) = 0;
 
   /**
    * @brief Fills the spike train for a given time frame and signal
@@ -33,8 +33,9 @@ public:
    * @param signal External signal
    * @param spike_train Spike train
    */
-  virtual void get_spike_train(const TimeFrame &time, const Signal &signal,
-                               SpikeTrain &spike_train) = 0;
+  virtual void
+  get_spike_train(const std::shared_ptr<Signal> &signal,
+                  const std::shared_ptr<SpikeTrain> &spike_train) = 0;
 
   /**
    * @brief Virtual destructor.
@@ -46,7 +47,7 @@ public:
    * @brief Prints the neuron parameters to a given file.
    * @param file File stream.
    */
-  virtual void print_info(std::ofstream &file) = 0;
+  virtual void print_info(std::ofstream &file) const = 0;
 };
 
 #endif // NEURON_H

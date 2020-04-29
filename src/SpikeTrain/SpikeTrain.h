@@ -7,7 +7,10 @@
 #define SPIKETRAIN_H
 
 #include <cstddef>
+#include <memory>
 #include <vector>
+
+#include "../TimeFrame/TimeFrame.h"
 
 /**
  * @class SpikeTrain
@@ -18,15 +21,15 @@
  */
 class SpikeTrain {
 private:
-  size_t length;            ///< length of the spike train
-  std::vector<bool> spikes; ///< bool vector containing the spikes
+  std::shared_ptr<const TimeFrame> time_frame;
+  std::vector<double> spikes; ///< bool vector containing the spikes
 
 public:
   /**
    * @brief Constructs a spike train with a given length.
    * @param length
    */
-  explicit SpikeTrain(size_t length);
+  explicit SpikeTrain(const std::shared_ptr<const TimeFrame> &time_frame);
 
   /**
    * @brief Counts the number of spikes in the spike train.
@@ -43,13 +46,7 @@ public:
    * @brief Sets a value to true, i.e. the neuron has spiked.
    * @param i Index at which the neuron has spiked
    */
-  void set_spike(unsigned int i);
-
-  /**
-   * @brief Getter function for the length of the spike train.
-   * @return Length of the spike train.
-   */
-  size_t get_length() const { return length; };
+  void add_spike(size_t i);
 
   /**
    * @brief Getter function for a certain spike.
@@ -57,7 +54,13 @@ public:
    * @return Value of the spike (true if spike occured, false if no spike
    * occured)
    */
-  bool get_spike(unsigned int i) const { return spikes[i]; };
+  bool get_spike(size_t i) const { return (spikes[i] != 0); };
+
+  const std::shared_ptr<const TimeFrame> &get_time_frame() {
+    return time_frame;
+  };
+
+  const std::vector<double> &get_values() const { return spikes; };
 };
 
 #endif // SPIKETRAIN_H

@@ -3,6 +3,7 @@
 
 #include "../TimeFrame/TimeFrame.h"
 #include "Signal.h"
+#include <complex>
 #include <random>
 #include <string>
 #include <vector>
@@ -17,6 +18,8 @@ private:
   double f_low;  ///< lower cut-off frequency
   double f_high; ///< higher cut-off frequency
 
+  std::vector<std::complex<double>> frequencies;
+
   std::random_device rd;
   std::mt19937 generator;
   std::normal_distribution<double> dist;
@@ -30,13 +33,14 @@ public:
    * @param time Time frame
    */
   WhiteNoiseSignal(double alpha, double f_low, double f_high,
-                   const TimeFrame &time_frame);
+                   const std::shared_ptr<const TimeFrame> &time_frame);
 
   /**
    * @brief Construct WhiteNoiseSignal from input file
    * @param input_file Input file in .json format
    */
-  WhiteNoiseSignal(const std::string &input_file, const TimeFrame &time_frame);
+  WhiteNoiseSignal(const std::string &input_file,
+                   const std::shared_ptr<const TimeFrame> &time_frame);
 
   /**
    * @brief Generate the white noise, i.e. fill the signal_values
@@ -50,12 +54,15 @@ public:
    */
   double signal(double t) const;
 
-  std::vector<double> &get_values() { return this->signal_values; };
+  const std::vector<double> &get_values() const { return signal_values; };
+  const std::vector<std::complex<double>> &get_frequencies() const {
+    return frequencies;
+  };
 
   double get_alpha() const { return alpha; };
-  double get_variance() const {return 2.*(f_high-f_low)*alpha;};
+  double get_variance() const { return 2. * (f_high - f_low) * alpha; };
 
-  void print_info(std::ofstream &file) override;
+  void print_info(std::ofstream &file) const override;
 };
 
 #endif // WHITENOISESIGNAL_H

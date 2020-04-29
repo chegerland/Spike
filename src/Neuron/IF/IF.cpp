@@ -27,40 +27,42 @@ IF::IF(const std::string &input_file) : generator(rd()), dist(0.0, 1.0) {
 
 double IF::diffusion() const { return sqrt(2 * D); }
 
-void IF::get_spike_train(const TimeFrame &time, SpikeTrain &spike_train) {
+void IF::get_spike_train(const std::shared_ptr<SpikeTrain> &spike_train) {
   // initial value for voltage
   double v = 0;
 
-  double dt = time.get_dt();
+  const double dt = spike_train->get_time_frame()->get_dt();
+  const size_t length = spike_train->get_time_frame()->get_steps();
 
   // perform euler maruyama scheme
-  for (size_t i = 0; i < time.get_steps(); i++) {
+  for (size_t i = 0; i < length; i++) {
     v += this->drift(v) * dt + this->diffusion() * dist(generator) * sqrt(dt);
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      spike_train.set_spike(i);
+      spike_train->add_spike(i);
     }
   }
 }
 
-void IF::get_spike_train(const TimeFrame &time, const Signal &signal,
-                         SpikeTrain &spike_train) {
+void IF::get_spike_train(const std::shared_ptr<Signal> &signal,
+                         const std::shared_ptr<SpikeTrain> &spike_train) {
   // initial value for voltage
   double v = 0;
 
-  double dt = time.get_dt();
+  const double dt = spike_train->get_time_frame()->get_dt();
+  const size_t length = spike_train->get_time_frame()->get_steps();
 
   // perform euler maruyama scheme
-  for (size_t i = 0; i < time.get_steps(); i++) {
-    v += (this->drift(v) + signal.get_value(i)) * dt +
+  for (size_t i = 0; i < length; i++) {
+    v += (this->drift(v) + signal->get_value(i)) * dt +
          this->diffusion() * dist(generator) * sqrt(dt);
 
     // fire and reset rule
     if (v > 1) {
       v = 0;
-      spike_train.set_spike(i);
+      spike_train->add_spike(i);
     }
   }
 }
@@ -83,7 +85,7 @@ void IF::get_voltage_curve(const TimeFrame &time, double *v) {
   }
 }
 
-void IF::print_info(std::ofstream &file) {
+void IF::print_info(std::ofstream &file) const {
   // print neuron parameters to file
   file << "# Neuron parameters: "
        << "\n"

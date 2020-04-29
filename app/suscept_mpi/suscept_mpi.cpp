@@ -85,7 +85,8 @@ int main(int argc, char *argv[]) {
   MPI_Init(&argc, &argv);
 
   // get world rank and size
-  int world_rank, world_size;
+  int world_rank = 0;
+  int world_size = 0;
   MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
@@ -121,7 +122,7 @@ void master(const std::string &input_file, const std::string &output_file) {
   int N_neurons = (int)root.get<double>("Simulation.N_neurons");
 
   // get the world size
-  int world_size;
+  int world_size = 0;
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
   // determine number of trials each process should handle
@@ -137,55 +138,48 @@ void master(const std::string &input_file, const std::string &output_file) {
   }
 
   // construct time frame and neuron
-  TimeFrame time_frame(input_file);
+  auto time_frame = std::make_shared<const TimeFrame>(input_file);
   auto neuron = NeuronFactory::create(input_file);
+  auto signal = std::make_shared<WhiteNoiseSignal>(input_file, time_frame);
+  auto spike_train = std::make_shared<SpikeTrain>(time_frame);
 
   // array for susceptibilities
   std::vector<std::complex<double>> suscept_lin;
-  suscept_lin.resize(time_frame.get_steps() / 4 + 1);
+  suscept_lin.resize(time_frame->get_steps() / 4 + 1);
   std::vector<std::complex<double>> suscept_nonlin;
-  suscept_nonlin.resize(time_frame.get_steps() / 4 + 1);
+  suscept_nonlin.resize(time_frame->get_steps() / 4 + 1);
 
   BOOST_LOG_TRIVIAL(info) << "Calculating linear and nonlinear susceptibility.";
   for (int i = 0; i < trials; i++) {
 
     // array for susceptibility of single neuron
     std::vector<std::complex<double>> suscept_temp_lin;
-    suscept_temp_lin.resize(time_frame.get_steps() / 2 + 1);
+    suscept_temp_lin.resize(time_frame->get_steps() / 2 + 1);
 
     std::vector<std::complex<double>> suscept_temp_nonlin;
-    suscept_temp_nonlin.resize(time_frame.get_steps() / 4 + 1);
+    suscept_temp_nonlin.resize(time_frame->get_steps() / 4 + 1);
 
-    // construct a new white noise signal, a spike train and a box firing rate
-    WhiteNoiseSignal signal(input_file, time_frame);
-    SpikeTrain spike_train(time_frame.get_steps());
-    FiringRateBox firing_rate(time_frame);
+    // reset spike train and calculate new signal
+    spike_train->clear();
+    signal->calculate_signal();
 
     // get spike train
-    neuron->get_spike_train(time_frame, signal, spike_train);
-    firing_rate.add_spike_train(spike_train);
-
-    // calculate firing rate
-    firing_rate.calculate();
+    neuron->get_spike_train(signal, spike_train);
 
     // calculate susceptibility for this spike train
-    //susceptibility(signal.get_values(), firing_rate.get_values(), time_frame,
-    //               suscept_temp_lin);
-    //susceptibility_nonlinear_diag(signal.get_values(), firing_rate.get_values(),
-    //                              time_frame, suscept_temp_nonlin);
-    susceptibility(signal, firing_rate.get_values(), time_frame,
+    susceptibility(signal, spike_train->get_values(), time_frame,
                    suscept_temp_lin);
-    susceptibility_nonlinear_diag(signal, firing_rate.get_values(),
+    susceptibility_nonlinear_diag(signal, spike_train->get_values(),
                                   time_frame, suscept_temp_nonlin);
 
     // add susceptibility of the spike train to overall susceptibility
-    for (size_t j = 0; j < time_frame.get_steps() / 4; j++) {
+    for (size_t j = 0; j < time_frame->get_steps() / 4; j++) {
       suscept_lin[j] += 1./((double) N_neurons) * suscept_temp_lin[j];
       suscept_nonlin[j] += 1./((double) N_neurons) * suscept_temp_nonlin[j];
     }
   }
 
-  int length = (int)time_frame.get_steps() / 4;
+  int length = (int)time_frame->get_steps() / 4;
 
   BOOST_LOG_TRIVIAL(info) << "Finished calculation.";
 
@@ -213,17 +207,10 @@ void master(const std::string &input_file, const std::string &output_file) {
       suscept_lin[j] += 1. / ((double)N_neurons) * tmp_suscept_lin[j];
       suscept_nonlin[j] += 1. / ((double)N_neurons) * tmp_suscept_nonlin[j];
     }
-    // BOOST_LOG_TRIVIAL(info) << "Received values from subprocess " << i << "
-    // of "
-    //                        << world_size - 1  << ".";
   }
 
   BOOST_LOG_TRIVIAL(info) << "All values received.";
   BOOST_LOG_TRIVIAL(info) << "Writing results to file " << output_file << ".";
-
-  // construct another white noise to get info about its parameters (quite
-  // inelegant isn't it?)
-  WhiteNoiseSignal signal(input_file, time_frame);
 
   // write susceptibility to file
   std::ofstream file;
@@ -236,9 +223,9 @@ void master(const std::string &input_file, const std::string &output_file) {
   file << "#\n";
   neuron->print_info(file);
   file << "#\n";
-  time_frame.print_info(file);
+  time_frame->print_info(file);
   file << "#\n";
-  signal.print_info(file);
+  signal->print_info(file);
   file << "#\n";
   file << "# Data format:\n"
        << "# Frequency, Re(Suscept_1), Im(Suscept_1), Re(Suscept_2), "
@@ -246,7 +233,7 @@ void master(const std::string &input_file, const std::string &output_file) {
   file << "#\n";
 
   for (int i = 0; i < length; i++) {
-    file << (double)i / (time_frame.get_t_end() - time_frame.get_t_0()) << ","
+    file << (double)i / (time_frame->get_t_end() - time_frame->get_t_0()) << ","
          << std::real(suscept_lin[i]) << "," << std::imag(suscept_lin[i]) << ","
          << std::real(suscept_nonlin[i]) << "," << std::imag(suscept_nonlin[i])
          << "\n";
@@ -258,60 +245,52 @@ void master(const std::string &input_file, const std::string &output_file) {
 
 void minion(const std::string &input_file) {
 
-  int trials;
+  int trials = 0;
   MPI_Status status;
   MPI_Recv(&trials, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
 
-  // construct time frame and neuron
-  TimeFrame time_frame(input_file);
+  // construct time frame, neuron, signal and spike_train
+  auto time_frame = std::make_shared<const TimeFrame>(input_file);
   auto neuron = NeuronFactory::create(input_file);
+  auto signal = std::make_shared<WhiteNoiseSignal>(input_file, time_frame);
+  auto spike_train = std::make_shared<SpikeTrain>(time_frame);
 
   // array for susceptibilities
   std::vector<std::complex<double>> suscept_lin;
-  suscept_lin.resize(time_frame.get_steps() / 4 + 1);
+  suscept_lin.resize(time_frame->get_steps() / 4 + 1);
   std::vector<std::complex<double>> suscept_nonlin;
-  suscept_nonlin.resize(time_frame.get_steps() / 4 + 1);
+  suscept_nonlin.resize(time_frame->get_steps() / 4 + 1);
 
   for (int i = 0; i < trials; i++) {
 
     // array for susceptibility of single neuron
     std::vector<std::complex<double>> suscept_temp_lin;
-    suscept_temp_lin.resize(time_frame.get_steps() / 2 + 1);
+    suscept_temp_lin.resize(time_frame->get_steps() / 2 + 1);
 
     std::vector<std::complex<double>> suscept_temp_nonlin;
-    suscept_temp_nonlin.resize(time_frame.get_steps() / 4 + 1);
+    suscept_temp_nonlin.resize(time_frame->get_steps() / 4 + 1);
 
-    // construct a new white noise signal, a spike train and a box firing rate
-    WhiteNoiseSignal signal(input_file, time_frame);
-    SpikeTrain spike_train(time_frame.get_steps());
-    FiringRateBox firing_rate(time_frame);
+    // reset spike train and calculate new signal
+    spike_train->clear();
+    signal->calculate_signal();
 
     // get spike train
-    neuron->get_spike_train(time_frame, signal, spike_train);
-    firing_rate.add_spike_train(spike_train);
-
-    // calculate firing rate
-    firing_rate.calculate();
+    neuron->get_spike_train(signal, spike_train);
 
     // calculate susceptibility for this spike train
-    //susceptibility(signal.get_values(), firing_rate.get_values(), time_frame,
-    //               suscept_temp_lin);
-    //susceptibility_nonlinear_diag(signal.get_values(), firing_rate.get_values(),
-    //                              time_frame, suscept_temp_nonlin);
-    susceptibility(signal, firing_rate.get_values(), time_frame,
+    susceptibility(signal, spike_train->get_values(), time_frame,
                    suscept_temp_lin);
-    susceptibility_nonlinear_diag(signal, firing_rate.get_values(),
+    susceptibility_nonlinear_diag(signal, spike_train->get_values(),
                                   time_frame, suscept_temp_nonlin);
 
-
     // add susceptibility of the spike train to overall susceptibility
-    for (size_t j = 0; j < time_frame.get_steps() / 4; j++) {
+    for (size_t j = 0; j < time_frame->get_steps() / 4; j++) {
       suscept_lin[j] += suscept_temp_lin[j];
       suscept_nonlin[j] += suscept_temp_nonlin[j];
     }
   }
 
-  int length = (int)time_frame.get_steps() / 4;
+  int length = (int)time_frame->get_steps() / 4;
 
   // send data to master
   MPI_Send(suscept_lin.data(), length, MPI_CXX_DOUBLE_COMPLEX, 0, 1,

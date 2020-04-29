@@ -12,8 +12,9 @@ namespace pt = boost::property_tree;
 #include "WhiteNoiseSignal.h"
 
 // create get_value pointer
-std::unique_ptr<Signal> SignalFactory::create(const std::string &input_file,
-                                              const TimeFrame &time_frame) {
+std::unique_ptr<Signal>
+SignalFactory::create(const std::string &input_file,
+                      const std::shared_ptr<const TimeFrame> &time_frame) {
   // Create a root
   pt::ptree root;
 

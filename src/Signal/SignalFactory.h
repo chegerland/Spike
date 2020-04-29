@@ -14,11 +14,14 @@
 class SignalFactory {
 public:
   /**
-   * Returns a pointer to a get_value, depending on the type read from input file
+   * Returns a pointer to a get_value, depending on the type read from input
+   * file
    * @param input_file Input file in .json format
    * @return Pointer to get_value
    */
-  static std::unique_ptr<Signal> create(const std::string& input_file, const TimeFrame& time_frame);
+  static std::unique_ptr<Signal>
+  create(const std::string &input_file,
+         const std::shared_ptr<const TimeFrame> &time_frame);
 };
 
 #endif // SIGNALFACTORY_H

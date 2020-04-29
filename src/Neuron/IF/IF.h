@@ -69,7 +69,7 @@ public:
    * @param time Time frame
    * @param spike_train Spike train
    */
-  void get_spike_train(const TimeFrame &time, SpikeTrain &spike_train) override;
+  void get_spike_train(const std::shared_ptr<SpikeTrain> &spike_train) override;
 
   /**
    * @brief Fills the spike train.
@@ -83,8 +83,8 @@ public:
    * @param signal Signal
    * @param spike_train Spike train
    */
-  void get_spike_train(const TimeFrame &time, const Signal &signal,
-                       SpikeTrain &spike_train) override;
+  void get_spike_train(const std::shared_ptr<Signal> &signal,
+                       const std::shared_ptr<SpikeTrain> &spike_train) override;
 
   /**
    * @brief Returns a trajectory, i.e. v(t).
@@ -109,7 +109,7 @@ public:
    * @brief Print neuron parameters.
    * @param file File stream
    */
-  void print_info(std::ofstream &file) override;
+  void print_info(std::ofstream &file) const override;
 };
 
 #endif // IF_H
