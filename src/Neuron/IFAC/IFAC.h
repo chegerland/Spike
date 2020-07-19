@@ -26,10 +26,10 @@
  */
 class IFAC : public Neuron {
 protected:
-  double mu;                             ///< mean input current
-  double D;                              ///< diffusion coefficient
-  double tau_a;                          ///< adaptation time constant
-  double Delta;                          ///< kick size of the adaptation
+  double mu;    ///< mean input current
+  double D;     ///< diffusion coefficient
+  double tau_a; ///< adaptation time constant
+  double Delta; ///< kick size of the adaptation
 
   std::random_device rd;                 ///< random device (seeding)
   std::mt19937 generator;                ///< random number generator
@@ -74,7 +74,7 @@ public:
    * @param time Time frame
    * @param spike_train Spike train
    */
-  void get_spike_train(const std::shared_ptr<SpikeTrain> &spike_train) override;
+  void get_spikes(SpikeTrain &spike_train) override;
 
   /**
    * @brief Fills the spike train.
@@ -87,8 +87,7 @@ public:
    * @param signal Signal
    * @param spike_train Spike train
    */
-  void get_spike_train(const std::shared_ptr<Signal> &signal,
-                       const std::shared_ptr<SpikeTrain> &spike_train) override;
+  void get_spikes(Signal &signal, SpikeTrain &spike_train) override;
 
   /**
    * @brief Returns a trajectory, i.e. v(t).
@@ -96,7 +95,8 @@ public:
    * @param [out] v Array of voltages at times given by time frame
    * @param [out] a Array of adaptation values at times given by time frame
    */
-  void get_voltage_curve(const TimeFrame &time, double *v, double *a);
+  void get_voltage_curve(const TimeFrame &time, std::vector<double> &v,
+                         std::vector<double> &a);
 
   /**
    * @brief Setter method for mean input current.

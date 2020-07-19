@@ -14,16 +14,16 @@ namespace pt = boost::property_tree;
 // constructor from parameters
 WhiteNoiseSignal::WhiteNoiseSignal(
     double alpha, double f_low, double f_high,
-    const std::shared_ptr<const TimeFrame> &time_frame)
+    const TimeFrame &time_frame)
     : Signal(time_frame), alpha(alpha), f_low(f_low), f_high(f_high),
       generator(rd()), dist(0.0, 1.0) {
-  frequencies.resize(time_frame->get_steps()/2 + 1);
+  frequencies.resize(time_frame.get_steps()/2 + 1);
   calculate_signal();
 }
 
 WhiteNoiseSignal::WhiteNoiseSignal(
     const std::string &input_file,
-    const std::shared_ptr<const TimeFrame> &time_frame)
+    const TimeFrame &time_frame)
     : Signal(time_frame), generator(rd()), dist(0.0, 1.0) {
   pt::ptree root;
   pt::read_json(input_file, root);
@@ -38,7 +38,7 @@ WhiteNoiseSignal::WhiteNoiseSignal(
   f_high = root.get<double>("Signal.f_high");
   assert(f_high > f_low && f_low >= 0.);
 
-  frequencies.resize(time_frame->get_steps()/2 + 1);
+  frequencies.resize(time_frame.get_steps()/2 + 1);
 
   // generate the white noise
   calculate_signal();
@@ -46,8 +46,8 @@ WhiteNoiseSignal::WhiteNoiseSignal(
 
 void WhiteNoiseSignal::calculate_signal() {
 
-  const size_t steps = time_frame->get_steps();
-  const double dt = time_frame->get_dt();
+  const size_t steps = time_frame.get_steps();
+  const double dt = time_frame.get_dt();
 
   // define cut_off indices
   const size_t cut_low = f_low * steps * dt;
@@ -70,20 +70,20 @@ void WhiteNoiseSignal::calculate_signal() {
 
   // normalize frequencies, so that power spectrum = 2*alpha
   for(auto & frequency : frequencies) {
-    frequency *= sqrt(2. * alpha * (time_frame->get_t_end() - time_frame->get_t_0()));
+    frequency *= sqrt(2. * alpha * (time_frame.get_t_end() - time_frame.get_t_0()));
   }
 
   // calculate signal values by fourier transforming from frequencies
-  fft_c2r(steps, dt, frequencies, signal_values);
+  fft_c2r(dt, frequencies, signal_values);
 }
 
 // return get_value
 double WhiteNoiseSignal::signal(double t) const {
   // check if time is in time frame
-  assert(t <= time_frame->get_t_end() && t >= time_frame->get_t_0());
+  assert(t <= time_frame.get_t_end() && t >= time_frame.get_t_0());
 
   // calculate according index
-  auto index = (size_t)((t - time_frame->get_t_0()) / time_frame->get_dt());
+  auto index = (size_t)((t - time_frame.get_t_0()) / time_frame.get_dt());
 
   return signal_values[index];
 }

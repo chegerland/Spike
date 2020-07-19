@@ -12,9 +12,8 @@ namespace pt = boost::property_tree;
 #include "WhiteNoiseSignal.h"
 
 // create get_value pointer
-std::unique_ptr<Signal>
-SignalFactory::create(const std::string &input_file,
-                      const std::shared_ptr<const TimeFrame> &time_frame) {
+std::unique_ptr<Signal> SignalFactory::create(const std::string &input_file,
+                                              const TimeFrame &time_frame) {
   // Create a root
   pt::ptree root;
 
@@ -22,7 +21,7 @@ SignalFactory::create(const std::string &input_file,
   pt::read_json(input_file, root);
 
   // read simulation data into simulation variables
-  std::string type = root.get<std::string>("Signal.type");
+  auto type = root.get<std::string>("Signal.type");
 
   if (type == "two cosine") {
     return std::make_unique<TwoCosineSignal>(input_file, time_frame);

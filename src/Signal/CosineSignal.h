@@ -21,8 +21,7 @@ public:
    * @param f Frequency
    * @param time_frame TimeFrame
    */
-  CosineSignal(double alpha, double f,
-               const std::shared_ptr<const TimeFrame> &time_frame);
+  CosineSignal(double alpha, double f, const TimeFrame &time_frame);
 
   /**
    * @brief Construct CosineSignal from input file
@@ -30,7 +29,7 @@ public:
    * @param time_frame TimeFrame
    */
   CosineSignal(const std::string &input_file,
-               const std::shared_ptr<const TimeFrame> &time_frame);
+               const TimeFrame &time_frame);
 
   /**
    * @brief Calculates the cosine get_value.
@@ -42,13 +41,13 @@ public:
    * @param t Time
    * @return Signal, i.e. alpha*cos(2*pi*f*t)
    */
-  double signal(double t) const;
+  [[nodiscard]] double signal(double t) const;
 
   /**
    * @brief Getter function for the frequency
    * @return The frequency of the get_value f
    */
-  double get_f() const { return this->f; };
+  [[nodiscard]] double get_f() const { return this->f; };
 
   void print_info(std::ofstream &file) const override;
 };

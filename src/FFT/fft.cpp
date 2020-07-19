@@ -6,11 +6,11 @@
 #include <cassert>
 #include <fftw3.h>
 
-void fft_r2c(size_t length, double dt, const std::vector<double> &signal,
+void fft_r2c(const double dt, const std::vector<double> &signal,
              std::vector<std::complex<double>> &signal_fourier) {
 
   // check for right size of the arrays
-  assert(signal.size() == length);
+  size_t length = signal.size();
   assert(signal_fourier.size() == length / 2 + 1);
 
   // fourier transform the signal
@@ -24,17 +24,16 @@ void fft_r2c(size_t length, double dt, const std::vector<double> &signal,
   fftw_destroy_plan(p);
 
   // normalize the signal correctly
-  for (auto & i : signal_fourier) {
+  for (auto &i : signal_fourier) {
     i *= dt;
   }
 }
 
-void fft_c2r(size_t length, double dt,
-             const std::vector<std::complex<double>> &signal_fourier,
+void fft_c2r(const double dt, const std::vector<std::complex<double>> &signal_fourier,
              std::vector<double> &signal) {
 
   // check for right size of the arrays
-  assert(signal.size() == length);
+  size_t length = signal.size();
   assert(signal_fourier.size() == length / 2 + 1);
 
   // fourier transform the signal
@@ -50,7 +49,7 @@ void fft_c2r(size_t length, double dt,
   fftw_destroy_plan(p);
 
   // normalize the signal correctly
-  for (double & i : signal) {
+  for (double &i : signal) {
     i /= dt * length;
   }
 }

@@ -21,16 +21,14 @@ public:
    * @param t_0 Start time
    * @param time_frame TimeFrame
    */
-  StepSignal(double alpha, double t_0,
-             const std::shared_ptr<const TimeFrame> &time_frame);
+  StepSignal(double alpha, double t_0, const TimeFrame &time_frame);
 
   /**
    * @brief Construct StepSignal from input file
    * @param input_file Input file in .json format
    * @param time_frame TimeFrame
    */
-  StepSignal(const std::string &input_file,
-             const std::shared_ptr<const TimeFrame> &time_frame);
+  StepSignal(const std::string &input_file, const TimeFrame &time_frame);
 
   /**
    * @brief Calculates the step get_value.

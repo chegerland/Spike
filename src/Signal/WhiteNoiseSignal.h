@@ -33,14 +33,14 @@ public:
    * @param time Time frame
    */
   WhiteNoiseSignal(double alpha, double f_low, double f_high,
-                   const std::shared_ptr<const TimeFrame> &time_frame);
+                   const TimeFrame &time_frame);
 
   /**
    * @brief Construct WhiteNoiseSignal from input file
    * @param input_file Input file in .json format
    */
   WhiteNoiseSignal(const std::string &input_file,
-                   const std::shared_ptr<const TimeFrame> &time_frame);
+                   const TimeFrame &time_frame);
 
   /**
    * @brief Generate the white noise, i.e. fill the signal_values

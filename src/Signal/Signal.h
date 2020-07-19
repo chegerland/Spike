@@ -12,14 +12,14 @@
  */
 class Signal {
 protected:
-  std::shared_ptr<const TimeFrame> time_frame;
+  const TimeFrame &time_frame;
   std::vector<double> signal_values; ///< array containing the get_value values
 
 public:
-  explicit Signal(const std::shared_ptr<const TimeFrame> &time_frame);
+  explicit Signal(const TimeFrame &time_frame);
   virtual ~Signal() = default;
 
-  double get_value(unsigned int i) const;
+  [[nodiscard]] double get_value(unsigned int i) const;
 
   virtual void print_info(std::ofstream &file) const = 0;
 };

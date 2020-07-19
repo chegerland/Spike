@@ -14,8 +14,8 @@ LIF::LIF(const std::string &input_file) : IF(input_file) {
   pt::read_json(input_file, root);
 
   // check if type is right
-  std::string type = root.get<std::string>("Neuron.type");
+  auto type = root.get<std::string>("Neuron.type");
   assert(type == "LIF");
 }
 
-double LIF::drift(double v) const { return (this->mu - v); }
+inline double LIF::drift(double v) const { return (this->mu - v); }

@@ -38,13 +38,13 @@ IFAC::IFAC(const std::string &input_file) : generator(rd()), dist(0.0, 1.0) {
 double IFAC::diffusion() const { return sqrt(2 * D); }
 
 // get the spike train of an IFAC neuron
-void IFAC::get_spike_train(const std::shared_ptr<SpikeTrain> &spike_train) {
+void IFAC::get_spikes(SpikeTrain &spike_train) {
   // initial values
   double v = 0;
   double a = 0;
 
-  const double dt = spike_train->get_time_frame()->get_dt();
-  const size_t length = spike_train->get_time_frame()->get_steps();
+  const double dt = spike_train.get_dt();
+  const size_t length = spike_train.get_size();
 
   // perform euler maruyama scheme
   for (size_t i = 0; i < length; i++) {
@@ -56,24 +56,24 @@ void IFAC::get_spike_train(const std::shared_ptr<SpikeTrain> &spike_train) {
     if (v > 1) {
       v = 0;
       a += Delta;
-      spike_train->add_spike(i);
+      spike_train.add_spike(i);
     }
   }
 }
 
 // get the spike train of an IFAC neuron with signal
-void IFAC::get_spike_train(const std::shared_ptr<Signal> &signal,
-                           const std::shared_ptr<SpikeTrain> &spike_train) {
+void IFAC::get_spikes(Signal &signal,
+                           SpikeTrain &spike_train) {
   // initial values
   double v = 0;
   double a = 0;
 
-  const double dt = spike_train->get_time_frame()->get_dt();
-  const size_t length = spike_train->get_time_frame()->get_steps();
+  const double dt = spike_train.get_dt();
+  const size_t length = spike_train.get_size();
 
   // perform euler maruyama scheme
   for (size_t i = 0; i < length; i++) {
-    v += (this->drift(v) - a + signal->get_value(i)) * dt +
+    v += (this->drift(v) - a + signal.get_value(i)) * dt +
          this->diffusion() * dist(generator) * sqrt(dt);
     a += -1. / tau_a * a * dt;
 
@@ -81,19 +81,20 @@ void IFAC::get_spike_train(const std::shared_ptr<Signal> &signal,
     if (v > 1) {
       v = 0;
       a += Delta;
-      spike_train->add_spike(i);
+      spike_train.add_spike(i);
     }
   }
 }
 
 // get voltage curve, i.e. v(t) and a(t)
-void IFAC::get_voltage_curve(const TimeFrame &time, double *v, double *a) {
+void IFAC::get_voltage_curve(const TimeFrame &time, std::vector<double> &v,
+                             std::vector<double> &a) {
   // initial values
   v[0] = 0;
   a[0] = 0;
 
   // for better readibility
-  double dt = time.get_dt();
+  const double dt = time.get_dt();
 
   // perform euler maruyama scheme
   for (size_t i = 1; i < time.get_steps(); i++) {

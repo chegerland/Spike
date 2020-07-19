@@ -9,21 +9,21 @@ namespace pt = boost::property_tree;
 
 // constructor from parameters
 CosineSignal::CosineSignal(double alpha, double f,
-                           const std::shared_ptr<const TimeFrame> &time_frame)
+                           const TimeFrame &time_frame)
     : Signal(time_frame), alpha(alpha), f(f) {
   calculate_signal();
 }
 
 // constructor from input file
 CosineSignal::CosineSignal(const std::string &input_file,
-                           const std::shared_ptr<const TimeFrame> &time_frame)
+                           const TimeFrame &time_frame)
     : Signal(time_frame) {
 
   pt::ptree root;
   pt::read_json(input_file, root);
 
   // check if type is right
-  std::string type = root.get<std::string>("Signal.type");
+  auto type = root.get<std::string>("Signal.type");
   assert(type == "cosine");
 
   // read simulation data into simulation variables
@@ -35,8 +35,8 @@ CosineSignal::CosineSignal(const std::string &input_file,
 }
 
 void CosineSignal::calculate_signal() {
-  for (size_t i = 0; i < time_frame->get_steps(); i++) {
-    signal_values[i] = alpha * cos(2.0 * M_PI * f * time_frame->get_time(i));
+  for (size_t i = 0; i < time_frame.get_steps(); i++) {
+    signal_values[i] = alpha * cos(2.0 * M_PI * f * time_frame.get_time(i));
   }
 }
 

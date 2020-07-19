@@ -175,24 +175,22 @@ void susceptibility(std::vector<double> &input_signal,
   }
 }
 
-void susceptibility(const std::shared_ptr<WhiteNoiseSignal> &signal,
+void susceptibility(const WhiteNoiseSignal &signal,
                     const std::vector<double> &output_signal,
-                    const std::shared_ptr<const TimeFrame> &time_frame,
+                    const TimeFrame &time_frame,
                     std::vector<std::complex<double>> &suscept) {
 
   // length of the signals is N, fourier transform will be N/2 + 1 because we
   // perform real DFT
-  const size_t length = time_frame->get_steps();
-  const double dt = time_frame->get_dt();
+  const size_t length = time_frame.get_steps();
 
   // vector for input signal fourier (isf)
-  std::vector<std::complex<double>> isf = signal->get_frequencies();
+  std::vector<std::complex<double>> isf = signal.get_frequencies();
 
   // vector for output signal fourier (osf)
-  std::vector<std::complex<double>> osf;
-  osf.resize(length / 2 + 1);
+  std::vector<std::complex<double>> osf(length/2 + 1);
 
-  fft_r2c(length, dt, output_signal, osf);
+  fft_r2c(time_frame.get_dt(), output_signal, osf);
 
   // fill susceptibility and normalize appropriately
   for (size_t i = 0; i < length / 2 + 1; i++) {
@@ -201,8 +199,8 @@ void susceptibility(const std::shared_ptr<WhiteNoiseSignal> &signal,
   }
 }
 
-void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
-                                   std::vector<double> &output_signal,
+void susceptibility_nonlinear_diag(const std::vector<double> &input_signal,
+                                   const std::vector<double> &output_signal,
                                    const TimeFrame &time_frame,
                                    std::vector<std::complex<double>> &suscept) {
 
@@ -210,33 +208,12 @@ void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
   // perform real DFT
   size_t length = time_frame.get_steps();
 
-  // vector for input signal fourier (isf)
-  std::vector<std::complex<double>> isf;
-  isf.resize(length / 2 + 1);
+  // vector for input signal fourier (isf) and output signal fourier (osf)
+  std::vector<std::complex<double>> isf(length/2 + 1);
+  std::vector<std::complex<double>> osf(length/2 + 1);
 
-  // vector for output signal fourier (osf)
-  std::vector<std::complex<double>> osf;
-  osf.resize(length / 2 + 1);
-
-  // fourier transform input signal
-  fftw_plan p;
-#pragma omp critical
-  p = fftw_plan_dft_r2c_1d(length, input_signal.data(),
-                           reinterpret_cast<fftw_complex *>(isf.data()),
-                           FFTW_ESTIMATE);
-  fftw_execute(p);
-#pragma omp critical
-  fftw_destroy_plan(p);
-
-  // fourier transform output signal
-  fftw_plan p2;
-#pragma omp critical
-  p2 = fftw_plan_dft_r2c_1d(length, output_signal.data(),
-                            reinterpret_cast<fftw_complex *>(osf.data()),
-                            FFTW_ESTIMATE);
-  fftw_execute(p2);
-#pragma omp critical
-  fftw_destroy_plan(p2);
+  fft_r2c(time_frame.get_dt(), input_signal, isf);
+  fft_r2c(time_frame.get_dt(), output_signal, osf);
 
   // since the maximum frequency is at length/2 we choose to fill a square
   // matrix where each frequency only goes up to length/4.
@@ -247,24 +224,23 @@ void susceptibility_nonlinear_diag(std::vector<double> &input_signal,
   }
 }
 
-void susceptibility_nonlinear_diag(const std::shared_ptr<WhiteNoiseSignal> &signal,
+void susceptibility_nonlinear_diag(const WhiteNoiseSignal &signal,
                                    const std::vector<double> &output_signal,
-                                   const std::shared_ptr<const TimeFrame> &time_frame,
+                                   const TimeFrame &time_frame,
                                    std::vector<std::complex<double>> &suscept) {
 
   // length of the signals is N, fourier transform will be N/2 + 1 because we
   // perform real DFT
-  const size_t length = time_frame->get_steps();
-  const double dt = time_frame->get_dt();
+  const size_t length = time_frame.get_steps();
+  const double dt = time_frame.get_dt();
 
   // vector for input signal fourier (isf)
-  std::vector<std::complex<double>> isf = signal->get_frequencies();
+  std::vector<std::complex<double>> isf = signal.get_frequencies();
 
   // vector for output signal fourier (osf)
-  std::vector<std::complex<double>> osf;
-  osf.resize(length / 2 + 1);
+  std::vector<std::complex<double>> osf(length / 2 + 1);
 
-  fft_r2c(length, dt, output_signal, osf);
+  fft_r2c(dt, output_signal, osf);
 
   // since the maximum frequency is at length/2 we choose to fill a square
   // matrix where each frequency only goes up to length/4.
