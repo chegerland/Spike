@@ -1,23 +1,18 @@
 # add spike library
-file(GLOB_RECURSE spike_sources ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
 set(spike_sources
         FFT/fft.cpp
         Neuron/NeuronFactory.cpp
-        Neuron/IF/IF.cpp
-        Neuron/IF/PIF.cpp
-        Neuron/IF/LIF.cpp
-        Neuron/IFAC/IFAC.cpp
-        Neuron/IFAC/PIFAC.cpp
-        Neuron/IFAC/LIFAC.cpp
+        Neuron/IF.cpp
+        Neuron/IFAC.cpp
         Signal/CosineSignal.cpp
         Signal/Signal.cpp
         Signal/SignalFactory.cpp
         Signal/StepSignal.cpp
         Signal/TwoCosineSignal.cpp
         Signal/WhiteNoiseSignal.cpp
+        Simulations/SusceptibilitySimulation.cpp
         SpikeTrain/SpikeTrain.cpp
         Statistics/statistics.cpp
-        Susceptibility/Susceptibility.cpp
         TimeFrame/TimeFrame.cpp
         )
 add_library(spike SHARED ${spike_sources})

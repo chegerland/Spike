@@ -1,5 +1,15 @@
 # add sources to test
-file(GLOB_RECURSE test_sources ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
+set(test_sources
+        test_main.cpp
+        IF/test_PIF.cpp
+        IF/test_LIF.cpp
+        Signal/test_WhiteNoiseSignal.cpp
+        Signal/test_TwoCosineSignal.cpp
+        Signal/test_StepSignal.cpp
+        Signal/test_CosineSignal.cpp
+        SpikeTrain/test_SpikeTrain.cpp
+        TimeFrame/test_TimeFrame.cpp
+        )
 
 # Executable
 add_executable(test_${PROJECT_NAME}
