@@ -25,7 +25,7 @@ public:
 
   /**
    * @brief Construct StepSignal from input file
-   * @param input_file Input file in .json format
+   * @param input_file Input file in .ini format
    * @param time_frame TimeFrame
    */
   StepSignal(const std::string &input_file, const TimeFrame &time_frame);
@@ -42,7 +42,9 @@ public:
    */
   double signal(double t) const;
 
-  void print_info(std::ofstream &file) const override;
+  void print(std::ostream &out) const override {
+    out << "StepSignal(alpha: " << alpha << ", t_0: " << t_0 << ")";
+  }
 };
 
 #endif // STEPSIGNAL_H

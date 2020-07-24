@@ -1,7 +1,7 @@
 #include <iostream>
 
-// json parser
-#include <boost/property_tree/json_parser.hpp>
+// ini parser
+#include <boost/property_tree/ini_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 namespace pt = boost::property_tree;
 
@@ -17,8 +17,8 @@ std::unique_ptr<Signal> SignalFactory::create(const std::string &input_file,
   // Create a root
   pt::ptree root;
 
-  // Load the json file in this ptree
-  pt::read_json(input_file, root);
+  // Load the ini file in this ptree
+  pt::read_ini(input_file, root);
 
   // read simulation data into simulation variables
   auto type = root.get<std::string>("Signal.type");

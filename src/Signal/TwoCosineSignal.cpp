@@ -1,7 +1,7 @@
 #include <cmath>
 
-// json parser
-#include <boost/property_tree/json_parser.hpp>
+// ini parser
+#include <boost/property_tree/ini_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 namespace pt = boost::property_tree;
 
@@ -21,7 +21,7 @@ TwoCosineSignal::TwoCosineSignal(const std::string &input_file,
     : Signal(time_frame) {
 
   pt::ptree root;
-  pt::read_json(input_file, root);
+  pt::read_ini(input_file, root);
 
   // check if type is right
   auto type = root.get<std::string>("Signal.type");
@@ -39,7 +39,7 @@ TwoCosineSignal::TwoCosineSignal(const std::string &input_file,
 }
 
 void TwoCosineSignal::calculate_signal() {
-  for (size_t i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_size(); i++) {
     signal_values[i] = alpha * cos(2.0 * M_PI * f1 * time_frame.get_time(i)) +
                        beta * cos(2.0 * M_PI * f2 * time_frame.get_time(i));
   }
@@ -51,13 +51,3 @@ double TwoCosineSignal::signal(double t) const {
          beta * cos(2.0 * M_PI * f2 * t + phi);
 }
 
-void TwoCosineSignal::print_info(std::ofstream &file) const {
-  file << "# Signal parameters: "
-       << "\n"
-       << "# type = two cosine\n"
-       << "# alpha = " << alpha << "\n"
-       << "# f1 = " << f1 << "\n"
-       << "# beta = " << beta << "\n"
-       << "# f2 = " << f2 << "\n"
-       << "# phi = " << phi << "\n";
-}

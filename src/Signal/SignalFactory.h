@@ -16,7 +16,7 @@ public:
   /**
    * Returns a pointer to a get_value, depending on the type read from input
    * file
-   * @param input_file Input file in .json format
+   * @param input_file Input file in .ini format
    * @return Pointer to get_value
    */
   static std::unique_ptr<Signal> create(const std::string &input_file,
