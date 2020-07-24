@@ -2,7 +2,7 @@
 
 SpikeTrain::SpikeTrain(const TimeFrame &time_frame) : dt(time_frame.get_dt()) {
   // resize spike train vector
-  spikes.resize(time_frame.get_steps());
+  spikes.resize(time_frame.get_size());
   clear();
 }
 

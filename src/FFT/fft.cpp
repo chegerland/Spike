@@ -49,7 +49,7 @@ void fft_c2r(const double dt, const std::vector<std::complex<double>> &signal_fo
   fftw_destroy_plan(p);
 
   // normalize the signal correctly
-  for (double &i : signal) {
+  for (auto &i : signal) {
     i /= dt * length;
   }
 }
