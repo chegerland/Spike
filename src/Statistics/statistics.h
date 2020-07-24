@@ -13,8 +13,7 @@
 
 double mean(const std::vector<double> &array, size_t length);
 
-double standard_deviation(const std::vector<double> &array,
-                          size_t length);
+double standard_deviation(const std::vector<double> &array, size_t length);
 
 std::vector<double> get_spike_times(const SpikeTrain &spike_train,
                                     const TimeFrame &time);
@@ -48,6 +47,11 @@ void susceptibility_nonlinear_diag(const WhiteNoiseSignal &signal,
                                    const std::vector<double> &output_signal,
                                    const TimeFrame &time_frame,
                                    std::vector<std::complex<double>> &suscept);
+
+void susceptibility_lin_nonlin(
+    const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
+    const TimeFrame &time_frame, std::vector<std::complex<double>> &suscept_lin,
+    std::vector<std::complex<double>> &suscept_nonlin, const size_t norm);
 
 void add_spike_train_to_kernel(const SpikeTrain &spike_train,
                                const Signal &signal,
