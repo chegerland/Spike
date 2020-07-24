@@ -4,21 +4,13 @@
 
 int main(int argc, char *argv[]) {
 
-  TimeFrame time(0., 500., 1e-3);
+  LIFAC lif(3.0, 5.0, 10.5, 30*4.55);
+  TimeFrame tf(0, 10, 0.1);
+  WhiteNoiseSignal signal(5.0, 10, 20, tf);
 
-  // initial value for voltage
-  double alpha = 0.03;
-  double f_low = 0.0;
-  double f_high = 500.;
-  WhiteNoiseSignal signal(alpha, f_low, f_high, time);
-
-  std::vector<double> spectrum;
-  spectrum.resize(time.get_steps());
-  power_spectrum(signal.get_values(), time, spectrum);
-
-  for (double spec : spectrum) {
-    std::cout << spec << std::endl;
-  }
+  std::cout << lif << std::endl;
+  std::cout << tf << std::endl;
+  std::cout << signal << std::endl;
 
   return 0;
 }
