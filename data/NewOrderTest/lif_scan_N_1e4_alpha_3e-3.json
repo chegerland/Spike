@@ -1,0 +1,21 @@
+{
+  "Simulation": {
+    "N_neurons": 1e4
+  },
+  "TimeFrame": {
+    "t_0": 0.0,
+    "t_end": 500.0,
+    "dt": 1e-2
+  },
+  "Signal": {
+    "type": "white noise",
+    "alpha": 3e-3,
+    "f_low": 0.0,
+    "f_high" : 50.0
+  },
+  "Neuron": {
+    "type": "LIF",
+    "mu": 1.1,
+    "D": 0.001
+  }
+}

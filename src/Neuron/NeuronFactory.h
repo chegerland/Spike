@@ -7,7 +7,7 @@
 #define NEURONFACTORY_H
 
 #include <memory>
-#include "Neuron.h"
+#include "IF.h"
 
 /**
  * @class NeuronFactory
@@ -24,7 +24,7 @@ public:
    * @param input_file Input file in .json format
    * @return Pointer to neuron
    */
-  static std::unique_ptr<Neuron> create(const std::string &input_file);
+  static std::unique_ptr<IF> create(const std::string &input_file);
 };
 
 #endif // NEURONFACTORY_H

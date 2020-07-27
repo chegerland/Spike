@@ -12,7 +12,7 @@ TEST_CASE("TimeFrame is initialized correctly") {
     REQUIRE(time_frame.get_t_0() == t_0);
     REQUIRE(time_frame.get_t_end() == t_end);
     REQUIRE(time_frame.get_dt() == dt);
-    REQUIRE(time_frame.get_steps() == 101);
+    REQUIRE(time_frame.get_size() == 101);
 
     // check if array is defined correctly
     REQUIRE(time_frame.get_time(3) == Approx(.3));
@@ -20,14 +20,14 @@ TEST_CASE("TimeFrame is initialized correctly") {
   }
 
   SECTION("with .json constructor") {
-    const std::string file = "../data/test_files/TimeFrame_test.json";
+    const std::string file = "../data/test_files/TimeFrame_test.ini";
     TimeFrame time_frame(file);
 
     // check parameters
     REQUIRE(time_frame.get_t_0() == 0.0);
     REQUIRE(time_frame.get_t_end() == 10.0);
     REQUIRE(time_frame.get_dt() == 0.1);
-    REQUIRE(time_frame.get_steps() == 101);
+    REQUIRE(time_frame.get_size() == 101);
 
     // check if array is defined correctly
     REQUIRE(time_frame.get_time(3) == Approx(.3));

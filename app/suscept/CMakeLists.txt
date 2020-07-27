@@ -6,6 +6,7 @@ add_executable(suscept
 target_include_directories(suscept PRIVATE ../include)
 
 # link libraries
-target_link_libraries(suscept
+target_link_libraries(suscept PUBLIC
+        OpenMP::OpenMP_CXX
         spike
         )

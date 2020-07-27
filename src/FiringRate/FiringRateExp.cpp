@@ -14,11 +14,11 @@ FiringRateExp::FiringRateExp(const std::string &input_file,
   // check if type is right
   pt::ptree root;
   pt::read_json(input_file, root);
-  std::string type = root.get<std::string>("firing_rate.type");
+  std::string type = root.get<std::string>("FiringRate.type");
   assert(type == "exponential");
 
   // read resolution
-  res = root.get<double>("firing_rate.res");
+  res = root.get<double>("FiringRate.res");
   assert(res > 0);
 }
 

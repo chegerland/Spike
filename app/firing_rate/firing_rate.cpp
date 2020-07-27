@@ -59,7 +59,7 @@ Parameters read_cmd(int argc, char *argv[]) {
       /* set according output file */
       params.output_file =
           params.input_file.substr(0, params.input_file.find_last_of('.')) +
-          "_suscept.csv";
+          "_rate.csv";
     } else {
       std::cerr << "No input file given!" << std::endl;
       std::cout << std::endl;

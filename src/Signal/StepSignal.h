@@ -15,7 +15,6 @@ private:
   double t_0;   ///< start time
 
 public:
-
   /**
    * @brief Construct StepSignal from parameters
    * @param alpha Amplitude
@@ -26,10 +25,10 @@ public:
 
   /**
    * @brief Construct StepSignal from input file
-   * @param input_file Input file in .json format
+   * @param input_file Input file in .ini format
    * @param time_frame TimeFrame
    */
-  StepSignal(const std::string& input_file, const TimeFrame &time_frame);
+  StepSignal(const std::string &input_file, const TimeFrame &time_frame);
 
   /**
    * @brief Calculates the step get_value.
@@ -43,7 +42,9 @@ public:
    */
   double signal(double t) const;
 
-  void print_info(std::ofstream& file) override;
+  void print(std::ostream &out) const override {
+    out << "StepSignal(alpha: " << alpha << ", t_0: " << t_0 << ")";
+  }
 };
 
 #endif // STEPSIGNAL_H

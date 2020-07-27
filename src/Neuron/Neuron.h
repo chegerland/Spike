@@ -11,42 +11,28 @@
 #include "../TimeFrame/TimeFrame.h"
 
 /**
- * @class Neuron
- * @brief Abstract base class for neurons.
- * This is an abstract class that serves as an abstraction of neuron models.
- * We demand that every neuron model shall produce a spike train when given a
- * time frame as well as an external signal.
+ * @brief Abstract base class for Neurons.
  */
 class Neuron {
 public:
   /**
-   * @brief Fills the spike train for a given time frame.
-   * @param time_frame Time frame
+   * @brief Produces spikes and adds them to the spike train.
    * @param spike_train Spike train
    */
-  virtual void get_spike_train(const TimeFrame &time_frame,
-                               SpikeTrain &spike_train) = 0;
+  virtual void get_spikes(SpikeTrain &spike_train) = 0;
 
   /**
-   * @brief Fills the spike train for a given time frame and signal
-   * @param time_frame Time frame
-   * @param signal External signal
+   * @brief Produces spikes while neuron is subject to a signal and adds them to
+   * the spike train.
+   * @param signal Input signal
    * @param spike_train Spike train
    */
-  virtual void get_spike_train(const TimeFrame &time, const Signal &signal,
-                               SpikeTrain &spike_train) = 0;
+  virtual void get_spikes(Signal &signal, SpikeTrain &spike_train) = 0;
 
   /**
-   * @brief Virtual destructor.
-   * This is needed for proper memory freeing.
+   * @brief Virtual destructor
    */
-  virtual ~Neuron(){};
-
-  /**
-   * @brief Prints the neuron parameters to a given file.
-   * @param file File stream.
-   */
-  virtual void print_info(std::ofstream &file) = 0;
+  virtual ~Neuron() = default;
 };
 
 #endif // NEURON_H

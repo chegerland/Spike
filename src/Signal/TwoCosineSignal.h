@@ -33,9 +33,9 @@ public:
 
   /**
    * @brief Construct TwoCosineSignal from input file
-   * @param input_file Input file in .json format
+   * @param input_file Input file in .ini format
    */
-  TwoCosineSignal(const std::string& input_file, const TimeFrame& time_frame);
+  TwoCosineSignal(const std::string &input_file, const TimeFrame &time_frame);
 
   /**
    * @brief Calculates the cosine get_value.
@@ -48,10 +48,12 @@ public:
    * @param t Time
    * @return Signal, i.e. alpha*cos(2*pi*f1*t) + beta*cos(2*pi*f2*t + phi)
    */
-  double signal(double t) const;
+  [[nodiscard]] double signal(double t) const;
 
-
-  void print_info(std::ofstream& file) override;
+  void print(std::ostream &out) const override {
+    out << "TwoCosineSignal(alpha: " << alpha << ", f1: " << f1
+        << ", beta: " << beta << ", f2: " << f2 << ", phi: " << phi << ")";
+  }
 };
 
 #endif // TWOCOSINESIGNAL_H

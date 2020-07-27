@@ -12,18 +12,20 @@ FiringRateBox::FiringRateBox(const std::string &input_file,
   // check if type is right
   pt::ptree root;
   pt::read_json(input_file, root);
-  std::string type = root.get<std::string>("firing_rate.type");
+  std::string type = root.get<std::string>("FiringRate.type");
   assert(type == "box");
 }
 
 FiringRateBox::FiringRateBox(const TimeFrame &time_frame)
-    : FiringRate(time_frame){};
+    : FiringRate(time_frame){}
 
 void FiringRateBox::calculate() {
   // divide appropriate spike histogram entry by N*dt
   for (size_t i = 0; i < time_frame.get_steps(); i++) {
+//    values[i] =
+//        1. / ((double)N_Neurons * time_frame.get_dt()) * spike_histogram[i];
     values[i] =
-        1. / ((double)N_Neurons * time_frame.get_dt()) * spike_histogram[i];
+        1. / (time_frame.get_dt()) * spike_histogram[i];
   }
 }
 

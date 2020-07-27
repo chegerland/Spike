@@ -1,17 +1,17 @@
 #include "SpikeTrain.h"
 
-SpikeTrain::SpikeTrain(size_t length) : length(length) {
+SpikeTrain::SpikeTrain(const TimeFrame &time_frame) : dt(time_frame.get_dt()) {
   // resize spike train vector
-  spikes.resize(length);
+  spikes.resize(time_frame.get_size());
   clear();
 }
 
-int SpikeTrain::spike_count() {
+[[maybe_unused]] int SpikeTrain::spike_count() {
   int count = 0;
 
   // loop over spike vector, if spike occured, increase counter
-  for (size_t i = 0; i < length; i++) {
-    if (spikes[i]) {
+  for (double spike : spikes) {
+    if (spike != 0) {
       count++;
     }
   }
@@ -20,7 +20,7 @@ int SpikeTrain::spike_count() {
 
 void SpikeTrain::clear() {
   // fill spike vector with false everywhere
-  std::fill(spikes.begin(), spikes.end(), false);
+  std::fill(spikes.begin(), spikes.end(), 0);
 }
 
-void SpikeTrain::set_spike(unsigned int i) { spikes[i] = true; }
+void SpikeTrain::add_spike(size_t i) { spikes[i] += 1. / dt; }

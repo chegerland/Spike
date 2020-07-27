@@ -5,7 +5,7 @@ TEST_CASE("Two Cosine Signal constructors and calculation work",
           "[TwoCosineSignal]") {
   SECTION("Constructor from .ini file") {
 
-    const std::string file = "../data/test_files/TwoCosineSignal_test.json";
+    const std::string file = "../data/test_files/TwoCosineSignal_test.ini";
     const TimeFrame time_frame(file);
     TwoCosineSignal sig(file, time_frame);
 

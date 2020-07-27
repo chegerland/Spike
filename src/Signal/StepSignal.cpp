@@ -1,6 +1,8 @@
-// json parser
-#include <boost/property_tree/json_parser.hpp>
+// ini parser
+#include <boost/property_tree/ini_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+
+#include <cmath>
 namespace pt = boost::property_tree;
 
 #include "StepSignal.h"
@@ -17,10 +19,10 @@ StepSignal::StepSignal(const std::string &input_file,
     : Signal(time_frame) {
 
   pt::ptree root;
-  pt::read_json(input_file, root);
+  pt::read_ini(input_file, root);
 
   // check if type is right
-  std::string type = root.get<std::string>("Signal.type");
+  auto type = root.get<std::string>("Signal.type");
   assert(type == "step");
 
   // read simulation data into simulation variables
@@ -31,7 +33,7 @@ StepSignal::StepSignal(const std::string &input_file,
 }
 
 void StepSignal::calculate_signal() {
-  for (size_t i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_size(); i++) {
     if (time_frame.get_time(i) < t_0) {
       signal_values[i] = 0;
     } else {
@@ -42,7 +44,7 @@ void StepSignal::calculate_signal() {
 
 // the get_value
 double StepSignal::signal(double t) const {
-  double result;
+  double result = NAN;
 
   if (t < t_0) {
     result = 0;
@@ -51,11 +53,4 @@ double StepSignal::signal(double t) const {
   }
 
   return result;
-}
-
-void StepSignal::print_info(std::ofstream &file) {
-  file << "# Signal parameters: " << "\n"
-       << "# type = " << "step" << "\n"
-       << "# alpha = " << alpha << "\n"
-       << "# t_0 = " << t_0 << "\n";
 }

@@ -3,9 +3,10 @@
 
 #include "../TimeFrame/TimeFrame.h"
 #include "Signal.h"
+#include <complex>
+#include <random>
 #include <string>
 #include <vector>
-#include <random>
 
 /**
  * @class WhiteNoiseSignal
@@ -21,6 +22,7 @@ private:
   std::mt19937 generator;
   std::normal_distribution<double> dist;
 
+  std::vector<std::complex<double>> frequencies;
 public:
   /**
    * @brief Construct WhiteNoiseSignal from parameters
@@ -34,7 +36,7 @@ public:
 
   /**
    * @brief Construct WhiteNoiseSignal from input file
-   * @param input_file Input file in .json format
+   * @param input_file Input file in .ini format
    */
   WhiteNoiseSignal(const std::string &input_file, const TimeFrame &time_frame);
 
@@ -50,9 +52,19 @@ public:
    */
   double signal(double t) const;
 
-  std::vector<double> &get_values() { return this->signal_values; };
+  void set_alpha(double alpha_new) { alpha = alpha_new; };
 
-  void print_info(std::ofstream &file) override;
+  const std::vector<double> &get_values() const { return signal_values; };
+  const std::vector<std::complex<double>> &get_frequencies() const {
+    return frequencies;
+  };
+  double get_alpha() const { return alpha; };
+  double get_variance() const { return 2. * (f_high - f_low) * alpha; };
+
+  void print(std::ostream &out) const override {
+    out << "WhiteNoiseSignal(alpha: " << alpha << ", f_low: " << f_low
+        << ", f_high: " << f_high << ")";
+  }
 };
 
 #endif // WHITENOISESIGNAL_H
