@@ -3,7 +3,7 @@
 
 TEST_CASE("LIF Constructors, Drift and Diffusion work", "[LIF]") {
   SECTION(".ini file constructor") {
-    LIF lif("../data/test_files/LIF_test.json");
+    LIF lif("../data/test_files/LIF_test.ini");
 
     // check mu
     REQUIRE(lif.drift(0.0) == 1.14);

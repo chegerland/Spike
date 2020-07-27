@@ -3,7 +3,7 @@
 
 TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
   SECTION(".ini file constructor") {
-    PIF pif("../data/test_files/PIF_test.json");
+    PIF pif("../data/test_files/PIF_test.ini");
 
     // check mu
     REQUIRE(pif.drift(0.0) == 1.14);

@@ -48,4 +48,4 @@ target_include_directories(catch2 INTERFACE ${PROJECT_SOURCE_DIR}/include)
 # directories
 add_subdirectory("src")
 add_subdirectory("app")
-#add_subdirectory("test")
+add_subdirectory("test")

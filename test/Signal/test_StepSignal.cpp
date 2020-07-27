@@ -3,7 +3,7 @@
 
 TEST_CASE("StepSignal constructors and calculation works", "[StepSignal]") {
   SECTION("Constructor from .json file") {
-    const std::string file = "../data/test_files/StepSignal_test.json";
+    const std::string file = "../data/test_files/StepSignal_test.ini";
     const TimeFrame time_frame(file);
 
     StepSignal sig(file, time_frame);
@@ -30,7 +30,7 @@ TEST_CASE("Step Signal value array is computed correctly") {
   double t_0 = 4.;
   StepSignal signal(alpha, t_0, time_frame);
 
-  for (unsigned int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_size(); i++) {
     if (time_frame.get_time(i) < t_0) {
       REQUIRE(signal.get_value(i) == 0);
     } else {

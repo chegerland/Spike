@@ -11,9 +11,9 @@
 #include "../SpikeTrain/SpikeTrain.h"
 #include "../TimeFrame/TimeFrame.h"
 
-double mean(const std::vector<double> &array, size_t length);
+double mean(const std::vector<double> &array);
 
-double standard_deviation(const std::vector<double> &array, size_t length);
+double standard_deviation(const std::vector<double> &array);
 
 std::vector<double> get_spike_times(const SpikeTrain &spike_train,
                                     const TimeFrame &time);
@@ -25,7 +25,7 @@ void cross_spectrum(const std::vector<double> &input_signal,
                     const TimeFrame &time_frame,
                     std::complex<double> *spectrum);
 
-void power_spectrum(std::vector<double> &signal, const TimeFrame &time_frame,
+void power_spectrum(const std::vector<double> &signal, const TimeFrame &time_frame,
                     std::vector<double> &spectrum);
 
 void susceptibility(const std::vector<double> &input_signal,

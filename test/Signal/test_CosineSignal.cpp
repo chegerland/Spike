@@ -3,7 +3,7 @@
 
 TEST_CASE("Cosine Signal constructors and calculation work", "[CosineSignal]") {
   SECTION("Constructor from .json file") {
-    const std::string file = "../data/test_files/CosineSignal_test.json";
+    const std::string file = "../data/test_files/CosineSignal_test.ini";
     const TimeFrame time_frame(file);
     CosineSignal sig(file, time_frame);
 
@@ -33,7 +33,7 @@ TEST_CASE("Cosine signal value array is computed correctly") {
 
   CosineSignal sig(alpha, f, time_frame);
 
-  for (unsigned int i = 0; i < time_frame.get_steps(); i++) {
+  for (size_t i = 0; i < time_frame.get_size(); i++) {
     REQUIRE(sig.get_value(i) ==
             alpha * cos(2.0 * M_PI * f * time_frame.get_time(i)));
   }
