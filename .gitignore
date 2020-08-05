@@ -1,8 +1,7 @@
 build/
 bin/
 cmake-build-debug/*
-docs/doxygen/html/*
-docs/doxygen/latex/*
+docs/*
 lib/*
 .idea/
 *.o
