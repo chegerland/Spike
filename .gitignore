@@ -1,7 +1,7 @@
 build/
 bin/
 cmake-build-debug/*
-docs/*
+docs/
 lib/*
 .idea/
 *.o
