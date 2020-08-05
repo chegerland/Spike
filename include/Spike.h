@@ -1,11 +1,6 @@
 #ifndef SPIKE_H
 #define SPIKE_H
 
-#include "../src/FiringRate/FiringRate.h"
-#include "../src/FiringRate/FiringRateBox.h"
-#include "../src/FiringRate/FiringRateExp.h"
-#include "../src/FiringRate/FiringRateFactory.h"
-
 #include "../src/Neuron/IF.h"
 #include "../src/Neuron/IFAC.h"
 #include "../src/Neuron/Neuron.h"

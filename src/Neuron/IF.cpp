@@ -6,6 +6,7 @@
 #include <boost/property_tree/ptree.hpp>
 namespace pt = boost::property_tree;
 
+#include "../Integration/Integrations.h"
 #include "IF.h"
 
 IF::IF(double mu, double D) : mu(mu), D(D), generator(rd()), dist(0.0, 1.0) {
@@ -84,9 +85,35 @@ void IF::get_voltage_curve(const TimeFrame &time, std::vector<double> &v) {
   }
 }
 
-std::ostream& operator<< (std::ostream &out, const IF &neuron) {
+std::ostream &operator<<(std::ostream &out, const IF &neuron) {
   neuron.print(out);
   return out;
+}
+
+double IF::stationary_firing_rate(double relerr) {
+
+  auto inner_integrand = [=](double x) -> double {
+    return exp(-1. / D * potential(x));
+  };
+
+  auto outer_integrand = [=](double v) -> double {
+    return exp(1. / D * potential(v)) * qagil(inner_integrand, v, relerr*1e-2, 0);
+  };
+
+  double result = qags(outer_integrand, 0, 1, relerr, 0);
+
+  return D / result;
+}
+
+double IF::prob_density_zero(double v, double relerr) {
+
+  auto integrand = [=](double x) -> double {
+    return exp(1. / D * potential(v)) * heaviside(x);
+  };
+
+  return stationary_firing_rate(relerr) / D *
+                  exp(-1. / D * potential(v)) *
+                  qags(integrand, v, 1, relerr, 0);
 }
 
 PIF::PIF(double mu, double D) : IF(mu, D) {}
@@ -101,7 +128,9 @@ PIF::PIF(const std::string &input_file) : IF(input_file) {
   assert(type == "PIF");
 }
 
-double PIF::drift(double v) const { return this->mu; }
+inline double PIF::drift(double v) const { return mu; }
+
+double PIF::potential(double v) const { return -mu * v; }
 
 LIF::LIF(double mu, double D) : IF(mu, D) {}
 
@@ -116,3 +145,5 @@ LIF::LIF(const std::string &input_file) : IF(input_file) {
 }
 
 inline double LIF::drift(double v) const { return (this->mu - v); }
+
+double LIF::potential(double v) const { return (v - mu) * (v - mu) * 0.5; }

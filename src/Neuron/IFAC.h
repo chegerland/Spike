@@ -2,7 +2,6 @@
  * @file IFAC.h
  * @author C. H. Egerland
  */
-
 #ifndef IFAC_H
 #define IFAC_H
 
@@ -10,7 +9,6 @@
 #include <cmath>
 #include <vector>
 
-#include "../Signal/CosineSignal.h"
 #include "../Signal/Signal.h"
 #include "../SpikeTrain/SpikeTrain.h"
 #include "../TimeFrame/TimeFrame.h"

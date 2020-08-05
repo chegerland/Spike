@@ -1,3 +1,7 @@
+/**
+ * @file statistics.h
+ * @author C. H. Egerland
+ */
 #ifndef STATISTICS_H
 #define STATISTICS_H
 

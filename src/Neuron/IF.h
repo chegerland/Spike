@@ -2,7 +2,6 @@
  * @file IF.h
  * @author C. H. Egerland
  */
-
 #ifndef IF_H
 #define IF_H
 
@@ -10,13 +9,12 @@
 #include <cmath>
 #include <vector>
 
-#include "../Signal/CosineSignal.h"
 #include "../Signal/Signal.h"
 #include "../SpikeTrain/SpikeTrain.h"
 #include "../TimeFrame/TimeFrame.h"
 #include "Neuron.h"
-#include <random>
 #include <ostream>
+#include <random>
 
 /**
  * @brief Abstract base class for integrate-and-fire (IF) neurons
@@ -57,17 +55,19 @@ public:
   [[nodiscard]] double diffusion() const;
 
   /**
-   * @brief Obtains spikes by integrating the Langevin equation using an Euler-Maruyama scheme.
+   * @brief Obtains spikes by integrating the Langevin equation using an
+   * Euler-Maruyama scheme.
    * @param spike_train Spike train
    */
-  virtual void get_spikes(SpikeTrain &spike_train) override;
+  void get_spikes(SpikeTrain &spike_train) override;
 
   /**
-   * @brief Obtains spikes by integrating the Langevin equation using an Euler-Maruyama scheme. Neuron is subject to an applied signal
+   * @brief Obtains spikes by integrating the Langevin equation using an
+   * Euler-Maruyama scheme. Neuron is subject to an applied signal
    * @param signal Signal
    * @param spike_train Spike train
    */
-  virtual void get_spikes(Signal &signal, SpikeTrain &spike_train) override;
+  void get_spikes(Signal &signal, SpikeTrain &spike_train) override;
 
   /**
    * @brief Calculates the trajectory, i.e. v(t) for a given time frame.
@@ -76,16 +76,36 @@ public:
    */
   void get_voltage_curve(const TimeFrame &time, std::vector<double> &v);
 
+  /**
+   * @brief Returns the potential of an integrate-and-fire neuron.
+   * @param v Voltage
+   * @return The value of the potential at Voltage v
+   */
+  [[nodiscard]] virtual double potential(double v) const { return 0.; };
+
+  /**
+   * @brief Returns the stationary firing rate of the IF
+   * @return Stationary firing rate
+   */
+  virtual double stationary_firing_rate(double relerr);
+
+  /**
+   * @brief Returns the stationary probability density p_0 of the IF
+   * @param v Voltage
+   * @return
+   */
+  virtual double prob_density_zero(double v, double relerr);
+
   // setter functions
   void set_mu(double mu_new) { this->mu = mu_new; };
   void set_D(double D_new) { this->D = D_new; };
 
   // getter functions
-  double get_D() { return D; };
+  [[nodiscard]] double get_D() const { return D; };
 
-  virtual void print(std::ostream& out) const = 0;
+  virtual void print(std::ostream &out) const = 0;
 
-  friend std::ostream& operator<< (std::ostream &out, const IF &neuron);
+  friend std::ostream &operator<<(std::ostream &out, const IF &neuron);
 };
 
 /**
@@ -105,7 +125,7 @@ public:
    * @brief Construct PIF from input file.
    * @param input_file Path to .ini file
    */
-  explicit PIF(const std::string& input_file);
+  explicit PIF(const std::string &input_file);
 
   /**
    * @brief Returns drift of the PIF neuron, i.e. mu
@@ -113,7 +133,14 @@ public:
    * @param t time
    * @return Drift of PIF
    */
-  double drift(double v) const override;
+  [[nodiscard]] double drift(double v) const override;
+
+  /**
+   * @brief Returns potential of the PIF neuron, i.e. - mu*v
+   * @param v Voltage
+   * @return - mu*v
+   */
+  [[nodiscard]] double potential(double v) const override;
 
   void print(std::ostream &out) const override {
     out << "PIF(mu: " << mu << ", D: " << D << ")";
@@ -144,6 +171,13 @@ public:
    * @return Drift of LIF
    */
   [[nodiscard]] double drift(double v) const override;
+
+  /**
+   * @brief Returns potential of the LIF neuron, i.e. (v - mu)^2/2
+   * @param v Voltage
+   * @return (mu - v)^2/2
+   */
+  [[nodiscard]] double potential(double v) const override;
 
   void print(std::ostream &out) const override {
     out << "LIF(mu: " << mu << ", D: " << D << ")";

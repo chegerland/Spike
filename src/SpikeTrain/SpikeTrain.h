@@ -1,3 +1,7 @@
+/**
+ * @file SpikeTrain.h
+ * @author C. H. Egerland
+ */
 #ifndef SPIKETRAIN_H
 #define SPIKETRAIN_H
 
