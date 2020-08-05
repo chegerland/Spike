@@ -32,6 +32,8 @@ find_package(BLAS REQUIRED)
 include_directories("${PROJECT_SOURCE_DIR}/extern/armadillo-9.860.1/include")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DARMA_DONT_USE_WRAPPER")
 
+# include GSL
+find_package(GSL REQUIRED)
 
 # include directories
 include_directories(
