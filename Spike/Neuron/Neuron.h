@@ -30,11 +30,6 @@ public:
    * @param spike_train Spike train
    */
   virtual void get_spikes(Signal &signal, SpikeTrain &spike_train) = 0;
-
-  /**
-   * @brief Virtual destructor
-   */
-  virtual ~Neuron() = default;
 };
 
 } // namespace Spike

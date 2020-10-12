@@ -1,6 +1,7 @@
 # add spike library
 set(spike_sources
         FFT/fft.cpp
+        Integration/Integrations.cpp
         Neuron/NeuronFactory.cpp
         Neuron/IF.cpp
         Neuron/IFAC.cpp
@@ -19,6 +20,8 @@ set(spike_sources
 add_library(spike SHARED ${spike_sources})
 target_link_libraries(spike
         OpenMP::OpenMP_CXX
+        ${GSL_LIBRARY}
+        ${GSL_CBLAS_LIBRARY}
         ${Boost_PROGRAM_OPTIONS_LIBRARY}
         ${Boost_FILESYSTEM_LIBRARY}
         ${Boost_SYSTEM_LIBRARY}

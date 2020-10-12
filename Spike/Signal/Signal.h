@@ -29,11 +29,6 @@ public:
    */
   explicit Signal(const TimeFrame &time_frame);
 
-  /**
-   * @brief Virtual destructor
-   */
-  virtual ~Signal() = default;
-
   [[nodiscard]] double get_value(size_t i) const;
 
   virtual void print(std::ostream &out) const = 0;
