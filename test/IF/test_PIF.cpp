@@ -1,5 +1,7 @@
-#include "../../extern/catch/catch.hpp"
-#include "Spike.h"
+#include "extern/catch/catch.hpp"
+#include "Spike/Spike.h"
+
+using namespace Spike;
 
 TEST_CASE("PIF Constructors, Drift and Diffusion work", "[PIF]") {
   SECTION(".ini file constructor") {

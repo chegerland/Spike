@@ -71,7 +71,7 @@
 
 #else
 
-// prototypes for the wrapper functions defined in the wrapper run-time library (src/wrapper.cpp)
+// prototypes for the wrapper functions defined in the wrapper run-time library (Spike/wrapper.cpp)
 
 extern "C"
   {

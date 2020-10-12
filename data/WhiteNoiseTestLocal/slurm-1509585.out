@@ -1,4 +1,0 @@
-[2020-04-24 09:12:39.915936] [0x000015549ada37c0] [info]    SPIKE SUSCEPTIBILITY SIMULATION
-[2020-04-24 09:12:39.915966] [0x000015549ada37c0] [info]    Reading parameters from input file lif_scan_N_1e7_alpha_3e-6.json.
-[2020-04-24 09:12:39.916865] [0x000015549ada37c0] [info]    Sending 166666 trials to 59 processes.
-[2020-04-24 09:12:40.476876] [0x000015549ada37c0] [info]    Calculating linear and nonlinear susceptibility.

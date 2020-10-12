@@ -32,11 +32,9 @@ find_package(BLAS REQUIRED)
 include_directories("${PROJECT_SOURCE_DIR}/extern/armadillo-9.860.1/include")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DARMA_DONT_USE_WRAPPER")
 
-
 # include directories
 include_directories(
-  ${PROJECT_SOURCE_DIR}/include
-  ${PROJECT_BINARY_DIR}/include
+  ${PROJECT_SOURCE_DIR}
   ${Boost_INCLUDE_DIR}
 )
 
@@ -46,6 +44,6 @@ target_include_directories(catch2 INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
 
 # directories
-add_subdirectory("src")
+add_subdirectory("Spike")
 add_subdirectory("app")
 add_subdirectory("test")
