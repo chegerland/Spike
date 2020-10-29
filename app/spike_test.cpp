@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Spike/Spike.h"
 
 using namespace Spike;

@@ -1,7 +1,6 @@
 #ifndef SPIKE_STATISTICS_H
 #define SPIKE_STATISTICS_H
 
-#include <armadillo>
 #include <complex>
 #include <fftw3.h>
 #include <vector>

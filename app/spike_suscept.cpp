@@ -12,6 +12,7 @@ namespace logging = boost::log;
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
+#include <fstream>
 #include <mpi.h>
 
 using namespace Spike;

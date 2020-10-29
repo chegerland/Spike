@@ -24,5 +24,4 @@ target_link_libraries(test_${PROJECT_NAME} PUBLIC
         ${Boost_PROGRAM_OPTIONS_LIBRARY}
         ${Boost_FILESYSTEM_LIBRARY}
         ${Boost_SYSTEM_LIBRARY}
-        OpenMP::OpenMP_CXX
         )

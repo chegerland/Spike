@@ -4,7 +4,6 @@ add_executable(spike_suscept
         )
 target_link_libraries(spike_suscept PUBLIC
         MPI::MPI_CXX
-        OpenMP::OpenMP_CXX
         spike
         )
 
@@ -14,7 +13,6 @@ add_executable(spike_suscept_nonlin
         )
 target_link_libraries(spike_suscept_nonlin PUBLIC
         MPI::MPI_CXX
-        OpenMP::OpenMP_CXX
         spike
         )
 
@@ -24,7 +22,6 @@ add_executable(spike_firing_rate
         )
 target_link_libraries(spike_firing_rate PUBLIC
         MPI::MPI_CXX
-        OpenMP::OpenMP_CXX
         spike
         )
 

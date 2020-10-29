@@ -21,7 +21,6 @@ set(spike_sources
         )
 add_library(spike SHARED ${spike_sources})
 target_link_libraries(spike
-        OpenMP::OpenMP_CXX
         ${GSL_LIBRARY}
         ${GSL_CBLAS_LIBRARY}
         ${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -29,7 +28,6 @@ target_link_libraries(spike
         ${Boost_SYSTEM_LIBRARY}
         ${Boost_THREAD_LIBRARY}
         ${Boost_LOG_LIBRARY}
-        ${BLAS_LIBRARIES}
-        ${LAPACK_LIBRARIES}
+        ${FFTW_LIBRARIES}
         )
 set_target_properties(spike PROPERTIES PUBLIC_HEADER Spike.h)
