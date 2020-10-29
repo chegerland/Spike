@@ -6,7 +6,6 @@ before_script:
   
 stages:
   - build
-  - test
 
 build: 
   stage: build
@@ -20,10 +19,3 @@ build:
       - bin/test_Spike
       - lib/
     expire_in: 1 hour
-
-test:
-  stage: test
-  script:
-    - mkdir -p build
-    - cd build
-    - ./../bin/test_Spike
