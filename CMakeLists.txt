@@ -17,7 +17,7 @@ project("Spike")
 set(VERSION 0.1)
 
 # add the cmake path
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/findFFTW/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # find FFTW, gsl, mpi
 find_package(FFTW REQUIRED)
