@@ -55,6 +55,12 @@ void susceptibility_lin_nonlin(
     const TimeFrame &time_frame, std::vector<std::complex<double>> &suscept_lin,
     std::vector<std::complex<double>> &suscept_nonlin, size_t norm);
 
+void susceptibility_nonlin(
+    const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
+    const TimeFrame &time_frame,
+    std::vector<std::vector<std::complex<double>>> &suscept_nonlin,
+    size_t norm);
+
 void add_spike_train_to_kernel(const SpikeTrain &spike_train,
                                const Signal &signal,
                                const TimeFrame &time_frame, double norm,

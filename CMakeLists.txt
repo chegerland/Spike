@@ -16,6 +16,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 project("Spike")
 set(VERSION 0.1)
 
+# find gsl
+find_package(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIRS})
+
 # find boost package
 set(Boost_NO_BOOST_CMAKE ON)
 ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)

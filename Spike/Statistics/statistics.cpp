@@ -188,7 +188,7 @@ void susceptibility_nonlinear_diag(const WhiteNoiseSignal &signal,
   const double dt = time_frame.get_dt();
 
   // vector for input signal fourier (isf)
-  const std::vector<std::complex<double>>& isf = signal.get_frequencies();
+  const std::vector<std::complex<double>> &isf = signal.get_frequencies();
 
   // vector for output signal fourier (osf)
   std::vector<std::complex<double>> osf(length / 2 + 1);
@@ -218,7 +218,7 @@ void susceptibility_lin_nonlin(
   const double T = time_frame.get_t_end() - time_frame.get_t_0();
 
   // vector for input signal fourier (isf) and output signal fourier (osf)
-  const std::vector<std::complex<double>>& isf = signal.get_frequencies();
+  const std::vector<std::complex<double>> &isf = signal.get_frequencies();
   std::vector<std::complex<double>> osf(length / 2 + 1);
 
   fft_r2c(dt, output_signal, osf);
@@ -235,6 +235,35 @@ void susceptibility_lin_nonlin(
   for (size_t i = length / 4 + 1; i < length / 2 + 1; i++) {
     scale_lin = 1. / (((double)norm) * pow(std::abs(isf[i]), 2));
     suscept_lin[i] += scale_lin * (osf[i] * std::conj(isf[i]));
+  }
+}
+
+void susceptibility_nonlin(const WhiteNoiseSignal &signal,
+                           const std::vector<double> &output_signal,
+                           const TimeFrame &time_frame,
+                           std::vector<std::vector<std::complex<double>>> &suscept_nonlin,
+                           const size_t norm) {
+
+  // length of the signals is N, fourier transform will be N/2 + 1 because we
+  // perform real DFT
+  const size_t length = time_frame.get_size();
+  const double dt = time_frame.get_dt();
+  const double T = time_frame.get_t_end() - time_frame.get_t_0();
+
+  // vector for input signal fourier (isf) and output signal fourier (osf)
+  const std::vector<std::complex<double>> &isf = signal.get_frequencies();
+  std::vector<std::complex<double>> osf(length / 2 + 1);
+
+  fft_r2c(dt, output_signal, osf);
+
+  double scale_nonlin = 0.;
+  for (size_t i = 0; i < length / 4; i++) {
+    for (size_t j = 0; j < length / 4 - i; j++) {
+      scale_nonlin = T / (((double)norm) * 2. * pow(std::abs(isf[i]), 2) *
+                          pow(std::abs(isf[j]), 2));
+      suscept_nonlin[i][j] +=
+          scale_nonlin * (osf[i + j] * std::conj(isf[i]) * std::conj(isf[j]));
+    }
   }
 }
 

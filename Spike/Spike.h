@@ -13,7 +13,8 @@
 #include "Spike/Signal/TwoCosineSignal.h"
 #include "Spike/Signal/WhiteNoiseSignal.h"
 
-#include "Spike/Simulation/SusceptibilitySimulation.h"
+#include "Spike/Simulation/SusceptibilitySimulationLinNonlin.h"
+#include "Spike/Simulation/SusceptibilitySimulationNonlin.h"
 #include "Spike/Simulation/FiringRateSimulation.h"
 
 #include "Spike/Statistics/statistics.h"
