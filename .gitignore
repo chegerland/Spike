@@ -3,8 +3,7 @@ bin/
 cmake-build-debug/*
 docs/*
 data/*
-lib/*
-.idea/
+.idea
 *.o
 *.log
 *.swp
