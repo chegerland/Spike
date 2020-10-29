@@ -1,6 +1,7 @@
-#include "../../extern/catch/catch.hpp"
-#include "Spike.h"
-#include <iostream>
+#include "extern/catch/catch.hpp"
+#include "Spike/Spike.h"
+
+using namespace Spike;
 
 TEST_CASE("White noise constructors work") {
   SECTION("Constructor from .json file") {

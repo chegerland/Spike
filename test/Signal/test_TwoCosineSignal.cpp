@@ -1,5 +1,7 @@
-#include "../../extern/catch/catch.hpp"
-#include "Spike.h"
+#include "extern/catch/catch.hpp"
+#include "Spike/Spike.h"
+
+using namespace Spike;
 
 TEST_CASE("Two Cosine Signal constructors and calculation work",
           "[TwoCosineSignal]") {

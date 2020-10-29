@@ -1,5 +1,7 @@
-#include "../../extern/catch/catch.hpp"
-#include "Spike.h"
+#include "extern/catch/catch.hpp"
+#include "Spike/Spike.h"
+
+using namespace Spike;
 
 TEST_CASE("SpikeTrain is constructed correctly"){
   TimeFrame time_frame(0.0, 10.0, 1e-2);
