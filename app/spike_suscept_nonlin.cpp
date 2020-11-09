@@ -1,5 +1,5 @@
-#include "extern/ProgressBar.hpp"
 #include "Spike/Spike.h"
+#include "extern/ProgressBar.hpp"
 
 // logging
 #include <boost/log/core.hpp>
@@ -99,12 +99,12 @@ int main(int argc, char *argv[]) {
 
   // depending on the world rank start either the main process or a sub process
   if (world_rank == 0) {
-    BOOST_LOG_TRIVIAL(info) << "Reading parameters from input file "
-                            << opts.input_file << ".";
+    BOOST_LOG_TRIVIAL(info)
+        << "Reading parameters from input file " << opts.input_file << ".";
 
     main_process(suscept_sim, opts.output_file);
 
-    BOOST_LOG_TRIVIAL(info) << "Simulation finished."; 
+    BOOST_LOG_TRIVIAL(info) << "Simulation finished.";
   } else {
     sub_process(suscept_sim);
   }
@@ -151,17 +151,17 @@ void main_process(SusceptibilitySimulationNonlin &suscept_sim,
   std::vector<std::vector<std::complex<double>>> tmp_suscept_nonlin(
       suscept_sim.get_size_nonlin());
 
-  for(size_t i = 0; i < tmp_suscept_nonlin.size(); i++) {
-    tmp_suscept_nonlin[i].resize(tmp_suscept_nonlin.size() - i);
+  for (size_t i = 0; i < tmp_suscept_nonlin.size(); i++) {
+    tmp_suscept_nonlin[i].resize(tmp_suscept_nonlin.size());
   }
 
   MPI_Status status;
   for (int i = 1; i < world_size; i++) {
 
-    for(size_t j = 0; j < tmp_suscept_nonlin.size(); j++) {
-      MPI_Recv(tmp_suscept_nonlin[j].data(), (int)(tmp_suscept_nonlin.size() - j),
-               MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, (int)(1 + j), MPI_COMM_WORLD,
-               &status);
+    for (size_t j = 0; j < tmp_suscept_nonlin.size(); j++) {
+      MPI_Recv(tmp_suscept_nonlin[j].data(),
+               (int)tmp_suscept_nonlin.size(), MPI_CXX_DOUBLE_COMPLEX,
+               MPI_ANY_SOURCE, (int)(1 + j), MPI_COMM_WORLD, &status);
     }
 
     // add array to overall firing rate
@@ -177,23 +177,36 @@ void main_process(SusceptibilitySimulationNonlin &suscept_sim,
 
   file << "#" << suscept_sim;
   file << "#\n";
-  file << "# Data format:\n"
-       << "# Frequency, Re(Suscept_1), Im(Suscept_1), Re(Suscept_2), "
-          "Im(Suscept_2)\n";
+  file
+      << "# Data format:\n"
+      << "# Matrix\n";
   file << "#\n";
 
   auto suscept_nonlin = suscept_sim.get_suscept_nonlin();
   auto time_frame = suscept_sim.get_time_frame();
 
   for (size_t i = 0; i < suscept_nonlin.size(); i++) {
-    for (size_t j = 0; j < suscept_nonlin.size(); j++) {
-      if (j < suscept_nonlin.size() - i) {
-        file << std::real(suscept_nonlin[i][j]) << ",";
+    for (size_t j = 0; j < suscept_nonlin.size() - 1; j++) {
+      if (std::imag(suscept_nonlin[i][j]) < 0) {
+        file << std::real(suscept_nonlin[i][j])
+             << std::imag(suscept_nonlin[i][j]) << "j"
+             << ",";
       } else {
-        file << 0 << ",";
+        file << std::real(suscept_nonlin[i][j]) << "+"
+             << std::imag(suscept_nonlin[i][j]) << "j"
+             << ",";
+
       }
     }
-    file << "\n";
+    if (std::imag(suscept_nonlin[i][suscept_nonlin.size() - 1]) < 0) {
+      file << std::real(suscept_nonlin[i][suscept_nonlin.size() - 1])
+           << std::imag(suscept_nonlin[i][suscept_nonlin.size() - 1]) << "j"
+           << "\n";
+    } else {
+      file << std::real(suscept_nonlin[i][suscept_nonlin.size() - 1]) << "+"
+           << std::imag(suscept_nonlin[i][suscept_nonlin.size() - 1]) << "j"
+           << "\n";
+    }
   }
 
   file.close();
@@ -211,8 +224,8 @@ void sub_process(SusceptibilitySimulationNonlin &suscept_sim) {
   // send data to main process
   auto suscept_nonlin = suscept_sim.get_suscept_nonlin();
 
-  for(size_t j = 0; j < suscept_nonlin.size(); j++) {
-    MPI_Send(suscept_nonlin[j].data(), (int)(suscept_nonlin.size() - j),
+  for (size_t j = 0; j < suscept_nonlin.size(); j++) {
+    MPI_Send(suscept_nonlin[j].data(), (int)suscept_nonlin.size(),
              MPI_CXX_DOUBLE_COMPLEX, 0, (int)(1 + j), MPI_COMM_WORLD);
   }
 }

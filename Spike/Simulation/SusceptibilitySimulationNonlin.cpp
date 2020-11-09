@@ -8,8 +8,8 @@ SusceptibilitySimulationNonlin::SusceptibilitySimulationNonlin(
     : SusceptibilitySimulation(input_file),
       suscept_nonlin(time_frame.get_size() / 4) {
 
-  for(size_t i = 0; i < suscept_nonlin.size(); i++) {
-    suscept_nonlin[i].resize(suscept_nonlin.size() - i);
+  for(auto & i : suscept_nonlin) {
+    i.resize(suscept_nonlin.size());
   }
 }
 
@@ -33,7 +33,7 @@ void SusceptibilitySimulationNonlin::add_to_suscepts(
     const std::vector<std::vector<std::complex<double>>> &tmp_nonlin) {
 
   for (size_t i = 0; i < suscept_nonlin.size(); i++) {
-    for (size_t j = 0; j < suscept_nonlin.size() - i; j++) {
+    for (size_t j = 0; j < suscept_nonlin.size(); j++) {
       suscept_nonlin[i][j] += tmp_nonlin[i][j];
     }
   }
