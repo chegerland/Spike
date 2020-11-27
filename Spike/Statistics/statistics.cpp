@@ -261,8 +261,11 @@ void susceptibility_nonlin(const WhiteNoiseSignal &signal,
     for (size_t j = 0; j < length / 4; j++) {
       scale_nonlin = T / (((double)norm) * 2. * pow(std::abs(isf[i]), 2) *
                           pow(std::abs(isf[j]), 2));
+      //suscept_nonlin[i][j] +=
+      //    scale_nonlin * (osf[i + j] * std::conj(isf[i]) * std::conj(isf[j]));
+
       suscept_nonlin[i][j] +=
-          scale_nonlin * (osf[i + j] * std::conj(isf[i]) * std::conj(isf[j]));
+          scale_nonlin * (std::conj(osf[i + j]) * isf[i] * isf[j]);
     }
   }
 }
