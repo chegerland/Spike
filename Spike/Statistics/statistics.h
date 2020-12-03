@@ -37,17 +37,7 @@ void susceptibility(const std::vector<double> &input_signal,
 void susceptibility(const WhiteNoiseSignal &signal,
                     const std::vector<double> &output_signal,
                     const TimeFrame &time_frame,
-                    std::vector<std::complex<double>> &suscept);
-
-void susceptibility_nonlinear_diag(const std::vector<double> &input_signal,
-                                   const std::vector<double> &output_signal,
-                                   const TimeFrame &time_frame,
-                                   std::vector<std::complex<double>> &suscept);
-
-void susceptibility_nonlinear_diag(const WhiteNoiseSignal &signal,
-                                   const std::vector<double> &output_signal,
-                                   const TimeFrame &time_frame,
-                                   std::vector<std::complex<double>> &suscept);
+                    std::vector<std::complex<double>> &suscept, size_t norm);
 
 void susceptibility_lin_nonlin(
     const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
@@ -59,11 +49,6 @@ void susceptibility_nonlin(
     const TimeFrame &time_frame,
     std::vector<std::vector<std::complex<double>>> &suscept_nonlin,
     size_t norm);
-
-void add_spike_train_to_kernel(const SpikeTrain &spike_train,
-                               const Signal &signal,
-                               const TimeFrame &time_frame, double norm,
-                               double *kernel);
 
 } // namespace Spike
 

@@ -131,78 +131,23 @@ void susceptibility(const std::vector<double> &input_signal,
 void susceptibility(const WhiteNoiseSignal &signal,
                     const std::vector<double> &output_signal,
                     const TimeFrame &time_frame,
-                    std::vector<std::complex<double>> &suscept) {
+                    std::vector<std::complex<double>> &suscept,
+                    const size_t norm) {
 
   // length of the signals is N, fourier transform will be N/2 + 1 because we
   // perform real DFT
-  const size_t length = time_frame.get_size();
+  const auto length = time_frame.get_size();
 
-  // vector for input signal fourier (isf)
-  std::vector<std::complex<double>> isf = signal.get_frequencies();
-
-  // vector for output signal fourier (osf)
+  // vector for input signal fourier (isf) and output signal fourier (osf)
+  const auto &isf = signal.get_frequencies();
   std::vector<std::complex<double>> osf(length / 2 + 1);
 
   fft_r2c(time_frame.get_dt(), output_signal, osf);
 
   // fill susceptibility and normalize appropriately
   for (size_t i = 0; i < length / 2 + 1; i++) {
-    double scale = 1. / (pow(std::abs(isf[i]), 2));
-    suscept[i] = scale * (osf[i] * std::conj(isf[i]));
-  }
-}
-
-void susceptibility_nonlinear_diag(const std::vector<double> &input_signal,
-                                   const std::vector<double> &output_signal,
-                                   const TimeFrame &time_frame,
-                                   std::vector<std::complex<double>> &suscept) {
-
-  // length of the signals is N, fourier transform will be N/2 + 1 because we
-  // perform real DFT
-  size_t length = time_frame.get_size();
-
-  // vector for input signal fourier (isf) and output signal fourier (osf)
-  std::vector<std::complex<double>> isf(length / 2 + 1);
-  std::vector<std::complex<double>> osf(length / 2 + 1);
-
-  fft_r2c(time_frame.get_dt(), input_signal, isf);
-  fft_r2c(time_frame.get_dt(), output_signal, osf);
-
-  // since the maximum frequency is at length/2 we choose to fill a square
-  // matrix where each frequency only goes up to length/4.
-  // fill susceptibility and normalize appropriately
-  for (size_t i = 0; i < length / 4; i++) {
-    double scale = 1. / (2. * time_frame.get_dt() * pow(std::abs(isf[i]), 4));
-    suscept[i] = scale * (osf[2 * i] * std::conj(isf[i]) * std::conj(isf[i]));
-  }
-}
-
-void susceptibility_nonlinear_diag(const WhiteNoiseSignal &signal,
-                                   const std::vector<double> &output_signal,
-                                   const TimeFrame &time_frame,
-                                   std::vector<std::complex<double>> &suscept) {
-
-  // length of the signals is N, fourier transform will be N/2 + 1 because we
-  // perform real DFT
-  const size_t length = time_frame.get_size();
-  const double dt = time_frame.get_dt();
-
-  // vector for input signal fourier (isf)
-  const std::vector<std::complex<double>> &isf = signal.get_frequencies();
-
-  // vector for output signal fourier (osf)
-  std::vector<std::complex<double>> osf(length / 2 + 1);
-
-  fft_r2c(dt, output_signal, osf);
-
-  // since the maximum frequency is at length/2 we choose to fill a square
-  // matrix where each frequency only goes up to length/4.
-  // fill susceptibility and normalize appropriately
-  // double variance = signal.get_variance() / (time_frame.get_t_end() -
-  // time_frame.get_t_0());
-  for (size_t i = 0; i < length / 4; i++) {
-    double scale = 1. / (2. * pow(std::abs(isf[i]), 4));
-    suscept[i] = scale * (osf[2 * i] * std::conj(isf[i]) * std::conj(isf[i]));
+    double scale = 1. / (((double)norm) * pow(std::abs(isf[i]), 2));
+    suscept[i] += scale * (osf[i] * std::conj(isf[i]));
   }
 }
 
@@ -213,12 +158,12 @@ void susceptibility_lin_nonlin(
 
   // length of the signals is N, fourier transform will be N/2 + 1 because we
   // perform real DFT
-  const size_t length = time_frame.get_size();
-  const double dt = time_frame.get_dt();
-  const double T = time_frame.get_t_end() - time_frame.get_t_0();
+  const auto length = time_frame.get_size();
+  const auto dt = time_frame.get_dt();
+  const auto T = time_frame.get_t_end() - time_frame.get_t_0();
 
   // vector for input signal fourier (isf) and output signal fourier (osf)
-  const std::vector<std::complex<double>> &isf = signal.get_frequencies();
+  const auto &isf = signal.get_frequencies();
   std::vector<std::complex<double>> osf(length / 2 + 1);
 
   fft_r2c(dt, output_signal, osf);
@@ -238,20 +183,20 @@ void susceptibility_lin_nonlin(
   }
 }
 
-void susceptibility_nonlin(const WhiteNoiseSignal &signal,
-                           const std::vector<double> &output_signal,
-                           const TimeFrame &time_frame,
-                           std::vector<std::vector<std::complex<double>>> &suscept_nonlin,
-                           const size_t norm) {
+void susceptibility_nonlin(
+    const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
+    const TimeFrame &time_frame,
+    std::vector<std::vector<std::complex<double>>> &suscept_nonlin,
+    const size_t norm) {
 
   // length of the signals is N, fourier transform will be N/2 + 1 because we
   // perform real DFT
-  const size_t length = time_frame.get_size();
-  const double dt = time_frame.get_dt();
-  const double T = time_frame.get_t_end() - time_frame.get_t_0();
+  const auto length = time_frame.get_size();
+  const auto dt = time_frame.get_dt();
+  const auto T = time_frame.get_t_end() - time_frame.get_t_0();
 
   // vector for input signal fourier (isf) and output signal fourier (osf)
-  const std::vector<std::complex<double>> &isf = signal.get_frequencies();
+  const auto &isf = signal.get_frequencies();
   std::vector<std::complex<double>> osf(length / 2 + 1);
 
   fft_r2c(dt, output_signal, osf);
@@ -261,24 +206,14 @@ void susceptibility_nonlin(const WhiteNoiseSignal &signal,
     for (size_t j = 0; j < length / 4; j++) {
       scale_nonlin = T / (((double)norm) * 2. * pow(std::abs(isf[i]), 2) *
                           pow(std::abs(isf[j]), 2));
-      //suscept_nonlin[i][j] +=
-      //    scale_nonlin * (osf[i + j] * std::conj(isf[i]) * std::conj(isf[j]));
 
-      suscept_nonlin[i][j] +=
-          scale_nonlin * (std::conj(osf[i + j]) * isf[i] * isf[j]);
-    }
-  }
-}
-
-void add_spike_train_to_kernel(const SpikeTrain &spike_train,
-                               const Signal &signal,
-                               const TimeFrame &time_frame, double norm,
-                               double *kernel) {
-
-  for (size_t i = 0; i < time_frame.get_size(); i++) {
-    if (spike_train.get_spike(i)) {
-      for (size_t j = 0; j < i; j++) {
-        kernel[j] += norm * signal.get_value(i - j);
+      // fill lower triangle and upper triangle separately
+      if (i <= j) {
+        suscept_nonlin[i][j] +=
+            scale_nonlin * (osf[i + j] * std::conj(isf[i]) * std::conj(isf[j]));
+      } else {
+        suscept_nonlin[i][j] +=
+            scale_nonlin * (std::conj(osf[i - j]) * isf[i] * std::conj(isf[j]));
       }
     }
   }
