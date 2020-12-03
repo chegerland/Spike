@@ -8,8 +8,8 @@ SpikeTrain::SpikeTrain(const TimeFrame &time_frame) : dt(time_frame.get_dt()) {
   clear();
 }
 
-[[maybe_unused]] int SpikeTrain::spike_count() {
-  int count = 0;
+[[maybe_unused]] size_t SpikeTrain::spike_count() {
+  size_t count = 0;
 
   // loop over spike vector, if spike occured, increase counter
   for (double spike : spikes) {

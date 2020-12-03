@@ -13,8 +13,8 @@ SusceptibilitySimulationNonlin::SusceptibilitySimulationNonlin(
   }
 }
 
-void SusceptibilitySimulationNonlin::calculate(int trials) {
-  for (int i = 0; i < trials; i++) {
+void SusceptibilitySimulationNonlin::calculate(size_t trials) {
+  for (size_t i = 0; i < trials; i++) {
 
     // reset spike train and calculate new signal
     spike_train.clear();

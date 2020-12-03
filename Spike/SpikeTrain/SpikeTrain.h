@@ -31,7 +31,7 @@ public:
    * @brief Counts the number of spikes in the spike train.
    * @return Number of spikes
    */
-  int spike_count();
+  size_t spike_count();
 
   /**
    * @brief Clears the spike train, i.e. sets all values to zero.

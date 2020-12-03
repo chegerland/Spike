@@ -9,8 +9,8 @@ SusceptibilitySimulationLinNonlin::SusceptibilitySimulationLinNonlin(
       suscept_lin(time_frame.get_size() / 2 + 1, 0),
       suscept_nonlin(time_frame.get_size() / 4 + 1, 0) {}
 
-void SusceptibilitySimulationLinNonlin::calculate(int trials) {
-  for (int i = 0; i < trials; i++) {
+void SusceptibilitySimulationLinNonlin::calculate(size_t trials) {
+  for (size_t i = 0; i < trials; i++) {
 
     // reset spike train and calculate new signal
     spike_train.clear();

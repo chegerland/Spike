@@ -17,7 +17,7 @@ private:
 
 public:
  explicit SusceptibilitySimulationLinNonlin(const std::string &input_file);
- void calculate(int trials) override;
+ void calculate(size_t trials) override;
  void add_to_suscepts(const std::vector<std::complex<double>> &tmp_lin,
                        const std::vector<std::complex<double>> &tmp_nonlin);
 
