@@ -1,5 +1,5 @@
-#include "extern/ProgressBar.hpp"
 #include "Spike/Spike.h"
+#include "extern/ProgressBar.hpp"
 
 // logging
 #include <boost/log/core.hpp>
@@ -17,9 +17,9 @@ namespace po = boost::program_options;
 
 using namespace Spike;
 
-void main_process(SusceptibilitySimulationLinNonlin &suscept_sim,
+void main_process(SusceptibilitySimulationLin &suscept_sim,
                   const std::string &output_file);
-void sub_process(SusceptibilitySimulationLinNonlin &suscept_sim);
+void sub_process(SusceptibilitySimulationLin &suscept_sim);
 
 void init_logger() {
   logging::core::get()->set_filter(logging::trivial::severity >=
@@ -47,9 +47,9 @@ Parameters read_cmd(int argc, char *argv[]) {
 
     // if the help option is given, show the flag description
     if (vm.count("help")) {
-      std::cout << "SPIKE SUSCEPTIBILITY SIMULATION" << std::endl;
+      std::cout << "SPIKE LINEAR SUSCEPTIBILITY SIMULATION" << std::endl;
       std::cout << "-------------------------------" << std::endl;
-      std::cout << "Calculates the linear and nonlinear susceptibility of a "
+      std::cout << "Calculates the linear susceptibility of a "
                    "given neuron."
                 << std::endl;
       std::cout << "All parameters have to be defined in a .ini input file."
@@ -63,7 +63,7 @@ Parameters read_cmd(int argc, char *argv[]) {
       /* set according output file */
       params.output_file =
           params.input_file.substr(0, params.input_file.find_last_of('.')) +
-          "_suscept.csv";
+          "_suscept_lin.csv";
     } else {
       std::cerr << "No input file given!" << std::endl;
       std::cout << std::endl;
@@ -95,16 +95,16 @@ int main(int argc, char *argv[]) {
   std::string input_file = opts.input_file;
 
   // create susceptilibity simulation
-  SusceptibilitySimulationLinNonlin suscept_sim(input_file);
+  SusceptibilitySimulationLin suscept_sim(input_file);
 
   // depending on the world rank start either the main process or a sub process
   if (world_rank == 0) {
-    BOOST_LOG_TRIVIAL(info) << "Reading parameters from input file "
-                            << opts.input_file << ".";
+    BOOST_LOG_TRIVIAL(info)
+        << "Reading parameters from input file " << opts.input_file << ".";
 
     main_process(suscept_sim, opts.output_file);
 
-    BOOST_LOG_TRIVIAL(info) << "Simulation finished."; 
+    BOOST_LOG_TRIVIAL(info) << "Simulation finished.";
   } else {
     sub_process(suscept_sim);
   }
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-void main_process(SusceptibilitySimulationLinNonlin &suscept_sim,
+void main_process(SusceptibilitySimulationLin &suscept_sim,
                   const std::string &output_file) {
 
   // initialize logger
@@ -149,8 +149,6 @@ void main_process(SusceptibilitySimulationLinNonlin &suscept_sim,
 
   // receive arrays back from subprocesses
   std::vector<std::complex<double>> tmp_suscept_lin(suscept_sim.get_size_lin());
-  std::vector<std::complex<double>> tmp_suscept_nonlin(
-      suscept_sim.get_size_nonlin());
 
   MPI_Status status;
   for (int i = 1; i < world_size; i++) {
@@ -159,12 +157,9 @@ void main_process(SusceptibilitySimulationLinNonlin &suscept_sim,
     MPI_Recv(tmp_suscept_lin.data(), (int)suscept_sim.get_size_lin(),
              MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 1, MPI_COMM_WORLD,
              &status);
-    MPI_Recv(tmp_suscept_nonlin.data(), (int)suscept_sim.get_size_nonlin(),
-             MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2, MPI_COMM_WORLD,
-             &status);
 
     // add array to overall firing rate
-    suscept_sim.add_to_suscepts(tmp_suscept_lin, tmp_suscept_nonlin);
+    suscept_sim.add_to_suscepts(tmp_suscept_lin);
   }
   BOOST_LOG_TRIVIAL(info) << "All values received.";
 
@@ -177,25 +172,28 @@ void main_process(SusceptibilitySimulationLinNonlin &suscept_sim,
   file << "#" << suscept_sim;
   file << "#\n";
   file << "# Data format:\n"
-       << "# Frequency, Re(Suscept_1), Im(Suscept_1), Re(Suscept_2), "
-          "Im(Suscept_2)\n";
+       << "# Frequency, Chi_1\n";
   file << "#\n";
 
-  auto suscept_lin = suscept_sim.get_suscept_lin();
-  auto suscept_nonlin = suscept_sim.get_suscept_nonlin();
-  auto time_frame = suscept_sim.get_time_frame();
+  const auto &suscept_lin = suscept_sim.get_suscept_lin();
+  const auto &time_frame = suscept_sim.get_time_frame();
 
-  for (size_t i = 0; i < suscept_sim.get_size_nonlin(); i++) {
-    file << (double)i / (time_frame.get_t_end() - time_frame.get_t_0()) << ","
-         << std::real(suscept_lin[i]) << "," << std::imag(suscept_lin[i]) << ","
-         << std::real(suscept_nonlin[i]) << "," << std::imag(suscept_nonlin[i])
-         << "\n";
+  for (size_t i = 0; i < suscept_lin.size(); i++) {
+    file << (double)i / (time_frame.get_t_end() - time_frame.get_t_0()) << ",";
+
+    if (std::imag(suscept_lin[i]) < 0) {
+      file << std::real(suscept_lin[i]) << std::imag(suscept_lin[i]) << "j";
+    } else {
+      file << std::real(suscept_lin[i]) << "+" << std::imag(suscept_lin[i])
+           << "j";
+    }
+    file << "\n";
   }
 
   file.close();
 }
 
-void sub_process(SusceptibilitySimulationLinNonlin &suscept_sim) {
+void sub_process(SusceptibilitySimulationLin &suscept_sim) {
 
   int trials = 0;
   MPI_Status status;
@@ -205,11 +203,8 @@ void sub_process(SusceptibilitySimulationLinNonlin &suscept_sim) {
   suscept_sim.calculate(trials);
 
   // send data to main process
-  auto suscept_lin = suscept_sim.get_suscept_lin();
-  auto suscept_nonlin = suscept_sim.get_suscept_nonlin();
+  const auto &suscept_lin = suscept_sim.get_suscept_lin();
 
   MPI_Send(suscept_lin.data(), (int)suscept_lin.size(), MPI_CXX_DOUBLE_COMPLEX,
            0, 1, MPI_COMM_WORLD);
-  MPI_Send(suscept_nonlin.data(), (int)suscept_nonlin.size(),
-           MPI_CXX_DOUBLE_COMPLEX, 0, 2, MPI_COMM_WORLD);
 }
