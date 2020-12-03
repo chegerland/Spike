@@ -25,6 +25,7 @@ protected:
 
   size_t N_neurons; ///< number of neurons (trials)
   double c;         ///< noise split coefficient
+  double D;         ///< total noise intensity
 
 public:
   /**
@@ -41,7 +42,10 @@ public:
    * calculated. The result is then added (!) to the susceptibility vectors.
    * @param trials Number of Trials
    */
-  virtual void calculate(int trials) =0;
+  virtual void calculate(size_t trials) = 0;
+
+  // setter function
+  void set_c(double c_new);
 
   // getter function
   [[nodiscard]] size_t get_N_neurons() const { return N_neurons; };

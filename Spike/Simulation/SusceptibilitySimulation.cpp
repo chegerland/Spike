@@ -5,7 +5,6 @@ namespace pt = boost::property_tree;
 
 #include "Spike/Neuron/NeuronFactory.h"
 #include "Spike/Simulation/SusceptibilitySimulation.h"
-#include "Spike/Statistics/statistics.h"
 
 namespace Spike {
 
@@ -23,9 +22,16 @@ SusceptibilitySimulation::SusceptibilitySimulation(
 
   N_neurons = root.get<size_t>("Simulation.N_neurons");
   c = root.get<double>("Simulation.c");
+  assert(c >= 0 && c <= 1);
 
   // change noise intensity and diffusion coefficient
-  double D = neuron->get_D();
+  D = neuron->get_D();
+  neuron->set_D(D * (1.0 - c));
+  signal.set_alpha(D * c);
+}
+
+void SusceptibilitySimulation::set_c(double c_new) {
+  c = c_new;
   neuron->set_D(D * (1.0 - c));
   signal.set_alpha(D * c);
 }
