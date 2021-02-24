@@ -27,7 +27,7 @@ IF::IF(const std::string &input_file) : generator(rd()), dist(0.0, 1.0) {
   assert(D >= 0);
 }
 
-double IF::diffusion() const { return sqrt(2 * D); }
+double IF::diffusion() const { return sqrt(2.0 * D); }
 
 void IF::get_spikes(SpikeTrain &spike_train) {
   // initial value for voltage
@@ -35,10 +35,11 @@ void IF::get_spikes(SpikeTrain &spike_train) {
 
   const double dt = spike_train.get_dt();
   const size_t length = spike_train.get_values().size();
+  const double diff_factor = this->diffusion() * sqrt(dt);
 
   // perform euler maruyama scheme
   for (size_t i = 0; i < length; i++) {
-    v += this->drift(v) * dt + this->diffusion() * dist(generator) * sqrt(dt);
+    v += this->drift(v) * dt + diff_factor * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -54,11 +55,12 @@ void IF::get_spikes(Signal &signal, SpikeTrain &spike_train) {
 
   const double dt = spike_train.get_dt();
   const size_t length = spike_train.get_values().size();
+  const double diff_factor = this->diffusion() * sqrt(dt);
 
   // perform euler maruyama scheme
   for (size_t i = 0; i < length; i++) {
     v += (this->drift(v) + signal.get_value(i)) * dt +
-         this->diffusion() * dist(generator) * sqrt(dt);
+         diff_factor * dist(generator);
 
     // fire and reset rule
     if (v > 1) {
@@ -73,11 +75,12 @@ void IF::get_voltage_curve(const TimeFrame &time, std::vector<double> &v) {
   v[0] = 0;
 
   const double dt = time.get_dt();
+  const double diff_factor = this->diffusion() * sqrt(dt);
 
   // perform euler maruyama scheme
   for (size_t i = 1; i < time.get_size(); i++) {
     v[i] = v[i - 1] + this->drift(v[i - 1]) * dt +
-           this->diffusion() * dist(generator) * sqrt(dt);
+           diff_factor * dist(generator);
 
     // fire and reset rule
     if (v[i] > 1) {

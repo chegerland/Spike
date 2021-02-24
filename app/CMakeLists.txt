@@ -41,3 +41,7 @@ target_link_libraries(spike_test PUBLIC spike)
 # r0_mu executable
 add_executable(spike_r0_mu spike_r0_mu.cpp)
 target_link_libraries(spike_r0_mu PUBLIC spike)
+
+# trajectory executable
+add_executable(spike_trajectory spike_trajectory.cpp)
+target_link_libraries(spike_trajectory PUBLIC spike)

@@ -38,11 +38,11 @@ void IFAC::get_spikes(SpikeTrain &spike_train) {
 
   const double dt = spike_train.get_dt();
   const size_t length = spike_train.get_size();
+  const double diff_factor = this->diffusion() * sqrt(dt);
 
   // perform euler maruyama scheme
   for (size_t i = 0; i < length; i++) {
-    v += (this->drift(v) - a) * dt +
-         this->diffusion() * dist(generator) * sqrt(dt);
+    v += (this->drift(v) - a) * dt + diff_factor * dist(generator);
     a += -1. / tau_a * a * dt;
 
     // fire and reset rule
@@ -62,11 +62,12 @@ void IFAC::get_spikes(Signal &signal, SpikeTrain &spike_train) {
 
   const double dt = spike_train.get_dt();
   const size_t length = spike_train.get_size();
+  const double diff_factor = this->diffusion() * sqrt(dt);
 
   // perform euler maruyama scheme
   for (size_t i = 0; i < length; i++) {
     v += (this->drift(v) - a + signal.get_value(i)) * dt +
-         this->diffusion() * dist(generator) * sqrt(dt);
+         diff_factor * dist(generator);
     a += -1. / tau_a * a * dt;
 
     // fire and reset rule
@@ -87,11 +88,12 @@ void IFAC::get_voltage_curve(const TimeFrame &time, std::vector<double> &v,
 
   // for better readibility
   const double dt = time.get_dt();
+  const double diff_factor = this->diffusion() * sqrt(dt);
 
   // perform euler maruyama scheme
   for (size_t i = 1; i < time.get_size(); i++) {
     v[i] = v[i - 1] + (this->drift(v[i - 1]) - a[i - 1]) * dt +
-           this->diffusion() * dist(generator) * sqrt(dt);
+           diff_factor * dist(generator);
     a[i] = a[i - 1] - 1. / tau_a * a[i - 1] * dt;
 
     // fire and reset rule

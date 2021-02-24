@@ -65,6 +65,9 @@ public:
    */
   void get_voltage_curve(const TimeFrame &time, std::vector<double> &v,
                          std::vector<double> &a);
+
+  void set_tau_a(double tau_a_new) {tau_a = tau_a_new;};
+  void set_Delta(double Delta_new) {Delta = Delta_new;};
 };
 
 /**
