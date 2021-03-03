@@ -1,4 +1,4 @@
-[![pipeline status](https://git.physik.hu-berlin.de/cheg/master/spike/badges/master/pipeline.svg)](https://git.physik.hu-berlin.de/cheg/master/spike/commits/master)
+![build](https://github.com/chegerland/Spike/actions/cmake.yml/badge.svg)
 
 # Spike
 Spike is a small numerical toolset that can simulate single neurons and evaluate the resulting spike trains statistically by calculation all sorts of quantities like the firing rate etc.
@@ -8,57 +8,35 @@ It is build as a library with which you can write your own scripts, it comes, ho
 * [Catch2](https://github.com/catchorg/Catch2): unit testing
 * [doxygen](http://doxygen.nl/): API documentation
 * [boost](https://www.boost.org/): json file parser, program options and logging
-* [progress bar](https://github.com/prakhar1989/progress-cpp)
 
 ### Installation & Build
 To install Spike, clone the repository by typing
 
 ```
-git clone https://git.physik.hu-berlin.de/cheg/master/Spike.git
+git clone https://github.com/chegerland/Spike.git
 ```
 
-then create a build directory and build the project using cmake
+then create a build directory and build the project using cmake (the `j` flag tells make to execute in parallel)
 
 ```
 mkdir -p build/ && cd build
-cmake .. &&  make
-```
-
-### First Calculation
-One of the out-of-the-box executables is `firing_rate`.
-Given a `.json` input file, this program calculates the firing rate of the neuron.
-An example file looks like this:
-```json
-```
-
-## Testing
-We try to follow a [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) style.
-To build all tests type
-
-```
-make tests_Spike
-```
-
-and run them with
-
-```
-./tests_Spike
+cmake .. &&  make -j 4
 ```
 
 ## Documentation
-Notes are written in `.md` files in the `docs/` directory.
 Classes and functions are documented in the according `.h` files and an API documentation can be generated from them using (inside the `docs/doxygen` directory)
 ```
 doxygen Doxyfile
 ```
+which can also be viewed here: [chegerland.github.io/Spike](https://chegerland.github.io/Spike)
 
 Details on the implementation are written in `.cpp` files.
 
 
 ## Development
-The master branch should at all times contain a working copy of Spike.
-New features are added via [feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
-The master is locked, the only way to get code into the master is by merging feature branches, which triggers the CI pipieline to make sure the master is building and passes all tests.
+The main branch should at all times contain a working copy of Spike.
+New features should be added via [feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
+For now, since I am the only one working on this project, I am directly using the the main branch.
 
 
 ## Guidelines
