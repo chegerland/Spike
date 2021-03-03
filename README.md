@@ -1,4 +1,4 @@
-[![build](https://github.com/chegerland/Spike/workflows/cmake.yml/badge.svg)](https://github.com/chegerland/Spike/actions)
+[![build](https://github.com/chegerland/Spike/workflows/cmake/badge.svg)](https://github.com/chegerland/Spike/actions)
 
 # Spike
 Spike is a small numerical toolset that can simulate single neurons and evaluate the resulting spike trains statistically by calculation all sorts of quantities like the firing rate etc.
@@ -28,7 +28,7 @@ Classes and functions are documented in the according `.h` files and an API docu
 ```
 doxygen Doxyfile
 ```
-which can also be viewed here: [chegerland.github.io/Spike](https://chegerland.github.io/Spike)
+which can also be viewed here: [chegerland.github.io/Spike](https://chegerland.github.io/Spike/index.html)
 
 Details on the implementation are written in `.cpp` files.
 
