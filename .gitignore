@@ -1,7 +1,8 @@
 build/
 bin/
 cmake-build-debug/*
-docs/*
+docs/html/
+docs/latex/
 data/*
 .idea
 *.o
