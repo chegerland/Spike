@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1SusceptibilitySimulationNonlin.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html">SusceptibilitySimulationNonlin</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -72,36 +88,41 @@ $(function() {
 <div class="title">Spike::SusceptibilitySimulationNonlin Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A simulation where we measure the nonlinear (second order) susceptibility of an integrate-and-fire neuron.  
+ <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SusceptibilitySimulationNonlin_8h_source.html">SusceptibilitySimulationNonlin.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ade48be397cd4649fb5f9a940013c6240"><td class="memItemLeft" align="right" valign="top"><a id="ade48be397cd4649fb5f9a940013c6240"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SusceptibilitySimulationNonlin</b> (const std::string &amp;input_file)</td></tr>
+<tr class="memitem:ade48be397cd4649fb5f9a940013c6240"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#ade48be397cd4649fb5f9a940013c6240">SusceptibilitySimulationNonlin</a> (const std::string &amp;input_file)</td></tr>
+<tr class="memdesc:ade48be397cd4649fb5f9a940013c6240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs susceptibility simulation from .ini file.  <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#ade48be397cd4649fb5f9a940013c6240">More...</a><br /></td></tr>
 <tr class="separator:ade48be397cd4649fb5f9a940013c6240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fb8c147d6eed6edad3ed23665d69e1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a3fb8c147d6eed6edad3ed23665d69e1b">calculate</a> (size_t trials) override</td></tr>
-<tr class="memdesc:a3fb8c147d6eed6edad3ed23665d69e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the linear and nonlinear susceptibilities for a given number of trials. Each time the white noise signal gets generated again, the neuron produces a new spike train and then the susceptibilities are calculated. The result is then added (!) to the susceptibility vectors.  <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#a3fb8c147d6eed6edad3ed23665d69e1b">More...</a><br /></td></tr>
+<tr class="memdesc:a3fb8c147d6eed6edad3ed23665d69e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the nonlinear susceptibility for a given number of trials. Each time the white noise signal is generated again, the neuron produces a new spike train and the susceptibility is calculated. The result is then added (!) to the susceptibility matrix suscept_nonlin.  <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#a3fb8c147d6eed6edad3ed23665d69e1b">More...</a><br /></td></tr>
 <tr class="separator:a3fb8c147d6eed6edad3ed23665d69e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae928b6eee02dcebfc6f5cd2ec9b8542a"><td class="memItemLeft" align="right" valign="top"><a id="ae928b6eee02dcebfc6f5cd2ec9b8542a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_to_suscepts</b> (const std::vector&lt; std::vector&lt; std::complex&lt; double &gt;&gt;&gt; &amp;tmp_nonlin)</td></tr>
+<tr class="memitem:ae928b6eee02dcebfc6f5cd2ec9b8542a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#ae928b6eee02dcebfc6f5cd2ec9b8542a">add_to_suscepts</a> (const std::vector&lt; std::vector&lt; std::complex&lt; double &gt;&gt;&gt; &amp;tmp_nonlin)</td></tr>
+<tr class="memdesc:ae928b6eee02dcebfc6f5cd2ec9b8542a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the susceptibility matrix tmp_nonlin to suscept_nonlin.  <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#ae928b6eee02dcebfc6f5cd2ec9b8542a">More...</a><br /></td></tr>
 <tr class="separator:ae928b6eee02dcebfc6f5cd2ec9b8542a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b4d2ea091072a3266a71f0d21d2f4dd"><td class="memItemLeft" align="right" valign="top"><a id="a9b4d2ea091072a3266a71f0d21d2f4dd"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_size_nonlin</b> () const</td></tr>
+<tr class="memitem:a9b4d2ea091072a3266a71f0d21d2f4dd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a9b4d2ea091072a3266a71f0d21d2f4dd">get_size_nonlin</a> () const</td></tr>
+<tr class="memdesc:a9b4d2ea091072a3266a71f0d21d2f4dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the susceptibility matrix.  <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#a9b4d2ea091072a3266a71f0d21d2f4dd">More...</a><br /></td></tr>
 <tr class="separator:a9b4d2ea091072a3266a71f0d21d2f4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58bff1eca99100f8eb1817254c2d2818"><td class="memItemLeft" align="right" valign="top"><a id="a58bff1eca99100f8eb1817254c2d2818"></a>
-const std::vector&lt; std::vector&lt; std::complex&lt; double &gt; &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_suscept_nonlin</b> () const</td></tr>
+<tr class="memitem:a58bff1eca99100f8eb1817254c2d2818"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::vector&lt; std::complex&lt; double &gt; &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a58bff1eca99100f8eb1817254c2d2818">get_suscept_nonlin</a> () const</td></tr>
+<tr class="memdesc:a58bff1eca99100f8eb1817254c2d2818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the susceptibility matrix.  <a href="classSpike_1_1SusceptibilitySimulationNonlin.html#a58bff1eca99100f8eb1817254c2d2818">More...</a><br /></td></tr>
 <tr class="separator:a58bff1eca99100f8eb1817254c2d2818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSpike_1_1SusceptibilitySimulation"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classSpike_1_1SusceptibilitySimulation')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSpike_1_1SusceptibilitySimulation.html">Spike::SusceptibilitySimulation</a></td></tr>
 <tr class="memitem:a1b3e9e99a6ad35c7f69f9af342b253c5 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a1b3e9e99a6ad35c7f69f9af342b253c5">SusceptibilitySimulation</a> (const std::string &amp;input_file)</td></tr>
 <tr class="memdesc:a1b3e9e99a6ad35c7f69f9af342b253c5 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs susceptibility simulation from .ini file.  <a href="classSpike_1_1SusceptibilitySimulation.html#a1b3e9e99a6ad35c7f69f9af342b253c5">More...</a><br /></td></tr>
 <tr class="separator:a1b3e9e99a6ad35c7f69f9af342b253c5 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ceab5acbb885f0ddf50b77a22637d5b inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top"><a id="a9ceab5acbb885f0ddf50b77a22637d5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_c</b> (double c_new)</td></tr>
+<tr class="memitem:a9ceab5acbb885f0ddf50b77a22637d5b inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a9ceab5acbb885f0ddf50b77a22637d5b">set_c</a> (double c_new)</td></tr>
+<tr class="memdesc:a9ceab5acbb885f0ddf50b77a22637d5b inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a new noise split coefficient.  <a href="classSpike_1_1SusceptibilitySimulation.html#a9ceab5acbb885f0ddf50b77a22637d5b">More...</a><br /></td></tr>
 <tr class="separator:a9ceab5acbb885f0ddf50b77a22637d5b inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af109ef4f2572bc963e77c0eb16238e84 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top"><a id="af109ef4f2572bc963e77c0eb16238e84"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_N_neurons</b> () const</td></tr>
+<tr class="memitem:af109ef4f2572bc963e77c0eb16238e84 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#af109ef4f2572bc963e77c0eb16238e84">get_N_neurons</a> () const</td></tr>
+<tr class="memdesc:af109ef4f2572bc963e77c0eb16238e84 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of neurons (trials) for this simulation.  <a href="classSpike_1_1SusceptibilitySimulation.html#af109ef4f2572bc963e77c0eb16238e84">More...</a><br /></td></tr>
 <tr class="separator:af109ef4f2572bc963e77c0eb16238e84 inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4cd7e2f16680c071378561cdfb760f inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top"><a id="a0d4cd7e2f16680c071378561cdfb760f"></a>
-const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_time_frame</b> () const</td></tr>
+<tr class="memitem:a0d4cd7e2f16680c071378561cdfb760f inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a0d4cd7e2f16680c071378561cdfb760f">get_time_frame</a> () const</td></tr>
+<tr class="memdesc:a0d4cd7e2f16680c071378561cdfb760f inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the time frame.  <a href="classSpike_1_1SusceptibilitySimulation.html#a0d4cd7e2f16680c071378561cdfb760f">More...</a><br /></td></tr>
 <tr class="separator:a0d4cd7e2f16680c071378561cdfb760f inherit pub_methods_classSpike_1_1SusceptibilitySimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -136,7 +157,70 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="memdesc:a194654fee41fbcc71c97f2102d55ff2e inherit pro_attribs_classSpike_1_1SusceptibilitySimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">total noise intensity <br /></td></tr>
 <tr class="separator:a194654fee41fbcc71c97f2102d55ff2e inherit pro_attribs_classSpike_1_1SusceptibilitySimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A simulation where we measure the nonlinear (second order) susceptibility of an integrate-and-fire neuron. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ade48be397cd4649fb5f9a940013c6240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade48be397cd4649fb5f9a940013c6240">&#9670;&nbsp;</a></span>SusceptibilitySimulationNonlin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Spike::SusceptibilitySimulationNonlin::SusceptibilitySimulationNonlin </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>input_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs susceptibility simulation from .ini file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_file</td><td>path to .ini file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae928b6eee02dcebfc6f5cd2ec9b8542a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae928b6eee02dcebfc6f5cd2ec9b8542a">&#9670;&nbsp;</a></span>add_to_suscepts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spike::SusceptibilitySimulationNonlin::add_to_suscepts </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; std::complex&lt; double &gt;&gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>tmp_nonlin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds the susceptibility matrix tmp_nonlin to suscept_nonlin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tmp_nonlin</td><td>susceptibility matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3fb8c147d6eed6edad3ed23665d69e1b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3fb8c147d6eed6edad3ed23665d69e1b">&#9670;&nbsp;</a></span>calculate()</h2>
 
@@ -161,10 +245,10 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </table>
 </div><div class="memdoc">
 
-<p>Calculates the linear and nonlinear susceptibilities for a given number of trials. Each time the white noise signal gets generated again, the neuron produces a new spike train and then the susceptibilities are calculated. The result is then added (!) to the susceptibility vectors. </p>
+<p>Calculates the nonlinear susceptibility for a given number of trials. Each time the white noise signal is generated again, the neuron produces a new spike train and the susceptibility is calculated. The result is then added (!) to the susceptibility matrix suscept_nonlin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">trials</td><td>Number of Trials </td></tr>
+    <tr><td class="paramname">trials</td><td>number of trials. </td></tr>
   </table>
   </dd>
 </dl>
@@ -173,14 +257,74 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 
 </div>
 </div>
+<a id="a9b4d2ea091072a3266a71f0d21d2f4dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b4d2ea091072a3266a71f0d21d2f4dd">&#9670;&nbsp;</a></span>get_size_nonlin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Spike::SusceptibilitySimulationNonlin::get_size_nonlin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the size of the susceptibility matrix. </p>
+<dl class="section return"><dt>Returns</dt><dd>size of susceptibility matrix </dd></dl>
+
+</div>
+</div>
+<a id="a58bff1eca99100f8eb1817254c2d2818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58bff1eca99100f8eb1817254c2d2818">&#9670;&nbsp;</a></span>get_suscept_nonlin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::vector&lt;std::complex&lt;double&gt; &gt; &gt;&amp; Spike::SusceptibilitySimulationNonlin::get_suscept_nonlin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the susceptibility matrix. </p>
+<dl class="section return"><dt>Returns</dt><dd>susceptibility matrix </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/Spike/Simulation/<a class="el" href="SusceptibilitySimulationNonlin_8h_source.html">SusceptibilitySimulationNonlin.h</a></li>
 <li>/github/workspace/Spike/Simulation/SusceptibilitySimulationNonlin.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html">SusceptibilitySimulationNonlin</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

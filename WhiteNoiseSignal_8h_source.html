@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('WhiteNoiseSignal_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_aaa1a68f49b526e3648e304f703e9bc0.html">Spike</a></li><li class="navelem"><a class="el" href="dir_fd065d7f0444ce254fb63863d36c4f58.html">Signal</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">WhiteNoiseSignal.h</div>  </div>
@@ -88,54 +104,72 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">double</span> f_low;  </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> f_high; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  std::random_device rd;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  std::mt19937 generator;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  std::normal_distribution&lt;double&gt; dist;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  std::random_device rd;                 </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  std::mt19937 generator;                </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  std::normal_distribution&lt;double&gt; dist; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  std::vector&lt;std::complex&lt;double&gt;&gt; frequencies;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a8bc1cb8cade40fb105e349ef9a82ca87">WhiteNoiseSignal</a>(<span class="keywordtype">double</span> alpha, <span class="keywordtype">double</span> f_low, <span class="keywordtype">double</span> f_high,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                   <span class="keyword">const</span> <a class="code" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;<a class="code" href="classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43">time_frame</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a8bc1cb8cade40fb105e349ef9a82ca87">WhiteNoiseSignal</a>(<span class="keyword">const</span> std::string &amp;input_file, <span class="keyword">const</span> <a class="code" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;<a class="code" href="classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43">time_frame</a>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#aa2787de0e0a05fe8bcbcd386bbd929b4">calculate_signal</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a315f1aec3165a1e47f62381f999bd0da">signal</a>(<span class="keywordtype">double</span> t) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> set_alpha(<span class="keywordtype">double</span> alpha_new) { alpha = alpha_new; };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  std::vector&lt;std::complex&lt;double&gt;&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      frequencies; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a8bc1cb8cade40fb105e349ef9a82ca87">WhiteNoiseSignal</a>(<span class="keywordtype">double</span> alpha, <span class="keywordtype">double</span> f_low, <span class="keywordtype">double</span> f_high,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                   <span class="keyword">const</span> <a class="code" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;<a class="code" href="classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43">time_frame</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a8bc1cb8cade40fb105e349ef9a82ca87">WhiteNoiseSignal</a>(<span class="keyword">const</span> std::string &amp;input_file, <span class="keyword">const</span> <a class="code" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;<a class="code" href="classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43">time_frame</a>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#aa2787de0e0a05fe8bcbcd386bbd929b4">calculate_signal</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a315f1aec3165a1e47f62381f999bd0da">signal</a>(<span class="keywordtype">double</span> t) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// getter functions</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;double&gt; &amp;get_values()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classSpike_1_1Signal.html#a8957916ba9c0bf4bcb3bf5b9f0a6dfbf">signal_values</a>; };</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;std::complex&lt;double&gt;&gt; &amp;get_frequencies()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> frequencies;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  };</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> get_alpha()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> alpha; };</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> get_variance()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> 2. * (f_high - f_low) * alpha; };</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span> print(std::ostream &amp;out)<span class="keyword"> const override </span>{</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;WhiteNoiseSignal(alpha: &quot;</span> &lt;&lt; alpha &lt;&lt; <span class="stringliteral">&quot;, f_low: &quot;</span> &lt;&lt; f_low</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;, f_high: &quot;</span> &lt;&lt; f_high &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classSpike_1_1WhiteNoiseSignal.html#a92569beab7d98e44c1effbc3d8daf00f">   65</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a92569beab7d98e44c1effbc3d8daf00f">set_alpha</a>(<span class="keywordtype">double</span> alpha_new) { alpha = alpha_new; };</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classSpike_1_1WhiteNoiseSignal.html#ab3e7d20b8beecfa8b5f7980b44346380">   71</a></span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;double&gt; &amp;<a class="code" href="classSpike_1_1WhiteNoiseSignal.html#ab3e7d20b8beecfa8b5f7980b44346380">get_values</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classSpike_1_1Signal.html#a8957916ba9c0bf4bcb3bf5b9f0a6dfbf">signal_values</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  };</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace Spike</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SPIKE_WHITENOISESIGNAL_H</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;std::complex&lt;double&gt;&gt; &amp;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classSpike_1_1WhiteNoiseSignal.html#a4c5b8e4c19232bfbae905320f9cfd309">   80</a></span>&#160;  <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a4c5b8e4c19232bfbae905320f9cfd309">get_frequencies</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> frequencies;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  };</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classSpike_1_1WhiteNoiseSignal.html#a87851aa7862939c9d98d9aa66712bc30">   88</a></span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a87851aa7862939c9d98d9aa66712bc30">get_alpha</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> alpha; };</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classSpike_1_1WhiteNoiseSignal.html#a188224c42c2e961372759b47a75d7dd4">   94</a></span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#a188224c42c2e961372759b47a75d7dd4">get_variance</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> 2. * (f_high - f_low) * alpha;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  };</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classSpike_1_1WhiteNoiseSignal.html#af3b4946f7f15280cdd05bef0de727aa4">  102</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1WhiteNoiseSignal.html#af3b4946f7f15280cdd05bef0de727aa4">print</a>(std::ostream &amp;out)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;WhiteNoiseSignal(alpha: &quot;</span> &lt;&lt; alpha &lt;&lt; <span class="stringliteral">&quot;, f_low: &quot;</span> &lt;&lt; f_low</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;, f_high: &quot;</span> &lt;&lt; f_high &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;} <span class="comment">// namespace Spike</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SPIKE_WHITENOISESIGNAL_H</span></div>
 <div class="ttc" id="aSignal_8h_html"><div class="ttname"><a href="Signal_8h.html">Signal.h</a></div></div>
 <div class="ttc" id="aclassSpike_1_1Signal_html"><div class="ttname"><a href="classSpike_1_1Signal.html">Spike::Signal</a></div><div class="ttdoc">An abstract base class for signals.</div><div class="ttdef"><b>Definition:</b> Signal.h:20</div></div>
 <div class="ttc" id="aclassSpike_1_1Signal_html_a83fd18b72a82310252cdec9cbe332a43"><div class="ttname"><a href="classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43">Spike::Signal::time_frame</a></div><div class="ttdeci">const TimeFrame &amp; time_frame</div><div class="ttdoc">reference to time frame</div><div class="ttdef"><b>Definition:</b> Signal.h:22</div></div>
 <div class="ttc" id="aclassSpike_1_1Signal_html_a8957916ba9c0bf4bcb3bf5b9f0a6dfbf"><div class="ttname"><a href="classSpike_1_1Signal.html#a8957916ba9c0bf4bcb3bf5b9f0a6dfbf">Spike::Signal::signal_values</a></div><div class="ttdeci">std::vector&lt; double &gt; signal_values</div><div class="ttdoc">array containing the signal values</div><div class="ttdef"><b>Definition:</b> Signal.h:23</div></div>
 <div class="ttc" id="aclassSpike_1_1TimeFrame_html"><div class="ttname"><a href="classSpike_1_1TimeFrame.html">Spike::TimeFrame</a></div><div class="ttdoc">A time frame with discrete time steps.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:13</div></div>
 <div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html">Spike::WhiteNoiseSignal</a></div><div class="ttdoc">Implements a band limited white gaussian noise get_value.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:18</div></div>
+<div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_a188224c42c2e961372759b47a75d7dd4"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#a188224c42c2e961372759b47a75d7dd4">Spike::WhiteNoiseSignal::get_variance</a></div><div class="ttdeci">double get_variance() const</div><div class="ttdoc">Returns the variance.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:94</div></div>
 <div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_a315f1aec3165a1e47f62381f999bd0da"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#a315f1aec3165a1e47f62381f999bd0da">Spike::WhiteNoiseSignal::signal</a></div><div class="ttdeci">double signal(double t) const</div><div class="ttdoc">Return get_value, i.e. white noise at time t.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.cpp:89</div></div>
+<div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_a4c5b8e4c19232bfbae905320f9cfd309"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#a4c5b8e4c19232bfbae905320f9cfd309">Spike::WhiteNoiseSignal::get_frequencies</a></div><div class="ttdeci">const std::vector&lt; std::complex&lt; double &gt; &gt; &amp; get_frequencies() const</div><div class="ttdoc">Returns the frequencies.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:80</div></div>
+<div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_a87851aa7862939c9d98d9aa66712bc30"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#a87851aa7862939c9d98d9aa66712bc30">Spike::WhiteNoiseSignal::get_alpha</a></div><div class="ttdeci">double get_alpha() const</div><div class="ttdoc">Returns the amplitude.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:88</div></div>
 <div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_a8bc1cb8cade40fb105e349ef9a82ca87"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#a8bc1cb8cade40fb105e349ef9a82ca87">Spike::WhiteNoiseSignal::WhiteNoiseSignal</a></div><div class="ttdeci">WhiteNoiseSignal(double alpha, double f_low, double f_high, const TimeFrame &amp;time_frame)</div><div class="ttdoc">Construct WhiteNoiseSignal from parameters.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.cpp:17</div></div>
+<div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_a92569beab7d98e44c1effbc3d8daf00f"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#a92569beab7d98e44c1effbc3d8daf00f">Spike::WhiteNoiseSignal::set_alpha</a></div><div class="ttdeci">void set_alpha(double alpha_new)</div><div class="ttdoc">Sets the amplitude for the white noise signal.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:65</div></div>
 <div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_aa2787de0e0a05fe8bcbcd386bbd929b4"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#aa2787de0e0a05fe8bcbcd386bbd929b4">Spike::WhiteNoiseSignal::calculate_signal</a></div><div class="ttdeci">void calculate_signal()</div><div class="ttdoc">Generate the white noise, i.e. fill the signal_values.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.cpp:46</div></div>
+<div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_ab3e7d20b8beecfa8b5f7980b44346380"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#ab3e7d20b8beecfa8b5f7980b44346380">Spike::WhiteNoiseSignal::get_values</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; get_values() const</div><div class="ttdoc">Returns the white noise signal vector.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:71</div></div>
+<div class="ttc" id="aclassSpike_1_1WhiteNoiseSignal_html_af3b4946f7f15280cdd05bef0de727aa4"><div class="ttname"><a href="classSpike_1_1WhiteNoiseSignal.html#af3b4946f7f15280cdd05bef0de727aa4">Spike::WhiteNoiseSignal::print</a></div><div class="ttdeci">void print(std::ostream &amp;out) const override</div><div class="ttdoc">Prints white noise signal to out stream.</div><div class="ttdef"><b>Definition:</b> WhiteNoiseSignal.h:102</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_aaa1a68f49b526e3648e304f703e9bc0.html">Spike</a></li><li class="navelem"><a class="el" href="dir_fd065d7f0444ce254fb63863d36c4f58.html">Signal</a></li><li class="navelem"><b>WhiteNoiseSignal.h</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

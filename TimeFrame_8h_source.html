@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('TimeFrame_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_aaa1a68f49b526e3648e304f703e9bc0.html">Spike</a></li><li class="navelem"><a class="el" href="dir_8681127f7425d194fb5caab0ecaf51f4.html">TimeFrame</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">TimeFrame.h</div>  </div>
@@ -92,27 +108,42 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1TimeFrame.html#a47252b823d0ac7c1f84979fbe007c97a">calculate_times</a>();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// getter functions</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> get_t_0()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t_0; };</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> get_t_end()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t_end; };</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> get_dt()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> dt; };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  [[nodiscard]] <span class="keywordtype">size_t</span> get_size()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t.size(); };</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> get_time(<span class="keywordtype">size_t</span> i)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t[i]; };</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;double&gt; &amp;get_times()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t; };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">friend</span> std::ostream &amp;operator&lt;&lt;(std::ostream &amp;out, <span class="keyword">const</span> <a class="code" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;tf);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace Spike</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SPIKE_TIMEFRAME_H</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classSpike_1_1TimeFrame.html#a57dd28cc70e0d1ccbc2c483e67af0c78">   44</a></span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1TimeFrame.html#a57dd28cc70e0d1ccbc2c483e67af0c78">get_t_0</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t_0; };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classSpike_1_1TimeFrame.html#a5fa45fc62f247ade3321dfb4f0315055">   50</a></span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1TimeFrame.html#a5fa45fc62f247ade3321dfb4f0315055">get_t_end</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t_end; };</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classSpike_1_1TimeFrame.html#ab5442dfa44a706968c82fbf2b8a7377a">   56</a></span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1TimeFrame.html#ab5442dfa44a706968c82fbf2b8a7377a">get_dt</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> dt; };</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classSpike_1_1TimeFrame.html#ac0e52358caf542e6711a96cf3cd94c73">   62</a></span>&#160;  [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code" href="classSpike_1_1TimeFrame.html#ac0e52358caf542e6711a96cf3cd94c73">get_size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t.size(); };</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classSpike_1_1TimeFrame.html#af02a5b60041f7e019af526ef6d53a412">   68</a></span>&#160;  [[nodiscard]] <span class="keywordtype">double</span> <a class="code" href="classSpike_1_1TimeFrame.html#af02a5b60041f7e019af526ef6d53a412">get_time</a>(<span class="keywordtype">size_t</span> i)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t[i]; };</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classSpike_1_1TimeFrame.html#ad686257474b4829053824bc228919374">   74</a></span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;double&gt; &amp;<a class="code" href="classSpike_1_1TimeFrame.html#ad686257474b4829053824bc228919374">get_times</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> t; };</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="classSpike_1_1TimeFrame.html#a787c20ed2d43cba5e183f2a79ad2fdc5">operator&lt;&lt;</a>(std::ostream &amp;out, <span class="keyword">const</span> <a class="code" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;tf);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <span class="comment">// namespace Spike</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SPIKE_TIMEFRAME_H</span></div>
 <div class="ttc" id="aclassSpike_1_1TimeFrame_html"><div class="ttname"><a href="classSpike_1_1TimeFrame.html">Spike::TimeFrame</a></div><div class="ttdoc">A time frame with discrete time steps.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:13</div></div>
 <div class="ttc" id="aclassSpike_1_1TimeFrame_html_a47252b823d0ac7c1f84979fbe007c97a"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#a47252b823d0ac7c1f84979fbe007c97a">Spike::TimeFrame::calculate_times</a></div><div class="ttdeci">void calculate_times()</div><div class="ttdoc">Calculates the discretized times.</div><div class="ttdef"><b>Definition:</b> TimeFrame.cpp:44</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_a57dd28cc70e0d1ccbc2c483e67af0c78"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#a57dd28cc70e0d1ccbc2c483e67af0c78">Spike::TimeFrame::get_t_0</a></div><div class="ttdeci">double get_t_0() const</div><div class="ttdoc">Returns the start time.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:44</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_a5fa45fc62f247ade3321dfb4f0315055"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#a5fa45fc62f247ade3321dfb4f0315055">Spike::TimeFrame::get_t_end</a></div><div class="ttdeci">double get_t_end() const</div><div class="ttdoc">Returns the end time.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:50</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_a787c20ed2d43cba5e183f2a79ad2fdc5"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#a787c20ed2d43cba5e183f2a79ad2fdc5">Spike::TimeFrame::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const TimeFrame &amp;tf)</div><div class="ttdoc">Overloads the operator &lt;&lt; so we can print time frame.</div><div class="ttdef"><b>Definition:</b> TimeFrame.cpp:51</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_ab5442dfa44a706968c82fbf2b8a7377a"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#ab5442dfa44a706968c82fbf2b8a7377a">Spike::TimeFrame::get_dt</a></div><div class="ttdeci">double get_dt() const</div><div class="ttdoc">Returns the time step.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:56</div></div>
 <div class="ttc" id="aclassSpike_1_1TimeFrame_html_abbdd2865bd1d1ccc4bf00d1c35c9264e"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#abbdd2865bd1d1ccc4bf00d1c35c9264e">Spike::TimeFrame::TimeFrame</a></div><div class="ttdeci">TimeFrame(const std::string &amp;input_file)</div><div class="ttdoc">Constructs a time frame from a .ini file.</div><div class="ttdef"><b>Definition:</b> TimeFrame.cpp:23</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_ac0e52358caf542e6711a96cf3cd94c73"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#ac0e52358caf542e6711a96cf3cd94c73">Spike::TimeFrame::get_size</a></div><div class="ttdeci">size_t get_size() const</div><div class="ttdoc">Returns the size of the time frame.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:62</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_ad686257474b4829053824bc228919374"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#ad686257474b4829053824bc228919374">Spike::TimeFrame::get_times</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; get_times() const</div><div class="ttdoc">Returns the times vector.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:74</div></div>
+<div class="ttc" id="aclassSpike_1_1TimeFrame_html_af02a5b60041f7e019af526ef6d53a412"><div class="ttname"><a href="classSpike_1_1TimeFrame.html#af02a5b60041f7e019af526ef6d53a412">Spike::TimeFrame::get_time</a></div><div class="ttdeci">double get_time(size_t i) const</div><div class="ttdoc">Returns the time at index i.</div><div class="ttdef"><b>Definition:</b> TimeFrame.h:68</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_aaa1a68f49b526e3648e304f703e9bc0.html">Spike</a></li><li class="navelem"><a class="el" href="dir_8681127f7425d194fb5caab0ecaf51f4.html">TimeFrame</a></li><li class="navelem"><b>TimeFrame.h</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

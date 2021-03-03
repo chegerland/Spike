@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1SpikeTrain.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1SpikeTrain.html">SpikeTrain</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -93,17 +109,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ae867a706c9caa8a4e177269ffc508c11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SpikeTrain.html#ae867a706c9caa8a4e177269ffc508c11">add_spike</a> (size_t i)</td></tr>
 <tr class="memdesc:ae867a706c9caa8a4e177269ffc508c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a spike at index i.  <a href="classSpike_1_1SpikeTrain.html#ae867a706c9caa8a4e177269ffc508c11">More...</a><br /></td></tr>
 <tr class="separator:ae867a706c9caa8a4e177269ffc508c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a515bf30ca267d52109537e1a166c32df"><td class="memItemLeft" align="right" valign="top"><a id="a515bf30ca267d52109537e1a166c32df"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>get_dt</b> () const</td></tr>
+<tr class="memitem:a515bf30ca267d52109537e1a166c32df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SpikeTrain.html#a515bf30ca267d52109537e1a166c32df">get_dt</a> () const</td></tr>
+<tr class="memdesc:a515bf30ca267d52109537e1a166c32df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns time step.  <a href="classSpike_1_1SpikeTrain.html#a515bf30ca267d52109537e1a166c32df">More...</a><br /></td></tr>
 <tr class="separator:a515bf30ca267d52109537e1a166c32df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf0a60dc2952ff6530c989aeb920b066"><td class="memItemLeft" align="right" valign="top"><a id="aaf0a60dc2952ff6530c989aeb920b066"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_size</b> () const</td></tr>
+<tr class="memitem:aaf0a60dc2952ff6530c989aeb920b066"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SpikeTrain.html#aaf0a60dc2952ff6530c989aeb920b066">get_size</a> () const</td></tr>
+<tr class="memdesc:aaf0a60dc2952ff6530c989aeb920b066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns size of spike train (length).  <a href="classSpike_1_1SpikeTrain.html#aaf0a60dc2952ff6530c989aeb920b066">More...</a><br /></td></tr>
 <tr class="separator:aaf0a60dc2952ff6530c989aeb920b066"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa36f2ec7371bbb1043768aeef9ea9a4f"><td class="memItemLeft" align="right" valign="top"><a id="aa36f2ec7371bbb1043768aeef9ea9a4f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>get_spike</b> (size_t i) const</td></tr>
+<tr class="memitem:aa36f2ec7371bbb1043768aeef9ea9a4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SpikeTrain.html#aa36f2ec7371bbb1043768aeef9ea9a4f">get_spike</a> (size_t i) const</td></tr>
+<tr class="memdesc:aa36f2ec7371bbb1043768aeef9ea9a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether there is a spike at index i.  <a href="classSpike_1_1SpikeTrain.html#aa36f2ec7371bbb1043768aeef9ea9a4f">More...</a><br /></td></tr>
 <tr class="separator:aa36f2ec7371bbb1043768aeef9ea9a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a4e4065855f7ccb8214e5b7566f473"><td class="memItemLeft" align="right" valign="top"><a id="a42a4e4065855f7ccb8214e5b7566f473"></a>
-const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_values</b> () const</td></tr>
+<tr class="memitem:a42a4e4065855f7ccb8214e5b7566f473"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SpikeTrain.html#a42a4e4065855f7ccb8214e5b7566f473">get_values</a> () const</td></tr>
+<tr class="memdesc:a42a4e4065855f7ccb8214e5b7566f473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the whole spike train (as a vector)  <a href="classSpike_1_1SpikeTrain.html#a42a4e4065855f7ccb8214e5b7566f473">More...</a><br /></td></tr>
 <tr class="separator:a42a4e4065855f7ccb8214e5b7566f473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -170,6 +186,125 @@ const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valig
 
 </div>
 </div>
+<a id="a515bf30ca267d52109537e1a166c32df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515bf30ca267d52109537e1a166c32df">&#9670;&nbsp;</a></span>get_dt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Spike::SpikeTrain::get_dt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns time step. </p>
+<dl class="section return"><dt>Returns</dt><dd>time step </dd></dl>
+
+</div>
+</div>
+<a id="aaf0a60dc2952ff6530c989aeb920b066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf0a60dc2952ff6530c989aeb920b066">&#9670;&nbsp;</a></span>get_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Spike::SpikeTrain::get_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns size of spike train (length). </p>
+<dl class="section return"><dt>Returns</dt><dd>size of spike train </dd></dl>
+
+</div>
+</div>
+<a id="aa36f2ec7371bbb1043768aeef9ea9a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa36f2ec7371bbb1043768aeef9ea9a4f">&#9670;&nbsp;</a></span>get_spike()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Spike::SpikeTrain::get_spike </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether there is a spike at index i. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if spike is present, false if not </dd></dl>
+
+</div>
+</div>
+<a id="a42a4e4065855f7ccb8214e5b7566f473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a4e4065855f7ccb8214e5b7566f473">&#9670;&nbsp;</a></span>get_values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;double&gt;&amp; Spike::SpikeTrain::get_values </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the whole spike train (as a vector) </p>
+<dl class="section return"><dt>Returns</dt><dd>spike train vector </dd></dl>
+
+</div>
+</div>
 <a id="aa7eed71e1252551dfcf1d478291f939f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7eed71e1252551dfcf1d478291f939f">&#9670;&nbsp;</a></span>spike_count()</h2>
 
@@ -195,9 +330,13 @@ const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valig
 <li>/github/workspace/Spike/SpikeTrain/SpikeTrain.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1SpikeTrain.html">SpikeTrain</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1FiringRateSimulation.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1FiringRateSimulation.html">FiringRateSimulation</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -89,17 +105,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e37f58e941cdb58e8821d45f1db101a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a2e37f58e941cdb58e8821d45f1db101a">add_to_firing_rate</a> (const std::vector&lt; double &gt; &amp;tmp_firing_rate)</td></tr>
 <tr class="memdesc:a2e37f58e941cdb58e8821d45f1db101a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a given vector of firing rate values to the firing_rate array.  <a href="classSpike_1_1FiringRateSimulation.html#a2e37f58e941cdb58e8821d45f1db101a">More...</a><br /></td></tr>
 <tr class="separator:a2e37f58e941cdb58e8821d45f1db101a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d380eae2463079de188e50e4cd65d6c"><td class="memItemLeft" align="right" valign="top"><a id="a8d380eae2463079de188e50e4cd65d6c"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_N_neurons</b> () const</td></tr>
+<tr class="memitem:a8d380eae2463079de188e50e4cd65d6c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a8d380eae2463079de188e50e4cd65d6c">get_N_neurons</a> () const</td></tr>
+<tr class="memdesc:a8d380eae2463079de188e50e4cd65d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of neurons.  <a href="classSpike_1_1FiringRateSimulation.html#a8d380eae2463079de188e50e4cd65d6c">More...</a><br /></td></tr>
 <tr class="separator:a8d380eae2463079de188e50e4cd65d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16b49671815601002e7cdfff8f83d31c"><td class="memItemLeft" align="right" valign="top"><a id="a16b49671815601002e7cdfff8f83d31c"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_firing_rate_size</b> () const</td></tr>
+<tr class="memitem:a16b49671815601002e7cdfff8f83d31c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a16b49671815601002e7cdfff8f83d31c">get_firing_rate_size</a> () const</td></tr>
+<tr class="memdesc:a16b49671815601002e7cdfff8f83d31c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the firing rate array.  <a href="classSpike_1_1FiringRateSimulation.html#a16b49671815601002e7cdfff8f83d31c">More...</a><br /></td></tr>
 <tr class="separator:a16b49671815601002e7cdfff8f83d31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad04abb2b8fd42802bff041514ccc80d"><td class="memItemLeft" align="right" valign="top"><a id="aad04abb2b8fd42802bff041514ccc80d"></a>
-const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_time_frame</b> () const</td></tr>
+<tr class="memitem:aad04abb2b8fd42802bff041514ccc80d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#aad04abb2b8fd42802bff041514ccc80d">get_time_frame</a> () const</td></tr>
+<tr class="memdesc:aad04abb2b8fd42802bff041514ccc80d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the time frame.  <a href="classSpike_1_1FiringRateSimulation.html#aad04abb2b8fd42802bff041514ccc80d">More...</a><br /></td></tr>
 <tr class="separator:aad04abb2b8fd42802bff041514ccc80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="memItemLeft" align="right" valign="top"><a id="ae9cda5c88c9eff59c07248f8e2ce9c95"></a>
-const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_firing_rate</b> () const</td></tr>
+<tr class="memitem:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#ae9cda5c88c9eff59c07248f8e2ce9c95">get_firing_rate</a> () const</td></tr>
+<tr class="memdesc:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the firing rate array.  <a href="classSpike_1_1FiringRateSimulation.html#ae9cda5c88c9eff59c07248f8e2ce9c95">More...</a><br /></td></tr>
 <tr class="separator:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -200,14 +216,130 @@ const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valig
 
 </div>
 </div>
+<a id="ae9cda5c88c9eff59c07248f8e2ce9c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9cda5c88c9eff59c07248f8e2ce9c95">&#9670;&nbsp;</a></span>get_firing_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;double&gt;&amp; Spike::FiringRateSimulation::get_firing_rate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the firing rate array. </p>
+<dl class="section return"><dt>Returns</dt><dd>firing rate array </dd></dl>
+
+</div>
+</div>
+<a id="a16b49671815601002e7cdfff8f83d31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16b49671815601002e7cdfff8f83d31c">&#9670;&nbsp;</a></span>get_firing_rate_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Spike::FiringRateSimulation::get_firing_rate_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the size of the firing rate array. </p>
+<dl class="section return"><dt>Returns</dt><dd>size of firing rate array </dd></dl>
+
+</div>
+</div>
+<a id="a8d380eae2463079de188e50e4cd65d6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d380eae2463079de188e50e4cd65d6c">&#9670;&nbsp;</a></span>get_N_neurons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Spike::FiringRateSimulation::get_N_neurons </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of neurons. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of neurons </dd></dl>
+
+</div>
+</div>
+<a id="aad04abb2b8fd42802bff041514ccc80d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad04abb2b8fd42802bff041514ccc80d">&#9670;&nbsp;</a></span>get_time_frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a>&amp; Spike::FiringRateSimulation::get_time_frame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the time frame. </p>
+<dl class="section return"><dt>Returns</dt><dd>time frame </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/Spike/Simulation/<a class="el" href="FiringRateSimulation_8h_source.html">FiringRateSimulation.h</a></li>
 <li>/github/workspace/Spike/Simulation/FiringRateSimulation.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1FiringRateSimulation.html">FiringRateSimulation</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

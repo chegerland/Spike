@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1TwoCosineSignal.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1TwoCosineSignal.html">TwoCosineSignal</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -93,15 +109,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a9713013c8ecc23c91d7958af8c948d76"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1TwoCosineSignal.html#a9713013c8ecc23c91d7958af8c948d76">signal</a> (double t) const</td></tr>
 <tr class="memdesc:a9713013c8ecc23c91d7958af8c948d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns signal, i.e. alpha*cos(2*pi*f1*t) + beta*cos(2*pi*f2*t + phi)  <a href="classSpike_1_1TwoCosineSignal.html#a9713013c8ecc23c91d7958af8c948d76">More...</a><br /></td></tr>
 <tr class="separator:a9713013c8ecc23c91d7958af8c948d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a843e2b39b050568790d123fe1828b2e6"><td class="memItemLeft" align="right" valign="top"><a id="a843e2b39b050568790d123fe1828b2e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (std::ostream &amp;out) const override</td></tr>
+<tr class="memitem:a843e2b39b050568790d123fe1828b2e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1TwoCosineSignal.html#a843e2b39b050568790d123fe1828b2e6">print</a> (std::ostream &amp;out) const override</td></tr>
+<tr class="memdesc:a843e2b39b050568790d123fe1828b2e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the signal to out stream.  <a href="classSpike_1_1TwoCosineSignal.html#a843e2b39b050568790d123fe1828b2e6">More...</a><br /></td></tr>
 <tr class="separator:a843e2b39b050568790d123fe1828b2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSpike_1_1Signal"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classSpike_1_1Signal')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSpike_1_1Signal.html">Spike::Signal</a></td></tr>
 <tr class="memitem:a2a51ec02dc92a1e8b6b47807a99ec362 inherit pub_methods_classSpike_1_1Signal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1Signal.html#a2a51ec02dc92a1e8b6b47807a99ec362">Signal</a> (const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;<a class="el" href="classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43">time_frame</a>)</td></tr>
 <tr class="memdesc:a2a51ec02dc92a1e8b6b47807a99ec362 inherit pub_methods_classSpike_1_1Signal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs signal from given time frame.  <a href="classSpike_1_1Signal.html#a2a51ec02dc92a1e8b6b47807a99ec362">More...</a><br /></td></tr>
 <tr class="separator:a2a51ec02dc92a1e8b6b47807a99ec362 inherit pub_methods_classSpike_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ef85f71970940f9a2899c716717f783 inherit pub_methods_classSpike_1_1Signal"><td class="memItemLeft" align="right" valign="top"><a id="a9ef85f71970940f9a2899c716717f783"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>get_value</b> (size_t i) const</td></tr>
+<tr class="memitem:a9ef85f71970940f9a2899c716717f783 inherit pub_methods_classSpike_1_1Signal"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1Signal.html#a9ef85f71970940f9a2899c716717f783">get_value</a> (size_t i) const</td></tr>
+<tr class="memdesc:a9ef85f71970940f9a2899c716717f783 inherit pub_methods_classSpike_1_1Signal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the signal value at index i.  <a href="classSpike_1_1Signal.html#a9ef85f71970940f9a2899c716717f783">More...</a><br /></td></tr>
 <tr class="separator:a9ef85f71970940f9a2899c716717f783 inherit pub_methods_classSpike_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -217,6 +233,7 @@ std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input_file</td><td>Input file in .ini format </td></tr>
+    <tr><td class="paramname">time_frame</td><td>time frame </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,6 +241,42 @@ std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a843e2b39b050568790d123fe1828b2e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a843e2b39b050568790d123fe1828b2e6">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spike::TwoCosineSignal::print </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints the signal to out stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>out stream </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classSpike_1_1Signal.html#a89e8dfb8f401a2850fa8098ac146131f">Spike::Signal</a>.</p>
+
+</div>
+</div>
 <a id="a9713013c8ecc23c91d7958af8c948d76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9713013c8ecc23c91d7958af8c948d76">&#9670;&nbsp;</a></span>signal()</h2>
 
@@ -256,9 +309,13 @@ std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <li>/github/workspace/Spike/Signal/TwoCosineSignal.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1TwoCosineSignal.html">TwoCosineSignal</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

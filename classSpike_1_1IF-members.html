@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1IF.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1IF.html">IF</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Spike::IF Member List</div>  </div>
@@ -77,22 +93,25 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#af79387fa6d9086a7a8e4b8cc8e4573aa">dist</a></td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#aabfe6d1859b1df4635658ad7902afd9d">drift</a>(double v) const =0</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#ac50f6beea3d0681f916569cc5724c0e5">generator</a></td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_D</b>() const (defined in <a class="el" href="classSpike_1_1IF.html">Spike::IF</a>)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#a9c22b3d43809f41fb800047c4754e71b">get_D</a>() const</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#ad2dbc12ebb9be37b6d48a6a919ee0317">get_spikes</a>(SpikeTrain &amp;spike_train) override</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#a6a8d605296aaf5182bc8b13f050b73cf">get_spikes</a>(Signal &amp;signal, SpikeTrain &amp;spike_train) override</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#a80040167ed90282ee9ca01e26a5ced01">get_voltage_curve</a>(const TimeFrame &amp;time, std::vector&lt; double &gt; &amp;v)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#a1202253898742531ee4793102f3eb4b8">IF</a>(const std::string &amp;input_file)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#ae1d16e78faabb88b63d816134f6da142">IF</a>(double mu, double D)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#a5bf7eeb378b48c3a1a10b9ae4a13a0f9">mu</a></td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator&lt;&lt;</b> (defined in <a class="el" href="classSpike_1_1IF.html">Spike::IF</a>)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>print</b>(std::ostream &amp;out) const =0 (defined in <a class="el" href="classSpike_1_1IF.html">Spike::IF</a>)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#a537f3ca40cdc4005b2c2dd64d64941e6">operator&lt;&lt;</a>(std::ostream &amp;out, const IF &amp;neuron)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#a3edcc914bc63659043c9e0255e47afa7">print</a>(std::ostream &amp;out) const =0</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#a42203c2d7aad4410cc94f12680e21d2e">rd</a></td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>set_D</b>(double D_new) (defined in <a class="el" href="classSpike_1_1IF.html">Spike::IF</a>)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>set_mu</b>(double mu_new) (defined in <a class="el" href="classSpike_1_1IF.html">Spike::IF</a>)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classSpike_1_1IF.html#acf5f2c8659848b68e10c43072054b15a">set_D</a>(double D_new)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classSpike_1_1IF.html#a033993c9910fc008ae5499f3d93b8168">set_mu</a>(double mu_new)</td><td class="entry"><a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

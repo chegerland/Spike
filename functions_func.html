@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -70,6 +90,10 @@ $(function() {
 <li>add_to_firing_rate()
 : <a class="el" href="classSpike_1_1FiringRateSimulation.html#a2e37f58e941cdb58e8821d45f1db101a">Spike::FiringRateSimulation</a>
 </li>
+<li>add_to_suscepts()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#a95dde3dd497beff9785c6a6984adaa1f">Spike::SusceptibilitySimulationLin</a>
+, <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#ae928b6eee02dcebfc6f5cd2ec9b8542a">Spike::SusceptibilitySimulationNonlin</a>
+</li>
 </ul>
 
 
@@ -78,7 +102,6 @@ $(function() {
 : <a class="el" href="classSpike_1_1FiringRateSimulation.html#acd39911d818e3ef744fa446c831ec1a1">Spike::FiringRateSimulation</a>
 , <a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a75fa60f9cf9dbe98236765a67a5d70c4">Spike::SusceptibilitySimulation</a>
 , <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">Spike::SusceptibilitySimulationLin</a>
-, <a class="el" href="classSpike_1_1SusceptibilitySimulationLinNonlin.html#a823784ce3271aa618d5c2ee602d61570">Spike::SusceptibilitySimulationLinNonlin</a>
 , <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a3fb8c147d6eed6edad3ed23665d69e1b">Spike::SusceptibilitySimulationNonlin</a>
 </li>
 <li>calculate_signal()
@@ -125,10 +148,81 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>get_alpha()
+: <a class="el" href="classSpike_1_1WhiteNoiseSignal.html#a87851aa7862939c9d98d9aa66712bc30">Spike::WhiteNoiseSignal</a>
+</li>
+<li>get_D()
+: <a class="el" href="classSpike_1_1IF.html#a9c22b3d43809f41fb800047c4754e71b">Spike::IF</a>
+</li>
+<li>get_dt()
+: <a class="el" href="classSpike_1_1SpikeTrain.html#a515bf30ca267d52109537e1a166c32df">Spike::SpikeTrain</a>
+, <a class="el" href="classSpike_1_1TimeFrame.html#ab5442dfa44a706968c82fbf2b8a7377a">Spike::TimeFrame</a>
+</li>
+<li>get_f()
+: <a class="el" href="classSpike_1_1CosineSignal.html#a01de833c748f0debc0aefd0211d626b5">Spike::CosineSignal</a>
+</li>
+<li>get_firing_rate()
+: <a class="el" href="classSpike_1_1FiringRateSimulation.html#ae9cda5c88c9eff59c07248f8e2ce9c95">Spike::FiringRateSimulation</a>
+</li>
+<li>get_firing_rate_size()
+: <a class="el" href="classSpike_1_1FiringRateSimulation.html#a16b49671815601002e7cdfff8f83d31c">Spike::FiringRateSimulation</a>
+</li>
+<li>get_frequencies()
+: <a class="el" href="classSpike_1_1WhiteNoiseSignal.html#a4c5b8e4c19232bfbae905320f9cfd309">Spike::WhiteNoiseSignal</a>
+</li>
+<li>get_N_neurons()
+: <a class="el" href="classSpike_1_1FiringRateSimulation.html#a8d380eae2463079de188e50e4cd65d6c">Spike::FiringRateSimulation</a>
+, <a class="el" href="classSpike_1_1SusceptibilitySimulation.html#af109ef4f2572bc963e77c0eb16238e84">Spike::SusceptibilitySimulation</a>
+</li>
+<li>get_size()
+: <a class="el" href="classSpike_1_1SpikeTrain.html#aaf0a60dc2952ff6530c989aeb920b066">Spike::SpikeTrain</a>
+, <a class="el" href="classSpike_1_1TimeFrame.html#ac0e52358caf542e6711a96cf3cd94c73">Spike::TimeFrame</a>
+</li>
+<li>get_size_lin()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#ae38bbcfeac49ea135475bffcdd2dfbb9">Spike::SusceptibilitySimulationLin</a>
+</li>
+<li>get_size_nonlin()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a9b4d2ea091072a3266a71f0d21d2f4dd">Spike::SusceptibilitySimulationNonlin</a>
+</li>
+<li>get_spike()
+: <a class="el" href="classSpike_1_1SpikeTrain.html#aa36f2ec7371bbb1043768aeef9ea9a4f">Spike::SpikeTrain</a>
+</li>
 <li>get_spikes()
 : <a class="el" href="classSpike_1_1IF.html#ad2dbc12ebb9be37b6d48a6a919ee0317">Spike::IF</a>
 , <a class="el" href="classSpike_1_1IFAC.html#ad160c4dfa1947b3f54d4a59094fc8a70">Spike::IFAC</a>
 , <a class="el" href="classSpike_1_1Neuron.html#ae6b4c8a5909944b66c84b3f995783a55">Spike::Neuron</a>
+</li>
+<li>get_suscept_lin()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#ad82964a2f34c08485c471baad8870a5a">Spike::SusceptibilitySimulationLin</a>
+</li>
+<li>get_suscept_nonlin()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a58bff1eca99100f8eb1817254c2d2818">Spike::SusceptibilitySimulationNonlin</a>
+</li>
+<li>get_t_0()
+: <a class="el" href="classSpike_1_1TimeFrame.html#a57dd28cc70e0d1ccbc2c483e67af0c78">Spike::TimeFrame</a>
+</li>
+<li>get_t_end()
+: <a class="el" href="classSpike_1_1TimeFrame.html#a5fa45fc62f247ade3321dfb4f0315055">Spike::TimeFrame</a>
+</li>
+<li>get_time()
+: <a class="el" href="classSpike_1_1TimeFrame.html#af02a5b60041f7e019af526ef6d53a412">Spike::TimeFrame</a>
+</li>
+<li>get_time_frame()
+: <a class="el" href="classSpike_1_1FiringRateSimulation.html#aad04abb2b8fd42802bff041514ccc80d">Spike::FiringRateSimulation</a>
+, <a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a0d4cd7e2f16680c071378561cdfb760f">Spike::SusceptibilitySimulation</a>
+</li>
+<li>get_times()
+: <a class="el" href="classSpike_1_1TimeFrame.html#ad686257474b4829053824bc228919374">Spike::TimeFrame</a>
+</li>
+<li>get_value()
+: <a class="el" href="classSpike_1_1Signal.html#a9ef85f71970940f9a2899c716717f783">Spike::Signal</a>
+</li>
+<li>get_values()
+: <a class="el" href="classSpike_1_1SpikeTrain.html#a42a4e4065855f7ccb8214e5b7566f473">Spike::SpikeTrain</a>
+, <a class="el" href="classSpike_1_1WhiteNoiseSignal.html#ab3e7d20b8beecfa8b5f7980b44346380">Spike::WhiteNoiseSignal</a>
+</li>
+<li>get_variance()
+: <a class="el" href="classSpike_1_1WhiteNoiseSignal.html#a188224c42c2e961372759b47a75d7dd4">Spike::WhiteNoiseSignal</a>
 </li>
 <li>get_voltage_curve()
 : <a class="el" href="classSpike_1_1IF.html#a80040167ed90282ee9ca01e26a5ced01">Spike::IF</a>
@@ -164,10 +258,40 @@ $(function() {
 <li>PIFAC()
 : <a class="el" href="classSpike_1_1PIFAC.html#a6e42680a303e9d27d0410551b1dffa53">Spike::PIFAC</a>
 </li>
+<li>print()
+: <a class="el" href="classSpike_1_1CosineSignal.html#ad5b3ef5f409511d87a5871ba286282b5">Spike::CosineSignal</a>
+, <a class="el" href="classSpike_1_1IF.html#a3edcc914bc63659043c9e0255e47afa7">Spike::IF</a>
+, <a class="el" href="classSpike_1_1LIF.html#ade3f3eb88a2325cc72efb9c986eb5350">Spike::LIF</a>
+, <a class="el" href="classSpike_1_1LIFAC.html#a7104f35910edd996ef58a1d212eaacce">Spike::LIFAC</a>
+, <a class="el" href="classSpike_1_1PIF.html#a874ebec22b2a341c6d9a14a2e6e53e90">Spike::PIF</a>
+, <a class="el" href="classSpike_1_1PIFAC.html#ae4b2aa42e7857b631bc0f78c6153932e">Spike::PIFAC</a>
+, <a class="el" href="classSpike_1_1Signal.html#a89e8dfb8f401a2850fa8098ac146131f">Spike::Signal</a>
+, <a class="el" href="classSpike_1_1StepSignal.html#a7b03c4e2f46237ff06f10b1258f56640">Spike::StepSignal</a>
+, <a class="el" href="classSpike_1_1TwoCosineSignal.html#a843e2b39b050568790d123fe1828b2e6">Spike::TwoCosineSignal</a>
+, <a class="el" href="classSpike_1_1WhiteNoiseSignal.html#af3b4946f7f15280cdd05bef0de727aa4">Spike::WhiteNoiseSignal</a>
+</li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>set_alpha()
+: <a class="el" href="classSpike_1_1WhiteNoiseSignal.html#a92569beab7d98e44c1effbc3d8daf00f">Spike::WhiteNoiseSignal</a>
+</li>
+<li>set_c()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a9ceab5acbb885f0ddf50b77a22637d5b">Spike::SusceptibilitySimulation</a>
+</li>
+<li>set_D()
+: <a class="el" href="classSpike_1_1IF.html#acf5f2c8659848b68e10c43072054b15a">Spike::IF</a>
+</li>
+<li>set_Delta()
+: <a class="el" href="classSpike_1_1IFAC.html#a95b0ce21cc2505e43e1499fbac34f9ba">Spike::IFAC</a>
+</li>
+<li>set_mu()
+: <a class="el" href="classSpike_1_1IF.html#a033993c9910fc008ae5499f3d93b8168">Spike::IF</a>
+</li>
+<li>set_tau_a()
+: <a class="el" href="classSpike_1_1IFAC.html#a5b5c4c8aadc15a061ce45e9742ad6efb">Spike::IFAC</a>
+</li>
 <li>signal()
 : <a class="el" href="classSpike_1_1CosineSignal.html#a9477f4a125330f6805b81d2605f436c1">Spike::CosineSignal</a>
 </li>
@@ -191,6 +315,12 @@ $(function() {
 <li>SusceptibilitySimulation()
 : <a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a1b3e9e99a6ad35c7f69f9af342b253c5">Spike::SusceptibilitySimulation</a>
 </li>
+<li>SusceptibilitySimulationLin()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#a18ba05ee80ee5e03caa11cb20febc21b">Spike::SusceptibilitySimulationLin</a>
+</li>
+<li>SusceptibilitySimulationNonlin()
+: <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#ade48be397cd4649fb5f9a940013c6240">Spike::SusceptibilitySimulationNonlin</a>
+</li>
 </ul>
 
 
@@ -210,9 +340,12 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

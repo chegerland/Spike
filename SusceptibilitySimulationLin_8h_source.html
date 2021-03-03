@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('SusceptibilitySimulationLin_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_aaa1a68f49b526e3648e304f703e9bc0.html">Spike</a></li><li class="navelem"><a class="el" href="dir_94d50ecba33a9cdc15ca72731f94cb41.html">Simulation</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SusceptibilitySimulationLin.h</div>  </div>
@@ -77,33 +93,44 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>Spike {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classSpike_1_1SusceptibilitySimulationLin.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html">SusceptibilitySimulationLin</a> : <span class="keyword">public</span> <a class="code" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  std::vector&lt;std::complex&lt;double&gt;&gt; suscept_lin; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; <span class="keyword">explicit</span> <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html">SusceptibilitySimulationLin</a>(<span class="keyword">const</span> std::string &amp;input_file);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">calculate</a>(<span class="keywordtype">size_t</span> trials) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; <span class="keywordtype">void</span> add_to_suscepts(<span class="keyword">const</span> std::vector&lt;std::complex&lt;double&gt;&gt; &amp;tmp_lin);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// getter</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  [[nodiscard]] <span class="keywordtype">size_t</span> get_size_lin()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> suscept_lin.size(); };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;std::complex&lt;double&gt;&gt; &amp;get_suscept_lin()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> suscept_lin;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  };</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SPIKE_SUSCEPTIBILITYSIMULATIONLIN_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classSpike_1_1SusceptibilitySimulationLin.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html">SusceptibilitySimulationLin</a> : <span class="keyword">public</span> <a class="code" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  std::vector&lt;std::complex&lt;double&gt;&gt; suscept_lin; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html#a18ba05ee80ee5e03caa11cb20febc21b">SusceptibilitySimulationLin</a>(<span class="keyword">const</span> std::string &amp;input_file);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">calculate</a>(<span class="keywordtype">size_t</span> trials) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html#a95dde3dd497beff9785c6a6984adaa1f">add_to_suscepts</a>(<span class="keyword">const</span> std::vector&lt;std::complex&lt;double&gt;&gt; &amp;tmp_lin);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classSpike_1_1SusceptibilitySimulationLin.html#ae38bbcfeac49ea135475bffcdd2dfbb9">   46</a></span>&#160;  [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html#ae38bbcfeac49ea135475bffcdd2dfbb9">get_size_lin</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> suscept_lin.size(); };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  [[nodiscard]] <span class="keyword">const</span> std::vector&lt;std::complex&lt;double&gt;&gt; &amp;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classSpike_1_1SusceptibilitySimulationLin.html#ad82964a2f34c08485c471baad8870a5a">   53</a></span>&#160;  <a class="code" href="classSpike_1_1SusceptibilitySimulationLin.html#ad82964a2f34c08485c471baad8870a5a">get_suscept_lin</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> suscept_lin;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  };</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <span class="comment">// namespace Spike</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SPIKE_SUSCEPTIBILITYSIMULATIONLIN_H</span></div>
 <div class="ttc" id="aSusceptibilitySimulation_8h_html"><div class="ttname"><a href="SusceptibilitySimulation_8h.html">SusceptibilitySimulation.h</a></div></div>
-<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html">Spike::SusceptibilitySimulationLin</a></div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.h:12</div></div>
-<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html_aceee715b3d905c786c7c0c6142d6d3bc"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">Spike::SusceptibilitySimulationLin::calculate</a></div><div class="ttdeci">void calculate(size_t trials) override</div><div class="ttdoc">Calculates the linear and nonlinear susceptibilities for a given number of trials....</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.cpp:11</div></div>
-<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulation_html"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulation.html">Spike::SusceptibilitySimulation</a></div><div class="ttdoc">Implements a simulation during which we measure the susceptibility of an integrate-and-fire neuron (w...</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulation.h:19</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html">Spike::SusceptibilitySimulationLin</a></div><div class="ttdoc">A simulation where we measure the linear (first order) susceptibility of an integrate-and-fire neuron...</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.h:16</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html_a18ba05ee80ee5e03caa11cb20febc21b"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html#a18ba05ee80ee5e03caa11cb20febc21b">Spike::SusceptibilitySimulationLin::SusceptibilitySimulationLin</a></div><div class="ttdeci">SusceptibilitySimulationLin(const std::string &amp;input_file)</div><div class="ttdoc">Constructs susceptibility simulation from .ini file.</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.cpp:6</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html_a95dde3dd497beff9785c6a6984adaa1f"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html#a95dde3dd497beff9785c6a6984adaa1f">Spike::SusceptibilitySimulationLin::add_to_suscepts</a></div><div class="ttdeci">void add_to_suscepts(const std::vector&lt; std::complex&lt; double &gt;&gt; &amp;tmp_lin)</div><div class="ttdoc">Adds the susceptibility tmp_lin to suscept_lin.</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.cpp:27</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html_aceee715b3d905c786c7c0c6142d6d3bc"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">Spike::SusceptibilitySimulationLin::calculate</a></div><div class="ttdeci">void calculate(size_t trials) override</div><div class="ttdoc">Calculates the linear susceptibility for a given number of trials. Each time the white noise signal i...</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.cpp:11</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html_ad82964a2f34c08485c471baad8870a5a"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html#ad82964a2f34c08485c471baad8870a5a">Spike::SusceptibilitySimulationLin::get_suscept_lin</a></div><div class="ttdeci">const std::vector&lt; std::complex&lt; double &gt; &gt; &amp; get_suscept_lin() const</div><div class="ttdoc">Returns the susceptibility vector.</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.h:53</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulationLin_html_ae38bbcfeac49ea135475bffcdd2dfbb9"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulationLin.html#ae38bbcfeac49ea135475bffcdd2dfbb9">Spike::SusceptibilitySimulationLin::get_size_lin</a></div><div class="ttdeci">size_t get_size_lin() const</div><div class="ttdoc">Returns the size of the susceptibility vector.</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulationLin.h:46</div></div>
+<div class="ttc" id="aclassSpike_1_1SusceptibilitySimulation_html"><div class="ttname"><a href="classSpike_1_1SusceptibilitySimulation.html">Spike::SusceptibilitySimulation</a></div><div class="ttdoc">Implements a prototype simulation during which we measure the susceptibility of an integrate-and-fire...</div><div class="ttdef"><b>Definition:</b> SusceptibilitySimulation.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_aaa1a68f49b526e3648e304f703e9bc0.html">Spike</a></li><li class="navelem"><a class="el" href="dir_94d50ecba33a9cdc15ca72731f94cb41.html">Simulation</a></li><li class="navelem"><a class="el" href="SusceptibilitySimulationLin_8h.html">SusceptibilitySimulationLin.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

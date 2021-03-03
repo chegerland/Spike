@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1LIF.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1LIF.html">LIF</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -89,8 +105,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a57d15006fc756ae38196371b6f2504af"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1LIF.html#a57d15006fc756ae38196371b6f2504af">drift</a> (double v) const override</td></tr>
 <tr class="memdesc:a57d15006fc756ae38196371b6f2504af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates drift of the <a class="el" href="classSpike_1_1LIF.html" title="A leaky integrate-and-fire (LIF) neuron.">LIF</a>, i.e. mu - v.  <a href="classSpike_1_1LIF.html#a57d15006fc756ae38196371b6f2504af">More...</a><br /></td></tr>
 <tr class="separator:a57d15006fc756ae38196371b6f2504af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade3f3eb88a2325cc72efb9c986eb5350"><td class="memItemLeft" align="right" valign="top"><a id="ade3f3eb88a2325cc72efb9c986eb5350"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (std::ostream &amp;out) const override</td></tr>
+<tr class="memitem:ade3f3eb88a2325cc72efb9c986eb5350"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1LIF.html#ade3f3eb88a2325cc72efb9c986eb5350">print</a> (std::ostream &amp;out) const override</td></tr>
+<tr class="memdesc:ade3f3eb88a2325cc72efb9c986eb5350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the <a class="el" href="classSpike_1_1LIF.html" title="A leaky integrate-and-fire (LIF) neuron.">LIF</a> neuron to out stream.  <a href="classSpike_1_1LIF.html#ade3f3eb88a2325cc72efb9c986eb5350">More...</a><br /></td></tr>
 <tr class="separator:ade3f3eb88a2325cc72efb9c986eb5350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSpike_1_1IF"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classSpike_1_1IF')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSpike_1_1IF.html">Spike::IF</a></td></tr>
 <tr class="memitem:a1202253898742531ee4793102f3eb4b8 inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1IF.html#a1202253898742531ee4793102f3eb4b8">IF</a> (const std::string &amp;input_file)</td></tr>
@@ -111,14 +127,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (std::ostre
 <tr class="memitem:a80040167ed90282ee9ca01e26a5ced01 inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1IF.html#a80040167ed90282ee9ca01e26a5ced01">get_voltage_curve</a> (const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;time, std::vector&lt; double &gt; &amp;v)</td></tr>
 <tr class="memdesc:a80040167ed90282ee9ca01e26a5ced01 inherit pub_methods_classSpike_1_1IF"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the trajectory, i.e. v(t) for a given time frame.  <a href="classSpike_1_1IF.html#a80040167ed90282ee9ca01e26a5ced01">More...</a><br /></td></tr>
 <tr class="separator:a80040167ed90282ee9ca01e26a5ced01 inherit pub_methods_classSpike_1_1IF"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a033993c9910fc008ae5499f3d93b8168 inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top"><a id="a033993c9910fc008ae5499f3d93b8168"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_mu</b> (double mu_new)</td></tr>
+<tr class="memitem:a033993c9910fc008ae5499f3d93b8168 inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1IF.html#a033993c9910fc008ae5499f3d93b8168">set_mu</a> (double mu_new)</td></tr>
+<tr class="memdesc:a033993c9910fc008ae5499f3d93b8168 inherit pub_methods_classSpike_1_1IF"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set new mean input current.  <a href="classSpike_1_1IF.html#a033993c9910fc008ae5499f3d93b8168">More...</a><br /></td></tr>
 <tr class="separator:a033993c9910fc008ae5499f3d93b8168 inherit pub_methods_classSpike_1_1IF"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf5f2c8659848b68e10c43072054b15a inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top"><a id="acf5f2c8659848b68e10c43072054b15a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_D</b> (double D_new)</td></tr>
+<tr class="memitem:acf5f2c8659848b68e10c43072054b15a inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1IF.html#acf5f2c8659848b68e10c43072054b15a">set_D</a> (double D_new)</td></tr>
+<tr class="memdesc:acf5f2c8659848b68e10c43072054b15a inherit pub_methods_classSpike_1_1IF"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set new diffusion coefficient.  <a href="classSpike_1_1IF.html#acf5f2c8659848b68e10c43072054b15a">More...</a><br /></td></tr>
 <tr class="separator:acf5f2c8659848b68e10c43072054b15a inherit pub_methods_classSpike_1_1IF"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c22b3d43809f41fb800047c4754e71b inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top"><a id="a9c22b3d43809f41fb800047c4754e71b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>get_D</b> () const</td></tr>
+<tr class="memitem:a9c22b3d43809f41fb800047c4754e71b inherit pub_methods_classSpike_1_1IF"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1IF.html#a9c22b3d43809f41fb800047c4754e71b">get_D</a> () const</td></tr>
+<tr class="memdesc:a9c22b3d43809f41fb800047c4754e71b inherit pub_methods_classSpike_1_1IF"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the diffusion coefficient.  <a href="classSpike_1_1IF.html#a9c22b3d43809f41fb800047c4754e71b">More...</a><br /></td></tr>
 <tr class="separator:a9c22b3d43809f41fb800047c4754e71b inherit pub_methods_classSpike_1_1IF"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -257,14 +273,54 @@ std::normal_distribution&lt; double &gt;&#160;</td><td class="memItemRight" vali
 
 </div>
 </div>
+<a id="ade3f3eb88a2325cc72efb9c986eb5350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade3f3eb88a2325cc72efb9c986eb5350">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spike::LIF::print </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints the <a class="el" href="classSpike_1_1LIF.html" title="A leaky integrate-and-fire (LIF) neuron.">LIF</a> neuron to out stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>out stream </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classSpike_1_1IF.html#a3edcc914bc63659043c9e0255e47afa7">Spike::IF</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/Spike/Neuron/<a class="el" href="IF_8h_source.html">IF.h</a></li>
 <li>/github/workspace/Spike/Neuron/IF.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1LIF.html">LIF</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

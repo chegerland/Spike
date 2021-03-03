@@ -1,7 +1,25 @@
 var searchData=
 [
-  ['tau_5fa_56',['tau_a',['../classSpike_1_1IFAC.html#ace7b05f46dbe78cce3b620105222575b',1,'Spike::IFAC']]],
-  ['time_5fframe_57',['time_frame',['../classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43',1,'Spike::Signal::time_frame()'],['../classSpike_1_1SusceptibilitySimulation.html#a65b26a86d6423f0a5033071837e84f8f',1,'Spike::SusceptibilitySimulation::time_frame()']]],
-  ['timeframe_58',['TimeFrame',['../classSpike_1_1TimeFrame.html',1,'Spike::TimeFrame'],['../classSpike_1_1TimeFrame.html#abbdd2865bd1d1ccc4bf00d1c35c9264e',1,'Spike::TimeFrame::TimeFrame(const std::string &amp;input_file)'],['../classSpike_1_1TimeFrame.html#a8983bb412b0736fd55c82c64869f3c22',1,'Spike::TimeFrame::TimeFrame(double t_0, double t_end, double dt)']]],
-  ['twocosinesignal_59',['TwoCosineSignal',['../classSpike_1_1TwoCosineSignal.html',1,'Spike::TwoCosineSignal'],['../classSpike_1_1TwoCosineSignal.html#a6564d6df1c884aa2a16e7958c0748e25',1,'Spike::TwoCosineSignal::TwoCosineSignal(double alpha, double f1, double beta, double f2, double phi, const TimeFrame &amp;time_frame)'],['../classSpike_1_1TwoCosineSignal.html#a9c96fabfc4d0d6ab27c0d8a3351eb488',1,'Spike::TwoCosineSignal::TwoCosineSignal(const std::string &amp;input_file, const TimeFrame &amp;time_frame)']]]
+  ['set_5falpha_63',['set_alpha',['../classSpike_1_1WhiteNoiseSignal.html#a92569beab7d98e44c1effbc3d8daf00f',1,'Spike::WhiteNoiseSignal']]],
+  ['set_5fc_64',['set_c',['../classSpike_1_1SusceptibilitySimulation.html#a9ceab5acbb885f0ddf50b77a22637d5b',1,'Spike::SusceptibilitySimulation']]],
+  ['set_5fd_65',['set_D',['../classSpike_1_1IF.html#acf5f2c8659848b68e10c43072054b15a',1,'Spike::IF']]],
+  ['set_5fdelta_66',['set_Delta',['../classSpike_1_1IFAC.html#a95b0ce21cc2505e43e1499fbac34f9ba',1,'Spike::IFAC']]],
+  ['set_5fmu_67',['set_mu',['../classSpike_1_1IF.html#a033993c9910fc008ae5499f3d93b8168',1,'Spike::IF']]],
+  ['set_5ftau_5fa_68',['set_tau_a',['../classSpike_1_1IFAC.html#a5b5c4c8aadc15a061ce45e9742ad6efb',1,'Spike::IFAC']]],
+  ['signal_69',['Signal',['../classSpike_1_1Signal.html#a2a51ec02dc92a1e8b6b47807a99ec362',1,'Spike::Signal']]],
+  ['signal_70',['signal',['../classSpike_1_1WhiteNoiseSignal.html#a315f1aec3165a1e47f62381f999bd0da',1,'Spike::WhiteNoiseSignal::signal()'],['../classSpike_1_1TwoCosineSignal.html#a9713013c8ecc23c91d7958af8c948d76',1,'Spike::TwoCosineSignal::signal()'],['../classSpike_1_1StepSignal.html#a11029a0dfee50a6de1e1952da312e7ed',1,'Spike::StepSignal::signal()'],['../classSpike_1_1CosineSignal.html#a9477f4a125330f6805b81d2605f436c1',1,'Spike::CosineSignal::signal()'],['../classSpike_1_1SusceptibilitySimulation.html#a8efb2e42b56a3259dfea3af9064c1d90',1,'Spike::SusceptibilitySimulation::signal()']]],
+  ['signal_71',['Signal',['../classSpike_1_1Signal.html',1,'Spike']]],
+  ['signal_2eh_72',['Signal.h',['../Signal_8h.html',1,'']]],
+  ['signal_5fvalues_73',['signal_values',['../classSpike_1_1Signal.html#a8957916ba9c0bf4bcb3bf5b9f0a6dfbf',1,'Spike::Signal']]],
+  ['signalfactory_74',['SignalFactory',['../classSpike_1_1SignalFactory.html',1,'Spike']]],
+  ['spike_5fcount_75',['spike_count',['../classSpike_1_1SpikeTrain.html#aa7eed71e1252551dfcf1d478291f939f',1,'Spike::SpikeTrain']]],
+  ['spike_5ftrain_76',['spike_train',['../classSpike_1_1SusceptibilitySimulation.html#aa76ceca4cd9145cbc27fcdc5c72ec286',1,'Spike::SusceptibilitySimulation']]],
+  ['spiketrain_77',['SpikeTrain',['../classSpike_1_1SpikeTrain.html',1,'Spike::SpikeTrain'],['../classSpike_1_1SpikeTrain.html#a905394bd3845ffc1652e0817e4fd2448',1,'Spike::SpikeTrain::SpikeTrain()']]],
+  ['stepsignal_78',['StepSignal',['../classSpike_1_1StepSignal.html',1,'Spike::StepSignal'],['../classSpike_1_1StepSignal.html#a6cdc43ea0524b05131c138d5a08b2551',1,'Spike::StepSignal::StepSignal(double alpha, double t_0, const TimeFrame &amp;time_frame)'],['../classSpike_1_1StepSignal.html#a1917c5d25af919c27a55b3f2a5cba465',1,'Spike::StepSignal::StepSignal(const std::string &amp;input_file, const TimeFrame &amp;time_frame)']]],
+  ['susceptibilitysimulation_79',['SusceptibilitySimulation',['../classSpike_1_1SusceptibilitySimulation.html',1,'Spike::SusceptibilitySimulation'],['../classSpike_1_1SusceptibilitySimulation.html#a1b3e9e99a6ad35c7f69f9af342b253c5',1,'Spike::SusceptibilitySimulation::SusceptibilitySimulation()']]],
+  ['susceptibilitysimulation_2eh_80',['SusceptibilitySimulation.h',['../SusceptibilitySimulation_8h.html',1,'']]],
+  ['susceptibilitysimulationlin_81',['SusceptibilitySimulationLin',['../classSpike_1_1SusceptibilitySimulationLin.html',1,'Spike::SusceptibilitySimulationLin'],['../classSpike_1_1SusceptibilitySimulationLin.html#a18ba05ee80ee5e03caa11cb20febc21b',1,'Spike::SusceptibilitySimulationLin::SusceptibilitySimulationLin()']]],
+  ['susceptibilitysimulationlin_2eh_82',['SusceptibilitySimulationLin.h',['../SusceptibilitySimulationLin_8h.html',1,'']]],
+  ['susceptibilitysimulationnonlin_83',['SusceptibilitySimulationNonlin',['../classSpike_1_1SusceptibilitySimulationNonlin.html',1,'Spike::SusceptibilitySimulationNonlin'],['../classSpike_1_1SusceptibilitySimulationNonlin.html#ade48be397cd4649fb5f9a940013c6240',1,'Spike::SusceptibilitySimulationNonlin::SusceptibilitySimulationNonlin()']]],
+  ['susceptibilitysimulationnonlin_2eh_84',['SusceptibilitySimulationNonlin.h',['../SusceptibilitySimulationNonlin_8h.html',1,'']]]
 ];

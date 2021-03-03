@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classSpike_1_1SusceptibilitySimulation.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -75,7 +91,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Implements a simulation during which we measure the susceptibility of an integrate-and-fire neuron (with or without adaptation).  
+<p>Implements a prototype simulation during which we measure the susceptibility of an integrate-and-fire neuron (with or without adaptation).  
  <a href="classSpike_1_1SusceptibilitySimulation.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="SusceptibilitySimulation_8h_source.html">SusceptibilitySimulation.h</a>&gt;</code></p>
@@ -86,16 +102,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1b3e9e99a6ad35c7f69f9af342b253c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs susceptibility simulation from .ini file.  <a href="classSpike_1_1SusceptibilitySimulation.html#a1b3e9e99a6ad35c7f69f9af342b253c5">More...</a><br /></td></tr>
 <tr class="separator:a1b3e9e99a6ad35c7f69f9af342b253c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75fa60f9cf9dbe98236765a67a5d70c4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a75fa60f9cf9dbe98236765a67a5d70c4">calculate</a> (size_t trials)=0</td></tr>
-<tr class="memdesc:a75fa60f9cf9dbe98236765a67a5d70c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the linear and nonlinear susceptibilities for a given number of trials. Each time the white noise signal gets generated again, the neuron produces a new spike train and then the susceptibilities are calculated. The result is then added (!) to the susceptibility vectors.  <a href="classSpike_1_1SusceptibilitySimulation.html#a75fa60f9cf9dbe98236765a67a5d70c4">More...</a><br /></td></tr>
+<tr class="memdesc:a75fa60f9cf9dbe98236765a67a5d70c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the susceptibility for a given number of trials.  <a href="classSpike_1_1SusceptibilitySimulation.html#a75fa60f9cf9dbe98236765a67a5d70c4">More...</a><br /></td></tr>
 <tr class="separator:a75fa60f9cf9dbe98236765a67a5d70c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ceab5acbb885f0ddf50b77a22637d5b"><td class="memItemLeft" align="right" valign="top"><a id="a9ceab5acbb885f0ddf50b77a22637d5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_c</b> (double c_new)</td></tr>
+<tr class="memitem:a9ceab5acbb885f0ddf50b77a22637d5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a9ceab5acbb885f0ddf50b77a22637d5b">set_c</a> (double c_new)</td></tr>
+<tr class="memdesc:a9ceab5acbb885f0ddf50b77a22637d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a new noise split coefficient.  <a href="classSpike_1_1SusceptibilitySimulation.html#a9ceab5acbb885f0ddf50b77a22637d5b">More...</a><br /></td></tr>
 <tr class="separator:a9ceab5acbb885f0ddf50b77a22637d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af109ef4f2572bc963e77c0eb16238e84"><td class="memItemLeft" align="right" valign="top"><a id="af109ef4f2572bc963e77c0eb16238e84"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_N_neurons</b> () const</td></tr>
+<tr class="memitem:af109ef4f2572bc963e77c0eb16238e84"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#af109ef4f2572bc963e77c0eb16238e84">get_N_neurons</a> () const</td></tr>
+<tr class="memdesc:af109ef4f2572bc963e77c0eb16238e84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of neurons (trials) for this simulation.  <a href="classSpike_1_1SusceptibilitySimulation.html#af109ef4f2572bc963e77c0eb16238e84">More...</a><br /></td></tr>
 <tr class="separator:af109ef4f2572bc963e77c0eb16238e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4cd7e2f16680c071378561cdfb760f"><td class="memItemLeft" align="right" valign="top"><a id="a0d4cd7e2f16680c071378561cdfb760f"></a>
-const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_time_frame</b> () const</td></tr>
+<tr class="memitem:a0d4cd7e2f16680c071378561cdfb760f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#a0d4cd7e2f16680c071378561cdfb760f">get_time_frame</a> () const</td></tr>
+<tr class="memdesc:a0d4cd7e2f16680c071378561cdfb760f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the time frame.  <a href="classSpike_1_1SusceptibilitySimulation.html#a0d4cd7e2f16680c071378561cdfb760f">More...</a><br /></td></tr>
 <tr class="separator:a0d4cd7e2f16680c071378561cdfb760f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -131,12 +147,12 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ae765e001a1b5c8ad2d32503503dd0305"><td class="memItemLeft" align="right" valign="top"><a id="ae765e001a1b5c8ad2d32503503dd0305"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a> &amp;suscept_sim)</td></tr>
+<tr class="memitem:ae765e001a1b5c8ad2d32503503dd0305"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html#ae765e001a1b5c8ad2d32503503dd0305">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a> &amp;suscept_sim)</td></tr>
+<tr class="memdesc:ae765e001a1b5c8ad2d32503503dd0305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloads the &lt;&lt; operator so we can print a simulation.  <a href="classSpike_1_1SusceptibilitySimulation.html#ae765e001a1b5c8ad2d32503503dd0305">More...</a><br /></td></tr>
 <tr class="separator:ae765e001a1b5c8ad2d32503503dd0305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements a simulation during which we measure the susceptibility of an integrate-and-fire neuron (with or without adaptation). </p>
+<div class="textblock"><p>Implements a prototype simulation during which we measure the susceptibility of an integrate-and-fire neuron (with or without adaptation). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1b3e9e99a6ad35c7f69f9af342b253c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b3e9e99a6ad35c7f69f9af342b253c5">&#9670;&nbsp;</a></span>SusceptibilitySimulation()</h2>
@@ -165,7 +181,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <p>Constructs susceptibility simulation from .ini file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input_file</td><td>Path to .ini file </td></tr>
+    <tr><td class="paramname">input_file</td><td>path to .ini file </td></tr>
   </table>
   </dd>
 </dl>
@@ -197,15 +213,144 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 </table>
 </div><div class="memdoc">
 
-<p>Calculates the linear and nonlinear susceptibilities for a given number of trials. Each time the white noise signal gets generated again, the neuron produces a new spike train and then the susceptibilities are calculated. The result is then added (!) to the susceptibility vectors. </p>
+<p>Calculates the susceptibility for a given number of trials. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">trials</td><td>Number of Trials </td></tr>
+    <tr><td class="paramname">trials</td><td>number of Trials </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a3fb8c147d6eed6edad3ed23665d69e1b">Spike::SusceptibilitySimulationNonlin</a>, <a class="el" href="classSpike_1_1SusceptibilitySimulationLinNonlin.html#a823784ce3271aa618d5c2ee602d61570">Spike::SusceptibilitySimulationLinNonlin</a>, and <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">Spike::SusceptibilitySimulationLin</a>.</p>
+<p>Implemented in <a class="el" href="classSpike_1_1SusceptibilitySimulationNonlin.html#a3fb8c147d6eed6edad3ed23665d69e1b">Spike::SusceptibilitySimulationNonlin</a>, and <a class="el" href="classSpike_1_1SusceptibilitySimulationLin.html#aceee715b3d905c786c7c0c6142d6d3bc">Spike::SusceptibilitySimulationLin</a>.</p>
+
+</div>
+</div>
+<a id="af109ef4f2572bc963e77c0eb16238e84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af109ef4f2572bc963e77c0eb16238e84">&#9670;&nbsp;</a></span>get_N_neurons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Spike::SusceptibilitySimulation::get_N_neurons </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of neurons (trials) for this simulation. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of neurons </dd></dl>
+
+</div>
+</div>
+<a id="a0d4cd7e2f16680c071378561cdfb760f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d4cd7e2f16680c071378561cdfb760f">&#9670;&nbsp;</a></span>get_time_frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a>&amp; Spike::SusceptibilitySimulation::get_time_frame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the time frame. </p>
+<dl class="section return"><dt>Returns</dt><dd>time frame </dd></dl>
+
+</div>
+</div>
+<a id="a9ceab5acbb885f0ddf50b77a22637d5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ceab5acbb885f0ddf50b77a22637d5b">&#9670;&nbsp;</a></span>set_c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spike::SusceptibilitySimulation::set_c </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c_new</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a new noise split coefficient. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c_new</td><td>new noise split coefficient </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ae765e001a1b5c8ad2d32503503dd0305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae765e001a1b5c8ad2d32503503dd0305">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a> &amp;&#160;</td>
+          <td class="paramname"><em>suscept_sim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overloads the &lt;&lt; operator so we can print a simulation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>stream </td></tr>
+    <tr><td class="paramname">suscept_sim</td><td>susceptibility simulation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -214,9 +359,13 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <li>/github/workspace/Spike/Simulation/SusceptibilitySimulation.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Spike</b></li><li class="navelem"><a class="el" href="classSpike_1_1SusceptibilitySimulation.html">SusceptibilitySimulation</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>
