@@ -1,4 +1,6 @@
-[![build](https://github.com/chegerland/Spike/workflows/cmake/badge.svg)](https://github.com/chegerland/Spike/actions)
+[![build](https://github.com/chegerland/Spike/actions/workflows/build.yml/badge.svg)](https://github.com/chegerland/Spike/actions/workflows/build.yml)
+[![docs](https://github.com/chegerland/Spike/actions/workflows/docs.yml/badge.svg)](https://github.com/chegerland/Spike/actions/workflows/docs.yml)
+
 
 # Spike
 Spike is a small numerical toolset that can simulate single neurons and evaluate the resulting spike trains statistically by calculation all sorts of quantities like the firing rate etc.
