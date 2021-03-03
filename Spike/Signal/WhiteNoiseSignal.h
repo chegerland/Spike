@@ -21,11 +21,12 @@ private:
   double f_low;  ///< lower cut-off frequency
   double f_high; ///< higher cut-off frequency
 
-  std::random_device rd;
-  std::mt19937 generator;
-  std::normal_distribution<double> dist;
+  std::random_device rd;                 ///< random device (seed)
+  std::mt19937 generator;                ///< random number generator
+  std::normal_distribution<double> dist; ///< normal distribution
 
-  std::vector<std::complex<double>> frequencies;
+  std::vector<std::complex<double>>
+      frequencies; ///< white noise signal frequencies
 
 public:
   /**
@@ -33,7 +34,7 @@ public:
    * @param alpha Amplitude
    * @param f_low Lower cut-off frequency
    * @param f_high Higher cut-off frequency
-   * @param time Time frame
+   * @param time_frame time frame
    */
   WhiteNoiseSignal(double alpha, double f_low, double f_high,
                    const TimeFrame &time_frame);
@@ -41,6 +42,7 @@ public:
   /**
    * @brief Construct WhiteNoiseSignal from input file
    * @param input_file Input file in .ini format
+   * @param time_frame time frame
    */
   WhiteNoiseSignal(const std::string &input_file, const TimeFrame &time_frame);
 
@@ -56,16 +58,47 @@ public:
    */
   [[nodiscard]] double signal(double t) const;
 
+  /**
+   * @brief Sets the amplitude for the white noise signal.
+   * @param alpha_new new amplitude
+   */
   void set_alpha(double alpha_new) { alpha = alpha_new; };
 
-  // getter functions
-  [[nodiscard]] const std::vector<double> &get_values() const { return signal_values; };
-  [[nodiscard]] const std::vector<std::complex<double>> &get_frequencies() const {
+  /**
+   * @brief Returns the white noise signal vector.
+   * @return white noise vector
+   */
+  [[nodiscard]] const std::vector<double> &get_values() const {
+    return signal_values;
+  };
+
+  /**
+   * @brief Returns the frequencies
+   * @return white noise frequencies
+   */
+  [[nodiscard]] const std::vector<std::complex<double>> &
+  get_frequencies() const {
     return frequencies;
   };
-  [[nodiscard]] double get_alpha() const { return alpha; };
-  [[nodiscard]] double get_variance() const { return 2. * (f_high - f_low) * alpha; };
 
+  /**
+   * @brief Returns the amplitude
+   * @return amplitude
+   */
+  [[nodiscard]] double get_alpha() const { return alpha; };
+
+  /**
+   * @brief Returns the variance.
+   * @return variance
+   */
+  [[nodiscard]] double get_variance() const {
+    return 2. * (f_high - f_low) * alpha;
+  };
+
+  /**
+   * @brief Prints white noise signal to out stream.
+   * @param out out stream
+   */
   void print(std::ostream &out) const override {
     out << "WhiteNoiseSignal(alpha: " << alpha << ", f_low: " << f_low
         << ", f_high: " << f_high << ")";

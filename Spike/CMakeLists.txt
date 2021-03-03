@@ -13,7 +13,6 @@ set(spike_sources
         Signal/WhiteNoiseSignal.cpp
         Simulation/SusceptibilitySimulation.cpp
         Simulation/SusceptibilitySimulationLin.cpp
-        Simulation/SusceptibilitySimulationLinNonlin.cpp
         Simulation/SusceptibilitySimulationNonlin.cpp
         Simulation/FiringRateSimulation.cpp
         SpikeTrain/SpikeTrain.cpp

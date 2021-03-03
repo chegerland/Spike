@@ -44,10 +44,29 @@ public:
    */
   void add_spike(size_t i);
 
-  // getter functions
+  /**
+   * @brief Returns time step
+   * @return time step
+   */
   [[nodiscard]] double get_dt() const { return dt; };
+
+  /**
+   * @brief Returns size of spike train (length).
+   * @return size of spike train
+   */
   [[nodiscard]] size_t get_size() const { return spikes.size(); };
+
+  /**
+   * @brief Checks whether there is a spike at index i.
+   * @param i index
+   * @return true if spike is present, false if not
+   */
   [[nodiscard]] bool get_spike(size_t i) const { return (spikes[i] != 0); };
+
+  /**
+   * @brief Returns the whole spike train (as a vector)
+   * @return spike train vector
+   */
   [[nodiscard]] const std::vector<double> &get_values() const {
     return spikes;
   };

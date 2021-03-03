@@ -44,12 +44,30 @@ public:
    */
   void add_to_firing_rate(const std::vector<double> &tmp_firing_rate);
 
-  // getter function
+  /**
+   * @brief Returns the number of neurons.
+   * @return number of neurons
+   */
   [[nodiscard]] size_t get_N_neurons() const { return N_neurons; };
+
+  /**
+   * @brief Returns the size of the firing rate array.
+   * @return size of firing rate array
+   */
   [[nodiscard]] size_t get_firing_rate_size() const {
     return firing_rate.size();
   };
+
+  /**
+   * @brief Returns the time frame.
+   * @return time frame
+   */
   [[nodiscard]] const TimeFrame &get_time_frame() const { return time_frame; };
+
+  /**
+   * @brief Returns the firing rate array.
+   * @return firing rate array
+   */
   [[nodiscard]] const std::vector<double> &get_firing_rate() const {
     return firing_rate;
   };

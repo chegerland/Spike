@@ -13,8 +13,8 @@
 namespace Spike {
 
 /**
- * @brief Implements a simulation during which we measure the susceptibility of
- * an integrate-and-fire neuron (with or without adaptation).
+ * @brief Implements a prototype simulation during which we measure the
+ * susceptibility of an integrate-and-fire neuron (with or without adaptation).
  */
 class SusceptibilitySimulation {
 protected:
@@ -30,26 +30,41 @@ protected:
 public:
   /**
    * @brief Constructs susceptibility simulation from .ini file.
-   * @param input_file Path to .ini file
+   * @param input_file path to .ini file
    */
   explicit SusceptibilitySimulation(const std::string &input_file);
 
   /**
-   * @brief Calculates the linear and nonlinear susceptibilities for a given
+   * @brief Calculates the susceptibility for a given
    * number of trials.
-   * Each time the white noise signal gets generated again,
-   * the neuron produces a new spike train and then the susceptibilities are
-   * calculated. The result is then added (!) to the susceptibility vectors.
-   * @param trials Number of Trials
+   * @param trials number of Trials
    */
   virtual void calculate(size_t trials) = 0;
 
-  // setter function
+  /**
+   * @brief Sets a new noise split coefficient.
+   * @param c_new new noise split coefficient
+   */
   void set_c(double c_new);
 
-  // getter function
+  /**
+   * @brief Returns the number of neurons (trials) for this simulation.
+   * @return number of neurons
+   */
   [[nodiscard]] size_t get_N_neurons() const { return N_neurons; };
+
+  /**
+   * @brief Returns the time frame.
+   * @return time frame
+   */
   [[nodiscard]] const TimeFrame &get_time_frame() const { return time_frame; };
+
+  /**
+   * @brief Overloads the << operator so we can print a simulation.
+   * @param out stream
+   * @param suscept_sim susceptibility simulation
+   * @return
+   */
   friend std::ostream &operator<<(std::ostream &out,
                                   const SusceptibilitySimulation &suscept_sim);
 };

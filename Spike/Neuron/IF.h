@@ -80,15 +80,36 @@ public:
    */
   void get_voltage_curve(const TimeFrame &time, std::vector<double> &v);
 
-  // setter functions
+  /**
+   * @brief Set new mean input current
+   * @param mu_new new mean input current
+   */
   void set_mu(double mu_new) { this->mu = mu_new; };
+
+  /**
+   * @brief Set new diffusion coefficient.
+   * @param D_new diffusion coefficient
+   */
   void set_D(double D_new) { this->D = D_new; };
 
-  // getter functions
+  /**
+   * @brief Returns the diffusion coefficient
+   * @return diffusion coefficient
+   */
   [[nodiscard]] double get_D() const { return D; };
 
+  /**
+   * @brief Prints the IF neuron to the outstream
+   * @param out out stream
+   */
   virtual void print(std::ostream &out) const = 0;
 
+  /**
+   * @brief Overloads the << operator, so we can print the neuron.
+   * @param out out stream
+   * @param neuron IF neuron
+   * @return out stream
+   */
   friend std::ostream &operator<<(std::ostream &out, const IF &neuron);
 };
 
@@ -114,11 +135,14 @@ public:
   /**
    * @brief Returns drift of the PIF neuron, i.e. mu
    * @param v Voltage
-   * @param t time
    * @return Drift of PIF
    */
   [[nodiscard]] double drift(double v) const override;
 
+  /**
+   * @brief Prints the PIF neuron to out stream.
+   * @param out out stream
+   */
   void print(std::ostream &out) const override {
     out << "PIF(mu: " << mu << ", D: " << D << ")";
   }
@@ -149,6 +173,10 @@ public:
    */
   [[nodiscard]] double drift(double v) const override;
 
+  /**
+   * @brief Prints the LIF neuron to out stream.
+   * @param out out stream
+   */
   void print(std::ostream &out) const override {
     out << "LIF(mu: " << mu << ", D: " << D << ")";
   }

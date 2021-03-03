@@ -29,9 +29,25 @@ public:
    */
   explicit Signal(const TimeFrame &time_frame);
 
+  /**
+   * @brief Returns the signal value at index i.
+   * @param i time index
+   * @return signal value
+   */
   [[nodiscard]] double get_value(size_t i) const;
 
+  /**
+   * @brief Prints the signal to out stream.
+   * @param out out stream
+   */
   virtual void print(std::ostream &out) const = 0;
+
+  /**
+   * @brief Overloads the << operator so we can print signal to out.
+   * @param out out stream
+   * @param signal signal
+   * @return out stream
+   */
   friend std::ostream &operator<<(std::ostream &out, const Signal &signal);
 };
 

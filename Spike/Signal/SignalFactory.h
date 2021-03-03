@@ -19,6 +19,7 @@ public:
    * Returns a pointer to a get_value, depending on the type read from input
    * file
    * @param input_file Input file in .ini format
+   * @param time_frame time frame
    * @return Pointer to get_value
    */
   static std::unique_ptr<Signal> create(const std::string &input_file,

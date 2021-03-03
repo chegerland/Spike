@@ -37,14 +37,48 @@ public:
    */
   void calculate_times();
 
-  // getter functions
+  /**
+   * @brief Returns the start time.
+   * @return  start time
+   */
   [[nodiscard]] double get_t_0() const { return t_0; };
+
+  /**
+   * @brief Returns the end time.
+   * @return  end time
+   */
   [[nodiscard]] double get_t_end() const { return t_end; };
+
+  /**
+   * @brief Returns the time step.
+   * @return  time step
+   */
   [[nodiscard]] double get_dt() const { return dt; };
+
+  /**
+   * @brief Returns the size of the time frame.
+   * @return  size of the time frame
+   */
   [[nodiscard]] size_t get_size() const { return t.size(); };
+
+  /**
+   * @brief Returns the time at index i.
+   * @return  time at index i
+   */
   [[nodiscard]] double get_time(size_t i) const { return t[i]; };
+
+  /**
+   * @brief Returns the times vector.
+   * @return  times vector
+   */
   [[nodiscard]] const std::vector<double> &get_times() const { return t; };
 
+  /**
+   * @brief Overloads the operator << so we can print time frame.
+   * @param out out stream
+   * @param tf time frame
+   * @return out stream
+   */
   friend std::ostream &operator<<(std::ostream &out, const TimeFrame &tf);
 };
 

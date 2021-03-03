@@ -38,6 +38,8 @@ public:
    * @brief Construct IFAC from given parameters
    * @param mu Mean input current
    * @param D Diffusion coefficient
+   * @param tau_a adaptation time constant
+   * @param Delta kick size
    */
   IFAC(double mu, double D, double tau_a, double Delta);
 
@@ -66,7 +68,16 @@ public:
   void get_voltage_curve(const TimeFrame &time, std::vector<double> &v,
                          std::vector<double> &a);
 
+  /**
+   * @brief Sets a new adaptation time constant.
+   * @param tau_a_new new adaptation time constant
+   */
   void set_tau_a(double tau_a_new) {tau_a = tau_a_new;};
+
+  /**
+   * @brief Sets a new kick size.
+   * @param Delta_new new kick size
+   */
   void set_Delta(double Delta_new) {Delta = Delta_new;};
 };
 
@@ -80,6 +91,8 @@ public:
    * @brief Construct PIFAC from parameters.
    * @param mu Mean input current
    * @param D Diffusion coefficient
+   * @param tau_a adaptation time constant
+   * @param Delta kick size
    */
   PIFAC(double mu, double D, double tau_a, double Delta);
 
@@ -92,11 +105,14 @@ public:
   /**
    * @brief Returns drift of the PIFAC neuron, i.e. mu
    * @param v Voltage
-   * @param t time
    * @return Drift of PIFAC, i.e. mu
    */
   [[nodiscard]] double drift(double v) const override;
 
+  /**
+   * @brief Prints the PIFAC neuron to out stream.
+   * @param out out stream
+   */
   void print(std::ostream &out) const override {
     out << "PIFAC(mu: " << mu << ", D: " << D << ", tau_a: " << tau_a
         << ", Delta: " << Delta << ")";
@@ -113,6 +129,8 @@ public:
    * @brief Construct LIFAC from parameters.
    * @param mu Mean input current
    * @param D Diffusion coefficient
+   * @param tau_a adaptation time constant
+   * @param Delta kick size
    */
   LIFAC(double mu, double D, double tau_a, double Delta);
 
@@ -125,14 +143,14 @@ public:
   /**
    * @brief Returns the drift of the LIFAC neuron, i.e. mu - v
    * @param v Voltage
-   * @param t Time
    * @return Drift of LIFAC
    */
   [[nodiscard]] double drift(double v) const override;
 
-  void get_kernel(const TimeFrame &time, const Signal &signal,
-                  double norm, double *kernel) const;
-
+  /**
+   * @brief Prints the LIFAC to out stream.
+   * @param out out stream
+   */
   void print(std::ostream &out) const override {
     out << "LIFAC(mu: " << mu << ", D: " << D << ", tau_a: " << tau_a
         << ", Delta: " << Delta << ")";

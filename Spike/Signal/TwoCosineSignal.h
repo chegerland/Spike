@@ -37,6 +37,7 @@ public:
   /**
    * @brief Construct TwoCosineSignal from input file
    * @param input_file Input file in .ini format
+   * @param time_frame time frame
    */
   TwoCosineSignal(const std::string &input_file, const TimeFrame &time_frame);
 

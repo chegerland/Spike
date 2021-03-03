@@ -48,8 +48,16 @@ public:
    */
   [[nodiscard]] double signal(double t) const;
 
+  /**
+   * @brief Returns the frequency.
+   * @return frequency
+   */
   [[nodiscard]] double get_f() const { return this->f; };
 
+  /**
+   * @brief Prints cosine signal to out stream.
+   * @param out out stream
+   */
   void print(std::ostream &out) const override {
     out << "CosineSignal(alpha: " << alpha << ", f: " << f << ")";
   }
