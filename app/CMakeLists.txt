@@ -34,10 +34,6 @@ target_link_libraries(spike_firing_rate PUBLIC
         spike
         )
 
-# test executable
-add_executable(spike_test spike_test.cpp)
-target_link_libraries(spike_test PUBLIC spike)
-
 # r0_mu executable
 add_executable(spike_r0_mu spike_r0_mu.cpp)
 target_link_libraries(spike_r0_mu PUBLIC spike)
