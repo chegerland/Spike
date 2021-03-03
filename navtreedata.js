@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Spike", "index.html", [
+    [ "Getting started", "getting_started.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
