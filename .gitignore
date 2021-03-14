@@ -13,3 +13,4 @@ data/*
 *.depend
 *.bak
 *.gch
+.vscode/settings.json

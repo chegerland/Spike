@@ -41,3 +41,7 @@ target_link_libraries(spike_r0_mu PUBLIC spike)
 # trajectory executable
 add_executable(spike_trajectory spike_trajectory.cpp)
 target_link_libraries(spike_trajectory PUBLIC spike)
+
+# raster plot executable
+add_executable(spike_raster_plot spike_raster_plot.cpp)
+target_link_libraries(spike_raster_plot PUBLIC spike)
