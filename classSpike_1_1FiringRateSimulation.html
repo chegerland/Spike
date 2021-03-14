@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('classSpike_1_1FiringRateSimulation.htm
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classSpike_1_1FiringRateSimulation-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Spike::FiringRateSimulation Class Reference</div>  </div>
@@ -117,6 +118,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#ae9cda5c88c9eff59c07248f8e2ce9c95">get_firing_rate</a> () const</td></tr>
 <tr class="memdesc:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the firing rate array.  <a href="classSpike_1_1FiringRateSimulation.html#ae9cda5c88c9eff59c07248f8e2ce9c95">More...</a><br /></td></tr>
 <tr class="separator:ae9cda5c88c9eff59c07248f8e2ce9c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a064ae6a0634371135a0b33923bff9f70"><td class="memItemLeft" align="right" valign="top"><a id="a064ae6a0634371135a0b33923bff9f70"></a>
+<a class="el" href="classSpike_1_1TimeFrame.html">TimeFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a064ae6a0634371135a0b33923bff9f70">time_frame</a></td></tr>
+<tr class="memdesc:a064ae6a0634371135a0b33923bff9f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">the time frame <br /></td></tr>
+<tr class="separator:a064ae6a0634371135a0b33923bff9f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef114024d081248baf388c829532c47"><td class="memItemLeft" align="right" valign="top"><a id="a0ef114024d081248baf388c829532c47"></a>
+<a class="el" href="classSpike_1_1SpikeTrain.html">SpikeTrain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a0ef114024d081248baf388c829532c47">spike_train</a></td></tr>
+<tr class="memdesc:a0ef114024d081248baf388c829532c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">the spike train <br /></td></tr>
+<tr class="separator:a0ef114024d081248baf388c829532c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40015ecf22014c5eacc9ad8eaedc4134"><td class="memItemLeft" align="right" valign="top"><a id="a40015ecf22014c5eacc9ad8eaedc4134"></a>
+std::unique_ptr&lt; <a class="el" href="classSpike_1_1IF.html">IF</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a40015ecf22014c5eacc9ad8eaedc4134">neuron</a></td></tr>
+<tr class="memdesc:a40015ecf22014c5eacc9ad8eaedc4134"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to an <a class="el" href="classSpike_1_1IF.html" title="Abstract base class for integrate-and-fire (IF) neurons.">IF</a> neuron <br /></td></tr>
+<tr class="separator:a40015ecf22014c5eacc9ad8eaedc4134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade57df7978f05b33f8c67203e7cc85e3"><td class="memItemLeft" align="right" valign="top"><a id="ade57df7978f05b33f8c67203e7cc85e3"></a>
+std::unique_ptr&lt; <a class="el" href="classSpike_1_1Signal.html">Signal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#ade57df7978f05b33f8c67203e7cc85e3">signal</a></td></tr>
+<tr class="memdesc:ade57df7978f05b33f8c67203e7cc85e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to a signal <br /></td></tr>
+<tr class="separator:ade57df7978f05b33f8c67203e7cc85e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f6b55e11390bf7e2934ce4916d5592"><td class="memItemLeft" align="right" valign="top"><a id="a56f6b55e11390bf7e2934ce4916d5592"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#a56f6b55e11390bf7e2934ce4916d5592">N_neurons</a></td></tr>
+<tr class="memdesc:a56f6b55e11390bf7e2934ce4916d5592"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of trials <br /></td></tr>
+<tr class="separator:a56f6b55e11390bf7e2934ce4916d5592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba05e107b884e7b314306754de8c9199"><td class="memItemLeft" align="right" valign="top"><a id="aba05e107b884e7b314306754de8c9199"></a>
+std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpike_1_1FiringRateSimulation.html#aba05e107b884e7b314306754de8c9199">firing_rate</a></td></tr>
+<tr class="memdesc:aba05e107b884e7b314306754de8c9199"><td class="mdescLeft">&#160;</td><td class="mdescRight">array containing the firing rate values <br /></td></tr>
+<tr class="separator:aba05e107b884e7b314306754de8c9199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implements a simulation during which we calculate the firing rate. </p>

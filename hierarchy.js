@@ -1,6 +1,8 @@
 var hierarchy =
 [
-    [ "Spike::FiringRateSimulation", "classSpike_1_1FiringRateSimulation.html", null ],
+    [ "Spike::FiringRateSimulation", "classSpike_1_1FiringRateSimulation.html", [
+      [ "Spike::RasterPlot", "classSpike_1_1RasterPlot.html", null ]
+    ] ],
     [ "gsl_function", null, [
       [ "gsl_function_pp< F >", "classgsl__function__pp.html", null ]
     ] ],

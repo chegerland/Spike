@@ -16,6 +16,7 @@ var annotated_dup =
       [ "TwoCosineSignal", "classSpike_1_1TwoCosineSignal.html", "classSpike_1_1TwoCosineSignal" ],
       [ "WhiteNoiseSignal", "classSpike_1_1WhiteNoiseSignal.html", "classSpike_1_1WhiteNoiseSignal" ],
       [ "FiringRateSimulation", "classSpike_1_1FiringRateSimulation.html", "classSpike_1_1FiringRateSimulation" ],
+      [ "RasterPlot", "classSpike_1_1RasterPlot.html", "classSpike_1_1RasterPlot" ],
       [ "SusceptibilitySimulation", "classSpike_1_1SusceptibilitySimulation.html", "classSpike_1_1SusceptibilitySimulation" ],
       [ "SusceptibilitySimulationLin", "classSpike_1_1SusceptibilitySimulationLin.html", "classSpike_1_1SusceptibilitySimulationLin" ],
       [ "SusceptibilitySimulationNonlin", "classSpike_1_1SusceptibilitySimulationNonlin.html", "classSpike_1_1SusceptibilitySimulationNonlin" ],

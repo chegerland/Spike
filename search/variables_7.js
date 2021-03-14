@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tau_5fa_196',['tau_a',['../classSpike_1_1IFAC.html#ace7b05f46dbe78cce3b620105222575b',1,'Spike::IFAC']]],
-  ['time_5fframe_197',['time_frame',['../classSpike_1_1Signal.html#a83fd18b72a82310252cdec9cbe332a43',1,'Spike::Signal::time_frame()'],['../classSpike_1_1SusceptibilitySimulation.html#a65b26a86d6423f0a5033071837e84f8f',1,'Spike::SusceptibilitySimulation::time_frame()']]]
+  ['signal_196',['signal',['../classSpike_1_1FiringRateSimulation.html#ade57df7978f05b33f8c67203e7cc85e3',1,'Spike::FiringRateSimulation::signal()'],['../classSpike_1_1SusceptibilitySimulation.html#a8efb2e42b56a3259dfea3af9064c1d90',1,'Spike::SusceptibilitySimulation::signal()']]],
+  ['signal_5fvalues_197',['signal_values',['../classSpike_1_1Signal.html#a8957916ba9c0bf4bcb3bf5b9f0a6dfbf',1,'Spike::Signal']]],
+  ['spike_5ftrain_198',['spike_train',['../classSpike_1_1FiringRateSimulation.html#a0ef114024d081248baf388c829532c47',1,'Spike::FiringRateSimulation::spike_train()'],['../classSpike_1_1SusceptibilitySimulation.html#aa76ceca4cd9145cbc27fcdc5c72ec286',1,'Spike::SusceptibilitySimulation::spike_train()']]]
 ];

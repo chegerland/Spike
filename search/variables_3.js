@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mu_189',['mu',['../classSpike_1_1IF.html#a5bf7eeb378b48c3a1a10b9ae4a13a0f9',1,'Spike::IF']]]
+  ['generator_191',['generator',['../classSpike_1_1IF.html#ac50f6beea3d0681f916569cc5724c0e5',1,'Spike::IF']]]
 ];

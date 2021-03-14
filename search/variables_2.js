@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generator_188',['generator',['../classSpike_1_1IF.html#ac50f6beea3d0681f916569cc5724c0e5',1,'Spike::IF']]]
+  ['firing_5frate_190',['firing_rate',['../classSpike_1_1FiringRateSimulation.html#aba05e107b884e7b314306754de8c9199',1,'Spike::FiringRateSimulation']]]
 ];
