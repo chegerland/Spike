@@ -2,6 +2,7 @@
 set(spike_sources
         FFT/fft.cpp
         Integration/Integrations.cpp
+        IO/IO.cpp
         Neuron/NeuronFactory.cpp
         Neuron/IF.cpp
         Neuron/IFAC.cpp

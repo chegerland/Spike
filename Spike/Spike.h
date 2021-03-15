@@ -1,6 +1,8 @@
 #ifndef SPIKE_H
 #define SPIKE_H
 
+#include "Spike/IO/IO.h"
+
 #include "Spike/Neuron/IF.h"
 #include "Spike/Neuron/IFAC.h"
 #include "Spike/Neuron/Neuron.h"
