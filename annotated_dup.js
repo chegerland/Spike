@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "Spike", null, [
+      [ "IO", "classSpike_1_1IO.html", "classSpike_1_1IO" ],
       [ "IF", "classSpike_1_1IF.html", "classSpike_1_1IF" ],
       [ "PIF", "classSpike_1_1PIF.html", "classSpike_1_1PIF" ],
       [ "LIF", "classSpike_1_1LIF.html", "classSpike_1_1LIF" ],

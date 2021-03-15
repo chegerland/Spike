@@ -6,6 +6,7 @@ var hierarchy =
     [ "gsl_function", null, [
       [ "gsl_function_pp< F >", "classgsl__function__pp.html", null ]
     ] ],
+    [ "Spike::IO", "classSpike_1_1IO.html", null ],
     [ "Spike::Neuron", "classSpike_1_1Neuron.html", [
       [ "Spike::IF", "classSpike_1_1IF.html", [
         [ "Spike::IFAC", "classSpike_1_1IFAC.html", [
