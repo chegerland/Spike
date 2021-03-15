@@ -59,7 +59,10 @@ void FiringRateSimulation::add_to_firing_rate(
 }
 
 RasterPlot::RasterPlot(const std::string &input_file)
-    : FiringRateSimulation(input_file), spike_trains(N_neurons) {}
+    : FiringRateSimulation(input_file), spike_trains(N_neurons) {
+        // fix the number of neurons to 100, since this is enough for the raster plot
+        N_neurons = 100;
+    }
 
 void RasterPlot::calculate() {
     // for every trial...
