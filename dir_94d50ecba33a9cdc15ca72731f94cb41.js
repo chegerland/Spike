@@ -10,6 +10,9 @@ var dir_94d50ecba33a9cdc15ca72731f94cb41 =
     [ "SusceptibilitySimulationLin.h", "SusceptibilitySimulationLin_8h.html", [
       [ "SusceptibilitySimulationLin", "classSpike_1_1SusceptibilitySimulationLin.html", "classSpike_1_1SusceptibilitySimulationLin" ]
     ] ],
+    [ "SusceptibilitySimulationLinNonlin.h", "SusceptibilitySimulationLinNonlin_8h.html", [
+      [ "SusceptibilitySimulationLinNonlin", "classSpike_1_1SusceptibilitySimulationLinNonlin.html", "classSpike_1_1SusceptibilitySimulationLinNonlin" ]
+    ] ],
     [ "SusceptibilitySimulationNonlin.h", "SusceptibilitySimulationNonlin_8h.html", [
       [ "SusceptibilitySimulationNonlin", "classSpike_1_1SusceptibilitySimulationNonlin.html", "classSpike_1_1SusceptibilitySimulationNonlin" ]
     ] ]

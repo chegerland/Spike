@@ -20,6 +20,7 @@ var annotated_dup =
       [ "RasterPlot", "classSpike_1_1RasterPlot.html", "classSpike_1_1RasterPlot" ],
       [ "SusceptibilitySimulation", "classSpike_1_1SusceptibilitySimulation.html", "classSpike_1_1SusceptibilitySimulation" ],
       [ "SusceptibilitySimulationLin", "classSpike_1_1SusceptibilitySimulationLin.html", "classSpike_1_1SusceptibilitySimulationLin" ],
+      [ "SusceptibilitySimulationLinNonlin", "classSpike_1_1SusceptibilitySimulationLinNonlin.html", "classSpike_1_1SusceptibilitySimulationLinNonlin" ],
       [ "SusceptibilitySimulationNonlin", "classSpike_1_1SusceptibilitySimulationNonlin.html", "classSpike_1_1SusceptibilitySimulationNonlin" ],
       [ "SpikeTrain", "classSpike_1_1SpikeTrain.html", "classSpike_1_1SpikeTrain" ],
       [ "TimeFrame", "classSpike_1_1TimeFrame.html", "classSpike_1_1TimeFrame" ]

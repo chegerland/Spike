@@ -28,6 +28,7 @@ var hierarchy =
     [ "Spike::SpikeTrain", "classSpike_1_1SpikeTrain.html", null ],
     [ "Spike::SusceptibilitySimulation", "classSpike_1_1SusceptibilitySimulation.html", [
       [ "Spike::SusceptibilitySimulationLin", "classSpike_1_1SusceptibilitySimulationLin.html", null ],
+      [ "Spike::SusceptibilitySimulationLinNonlin", "classSpike_1_1SusceptibilitySimulationLinNonlin.html", null ],
       [ "Spike::SusceptibilitySimulationNonlin", "classSpike_1_1SusceptibilitySimulationNonlin.html", null ]
     ] ],
     [ "Spike::TimeFrame", "classSpike_1_1TimeFrame.html", null ]
