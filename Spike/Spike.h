@@ -16,6 +16,7 @@
 #include "Spike/Signal/WhiteNoiseSignal.h"
 
 #include "Spike/Simulation/SusceptibilitySimulationLin.h"
+#include "Spike/Simulation/SusceptibilitySimulationLinNonlin.h"
 #include "Spike/Simulation/SusceptibilitySimulationNonlin.h"
 #include "Spike/Simulation/FiringRateSimulation.h"
 

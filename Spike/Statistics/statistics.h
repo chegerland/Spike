@@ -1,8 +1,9 @@
 #ifndef SPIKE_STATISTICS_H
 #define SPIKE_STATISTICS_H
 
-#include <complex>
 #include <fftw3.h>
+
+#include <complex>
 #include <vector>
 
 #include "Spike/Signal/Signal.h"
@@ -50,6 +51,6 @@ void susceptibility_nonlin(
     std::vector<std::vector<std::complex<double>>> &suscept_nonlin,
     size_t norm);
 
-} // namespace Spike
+}  // namespace Spike
 
-#endif // SPIKE_STATISTICS_H
+#endif  // SPIKE_STATISTICS_H

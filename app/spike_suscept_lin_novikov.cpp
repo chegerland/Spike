@@ -18,9 +18,11 @@ namespace po = boost::program_options;
 
 using namespace Spike;
 
-void main_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array,
-                  const std::string &output_file);
-void sub_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array);
+void main_process(
+    std::array<SusceptibilitySimulationLinNonlin, 3> &simulation_array,
+    const std::string &output_file);
+void sub_process(
+    std::array<SusceptibilitySimulationLinNonlin, 3> &simulation_array);
 
 void init_logger() {
     logging::core::get()->set_filter(logging::trivial::severity >=
@@ -34,7 +36,6 @@ void help() {
                  "noise split coefficients.\n"
               << "All parameters have to be defined in a .ini input file.\n\n";
 }
-
 
 int main(int argc, char *argv[]) {
     // initialize mpi
@@ -53,19 +54,15 @@ int main(int argc, char *argv[]) {
     std::string output_file = io.get_output_file();
 
     // create susceptilibity simulation
-    std::array<SusceptibilitySimulationLin, 5> simulation_array = {
-        SusceptibilitySimulationLin(input_file),
-        SusceptibilitySimulationLin(input_file),
-        SusceptibilitySimulationLin(input_file),
-        SusceptibilitySimulationLin(input_file),
-        SusceptibilitySimulationLin(input_file)};
+    std::array<SusceptibilitySimulationLinNonlin, 3> simulation_array = {
+        SusceptibilitySimulationLinNonlin(input_file),
+        SusceptibilitySimulationLinNonlin(input_file),
+        SusceptibilitySimulationLinNonlin(input_file)};
 
     // change the c's
     simulation_array[0].set_c(1e-2);
     simulation_array[1].set_c(1e-1);
-    simulation_array[2].set_c(0.5);
-    simulation_array[3].set_c(0.9);
-    simulation_array[4].set_c(1.0);
+    simulation_array[2].set_c(1.0);
 
     // depending on the world rank start either the main process or a sub
     // process
@@ -86,8 +83,9 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void main_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array,
-                  const std::string &output_file) {
+void main_process(
+    std::array<SusceptibilitySimulationLinNonlin, 3> &simulation_array,
+    const std::string &output_file) {
     // initialize logger
     init_logger();
     BOOST_LOG_TRIVIAL(info) << "SPIKE SUSCEPTIBILITY SIMULATION";
@@ -114,27 +112,35 @@ void main_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array,
         << "Calculating linear and nonlinear susceptibility.";
     for (auto &simulation : simulation_array) {
         simulation.calculate(trials);
+        BOOST_LOG_TRIVIAL(info) << "Finished one simulation.";
     }
 
-    BOOST_LOG_TRIVIAL(info) << "Finished calculation.";
+    BOOST_LOG_TRIVIAL(info) << "Finished all calculations.";
 
     BOOST_LOG_TRIVIAL(info) << "Receiving values from subprocesses.";
 
     // receive arrays back from subprocesses
     std::vector<std::complex<double>> tmp_suscept_lin(
         simulation_array[0].get_size_lin());
+    std::vector<std::complex<double>> tmp_suscept_nonlin(
+        simulation_array[0].get_size_nonlin());
 
     MPI_Status status;
     for (int i = 1; i < world_size; i++) {
         for (size_t j = 0; j < simulation_array.size(); j++) {
             // receive arrays
             MPI_Recv(tmp_suscept_lin.data(), (int)tmp_suscept_lin.size(),
-                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, j, MPI_COMM_WORLD,
-                     &status);
+                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2 * j + 2,
+                     MPI_COMM_WORLD, &status);
+            MPI_Recv(tmp_suscept_nonlin.data(), (int)tmp_suscept_nonlin.size(),
+                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2 * j + 1,
+                     MPI_COMM_WORLD, &status);
 
             // add array to overall susceptibility
-            simulation_array[j].add_to_suscepts(tmp_suscept_lin);
+            simulation_array[j].add_to_suscepts(tmp_suscept_lin,
+                                                tmp_suscept_nonlin);
         }
+        BOOST_LOG_TRIVIAL(info) << "Received from worker " << i;
     }
     BOOST_LOG_TRIVIAL(info) << "All values received.";
 
@@ -151,22 +157,32 @@ void main_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array,
 
     const auto &time_frame = simulation_array[0].get_time_frame();
 
-    for (size_t i = 0; i < simulation_array[0].get_size_lin(); i++) {
+    for (size_t i = 0; i < simulation_array[0].get_size_nonlin(); i++) {
         // print frequency
         file << (double)i / (time_frame.get_t_end() - time_frame.get_t_0())
              << ",";
 
         // print susceptibilities
         for (size_t j = 0; j < simulation_array.size(); j++) {
-            if (std::imag(simulation_array[j].get_suscept_lin()[i]) < 0) {
-                file << std::real(simulation_array[j].get_suscept_lin()[i])
-                     << std::imag(simulation_array[j].get_suscept_lin()[i])
+            const auto &value_lin = simulation_array[j].get_suscept_lin()[i];
+            const auto &value_nonlin =
+                simulation_array[j].get_suscept_nonlin()[i];
+
+            if (std::imag(value_lin) < 0) {
+                file << std::real(value_lin) << std::imag(value_lin) << "j";
+            } else {
+                file << std::real(value_lin) << "+" << std::imag(value_lin)
+                     << "j";
+            }
+
+            file << ",";
+
+            if (std::imag(value_nonlin) < 0) {
+                file << std::real(value_nonlin) << std::imag(value_nonlin)
                      << "j";
             } else {
-                file << std::real(simulation_array[j].get_suscept_lin()[i])
-                     << "+"
-                     << std::imag(simulation_array[j].get_suscept_lin()[i])
-                     << "j";
+                file << std::real(value_nonlin) << "+"
+                     << std::imag(value_nonlin) << "j";
             }
 
             if (j < simulation_array.size() - 1) {
@@ -180,7 +196,8 @@ void main_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array,
     file.close();
 }
 
-void sub_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array) {
+void sub_process(
+    std::array<SusceptibilitySimulationLinNonlin, 3> &simulation_array) {
     int trials;
     MPI_Status status;
     MPI_Recv(&trials, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
@@ -190,8 +207,11 @@ void sub_process(std::array<SusceptibilitySimulationLin, 5> &simulation_array) {
         simulation_array[i].calculate(trials);
 
         const auto &suscept_lin = simulation_array[i].get_suscept_lin();
+        const auto &suscept_nonlin = simulation_array[i].get_suscept_nonlin();
 
         MPI_Send(suscept_lin.data(), (int)suscept_lin.size(),
-                 MPI_CXX_DOUBLE_COMPLEX, 0, i, MPI_COMM_WORLD);
+                 MPI_CXX_DOUBLE_COMPLEX, 0, 2 * i + 2, MPI_COMM_WORLD);
+        MPI_Send(suscept_nonlin.data(), (int)suscept_nonlin.size(),
+                 MPI_CXX_DOUBLE_COMPLEX, 0, 2 * i + 1, MPI_COMM_WORLD);
     }
 }
