@@ -135,43 +135,12 @@ void main_process(
             // add array to overall susceptibility
             simulation_array[i].add_to_suscepts(tmp_suscept_lin,
                                                 tmp_suscept_nonlin);
-            BOOST_LOG_TRIVIAL(info) << "Received from worker " << j;
+            //BOOST_LOG_TRIVIAL(info) << "Received from worker " << j;
         }
         BOOST_LOG_TRIVIAL(info) << "All values received.";
     }
 
     BOOST_LOG_TRIVIAL(info) << "Finished all calculations.";
-
-    // BOOST_LOG_TRIVIAL(info) << "Receiving values from subprocesses.";
-
-    //// receive arrays back from subprocesses
-    // std::vector<std::complex<double>> tmp_suscept_lin(
-    //    simulation_array[0].get_size_lin());
-    // std::vector<std::complex<double>> tmp_suscept_nonlin(
-    //    simulation_array[0].get_size_nonlin());
-
-    // MPI_Status status;
-    // for (int i = 1; i < world_size; i++) {
-    //    for (size_t j = 0; j < simulation_array.size(); j++) {
-    //        // receive arrays
-    //        MPI_Recv(tmp_suscept_lin.data(), (int)tmp_suscept_lin.size(),
-    //                 MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2 * j + 2,
-    //                 MPI_COMM_WORLD, &status);
-    //        MPI_Recv(tmp_suscept_nonlin.data(),
-    //        (int)tmp_suscept_nonlin.size(),
-    //                 MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2 * j + 1,
-    //                 MPI_COMM_WORLD, &status);
-
-    //        // add array to overall susceptibility
-    //        simulation_array[j].add_to_suscepts(tmp_suscept_lin,
-    //                                            tmp_suscept_nonlin);
-    //    }
-    //    BOOST_LOG_TRIVIAL(info) << "Received from worker " << i;
-    //}
-    // BOOST_LOG_TRIVIAL(info) << "All values received.";
-
-    // BOOST_LOG_TRIVIAL(info) << "Writing results to file " << output_file <<
-    // ".";
 
     // write susceptibility to file
     std::ofstream file;
