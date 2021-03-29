@@ -14,3 +14,4 @@ data/*
 *.bak
 *.gch
 .vscode/settings.json
+.vscode/c_cpp_properties.json

@@ -151,10 +151,13 @@ void susceptibility(const WhiteNoiseSignal &signal,
   }
 }
 
-void susceptibility_lin_nonlin(
-    const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
-    const TimeFrame &time_frame, std::vector<std::complex<double>> &suscept_lin,
-    std::vector<std::complex<double>> &suscept_nonlin, const size_t norm) {
+void susceptibility_lin_nonlin(const WhiteNoiseSignal &signal, 
+                               const std::vector<double> &output_signal,
+                               const TimeFrame &time_frame, 
+                               std::vector<std::complex<double>> &suscept_lin, 
+                               std::vector<std::complex<double>> &suscept_nonlin_diag, 
+                               std::vector<std::complex<double>> &suscept_nonlin_antidiag, 
+                               size_t norm) {
 
   // length of the signals is N, fourier transform will be N/2 + 1 because we
   // perform real DFT
@@ -169,12 +172,17 @@ void susceptibility_lin_nonlin(
   fft_r2c(dt, output_signal, osf);
 
   double scale_lin = 0., scale_nonlin = 0.;
-  for (size_t i = 0; i < length / 4 + 1; i++) {
+  for (size_t i = 0; i < length / 4; i++) {
     scale_lin = 1. / (((double)norm) * pow(std::abs(isf[i]), 2));
     scale_nonlin = T / (((double)norm) * 2. * pow(std::abs(isf[i]), 4));
+
     suscept_lin[i] += scale_lin * (osf[i] * std::conj(isf[i]));
-    suscept_nonlin[i] +=
+    suscept_nonlin_diag[i] +=
         scale_nonlin * (osf[i + i] * std::conj(isf[i]) * std::conj(isf[i]));
+    //suscept_nonlin_antidiag[i] +=
+    //    scale_nonlin * (osf[0] * isf[i] * std::conj(isf[i]));
+    suscept_nonlin_antidiag[i] +=
+        scale_nonlin * (osf[1] * isf[i+1] * std::conj(isf[i]));
   }
 
   for (size_t i = length / 4 + 1; i < length / 2 + 1; i++) {

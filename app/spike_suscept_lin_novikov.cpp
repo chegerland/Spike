@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
         SusceptibilitySimulationLinNonlin(input_file)};
 
     // change the c's
-    simulation_array[0].set_c(1e-2);
-    simulation_array[1].set_c(1e-1);
+    simulation_array[0].set_c(1e-1);
+    simulation_array[1].set_c(5e-1);
     simulation_array[2].set_c(1.0);
 
     // depending on the world rank start either the main process or a sub
@@ -119,23 +119,28 @@ void main_process(
         // receive arrays back from subprocesses
         std::vector<std::complex<double>> tmp_suscept_lin(
             simulation_array[0].get_size_lin());
-        std::vector<std::complex<double>> tmp_suscept_nonlin(
+        std::vector<std::complex<double>> tmp_suscept_nonlin_diag(
+            simulation_array[0].get_size_nonlin());
+        std::vector<std::complex<double>> tmp_suscept_nonlin_antidiag(
             simulation_array[0].get_size_nonlin());
 
         MPI_Status status;
         for (int j = 1; j < world_size; j++) {
             // receive arrays
             MPI_Recv(tmp_suscept_lin.data(), (int)tmp_suscept_lin.size(),
-                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2 * i + 2,
+                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 3 * i + 1,
                      MPI_COMM_WORLD, &status);
-            MPI_Recv(tmp_suscept_nonlin.data(), (int)tmp_suscept_nonlin.size(),
-                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 2 * i + 1,
+            MPI_Recv(tmp_suscept_nonlin_diag.data(), (int)tmp_suscept_nonlin_diag.size(),
+                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 3 * i + 2,
+                     MPI_COMM_WORLD, &status);
+            MPI_Recv(tmp_suscept_nonlin_antidiag.data(), (int)tmp_suscept_nonlin_antidiag.size(),
+                     MPI_CXX_DOUBLE_COMPLEX, MPI_ANY_SOURCE, 3 * i + 3,
                      MPI_COMM_WORLD, &status);
 
             // add array to overall susceptibility
             simulation_array[i].add_to_suscepts(tmp_suscept_lin,
-                                                tmp_suscept_nonlin);
-            //BOOST_LOG_TRIVIAL(info) << "Received from worker " << j;
+                                                tmp_suscept_nonlin_diag, tmp_suscept_nonlin_antidiag);
+            BOOST_LOG_TRIVIAL(info) << "Received from worker " << j;
         }
         BOOST_LOG_TRIVIAL(info) << "All values received.";
     }
@@ -161,8 +166,10 @@ void main_process(
         // print susceptibilities
         for (size_t j = 0; j < simulation_array.size(); j++) {
             const auto &value_lin = simulation_array[j].get_suscept_lin()[i];
-            const auto &value_nonlin =
-                simulation_array[j].get_suscept_nonlin()[i];
+            const auto &value_nonlin_diag =
+                simulation_array[j].get_suscept_nonlin_diag()[i];
+            const auto &value_nonlin_antidiag =
+                simulation_array[j].get_suscept_nonlin_antidiag()[i];
 
             if (std::imag(value_lin) < 0) {
                 file << std::real(value_lin) << std::imag(value_lin) << "j";
@@ -173,12 +180,22 @@ void main_process(
 
             file << ",";
 
-            if (std::imag(value_nonlin) < 0) {
-                file << std::real(value_nonlin) << std::imag(value_nonlin)
+            if (std::imag(value_nonlin_diag) < 0) {
+                file << std::real(value_nonlin_diag) << std::imag(value_nonlin_diag)
                      << "j";
             } else {
-                file << std::real(value_nonlin) << "+"
-                     << std::imag(value_nonlin) << "j";
+                file << std::real(value_nonlin_diag) << "+"
+                     << std::imag(value_nonlin_diag) << "j";
+            }
+
+            file << ",";
+
+            if (std::imag(value_nonlin_antidiag) < 0) {
+                file << std::real(value_nonlin_antidiag) << std::imag(value_nonlin_antidiag)
+                     << "j";
+            } else {
+                file << std::real(value_nonlin_antidiag) << "+"
+                     << std::imag(value_nonlin_antidiag) << "j";
             }
 
             if (j < simulation_array.size() - 1) {
@@ -203,11 +220,14 @@ void sub_process(
         simulation_array[i].calculate(trials);
 
         const auto &suscept_lin = simulation_array[i].get_suscept_lin();
-        const auto &suscept_nonlin = simulation_array[i].get_suscept_nonlin();
+        const auto &suscept_nonlin_diag = simulation_array[i].get_suscept_nonlin_diag();
+        const auto &suscept_nonlin_antidiag = simulation_array[i].get_suscept_nonlin_antidiag();
 
         MPI_Send(suscept_lin.data(), (int)suscept_lin.size(),
-                 MPI_CXX_DOUBLE_COMPLEX, 0, 2 * i + 2, MPI_COMM_WORLD);
-        MPI_Send(suscept_nonlin.data(), (int)suscept_nonlin.size(),
-                 MPI_CXX_DOUBLE_COMPLEX, 0, 2 * i + 1, MPI_COMM_WORLD);
+                 MPI_CXX_DOUBLE_COMPLEX, 0, 3 * i + 1, MPI_COMM_WORLD);
+        MPI_Send(suscept_nonlin_diag.data(), (int)suscept_nonlin_diag.size(),
+                 MPI_CXX_DOUBLE_COMPLEX, 0, 3 * i + 2, MPI_COMM_WORLD);
+        MPI_Send(suscept_nonlin_antidiag.data(), (int)suscept_nonlin_antidiag.size(),
+                 MPI_CXX_DOUBLE_COMPLEX, 0, 3 * i + 3, MPI_COMM_WORLD);
     }
 }

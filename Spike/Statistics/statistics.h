@@ -40,10 +40,13 @@ void susceptibility(const WhiteNoiseSignal &signal,
                     const TimeFrame &time_frame,
                     std::vector<std::complex<double>> &suscept, size_t norm);
 
-void susceptibility_lin_nonlin(
-    const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
-    const TimeFrame &time_frame, std::vector<std::complex<double>> &suscept_lin,
-    std::vector<std::complex<double>> &suscept_nonlin, size_t norm);
+void susceptibility_lin_nonlin(const WhiteNoiseSignal &signal, 
+                               const std::vector<double> &output_signal,
+                               const TimeFrame &time_frame, 
+                               std::vector<std::complex<double>> &suscept_lin, 
+                               std::vector<std::complex<double>> &suscept_nonlin_diag, 
+                               std::vector<std::complex<double>> &suscept_nonlin_antidiag, 
+                               size_t norm);
 
 void susceptibility_nonlin(
     const WhiteNoiseSignal &signal, const std::vector<double> &output_signal,
