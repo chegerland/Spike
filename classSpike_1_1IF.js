@@ -11,7 +11,7 @@ var classSpike_1_1IF =
     [ "print", "classSpike_1_1IF.html#a3edcc914bc63659043c9e0255e47afa7", null ],
     [ "set_D", "classSpike_1_1IF.html#acf5f2c8659848b68e10c43072054b15a", null ],
     [ "set_mu", "classSpike_1_1IF.html#a033993c9910fc008ae5499f3d93b8168", null ],
-    [ "operator<<", "classSpike_1_1IF.html#a537f3ca40cdc4005b2c2dd64d64941e6", null ],
+    [ "operator<<", "classSpike_1_1IF.html#ae6e9997155baca5b95d572df36fe41fb", null ],
     [ "D", "classSpike_1_1IF.html#a287bcb4e99287e81fa81458117bc33b0", null ],
     [ "dist", "classSpike_1_1IF.html#af79387fa6d9086a7a8e4b8cc8e4573aa", null ],
     [ "generator", "classSpike_1_1IF.html#ac50f6beea3d0681f916569cc5724c0e5", null ],

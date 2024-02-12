@@ -6,6 +6,6 @@ var classSpike_1_1SpikeTrain =
     [ "get_dt", "classSpike_1_1SpikeTrain.html#a515bf30ca267d52109537e1a166c32df", null ],
     [ "get_size", "classSpike_1_1SpikeTrain.html#aaf0a60dc2952ff6530c989aeb920b066", null ],
     [ "get_spike", "classSpike_1_1SpikeTrain.html#aa36f2ec7371bbb1043768aeef9ea9a4f", null ],
-    [ "get_values", "classSpike_1_1SpikeTrain.html#a42a4e4065855f7ccb8214e5b7566f473", null ],
+    [ "get_values", "classSpike_1_1SpikeTrain.html#abb07a5b6aec960fd1b6fe1d855b71e9d", null ],
     [ "spike_count", "classSpike_1_1SpikeTrain.html#aa7eed71e1252551dfcf1d478291f939f", null ]
 ];

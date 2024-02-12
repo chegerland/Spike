@@ -8,6 +8,6 @@ var classSpike_1_1TimeFrame =
     [ "get_t_0", "classSpike_1_1TimeFrame.html#a57dd28cc70e0d1ccbc2c483e67af0c78", null ],
     [ "get_t_end", "classSpike_1_1TimeFrame.html#a5fa45fc62f247ade3321dfb4f0315055", null ],
     [ "get_time", "classSpike_1_1TimeFrame.html#af02a5b60041f7e019af526ef6d53a412", null ],
-    [ "get_times", "classSpike_1_1TimeFrame.html#ad686257474b4829053824bc228919374", null ],
-    [ "operator<<", "classSpike_1_1TimeFrame.html#a787c20ed2d43cba5e183f2a79ad2fdc5", null ]
+    [ "get_times", "classSpike_1_1TimeFrame.html#a1949913cd83d8c6feff6ade596e1a6ad", null ],
+    [ "operator<<", "classSpike_1_1TimeFrame.html#adf838d6ad2917e6d576d846da3e520b7", null ]
 ];
